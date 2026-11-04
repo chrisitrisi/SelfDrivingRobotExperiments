@@ -1,0 +1,9 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "9c80be62-6242-46c9-b1bf-09e990463a9f")
+	(paper "A4")
+	(title_block (title "Tumbler 2 Redesign") (rev "1.0"))
+	(lib_symbols)
+	(bus_alias "MOT1" (members "IN1" "IN2" "PWM")))

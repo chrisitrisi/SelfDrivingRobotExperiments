@@ -1,0 +1,70 @@
+Gezielte Netzlistenpruefung: 51 Pruefungen bestanden.
+
+PASS: U3.25 = U6.3
+PASS: U3.24 = U6.2
+PASS: U3.34 = U7.3
+PASS: U3.35 = U7.2
+PASS: U3.23 = R21.2
+PASS: U3.31 = R20.2
+PASS: U3.38 = R25.2
+PASS: U3.39 = R24.2
+PASS: U3.21 = U5.14
+PASS: U3.22 = U5.13
+PASS: U3.13 = R33.1
+PASS: R33.2 = U4.6
+PASS: U3.14 = R34.1
+PASS: R34.2 = U4.4
+PASS: J2.1 = J2.3
+PASS: J2.1 = U3.1
+PASS: J2.4 = U3.2
+PASS: U3.8 = SW1.2
+PASS: U3.9 = R16.2
+PASS: R28.1 = D6.3
+PASS: R28.2 = U3.1
+PASS: U3.12 = D6.3
+PASS: J2.5 = R3.2
+PASS: R3.1 = U3.4
+PASS: getrennt: R3.1 / R3.2
+PASS: J2.6 = R4.2
+PASS: R4.1 = U3.5
+PASS: getrennt: R4.1 / R4.2
+PASS: J2.7 = R29.2
+PASS: R29.1 = U3.6
+PASS: getrennt: R29.1 / R29.2
+PASS: J2.8 = R30.2
+PASS: R30.1 = U3.7
+PASS: getrennt: R30.1 / R30.2
+PASS: J2.9 = R31.2
+PASS: R31.1 = U3.17
+PASS: getrennt: R31.1 / R31.2
+PASS: J2.10 = R32.2
+PASS: R32.1 = U3.18
+PASS: getrennt: R32.1 / R32.2
+PASS: getrennt: J2.1 / J2.2 / J2.4 / J1.2 / U2.3
+PASS: getrennt: U3.13 / U3.14 / R33.2 / R34.2
+PASS: getrennt: R28.1 / D6.4
+PASS: VBAT_SW bleibt bis Stufe 2 ohne Versorgungspfad
+PASS: ERC net_not_bus_member = 0
+PASS: ERC pin_not_driven = 0
+PASS: ERC multiple_net_names = 0
+PASS: ERC unconnected_wire_endpoint = 0
+PASS: Bauteile power_supply unveraendert
+PASS: Bauteile peripherals unveraendert
+PASS: Bauteile usb_c_connector unveraendert
+
+Gesamter ERC (ungefiltert):
+{
+  "unresolved_variable": 24,
+  "power_pin_not_driven": 1,
+  "footprint_link_issues": 101,
+  "lib_symbol_issues": 235,
+  "isolated_pin_label": 1,
+  "pin_to_pin": 1
+}
+
+Offene elektrische Meldungen:
+power_pin_not_driven: Input Power pin not driven by any Output Power pins
+isolated_pin_label: Label connected to only one pin
+pin_to_pin: Pins of type Bidirectional and Power output are connected
+
+Keine Fertigungsfreigabe. Versorgung, IMU-/Treiberentscheidung und Bibliotheksabgleich folgen in Stufe 2.

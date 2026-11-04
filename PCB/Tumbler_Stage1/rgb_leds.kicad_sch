@@ -1,0 +1,1784 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "505b0135-b364-42cb-817c-560da48fb00b")
+	(paper "A4")
+	(title_block
+		(title "${TITLE}")
+		(rev "${REVISION}")
+		(company "${COMPANY}")
+		(comment 1 "${AUTHOR1}, ${AUTHOR2}, ${AUTHOR3} ")
+		(comment 2 "Stefan Kummer"))
+	(lib_symbols
+		(symbol
+			"Device:C"
+			(pin_numbers (hide yes))
+			(pin_names (offset 0.254))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C" (at 0.635 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+			(property "Value" "C" (at 0.635 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+			(property "Footprint" "" (at 0.9652 -3.81 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Description" "Unpolarized capacitor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "ki_keywords" "cap capacitor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "ki_fp_filters" "C_*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(symbol
+				"C_0_1"
+				(polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508) (type default)) (fill (type none)))
+				(polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508) (type default)) (fill (type none))))
+			(symbol
+				"C_1_1"
+				(pin passive line (at 0 3.81 270) (length 2.794) (name "" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 0 -3.81 90) (length 2.794) (name "" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
+			(embedded_fonts no))
+		(symbol
+			"Device:R"
+			(pin_numbers (hide yes))
+			(pin_names (offset 0))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R" (at 2.032 0 90) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Value" "R" (at 0 0 90) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at -1.778 0 90) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Description" "Resistor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "ki_keywords" "R res resistor" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "ki_fp_filters" "R_*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(symbol "R_0_1" (rectangle (start -1.016 -2.54) (end 1.016 2.54) (stroke (width 0.254) (type default)) (fill (type none))))
+			(symbol
+				"R_1_1"
+				(pin passive line (at 0 3.81 270) (length 1.27) (name "" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at 0 -3.81 90) (length 1.27) (name "" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
+			(embedded_fonts no))
+		(symbol
+			"LED:WS2812B-2020"
+			(pin_names (offset 0.254))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "D" (at 5.08 5.715 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify right bottom)))
+			(property "Value" "WS2812B-2020" (at 1.27 -5.715 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left top)))
+			(property
+				"Footprint"
+				"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+				(at 1.27 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects (font (size 1.27 1.27)) (justify left top)))
+			(property
+				"Datasheet"
+				"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+				(at 2.54 -9.525 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects (font (size 1.27 1.27)) (justify left top)))
+			(property
+				"Description"
+				"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects (font (size 1.27 1.27))))
+			(property
+				"ki_keywords"
+				"RGB LED NeoPixel Nano addressable"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects (font (size 1.27 1.27))))
+			(property "ki_fp_filters" "LED*WS2812*-2020_PLCC4*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(symbol "WS2812B-2020_0_0" (text "RGB" (at 2.286 -4.191 0) (effects (font (size 0.762 0.762)))))
+			(symbol
+				"WS2812B-2020_0_1"
+				(polyline (pts (xy 1.27 -2.54) (xy 1.778 -2.54)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 1.27 -3.556) (xy 1.778 -3.556)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 2.286 -1.524) (xy 1.27 -2.54) (xy 1.27 -2.032)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 2.286 -2.54) (xy 1.27 -3.556) (xy 1.27 -3.048)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 3.683 -1.016) (xy 3.683 -3.556) (xy 3.683 -4.064)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 4.699 -1.524) (xy 2.667 -1.524) (xy 3.683 -3.556) (xy 4.699 -1.524)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 4.699 -3.556) (xy 2.667 -3.556)) (stroke (width 0) (type default)) (fill (type none)))
+				(rectangle (start 5.08 5.08) (end -5.08 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))
+			(symbol
+				"WS2812B-2020_1_1"
+				(pin output line (at 7.62 0 180) (length 2.54) (name "DOUT" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at 0 -7.62 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin input line (at -7.62 0 0) (length 2.54) (name "DIN" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin power_in line (at 0 7.62 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27))))))
+			(embedded_fonts no))
+		(symbol
+			"power:GND"
+			(power global)
+			(pin_numbers (hide yes))
+			(pin_names (offset 0) (hide yes))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR" (at 0 -6.35 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Value" "GND" (at 0 -3.81 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property
+				"Description"
+				"Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects (font (size 1.27 1.27))))
+			(property "ki_keywords" "global power" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(symbol
+				"GND_0_1"
+				(polyline
+					(pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27))
+					(stroke (width 0) (type default))
+					(fill (type none))))
+			(symbol
+				"GND_1_1"
+				(pin power_in line (at 0 0 270) (length 0) (name "" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))))
+			(embedded_fonts no))
+		(symbol
+			"power:VCC"
+			(power global)
+			(pin_numbers (hide yes))
+			(pin_names (offset 0) (hide yes))
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR" (at 0 -3.81 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Value" "VCC" (at 0 3.556 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(property
+				"Description"
+				"Power symbol creates a global label with name \"VCC\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects (font (size 1.27 1.27))))
+			(property "ki_keywords" "global power" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27))))
+			(symbol
+				"VCC_0_1"
+				(polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0) (type default)) (fill (type none)))
+				(polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0) (type default)) (fill (type none))))
+			(symbol
+				"VCC_1_1"
+				(pin power_in line (at 0 0 90) (length 0) (name "" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))))
+			(embedded_fonts no)))
+	(junction (at 86.36 81.28) (diameter 0) (color 0 0 0 0) (uuid "bc3e7ad9-e9e6-477c-aefe-a1ff36a425b3"))
+	(no_connect (at 213.36 81.28) (uuid "58a717ed-9308-46ae-bcad-f707fd0ffe4f"))
+	(wire (pts (xy 86.36 81.28) (xy 91.44 81.28)) (stroke (width 0) (type default)) (uuid "0187c17f-d013-459e-9fb9-9be542afd92d"))
+	(wire (pts (xy 129.54 90.17) (xy 129.54 88.9)) (stroke (width 0) (type default)) (uuid "0c9380c3-f5c7-4642-91e8-e80c97363bc4"))
+	(wire (pts (xy 175.26 72.39) (xy 175.26 73.66)) (stroke (width 0) (type default)) (uuid "0c9381f3-9435-4b4d-ac11-57ada1bc1959"))
+	(wire (pts (xy 175.26 105.41) (xy 175.26 110.49)) (stroke (width 0) (type default)) (uuid "0e4b3c64-1c41-4629-bab2-9a415d43f205"))
+	(wire (pts (xy 129.54 118.11) (xy 129.54 123.19)) (stroke (width 0) (type default)) (uuid "1158cfd7-782f-41fa-b808-2b813af666a8"))
+	(wire (pts (xy 205.74 118.11) (xy 205.74 123.19)) (stroke (width 0) (type default)) (uuid "2909452e-4eeb-4457-925e-4e79219a20ba"))
+	(wire (pts (xy 99.06 72.39) (xy 99.06 73.66)) (stroke (width 0) (type default)) (uuid "39ba5d73-a26d-4dd6-b5ae-7634129c1afc"))
+	(wire (pts (xy 190.5 72.39) (xy 190.5 73.66)) (stroke (width 0) (type default)) (uuid "4668e0fc-6f14-41f4-a138-83effb7193b0"))
+	(wire (pts (xy 82.55 81.28) (xy 86.36 81.28)) (stroke (width 0) (type default)) (uuid "4ee7c980-799c-41bf-aa7c-66ccab5e8ffb"))
+	(wire (pts (xy 205.74 72.39) (xy 205.74 73.66)) (stroke (width 0) (type default)) (uuid "52777942-ecd5-4b4d-be03-d028a691c4df"))
+	(wire (pts (xy 114.3 105.41) (xy 114.3 110.49)) (stroke (width 0) (type default)) (uuid "57209fbe-ece0-4134-8b15-8b9fef81f2c6"))
+	(wire (pts (xy 190.5 105.41) (xy 190.5 110.49)) (stroke (width 0) (type default)) (uuid "62ab174e-f44a-4ba0-aa43-8cb8b639132e"))
+	(wire (pts (xy 144.78 90.17) (xy 144.78 88.9)) (stroke (width 0) (type default)) (uuid "662aa53a-bffa-485b-b395-6a0e39efd8bc"))
+	(wire (pts (xy 129.54 105.41) (xy 129.54 110.49)) (stroke (width 0) (type default)) (uuid "67502934-755c-4dc8-96d0-a347212cacaa"))
+	(wire (pts (xy 205.74 105.41) (xy 205.74 110.49)) (stroke (width 0) (type default)) (uuid "68f5f750-fb18-4eff-a03c-5eb1dcabaf8e"))
+	(wire (pts (xy 144.78 72.39) (xy 144.78 73.66)) (stroke (width 0) (type default)) (uuid "75248cfb-16b6-417c-9c28-5ab393b1f595"))
+	(wire (pts (xy 160.02 118.11) (xy 160.02 123.19)) (stroke (width 0) (type default)) (uuid "7d554fc2-ad8f-49c9-ab43-006dc7a8dbde"))
+	(wire (pts (xy 190.5 90.17) (xy 190.5 88.9)) (stroke (width 0) (type default)) (uuid "843349d8-5465-438c-8df6-04d2b80898f4"))
+	(wire (pts (xy 114.3 118.11) (xy 114.3 123.19)) (stroke (width 0) (type default)) (uuid "876d87bb-fa3e-4c9d-8e6b-5455577f5a76"))
+	(wire (pts (xy 144.78 118.11) (xy 144.78 123.19)) (stroke (width 0) (type default)) (uuid "912f563d-db43-49ff-9231-876c38850d86"))
+	(wire (pts (xy 129.54 72.39) (xy 129.54 73.66)) (stroke (width 0) (type default)) (uuid "9f1e77d4-45dd-4de4-854c-59b944f55fa3"))
+	(wire (pts (xy 99.06 118.11) (xy 99.06 123.19)) (stroke (width 0) (type default)) (uuid "a546dbe9-5841-4690-befe-855ae74a72e0"))
+	(wire (pts (xy 160.02 72.39) (xy 160.02 73.66)) (stroke (width 0) (type default)) (uuid "a81bbb2a-357c-4b8d-899a-c25c1e637716"))
+	(wire (pts (xy 190.5 118.11) (xy 190.5 123.19)) (stroke (width 0) (type default)) (uuid "c91aabba-c4af-46ce-9841-c3f644df13e9"))
+	(wire (pts (xy 99.06 105.41) (xy 99.06 110.49)) (stroke (width 0) (type default)) (uuid "c9bca8c2-bbda-4190-bbdd-e9618a613885"))
+	(wire (pts (xy 175.26 118.11) (xy 175.26 123.19)) (stroke (width 0) (type default)) (uuid "d05c5b8b-455c-45d8-9d8b-c5080454070c"))
+	(wire (pts (xy 160.02 90.17) (xy 160.02 88.9)) (stroke (width 0) (type default)) (uuid "d2c0031d-b91f-4734-a406-d65b671a7094"))
+	(wire (pts (xy 175.26 90.17) (xy 175.26 88.9)) (stroke (width 0) (type default)) (uuid "d3081ac8-90fb-4353-af7c-19114530ce93"))
+	(wire (pts (xy 99.06 90.17) (xy 99.06 88.9)) (stroke (width 0) (type default)) (uuid "d68c0907-e55c-4eec-bc74-d7e60e472397"))
+	(wire (pts (xy 144.78 105.41) (xy 144.78 110.49)) (stroke (width 0) (type default)) (uuid "dea1e823-fbcb-4867-887b-8914674abc9f"))
+	(wire (pts (xy 114.3 72.39) (xy 114.3 73.66)) (stroke (width 0) (type default)) (uuid "e357053b-6b19-4bdb-90eb-4e904a439a6b"))
+	(wire (pts (xy 205.74 90.17) (xy 205.74 88.9)) (stroke (width 0) (type default)) (uuid "e5366590-31cd-42f4-8c16-68528e3aba6b"))
+	(wire (pts (xy 114.3 90.17) (xy 114.3 88.9)) (stroke (width 0) (type default)) (uuid "edfefc38-f418-444d-a34f-1c094a4b295f"))
+	(wire (pts (xy 160.02 105.41) (xy 160.02 110.49)) (stroke (width 0) (type default)) (uuid "f2c58b8c-8ede-4b39-b7f3-06d25abf18f1"))
+	(hierarchical_label
+		"RGB"
+		(shape input)
+		(at 82.55 81.28 180)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "1a448325-f4c3-4c37-9b38-bdb18abeb7ea"))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 114.3 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "05cc672a-d003-49e8-aae2-95b827c74d27")
+		(property "Reference" "D7" (at 119.888 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 119.888 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 115.57 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 116.84 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 114.3 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 114.3 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 114.3 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "07b35233-5b1c-4a81-a12b-850da6886cd3"))
+		(pin "3" (uuid "8278812a-5a49-49b5-99aa-4174be98aafc"))
+		(pin "2" (uuid "e80dddb0-a8fd-4436-899b-3902abfc138e"))
+		(pin "1" (uuid "ee78d612-afcf-47c9-b4dd-4c9199a3c66c"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D7") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 99.06 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "06ee065b-a382-4f7c-9fb7-3047aed270da")
+		(property "Reference" "#PWR0105" (at 99.06 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 99.06 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 99.06 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 99.06 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 99.06 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "cfdb3d91-67d7-4883-929f-ec50f08f1b74"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0105") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 190.5 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1175f84d-bbd5-4c5b-830a-e5f895f2ca92")
+		(property "Reference" "C26" (at 194.31 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 194.31 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 191.4652 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 190.5 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Description" "Unpolarized capacitor" (at 190.5 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 190.5 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 190.5 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "3db67c02-1633-4293-85ba-eca4155c003d"))
+		(pin "2" (uuid "4c9bf202-70da-4f4e-82fa-c26fb61fb829"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C26") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 160.02 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "11c01d06-9e6d-4a32-9b50-48d9a1272797")
+		(property "Reference" "#PWR0133" (at 160.02 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 160.02 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 160.02 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 160.02 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 160.02 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "8a4889d0-75bc-4411-8597-1977f36c4af0"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0133") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 160.02 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "14553571-9b39-49db-9d02-2664d467ff1a")
+		(property "Reference" "#PWR0125" (at 160.02 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 160.02 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 160.02 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 160.02 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 160.02 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "ab5d575f-4338-4a7b-ad78-cdb9900e8ea1"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0125") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 129.54 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "17a05654-e025-4bca-a925-c5fb001419e5")
+		(property "Reference" "#PWR0131" (at 129.54 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 129.54 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 129.54 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 129.54 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 129.54 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "99cfebc0-d2ab-47aa-8eeb-533d2826e417"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0131") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 129.54 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1fb00aef-c61a-4f67-bccd-ca20bd24819f")
+		(property "Reference" "C22" (at 133.35 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 133.35 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 130.5052 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 129.54 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Unpolarized capacitor"
+			(at 129.54 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 129.54 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 129.54 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "3b09b4aa-3192-46e8-86f5-9346a80cd062"))
+		(pin "2" (uuid "7e17be01-adc6-4d08-97d5-7bc3c979bcdd"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C22") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 190.5 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "21fecf16-8e4c-48d6-b316-e1974abb65cb")
+		(property "Reference" "#PWR0127" (at 190.5 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 190.5 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 190.5 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 190.5 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 190.5 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "fa594249-24b6-477a-a471-8c600c7db885"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0127") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 114.3 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "26b9d1aa-1ed9-495d-b9cb-3727353ec76c")
+		(property "Reference" "#PWR0122" (at 114.3 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 114.3 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 114.3 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 114.3 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 114.3 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "dfb26139-5235-474a-b493-607e23dddc52"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0122") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 99.06 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "28f749c8-6a4d-45a6-b8c8-eb07a21d2571")
+		(property "Reference" "C20" (at 102.87 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 102.87 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 100.0252 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 99.06 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Description" "Unpolarized capacitor" (at 99.06 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 99.06 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 99.06 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "972f3285-a6cd-4e11-b8f6-7d1d0b7983e0"))
+		(pin "2" (uuid "078e7ba4-58c9-4bb3-8b80-d584914b8440"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C20") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 144.78 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2dea6211-c120-427f-be71-95d362d0135c")
+		(property "Reference" "#PWR0124" (at 144.78 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 144.78 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 144.78 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 144.78 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 144.78 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "0ef2f369-ebb5-4877-bf4f-6c55cbff98bf"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0124") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 190.5 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2ef42647-0c83-4a40-b0d8-c8b042223fd3")
+		(property "Reference" "#PWR0135" (at 190.5 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 190.5 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 190.5 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 190.5 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 190.5 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "2331bb17-4ef2-4a56-9f37-bc0fddfb0c8f"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0135") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 175.26 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "306f8a57-6b22-47cc-80c6-e1aaa3aa5bd3")
+		(property "Reference" "#PWR0126" (at 175.26 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 175.26 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 175.26 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 175.26 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 175.26 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "8fba7f74-d917-453a-8b98-3fa81b049f22"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0126") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 190.5 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "334eef42-ed46-4d8c-9ce8-ca622dd93486")
+		(property "Reference" "#PWR0119" (at 190.5 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 190.5 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 190.5 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 190.5 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 190.5 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "4953395f-3afb-44b8-a459-29f5ba684ee5"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0119") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 205.74 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "364fb769-58a9-4187-a08e-b5bb64edf29b")
+		(property "Reference" "C27" (at 209.55 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 209.55 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 206.7052 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 205.74 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Unpolarized capacitor"
+			(at 205.74 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 205.74 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 205.74 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "e73aa063-a473-4da8-8c33-b7ec0109914b"))
+		(pin "2" (uuid "55372fb4-fc9e-4eb2-92a0-c7744e131652"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C27") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 99.06 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "372e113c-37c2-47f2-88d2-fe7e3ac3fa4d")
+		(property "Reference" "#PWR0113" (at 99.06 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 99.06 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 99.06 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 99.06 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 99.06 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "8da457cf-aec9-4f6d-889c-47e0cb6c5919"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0113") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 175.26 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "38c535f4-4765-4a76-8cd9-c34d31216871")
+		(property "Reference" "#PWR0110" (at 175.26 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 175.26 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 175.26 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 175.26 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 175.26 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "80f77971-c337-4471-a026-0dc904b91cc1"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0110") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 205.74 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "41117f7c-e797-436a-b202-49a9ffb7760c")
+		(property "Reference" "D13" (at 211.328 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 211.328 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 207.01 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 208.28 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 205.74 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 205.74 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 205.74 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "fdf5490b-6e25-4d5a-941c-3fba5a2447c3"))
+		(pin "3" (uuid "1a2d696c-b8e5-49cb-85f6-b560de1194b6"))
+		(pin "2" (uuid "302c8892-eea8-452d-9ca2-2738d86f936f"))
+		(pin "1" (uuid "32a14163-9043-4bd1-82d0-2928a757fb79"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D13") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 175.26 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4e909311-e054-49d4-854b-09ba72f5a1f2")
+		(property "Reference" "D11" (at 180.848 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 180.848 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 176.53 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 177.8 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 175.26 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 175.26 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 175.26 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "c31957b1-d8ab-4e71-96d2-8cd6edaf336e"))
+		(pin "3" (uuid "da5363b3-9bf6-46ea-899d-8b27013c5878"))
+		(pin "2" (uuid "09a94b3c-946b-456c-9e64-e9b7d8ca7682"))
+		(pin "1" (uuid "ba4289bc-27c8-4640-83d4-63b2529af27f"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D11") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 99.06 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "554227f2-e88e-45de-bfc5-1e3a2430bb4f")
+		(property "Reference" "D6" (at 104.648 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 104.648 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 100.33 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 101.6 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 99.06 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 99.06 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 99.06 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "bf1282ff-e308-4183-a882-1af9787b3518"))
+		(pin "3" (uuid "9c733565-57d2-43dc-a98f-9e9a0f506dd7"))
+		(pin "2" (uuid "1afb6d0f-c0bf-4934-98d3-7764c13d7282"))
+		(pin "1" (uuid "193db34f-63c0-4366-ac17-4f05acaafa12"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D6") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 205.74 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5d3b62cb-f8f1-4d4c-bd9b-97b703ee63aa")
+		(property "Reference" "#PWR0120" (at 205.74 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 205.74 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 205.74 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 205.74 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 205.74 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "ce2d6b49-abdd-4095-864f-096d6885bc90"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0120") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 144.78 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "64226838-b362-4257-a87e-f5646797ccc4")
+		(property "Reference" "C23" (at 148.59 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 148.59 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 145.7452 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 144.78 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Unpolarized capacitor"
+			(at 144.78 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 144.78 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 144.78 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "0e9b0086-8e2c-4b8b-b2b9-82f605f32053"))
+		(pin "2" (uuid "dddf6f50-8c83-4ad9-a0de-3ddda63ab2b9"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C23") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 144.78 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "66688e49-34a3-4504-868f-99c4257cf6d8")
+		(property "Reference" "#PWR0116" (at 144.78 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 144.78 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 144.78 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 144.78 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 144.78 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "d883e58c-f368-4ce6-a3da-397481d910f0"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0116") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 175.26 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "75d36844-f5b7-4886-8649-2cd63c7fae8b")
+		(property "Reference" "C25" (at 179.07 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 179.07 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 176.2252 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 175.26 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Unpolarized capacitor"
+			(at 175.26 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 175.26 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 175.26 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "99bf02b4-c5d9-4846-8ba6-674931d66045"))
+		(pin "2" (uuid "4a3a28f6-c24e-4355-93bb-aa2d7e44da8a"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C25") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 114.3 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "772ad5c0-5d47-4fca-a8c0-fbf9edd9a07c")
+		(property "Reference" "#PWR0130" (at 114.3 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 114.3 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 114.3 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 114.3 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 114.3 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "19aa3261-e7ac-4b11-ba23-2bb5647b8d06"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0130") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 129.54 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7fb542cd-0c34-448f-9479-341194d98dc4")
+		(property "Reference" "#PWR0107" (at 129.54 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 129.54 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 129.54 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 129.54 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 129.54 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "2cc23d2f-8874-4a57-a642-2947997691c3"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0107") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 144.78 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "813f3180-d011-4b7c-a558-0207f40f9361")
+		(property "Reference" "D9" (at 150.368 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 150.368 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 146.05 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 147.32 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 144.78 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 144.78 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 144.78 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "e19ea7b9-782c-4c06-a096-407e9d60824f"))
+		(pin "3" (uuid "8146f0cf-07bd-41ce-ab81-207ef544f51a"))
+		(pin "2" (uuid "3897d2d1-d032-4a7d-9df3-e0e54fc8766f"))
+		(pin "1" (uuid "35c2643a-7aa4-4cce-bd06-ea1b99944db9"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D9") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 160.02 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8d1eff0b-5db1-4659-a013-a2c334f1d4f7")
+		(property "Reference" "C24" (at 163.83 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 163.83 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 160.9852 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 160.02 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Unpolarized capacitor"
+			(at 160.02 114.3 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 160.02 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 160.02 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "2d3583cb-f9a8-4272-8620-0031842fd5a8"))
+		(pin "2" (uuid "ee17d06f-1edb-46fe-b136-83e69f85a80b"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C24") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 144.78 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "952b92f5-37f5-491f-9dd7-82cbc84549a3")
+		(property "Reference" "#PWR0108" (at 144.78 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 144.78 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 144.78 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 144.78 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 144.78 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "874fc24d-da01-40fa-83d4-284763600079"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0108") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 175.26 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "959c139f-e7f1-4469-b2c4-e10dfb07982d")
+		(property "Reference" "#PWR0134" (at 175.26 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 175.26 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 175.26 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 175.26 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 175.26 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "1d898558-0ab2-4066-9f0f-baff001313b0"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0134") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 205.74 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "981ae78e-a5a5-4149-8af4-bd786f3f580e")
+		(property "Reference" "#PWR0136" (at 205.74 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 205.74 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 205.74 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 205.74 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 205.74 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "665a922e-4783-4fe2-a2ba-3a7368ff81d7"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0136") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 144.78 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9ebb84ba-2ab3-4b10-8dea-1e50ab996254")
+		(property "Reference" "#PWR0132" (at 144.78 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 144.78 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 144.78 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 144.78 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 144.78 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "77b852a7-143a-4a05-a5e4-b048bd7e0522"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0132") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 114.3 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a3256df3-a9f3-4de6-a3b3-f0d13da44f58")
+		(property "Reference" "#PWR0106" (at 114.3 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 114.3 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 114.3 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 114.3 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 114.3 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "248de0a0-8a48-462d-ae1b-29e9059249ae"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0106") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 160.02 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a553b7c2-c5b4-445a-a3c6-c210204002cc")
+		(property "Reference" "#PWR0117" (at 160.02 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 160.02 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 160.02 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 160.02 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 160.02 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "bfb6bf6d-5807-4ac8-ab00-8a9d5cfe101a"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0117") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 129.54 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a700784c-1c4e-4085-b0a7-5e4702ceadc2")
+		(property "Reference" "D8" (at 135.128 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 135.128 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 130.81 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 132.08 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 129.54 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 129.54 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 129.54 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "be4f7974-b455-4a01-85ac-d695e4ba3e7d"))
+		(pin "3" (uuid "d8d6b6c5-8fc9-4a5d-8ba1-fdf336248683"))
+		(pin "2" (uuid "87dd6a3b-bd5d-417d-bafd-1b05dffd1ab7"))
+		(pin "1" (uuid "11d90128-8bed-4f3f-96c5-1560503570a3"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D8") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 205.74 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ad55f23f-6d03-4aa5-9a3b-7d87f7b81bb4")
+		(property "Reference" "#PWR0112" (at 205.74 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 205.74 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 205.74 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 205.74 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 205.74 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "dd728e85-00ca-44ab-ab86-e5191ef705bc"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0112") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 205.74 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b31bb98e-fc1c-46fe-8218-0ecb5d9ee85e")
+		(property "Reference" "#PWR0128" (at 205.74 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 205.74 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 205.74 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 205.74 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 205.74 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "aa99e5eb-3ef1-471c-b448-c34e8a887dc7"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0128") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 114.3 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b6fd3a97-169b-4259-94c7-32018ed6d31a")
+		(property "Reference" "#PWR0114" (at 114.3 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 114.3 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 114.3 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 114.3 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 114.3 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "168f3129-f8a4-4269-9807-c82992e53af8"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0114") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 99.06 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b8a32478-6044-4c06-a76e-6a3a2a667384")
+		(property "Reference" "#PWR0121" (at 99.06 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 99.06 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 99.06 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 99.06 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 99.06 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "6653da88-7cd7-4c79-b2e8-e2bbc10dafb5"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0121") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 99.06 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ca8a5c6f-7c5b-40cd-83f4-197023f05d2a")
+		(property "Reference" "#PWR0129" (at 99.06 129.54 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 99.06 128.27 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 99.06 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 99.06 123.19 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 99.06 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "62a04981-3da8-47ee-b420-dc5192e60f06"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0129") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 129.54 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd1966eb-8885-4cfe-8761-433e23d31d6f")
+		(property "Reference" "#PWR0115" (at 129.54 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 129.54 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 129.54 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 129.54 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 129.54 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "4bfa456d-c0a0-4e77-a7e6-d18760eb4ef4"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0115") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 160.02 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cdcd17c1-52d1-4fb4-b1f7-c56ea276df9e")
+		(property "Reference" "D10" (at 165.608 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 165.608 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 161.29 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 162.56 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 160.02 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 160.02 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 160.02 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "91d5e5bc-364a-49dc-bedd-c9f357e9120e"))
+		(pin "3" (uuid "9fe5a404-daaf-4c8d-a1b9-2d858b065687"))
+		(pin "2" (uuid "6b4ee50f-c6e3-4e29-a2b1-5d193710d1b5"))
+		(pin "1" (uuid "dd129f85-3a66-490a-8c7b-f01649d044a9"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D10") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 190.5 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cf21c022-8acc-4e64-adbf-17f2236a3ab1")
+		(property "Reference" "#PWR0111" (at 190.5 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 190.5 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 190.5 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 190.5 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 190.5 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "ae1e714c-26ba-4de8-84f4-c8a305a33257"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0111") (unit 1)))))
+	(symbol
+		(lib_id "power:GND")
+		(at 175.26 90.17 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "da664790-d91f-4970-b8a3-dc4de78c40ff")
+		(property "Reference" "#PWR0118" (at 175.26 96.52 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 175.26 95.25 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 175.26 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 175.26 90.17 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 175.26 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "42e83795-284d-4846-a7b6-c43a8b409236"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0118") (unit 1)))))
+	(symbol
+		(lib_id "LED:WS2812B-2020")
+		(at 190.5 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "edecb890-614d-4cad-9dcf-54d40912b72b")
+		(property "Reference" "D12" (at 196.088 72.136 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "WS2812B" (at 196.088 74.676 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Footprint"
+			"LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+			(at 191.77 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Datasheet"
+			"https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf"
+			(at 193.04 90.805 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27)) (justify left top)))
+		(property
+			"Description"
+			"RGB LED with integrated controller, 2.0 x 2.0 mm, 12 mA"
+			(at 190.5 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C965555" (at 190.5 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 190.5 81.28 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "4" (uuid "f2d32331-1fad-437d-be2f-f617b3ccf5d8"))
+		(pin "3" (uuid "3e6f4dae-2e29-433b-92da-697c1fb973fd"))
+		(pin "2" (uuid "f8a99a74-1177-4b04-871f-c327f7d0ce60"))
+		(pin "1" (uuid "8b2db853-7718-4c15-bedb-456832481041"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "D12") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 129.54 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f1b30206-41c4-483f-8c6f-b6efef7faf8b")
+		(property "Reference" "#PWR0123" (at 129.54 109.22 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 129.54 100.33 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 129.54 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 129.54 105.41 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 129.54 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "7a22a6ef-acc8-4cb8-ba82-42168a92d17c"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0123") (unit 1)))))
+	(symbol
+		(lib_id "Device:C")
+		(at 114.3 114.3 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f583cd6d-b8ec-4ec7-ba6c-ee63baa1509d")
+		(property "Reference" "C21" (at 118.11 113.0299 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "100nF" (at 118.11 115.5699 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Capacitor_SMD:C_0603_1608Metric"
+			(at 115.2652 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 114.3 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Description" "Unpolarized capacitor" (at 114.3 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C14663" (at 114.3 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 114.3 114.3 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "60765b65-08f5-43b2-9051-205df8ab7110"))
+		(pin "2" (uuid "a8de9494-4b87-46bd-aab6-4b76ea00473e"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "C21") (unit 1)))))
+	(symbol
+		(lib_id "power:VCC")
+		(at 160.02 72.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f85e623f-c786-4a11-8e4f-f81a6f939e1a")
+		(property "Reference" "#PWR0109" (at 160.02 76.2 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "5V" (at 160.02 67.31 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 160.02 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 160.02 72.39 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"VCC\""
+			(at 160.02 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "a26a4513-03b5-4d96-9ac0-033c6595962e"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0109") (unit 1)))))
+	(symbol
+		(lib_id "Device:R")
+		(at 86.36 92.71 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "464aec45-4210-4038-8ef9-719d9ead9194")
+		(property "Reference" "R28" (at 88.9 91.4399 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property "Value" "10k" (at 88.9 93.97989999999999 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left)))
+		(property
+			"Footprint"
+			"Resistor_SMD:R_0603_1608Metric"
+			(at 84.582 92.71 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 86.36 92.71 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Description" "Resistor" (at 86.36 92.71 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "LCSC PN" "C25804" (at 86.36 92.71 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Sim.Device" "" (at 86.36 92.71 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "ade40a50-f852-4d5a-8d32-e04bc9e81a3c"))
+		(pin "2" (uuid "9ee46801-91df-40d8-834e-98deddf097d6"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "R28") (unit 1)))))
+	(wire (pts (xy 86.36 81.28) (xy 86.36 88.9)) (stroke (width 0) (type default)) (uuid "559dd78b-f6f8-473e-ba55-92f9ab313e19"))
+	(wire (pts (xy 86.36 96.52) (xy 86.36 100.33)) (stroke (width 0) (type default)) (uuid "0c7e4dd0-75a9-4ccb-8412-e3c5a549a6b4"))
+	(junction (at 86.36 81.28) (diameter 0) (color 0 0 0 0) (uuid "a56f43a9-9e41-440d-b6fb-ad4b653a9f82"))
+	(symbol
+		(lib_id "power:GND")
+		(at 86.36 100.33 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b426b1fb-16f2-4695-bd1e-a67e5850108d")
+		(property "Reference" "#PWR0104" (at 86.36 106.67999999999999 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Value" "GND" (at 86.36 105.41 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 86.36 100.33 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property "Datasheet" "" (at 86.36 100.33 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27))))
+		(property
+			"Description"
+			"Power symbol creates a global label with name \"GND\" , ground"
+			(at 86.36 100.33 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects (font (size 1.27 1.27))))
+		(pin "1" (uuid "d64455c5-e35f-4510-b5cf-e2cedde1b6b3"))
+		(instances
+			(project "Tumbler2_Redesign" (path "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35" (reference "#PWR0104") (unit 1)))))
+	(text
+		"R28: 10k pulldown to GND; no 5V pull-up on ESP32 GPIO.\nExact LED ordering code / HIGH-level margin still to confirm."
+		(at 68 132 0)
+		(effects (font (size 1.1 1.1)) (justify left top))
+		(uuid "36031a55-9861-4202-a460-ba7fd9c514c4")))
