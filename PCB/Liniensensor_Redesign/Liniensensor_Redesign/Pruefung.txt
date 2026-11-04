@@ -1,0 +1,14 @@
+Tumbler Liniensensor - Revision 1
+Stand: 2026-10-14
+
+Native KiCad-Version: 9.0.9
+ERC mit bestehenden Projekteinstellungen: 0 Fehler, 0 Warnungen, 0 Ausnahmen.
+ERC mit frischen Standardeinstellungen: 0 Fehler, 0 Warnungen, 0 Ausnahmen.
+Keine ERC-Ausnahmen hinzugefuegt. CNY70-Emitter in lokaler Bibliothek als passiver Anschluss modelliert; siehe Hinweise.md.
+Native Netzliste: 37 physische Bauteile, 19 Netze.
+LS1 bis LS6: exakte Pinmengen mit erwarteten Sensor-, Widerstands-, Kondensator- und Steckeranschluessen abgeglichen.
+LED-Ketten, Basis-Spannungsteiler, Emitterwiderstaende, Versorgungskondensatoren und Masse unabhaengig geprueft.
+Alle 37 Bauteile: vorhandener offizieller KiCad-Footprint, Symbol-Pinnummern passen zu Footprint-Padnummern.
+PDF visuell geprueft.
+
+Nicht enthalten: PCB-Layout/DRC, thermische Messung, optische Kalibrierung, Messung mit Motoren, vollstaendige ADC-Erfassungszeit- und EMV-Pruefung der Hauptplatine.

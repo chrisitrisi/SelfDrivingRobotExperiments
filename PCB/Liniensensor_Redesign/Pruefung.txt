@@ -1,0 +1,20 @@
+Tumbler Liniensensor - Layout R2, 18.10.2026
+KiCad 9.0.9
+
+ERC: 0 Fehler, 0 Warnungen.
+DRC: 0 Regelverletzungen, 0 unverbundene Anschluesse.
+Regeln: 0,20 mm Mindest-Kupferabstand; 0,25 mm Mindest-Leiterbahnbreite;
+0,50 mm Kupferabstand zur Kante; 0,10 mm Siebdruckabstand.
+37 elektrische Bauteile + 4 mechanische Bohrungsfootprints.
+19 Netze. Saemtliche elektrischen Pads stimmen mit nativer Schaltplan-Netzliste ueberein.
+Schaltplan-UUID-Verknuepfungen fuer alle 37 Bauteile geprueft.
+Alle Leiterbahnen 0,25 mm; Via 0,60 / 0,30 mm.
+Zweilagig, B.Cu-GND-Flaeche gefuellt. Schraubbereiche kupferfrei.
+PCB: 76 x 32 x 1,6 mm. Vier NPTH 3,2 mm.
+Halter-STL: geschlossene Dreiecksvermaschung geprueft.
+Montage-PDF und PCB-Ansichten visuell geprueft.
+Details und aktuelle Zaehler: Layoutpruefung.json, DRC.json, ERC.json.
+
+Nicht durchgefuehrt: mechanischer Realaufbau, thermische Messung,
+optische Kalibrierung, EMV-Messung mit Motoren oder Validierung der Hauptplatine.
+Die Montageabstaende sind nachvollziehbare Prototyp-Startwerte.

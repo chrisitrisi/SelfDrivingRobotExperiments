@@ -1,0 +1,38 @@
+﻿Reference;Value;Footprint;Manufacturer;MPN;Rating;Datasheet
+C1;100n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C104K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C104K5RAC7800
+C2;10u / 25V;Capacitor_SMD:C_1206_3216Metric;TDK;C3216X7R1E106K160AB;"10%; X7R; 25 V";https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C3216X7R1E106K160AB
+C3;100n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C104K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C104K5RAC7800
+C4;10u / 25V;Capacitor_SMD:C_1206_3216Metric;TDK;C3216X7R1E106K160AB;"10%; X7R; 25 V";https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C3216X7R1E106K160AB
+C5;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
+C6;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
+C7;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
+C8;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
+C9;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
+C10;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
+J2;JST GH 10-pol.;Connector_JST:JST_GH_SM10B-GHS-TB_1x10-1MP_P1.25mm_Horizontal;JST;SM10B-GHS-TB(LF)(SN);"1.25 mm; 1 A with AWG26; 50 V";https://www.jst-mfg.com/product/pdf/eng/eGH.pdf
+Q1;BC817-40;Package_TO_SOT_SMD:SOT-23;Nexperia;BC817-40,215;"45 V; 500 mA; Ptot 250 mW @25C, derate";https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf
+Q2;BC817-40;Package_TO_SOT_SMD:SOT-23;Nexperia;BC817-40,215;"45 V; 500 mA; Ptot 250 mW @25C, derate";https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf
+R1;47;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547R0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R2;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R3;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R4;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R5;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R6;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R7;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R8;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R9;47;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547R0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R10;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R11;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R12;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R13;47k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R14;47k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R15;47k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R16;47k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R17;47k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R18;47k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+U1;CNY70;OptoDevice:Vishay_CNY70;Vishay;CNY70;"IF design ~20 mA; absolute maximum 50 mA";https://www.vishay.com/docs/83751/cny70.pdf
+U2;CNY70;OptoDevice:Vishay_CNY70;Vishay;CNY70;"IF design ~20 mA; absolute maximum 50 mA";https://www.vishay.com/docs/83751/cny70.pdf
+U3;CNY70;OptoDevice:Vishay_CNY70;Vishay;CNY70;"IF design ~20 mA; absolute maximum 50 mA";https://www.vishay.com/docs/83751/cny70.pdf
+U4;CNY70;OptoDevice:Vishay_CNY70;Vishay;CNY70;"IF design ~20 mA; absolute maximum 50 mA";https://www.vishay.com/docs/83751/cny70.pdf
+U5;CNY70;OptoDevice:Vishay_CNY70;Vishay;CNY70;"IF design ~20 mA; absolute maximum 50 mA";https://www.vishay.com/docs/83751/cny70.pdf
+U6;CNY70;OptoDevice:Vishay_CNY70;Vishay;CNY70;"IF design ~20 mA; absolute maximum 50 mA";https://www.vishay.com/docs/83751/cny70.pdf

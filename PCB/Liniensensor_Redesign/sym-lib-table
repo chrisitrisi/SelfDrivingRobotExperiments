@@ -1,0 +1,6 @@
+(sym_lib_table
+(lib (name "Connector_Generic")(type "KiCad")(uri "${KIPRJMOD}/symbols/Connector_Generic.kicad_sym")(options "")(descr ""))
+(lib (name "Device")(type "KiCad")(uri "${KIPRJMOD}/symbols/Device.kicad_sym")(options "")(descr ""))
+(lib (name "Transistor_BJT")(type "KiCad")(uri "${KIPRJMOD}/symbols/Transistor_BJT.kicad_sym")(options "")(descr ""))
+(lib (name "Tumbler_Sensor")(type "KiCad")(uri "${KIPRJMOD}/Tumbler_Sensor.kicad_sym")(options "")(descr ""))
+(lib (name "power")(type "KiCad")(uri "${KIPRJMOD}/symbols/power.kicad_sym")(options "")(descr "")))

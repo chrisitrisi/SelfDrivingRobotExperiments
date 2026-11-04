@@ -1,0 +1,4 @@
+(sym_lib_table
+ (version 7)
+ (lib (name "Tumbler_Sensor")(type "KiCad")(uri "${KIPRJMOD}/Tumbler_Sensor.kicad_sym")(options "")(descr "CNY70: passive emitter terminal for common-emitter use"))
+)

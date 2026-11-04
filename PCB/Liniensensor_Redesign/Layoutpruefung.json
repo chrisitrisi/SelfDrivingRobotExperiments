@@ -1,0 +1,20 @@
+{
+  "schematic_pcb_all_pins_equal": true,
+  "UUID_links_correct": true,
+  "electrical_components": 37,
+  "mounting_holes": 4,
+  "nets": 19,
+  "segments": 249,
+  "vias": 8,
+  "track_widths_mm": [
+    0.25
+  ],
+  "DRC_violations": 0,
+  "unconnected": 0,
+  "ERC_violations": 0,
+  "board_mm": [
+    76,
+    32,
+    1.6
+  ]
+}
