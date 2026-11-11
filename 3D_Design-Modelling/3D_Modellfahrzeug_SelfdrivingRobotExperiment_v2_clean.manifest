@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"HTL Bulme Graz-Goesting - SelfDrivingRobotExperiments",
+	"description":	{
+		"":	"Clean Flat-Bed Chassis Generator (100% open rear drivetrain, KiCad 65x64mm M3 standoffs, 5mm THT clearance)"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

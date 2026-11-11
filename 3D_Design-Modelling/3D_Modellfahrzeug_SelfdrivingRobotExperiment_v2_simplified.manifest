@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"HTL Bulme Graz-Goesting - SelfDrivingRobotExperiments",
+	"description":	{
+		"":	"Parametric DFM-Simplified 2-Part Modular Chassis Generator (3.0mm Baseplate + 2.4mm Prismatic Fender Cover)"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
