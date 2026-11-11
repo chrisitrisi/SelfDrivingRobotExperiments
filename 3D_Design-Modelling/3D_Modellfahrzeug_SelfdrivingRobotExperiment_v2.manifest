@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"HTL Bulme Graz-Goesting - SelfDrivingRobotExperiments",
+	"description":	{
+		"":	"Parametric v2 Chassis Generator (KiCad-aligned M3 Standoffs, Aerodynamic Fenders, Thermal Louvers) & .f3d Exporter"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

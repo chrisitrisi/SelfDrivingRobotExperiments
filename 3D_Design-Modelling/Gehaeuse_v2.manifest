@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"script",
+	"author":	"Antigravity",
+	"description":	{
+		"":	"Gehaeuse v2 100% Reverse-Engineered Parametric CAD Model"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
