@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"HTL Bulme Graz-Goesting - SelfDrivingRobotExperiments",
+	"description":	{
+		"":	"Parametric v3 LiDAR-Integrated Flat-Bed Chassis Generator (6x VL53L0X / GY-530 Pods @ 45/90/135 deg)"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}

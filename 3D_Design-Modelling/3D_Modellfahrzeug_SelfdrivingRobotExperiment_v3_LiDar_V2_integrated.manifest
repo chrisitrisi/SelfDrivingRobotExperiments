@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"HTL Bulme Graz-Goesting - SelfDrivingRobotExperiments",
+	"description":	{
+		"":	"Parametric v3 VL53L0/1XV2 LiDAR Chassis Generator (18x13mm, 15mm pitch, Z=45mm rear towers)"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
