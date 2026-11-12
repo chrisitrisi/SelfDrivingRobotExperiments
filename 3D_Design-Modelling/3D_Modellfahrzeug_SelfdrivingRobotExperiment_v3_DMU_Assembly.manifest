@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"HTL Bulme Graz-Goesting - SelfDrivingRobotExperiments",
+	"description":	{
+		"":	"Full Digital Mock-Up (DMU) 3D-Assembly Builder & Automated Interference Checker (Main PCB, GA37-520 Motors, Wheels, 2S Battery, Switch, 6x VL53L0/1XV2 LiDARs)"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
