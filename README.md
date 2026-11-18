@@ -16,6 +16,14 @@ Wir verwenden ein vorgegebenes Modellfahrzeug als Basis. Wir entwickeln dafür e
 3. Erstellt euren Aufgabenbranch vom vereinbarten Fachbranch. Öffnet den Pull Request zurück in diesen Fachbranch und verlinkt das Issue. Änderungen an gemeinsamen Regeln und Schnittstellen gehen in einen eigenen Pull Request gegen `master`.
 4. Haltet im Issue fest, was geprüft wurde, was offen ist und von welcher Rolle ihr eine Antwort braucht.
 
+### KI-Fragen zwischen den Rollen
+
+Die KIs der Rollen klären Fragen untereinander über Issues, ohne dass die Menschen dazwischen müssen: Eine KI stellt eine **KI-Frage** an eine Rolle (Labels `ki-frage` + `an:hardware`, `an:software` oder `an:3d`), die KI der Zielrolle antwortet im selben Issue. Fragen an die Hardware beantwortet eine GitHub Action mit Claude sofort automatisch (Rückfragen mit `@hw-ki`). Menschen werden nur über das Label [`braucht-mensch`](https://github.com/chrisitrisi/SelfDrivingRobotExperiments/issues?q=is%3Aopen+label%3Abraucht-mensch) gebraucht.
+
+- Ablauf, Befehle, Antwortformat: [docs/ki-austausch.md](docs/ki-austausch.md)
+- Wissen pro Rolle: [Hardware](docs/rollen/hardware.md) · [Software](docs/rollen/software.md) · [3D-Design](docs/rollen/3d-design.md)
+- [Neue KI-Frage im Browser](https://github.com/chrisitrisi/SelfDrivingRobotExperiments/issues/new?template=ki-frage.yml)
+
 ### Projektstart im Terminal
 
 Mit Python 3 und einer über `gh auth login` angemeldeten GitHub CLI könnt ihr im aktualisierten `master`-Checkout den Kontext zu einer Aufgabe anzeigen. Ersetzt 12 durch eine echte Issue-Nummer:
@@ -28,7 +36,7 @@ Das Skript liest Regeln und Schnittstellen von GitHub sowie das Issue mit seinen
 
 ### Prompt für Antigravity, Claude und ChatGPT
 
-> Wir arbeiten in chrisitrisi/SelfDrivingRobotExperiments. Meine Rolle ist [Hardware, Software oder 3D-Design]. Bearbeite Issue #[Nummer]. Lies AGENTS.md und docs/schnittstellen.md vom aktuellen master sowie das Issue mit seinen Kommentaren. Prüfe den dort genannten Fachbranch, bevor du Dateien bearbeitest. Arbeite auf einem Aufgabenbranch und adressiere den Pull Request an den Fachbranch. Teile Ergebnis, Prüfung und offene Fragen im Issue. Falls dir der Zugriff fehlt, benenne die fehlende Datei oder Aktion und liefere einen kopierbaren Entwurf.
+> Wir arbeiten in chrisitrisi/SelfDrivingRobotExperiments. Meine Rolle ist [Hardware, Software oder 3D-Design]. Bearbeite Issue #[Nummer]. Lies AGENTS.md, docs/schnittstellen.md und docs/ki-austausch.md vom aktuellen master sowie das Issue mit seinen Kommentaren. Prüfe zuerst den Posteingang meiner Rolle (Issues mit ki-frage und an:[rolle]) und beantworte offene Fragen. Brauchst du etwas von einer anderen Rolle, stelle eine KI-Frage statt mich zu fragen. Prüfe den dort genannten Fachbranch, bevor du Dateien bearbeitest. Arbeite auf einem Aufgabenbranch und adressiere den Pull Request an den Fachbranch. Teile Ergebnis, Prüfung und offene Fragen im Issue. Falls dir der Zugriff fehlt, benenne die fehlende Datei oder Aktion und liefere einen kopierbaren Entwurf.
 
 Hinterlegt diesen Verweis in Browser-Projekten als Projektanweisung. Öffnet bei lokalen Tools den richtigen Repository-Ordner. Auf älteren Fachbranches können die zentralen Regeldateien fehlen. Gebt den Verweis dann beim Sitzungsstart mit. In Claude-Projekten mit synchronisierten Dateien vor der Arbeit den Stand von `master` aktualisieren und das Issue über ein GitHub-Werkzeug oder als Text bereitstellen.
 
