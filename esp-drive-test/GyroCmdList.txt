@@ -21,4 +21,5 @@ stByOff 7 0
 
 drive 10 1 0.5 1000
 quadrat 10 2 -0.4 1000
+rundquadrat 10 3 -0.4 1000
 STOP 11

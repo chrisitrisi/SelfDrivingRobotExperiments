@@ -2,6 +2,7 @@
 //   KP = -0.01   KD = -0.0003   Rate = 500
 //   negativ wegen Motor-Einstellung in MotorSetup.h
 // Vorwaerts fahren: Geschwindigkeit negativ, z.B. quadrat 10 2 -0.4 1000
+// Quadrat mit runden Ecken: rundquadrat 10 3 -0.4 1000
 
 #include "RTEnvHL.h"
 #include "SvProtocol3.h"
@@ -138,7 +139,8 @@ StopAll:
 
 
 // eigene Fahrt: 4x gerade + 90 Grad drehen
-void Quadrat(float forew, int dist)
+// rund = true: an den Ecken eine Kurve fahren statt auf der Stelle drehen
+void Quadrat(float forew, int dist, bool rund)
 {
   ua0.SvPrintf("quadrat %1.2f %d", forew, dist);
   MyDelay(500);
@@ -151,13 +153,14 @@ void Quadrat(float forew, int dist)
       CHECK_CANCEL();
       vTaskDelay(1);
     }
-    rgl.forew = 0;
+    if (!rund) rgl.forew = 0;
     rgl.setDemand((i + 1) * 900); // Winkel zaehlt weiter: 90, 180, 270, 360 Grad
     while (integ.gySum < (i + 1) * 900 - 30) {
       CHECK_CANCEL();
       vTaskDelay(1);
     }
   }
+  rgl.forew = 0;
   MyDelay(500); // letzte Drehung genau ausregeln
 StopAll:
   drCmd.set(0);
@@ -177,8 +180,13 @@ void DriveTask(void* arg)
     }
     else if (cmd == 2) {
       float forew = ua0.ReadF(); int dist = ua0.ReadI16();
-      Quadrat(forew, dist);
+      Quadrat(forew, dist, false);
       ua0.SvMessage("Quadrat fertig");
+    }
+    else if (cmd == 3) {
+      float forew = ua0.ReadF(); int dist = ua0.ReadI16();
+      Quadrat(forew, dist, true);
+      ua0.SvMessage("Rundes Quadrat fertig");
     }
   }
 }
