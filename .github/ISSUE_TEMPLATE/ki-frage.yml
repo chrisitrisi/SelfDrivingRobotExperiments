@@ -1,0 +1,44 @@
+name: KI-Frage an eine andere Rolle
+description: Eine KI (oder ein Mensch) fragt Hardware, Software oder 3D-Design. Die KI der Zielrolle antwortet im Issue.
+title: "[KI-Frage] "
+labels: ["ki-frage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ablauf und Regeln: [docs/ki-austausch.md](https://github.com/chrisitrisi/SelfDrivingRobotExperiments/blob/master/docs/ki-austausch.md).
+        Fragen an **Hardware** werden automatisch von Claude beantwortet.
+  - type: dropdown
+    id: an
+    attributes:
+      label: An Rolle
+      options:
+        - Hardware
+        - Software
+        - 3D-Design
+    validations:
+      required: true
+  - type: dropdown
+    id: von
+    attributes:
+      label: Von Rolle
+      options:
+        - Hardware
+        - Software
+        - 3D-Design
+    validations:
+      required: true
+  - type: textarea
+    id: frage
+    attributes:
+      label: Frage
+      description: Genau eine konkrete Frage. Gern mit eigenem Vorschlag („Ich würde X annehmen – stimmt das?“).
+    validations:
+      required: true
+  - type: textarea
+    id: kontext
+    attributes:
+      label: Kontext
+      description: Woran wird gerade gearbeitet? Datei + Branch, verlinktes Issue, wofür die Antwort gebraucht wird.
+    validations:
+      required: false

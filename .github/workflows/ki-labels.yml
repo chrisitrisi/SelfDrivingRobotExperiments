@@ -1,0 +1,34 @@
+name: KI-Labels anlegen
+
+# Einmal manuell starten (Actions → KI-Labels anlegen → Run workflow).
+# Legt die Labels für den KI-Austausch an bzw. aktualisiert sie.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths: [".github/workflows/ki-labels.yml"]
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          while IFS='|' read -r name color desc; do
+            gh label create "$name" -R "$REPO" --color "$color" --description "$desc" --force
+          done <<'EOF'
+          ki-frage|5319e7|Frage zwischen den KIs der Rollen
+          an:hardware|d93f0b|Frage an die Hardware (wird automatisch beantwortet)
+          an:software|0e8a16|Frage an die Software
+          an:3d|1d76db|Frage an das 3D-Design
+          von:hardware|f9d0c4|Frage kommt von der Hardware
+          von:software|c2e0c6|Frage kommt von der Software
+          von:3d|c5def5|Frage kommt vom 3D-Design
+          beantwortet|0e8a16|Die Ziel-KI hat geantwortet
+          braucht-mensch|b60205|Entscheidung oder Freigabe durch einen Menschen nötig
+          EOF
