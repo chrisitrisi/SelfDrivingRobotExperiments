@@ -1,0 +1,28 @@
+name: KI-Frage einsortieren
+
+# Setzt bei Issues aus der Vorlage "KI-Frage" die Labels an:<rolle> und von:<rolle>.
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  labels:
+    if: contains(github.event.issue.body, '### An Rolle')
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NR: ${{ github.event.issue.number }}
+        run: |
+          body=$(jq -r '.issue.body // ""' "$GITHUB_EVENT_PATH")
+          feld() { printf '%s\n' "$body" | awk -v h="### $1" '$0==h{f=1;next} f&&NF{print;exit}'; }
+          rolle() { case "$1" in Hardware) echo hardware;; Software) echo software;; 3D-Design) echo 3d;; esac; }
+          an=$(rolle "$(feld 'An Rolle')"); von=$(rolle "$(feld 'Von Rolle')")
+          args="--add-label ki-frage"
+          [ -n "$an" ] && args="$args --add-label an:$an"
+          [ -n "$von" ] && args="$args --add-label von:$von"
+          gh issue edit "$NR" -R "$REPO" $args

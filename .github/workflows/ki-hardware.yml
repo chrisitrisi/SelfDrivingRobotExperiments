@@ -1,0 +1,104 @@
+name: KI-Antwort Hardware
+
+# Beantwortet Fragen an die Hardware automatisch mit Claude.
+# Auslöser: Issue mit Label "an:hardware" (oder Vorlage "KI-Frage" mit "An Rolle: Hardware")
+#           oder ein Kommentar mit "@hw-ki".
+# Benötigt das Repo-Secret CLAUDE_CODE_OAUTH_TOKEN (claude setup-token) oder ANTHROPIC_API_KEY.
+# Regeln: docs/ki-austausch.md, Wissen: docs/rollen/hardware.md
+
+on:
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: ki-hardware-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  antworten:
+    if: >-
+      !github.event.issue.pull_request && (
+        github.event_name == 'issues' ||
+        (contains(github.event.comment.body, '@hw-ki') && github.event.comment.user.type != 'Bot')
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      issues: write
+      id-token: write
+    steps:
+      - name: Prüfen, ob die Frage an die Hardware geht
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NR: ${{ github.event.issue.number }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          LABEL: ${{ github.event.label.name }}
+        run: |
+          run=false
+          if [ "$EVENT" = "issue_comment" ]; then
+            run=true
+          else
+            labels=$(jq -r '[.issue.labels[].name] | join(",")' "$GITHUB_EVENT_PATH")
+            body=$(jq -r '.issue.body // ""' "$GITHUB_EVENT_PATH")
+            an=$(printf '%s\n' "$body" | awk '/^### An Rolle/{f=1;next} f&&NF{print;exit}')
+            if [ "$ACTION" = "labeled" ] && [ "$LABEL" = "an:hardware" ]; then run=true; fi
+            if [ "$ACTION" = "opened" ] && { [[ ",$labels," == *",an:hardware,"* ]] || [ "$an" = "Hardware" ]; }; then run=true; fi
+            # nicht doppelt antworten (opened + labeled kommen oft gleichzeitig)
+            if [ "$run" = true ] && gh api "repos/$REPO/issues/$NR/comments" --paginate --jq '.[].body' | grep -q 'ki-antwort:hardware'; then
+              run=false
+            fi
+          fi
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+
+      - name: Repository auschecken (master)
+        if: steps.check.outputs.run == 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fachbranches daneben bereitstellen
+        if: steps.check.outputs.run == 'true'
+        run: |
+          for b in PCB code 3D_Design; do
+            if git ls-remote --exit-code --heads origin "$b" >/dev/null; then
+              git fetch --depth=1 origin "$b:refs/remotes/origin/$b"
+              git worktree add --detach "branches/$b" "origin/$b"
+            fi
+          done
+          ls branches
+
+      - name: Claude beantwortet die Frage
+        if: steps.check.outputs.run == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Du bist die KI der Rolle HARDWARE im Projekt ${{ github.repository }} (Diplomarbeit, selbstfahrendes Roboterauto).
+            Eine andere Rolle (oder ihre KI) hat in Issue #${{ github.event.issue.number }} eine Frage an die Hardware gestellt.
+
+            1. Lies `docs/ki-austausch.md` (Regeln und Antwortformat) und `docs/rollen/hardware.md` (Stand und Fundstellen).
+            2. Lies das Issue mit allen Kommentaren: `gh issue view ${{ github.event.issue.number }} --comments`.
+               Beantworte die neueste noch offene Frage bzw. Rückfrage.
+            3. Suche die Antwort in den Hardware-Unterlagen unter `branches/PCB/PCB/` (vor allem `branches/PCB/PCB/Tumbler_Mainboard/`).
+               Software-Stand liegt in `branches/code/`, 3D-Modelle in `branches/3D_Design/`.
+            4. Antworte mit `gh issue comment ${{ github.event.issue.number }} --body "..."` auf Deutsch, genau im Format aus
+               `docs/ki-austausch.md` mit der ersten Zeile `<!-- ki-antwort:hardware -->` und der Überschrift
+               "🤖 KI-Antwort Hardware". Jede Zahl mit Quelle als Link
+               `https://github.com/${{ github.repository }}/blob/PCB/<Pfad>`.
+            5. Setze danach `gh issue edit ${{ github.event.issue.number }} --add-label beantwortet`.
+               Wenn eine Entscheidung oder Änderung durch Christopher nötig ist oder die Antwort nicht in den Unterlagen steht,
+               zusätzlich `--add-label braucht-mensch` und das in der Antwort klar sagen.
+
+            Regeln: Nichts erfinden. Keine Dateien ändern, nichts committen. Keine Bauteilwerte, Pins oder Maße "entscheiden" –
+            nur den dokumentierten Stand wiedergeben und Vorschläge als Vorschlag kennzeichnen. Kurz und konkret antworten.
+          claude_args: |
+            --max-turns 30
+            --allowedTools "Read,Glob,Grep,Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh issue edit:*)"
