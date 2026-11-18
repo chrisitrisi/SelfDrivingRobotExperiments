@@ -1,0 +1,187 @@
+name: KI Software
+
+# Automatische Software-KI (Claude).
+# - Frage an die Software (Label "an:software" oder Vorlage "KI-Frage" mit "An Rolle: Software")
+#   -> Antwort als Kommentar im Issue.
+# - Auftrag (Code soll geändert werden, z. B. "Firmware anpassen")
+#   -> Claude arbeitet im Branch ki/issue-<nr> (abgezweigt von "code") und öffnet einen Pull Request nach "code".
+#      Danach wird der Stand mit ESP-IDF gebaut und das Ergebnis in den PR geschrieben.
+# - Rückfrage / Nachbesserung: Kommentar mit "@sw-ki" im Issue oder im Pull Request.
+# Gemergt wird nie automatisch – das macht die Software-Rolle nach dem Test auf der Platine.
+# Benötigt das Repo-Secret CLAUDE_CODE_OAUTH_TOKEN (claude setup-token) oder ANTHROPIC_API_KEY.
+
+on:
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: ki-software-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  arbeiten:
+    if: >-
+      github.event_name == 'issues' ||
+      (contains(github.event.comment.body, '@sw-ki') && github.event.comment.user.type != 'Bot')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - name: Prüfen, ob die Software gemeint ist
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          NR: ${{ github.event.issue.number }}
+          EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          LABEL: ${{ github.event.label.name }}
+        run: |
+          run=false; pr_branch=""
+          is_pr=$(jq -r 'if .issue.pull_request then "true" else "false" end' "$GITHUB_EVENT_PATH")
+          if [ "$EVENT" = "issue_comment" ]; then
+            run=true
+            if [ "$is_pr" = true ]; then
+              pr_branch=$(gh pr view "$NR" -R "$REPO" --json headRefName -q .headRefName)
+            fi
+          elif [ "$is_pr" = false ]; then
+            labels=$(jq -r '[.issue.labels[].name] | join(",")' "$GITHUB_EVENT_PATH")
+            body=$(jq -r '.issue.body // ""' "$GITHUB_EVENT_PATH")
+            an=$(printf '%s\n' "$body" | awk '/^### An Rolle/{f=1;next} f&&NF{print;exit}')
+            if [ "$ACTION" = "labeled" ] && [ "$LABEL" = "an:software" ]; then run=true; fi
+            if [ "$ACTION" = "opened" ] && { [[ ",$labels," == *",an:software,"* ]] || [ "$an" = "Software" ]; }; then run=true; fi
+            # nicht doppelt starten (opened + labeled kommen oft gleichzeitig)
+            if [ "$run" = true ] && gh api "repos/$REPO/issues/$NR/comments" --paginate --jq '.[].body' | grep -q 'ki-antwort:software'; then
+              run=false
+            fi
+          fi
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+          echo "is_pr=$is_pr" >> "$GITHUB_OUTPUT"
+          echo "pr_branch=$pr_branch" >> "$GITHUB_OUTPUT"
+
+      - name: Branch "code" auschecken
+        if: steps.check.outputs.run == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: code
+          fetch-depth: 0
+
+      - name: Regeln und Hardware-Unterlagen bereitstellen
+        if: steps.check.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "_ki/" >> .git/info/exclude
+          mkdir -p _ki
+          for f in AGENTS.md docs/ki-austausch.md docs/rollen/software.md docs/rollen/hardware.md docs/rollen/3d-design.md; do
+            git show "origin/master:$f" > "_ki/$(basename "$f")" 2>/dev/null || true
+          done
+          git show origin/master:docs/schnittstellen.md > _ki/schnittstellen.md 2>/dev/null || true
+          if git rev-parse --verify -q origin/PCB >/dev/null; then
+            git worktree add --detach _ki/PCB origin/PCB
+          fi
+          ls _ki
+
+      - name: Claude bearbeitet das Issue
+        if: steps.check.outputs.run == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Du bist die KI der Rolle SOFTWARE im Projekt ${{ github.repository }} (Diplomarbeit, selbstfahrendes Roboterauto, ESP-IDF 5.1.2, C++).
+            Auslöser: ${{ github.event_name }} in #${{ github.event.issue.number }} (Pull Request: ${{ steps.check.outputs.is_pr }}, PR-Branch: "${{ steps.check.outputs.pr_branch }}").
+
+            Arbeitsumgebung:
+            - Das Arbeitsverzeichnis ist der Branch `code` (ESP-IDF-Projekt: CMakeLists.txt, main/, components/, sdkconfig).
+            - Regeln und Wissen liegen in `_ki/`: ki-austausch.md (Regeln, Antwortformat), software.md, hardware.md, 3d-design.md, AGENTS.md.
+            - Hardware-Unterlagen (Pinbelegung, Schaltplan) liegen in `_ki/PCB/PCB/` (vor allem `_ki/PCB/PCB/Tumbler_Mainboard/`).
+            - `_ki/` ist nur zum Lesen da und darf nie committet werden.
+
+            1. Lies `_ki/ki-austausch.md` und `_ki/software.md`.
+            2. Lies den Vorgang mit allen Kommentaren: `gh issue view ${{ github.event.issue.number }} --comments`
+               (bei einem Pull Request zusätzlich `gh pr view ${{ github.event.issue.number }} --comments`).
+               Bearbeite die neueste noch offene Frage, den Auftrag bzw. die Rückfrage.
+            3. Entscheide:
+               A) FRAGE (es soll nur Auskunft gegeben werden): Antwort als Kommentar im Format aus `_ki/ki-austausch.md`,
+                  erste Zeile `<!-- ki-antwort:software -->`, Überschrift "🤖 KI-Antwort Software". Jede Angabe mit Quelle als Link
+                  `https://github.com/${{ github.repository }}/blob/code/<Pfad>`. Danach Label `beantwortet` setzen.
+               B) AUFTRAG (Code soll geändert werden):
+                  - Branch: Ist ein PR-Branch angegeben, arbeite dort (`git checkout <PR-Branch>`). Sonst: existiert
+                    `origin/ki/issue-${{ github.event.issue.number }}`, arbeite dort weiter, ansonsten
+                    `git checkout -b ki/issue-${{ github.event.issue.number }} origin/code`.
+                  - Setze den Auftrag um. Halte dich an die Angaben im Issue und in den Hardware-Unterlagen. Ändere nur, was
+                    für den Auftrag nötig ist. Wenn das Ziel-Target wechselt (z. B. esp32 -> esp32s3), passe
+                    `CONFIG_IDF_TARGET` und die zugehörigen Einträge in `sdkconfig` an, damit der Build mit dem neuen Target läuft.
+                  - Committe mit aussagekräftiger Nachricht (`git add` nur die geänderten Projektdateien, nie `_ki/`) und
+                    `git push -u origin HEAD`.
+                  - Gibt es noch keinen PR für den Branch: `gh pr create --base code --title "<kurz> (#${{ github.event.issue.number }})"`
+                    mit Beschreibung: was geändert wurde, was auf der echten Platine getestet werden muss, offene Annahmen.
+                    Erste Zeile der Beschreibung: `<!-- ki-antwort:software -->`. Schreib "Closes #${{ github.event.issue.number }}" NICHT hinein.
+                  - Kommentiere im Issue kurz (erste Zeile `<!-- ki-antwort:software -->`) mit Link zum PR und setze Label `beantwortet`.
+                  - Bei einer Nachbesserung im PR: Änderungen pushen und im PR kurz kommentieren, was geändert wurde.
+            4. Wenn eine Entscheidung der Software-Rolle nötig ist (Architektur, Regelalgorithmus, Pin-Wunsch an die Hardware)
+               oder Angaben fehlen: nichts raten, im Kommentar klar sagen, was fehlt, und Label `braucht-mensch` setzen.
+
+            Regeln: Nichts erfinden. Niemals mergen, nie auf `code` oder `master` direkt pushen, keine Dateien außerhalb des Auftrags ändern.
+            Schreibe in deinen eigenen Kommentaren nie "@sw-ki" oder "@hw-ki". Antworte auf Deutsch, kurz und konkret.
+          claude_args: |
+            --max-turns 80
+            --allowedTools "Read,Glob,Grep,Edit,MultiEdit,Write,Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git show:*),Bash(git branch:*),Bash(git checkout:*),Bash(git switch:*),Bash(git fetch:*),Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(git rev-parse:*),Bash(git ls-remote:*),Bash(gh issue view:*),Bash(gh issue comment:*),Bash(gh issue edit:*),Bash(gh pr view:*),Bash(gh pr list:*),Bash(gh pr create:*),Bash(gh pr comment:*),Bash(ls:*),Bash(cat:*),Bash(grep:*),Bash(find:*)"
+
+      - name: Gibt es einen KI-Branch zum Bauen?
+        id: build
+        if: steps.check.outputs.run == 'true'
+        env:
+          NR: ${{ github.event.issue.number }}
+          PR_BRANCH: ${{ steps.check.outputs.pr_branch }}
+        run: |
+          b="${PR_BRANCH:-ki/issue-$NR}"
+          if git ls-remote --exit-code --heads origin "$b" >/dev/null; then
+            git fetch origin "$b"
+            git checkout -f --detach "origin/$b"
+            target=$(sed -n 's/^CONFIG_IDF_TARGET="\(.*\)"/\1/p' sdkconfig | head -n1)
+            echo "branch=$b" >> "$GITHUB_OUTPUT"
+            echo "target=${target:-esp32}" >> "$GITHUB_OUTPUT"
+            echo "Baue $b für ${target:-esp32}"
+          else
+            echo "Kein Branch $b – nichts zu bauen."
+          fi
+
+      - name: ESP-IDF Build
+        id: idf
+        if: steps.build.outputs.branch != ''
+        continue-on-error: true
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.1.2
+          target: ${{ steps.build.outputs.target }}
+          path: "."
+
+      - name: Build-Ergebnis in den PR schreiben
+        if: steps.build.outputs.branch != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ steps.build.outputs.branch }}
+          TARGET: ${{ steps.build.outputs.target }}
+          OUTCOME: ${{ steps.idf.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          pr=$(gh pr list -R "$REPO" --head "$BRANCH" --state open --json number -q '.[0].number')
+          [ -z "$pr" ] && { echo "Kein offener PR für $BRANCH"; exit 0; }
+          sha=$(git rev-parse --short HEAD)
+          if [ "$OUTCOME" = success ]; then
+            msg="✅ **Build erfolgreich** – \`idf.py build\` (ESP-IDF v5.1.2, Target \`$TARGET\`) für \`$sha\`. Jetzt bitte auf der Platine flashen und testen."
+          else
+            msg="❌ **Build fehlgeschlagen** – ESP-IDF v5.1.2, Target \`$TARGET\`, Commit \`$sha\`. Log: $RUN_URL
+          Zum Nachbessern im PR kommentieren: \`@sw-ki Build schlägt fehl, bitte beheben.\`"
+          fi
+          gh pr comment "$pr" -R "$REPO" --body "$msg"
