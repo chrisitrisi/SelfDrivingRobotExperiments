@@ -12,7 +12,7 @@ Software-KI ──(Issue „KI-Frage“, Label an:hardware)──▶ GitHub ─�
 | Rolle | Label für Fragen an diese Rolle | Wissensdatei | Antwortet |
 |---|---|---|---|
 | Hardware (Christopher) | `an:hardware` | [docs/rollen/hardware.md](rollen/hardware.md) | **automatisch** (GitHub Action) + Posteingang |
-| Software | `an:software` | [docs/rollen/software.md](rollen/software.md) | Posteingang |
+| Software | `an:software` | [docs/rollen/software.md](rollen/software.md) | **automatisch** (Antworten + Code-PRs nach `code`) + Posteingang |
 | 3D-Design | `an:3d` | [docs/rollen/3d-design.md](rollen/3d-design.md) | Posteingang |
 
 Weitere Labels:
@@ -94,5 +94,17 @@ Einrichtung (einmalig, durch Repo-Owner):
 2. GitHub → Settings → Secrets and variables → Actions → *New repository secret*:
    `CLAUDE_CODE_OAUTH_TOKEN` (aus Schritt 1) bzw. `ANTHROPIC_API_KEY`.
 3. Unter Actions einmal den Workflow **KI-Labels anlegen** starten.
+
+## Automatische Software-KI (GitHub Action)
+
+`.github/workflows/ki-software.yml` startet Claude bei Issues mit `an:software` (oder Vorlage „KI-Frage“ an Software) und bei Kommentaren mit `@sw-ki` – im Issue oder im Pull Request.
+
+- **Frage** → Antwort als Kommentar im Issue (Format wie oben).
+- **Auftrag** (Code ändern) → Claude arbeitet im Branch `ki/issue-<nr>` (von `code` abgezweigt) und öffnet einen **Pull Request nach `code`**. Danach baut GitHub den Stand mit ESP-IDF v5.1.2 und schreibt das Ergebnis (✅/❌) in den PR.
+- **Nachbessern:** im PR kommentieren, z. B. `@sw-ki Kanal 3 liefert keine Werte, bitte prüfen.`
+- **Gemergt wird nie automatisch.** Die Software-Rolle flasht den PR-Stand, testet auf der Platine und merged selbst.
+- Ausnahme von der Regel „keine Dateien ändern“: Nur die Software-KI darf – ausschließlich in `ki/issue-*`-Branches – Code ändern.
+
+Die Software-Rolle bekommt Bescheid über GitHub → Repo → **Watch → Custom → Issues + Pull requests**.
 
 Die automatische KI kennt **nur, was auf GitHub liegt**. Neue Schaltplanstände müssen also gepusht werden, damit sie korrekt antworten kann. Andere Rollen können eine eigene Kopie des Workflows anlegen (Rolle, Label, Branch und Trigger-Wort ändern) und dafür ihr eigenes Token hinterlegen.
