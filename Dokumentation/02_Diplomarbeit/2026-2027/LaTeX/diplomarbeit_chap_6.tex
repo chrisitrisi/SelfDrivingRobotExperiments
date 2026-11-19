@@ -1,0 +1,46 @@
+\chapterauthor{Adem Merdzic, Rami Muarrawi, Christopher Schieszler}
+\chapter{Inbetriebnahme, Systemvalidierung und Fazit}
+\label{chap:validierung_fazit}
+
+\section{Digitale CAD- und Kollisionsvalidierung (DMU-Audit)}
+\label{sec:dmu_audit}
+
+Vor der physischen Fertigung des Unibody-Chassis wurde das gesamte Fahrzeug in Revision~v9.0 einer automatisierten, paarweisen BRep-Volumenkollisionsprüfung über alle \num{121} Einzelkörper (Chassis, Hauptplatine mit sämtlichen SMD-Bauteilen und Steckverbindern, Liniensensor inkl. \emph{CNY70}-Array, 8x \emph{VL53L0/1XV2}-Platinen, 16x M2x6-Schrauben, 4x M3x8-Hauptplatinenschrauben mit Messing-Gewindeeinsätzen, 4x M3x14-Liniensensorschrauben mit Muttern, 8x M4x10-Motorschrauben, Motoren, Räder, 2S-Akkupack inkl. XT30/Balancer sowie 9x 24-mm-Steckerdummies und 3D-Kabelbaum) unterzogen.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Zusammenfassung der digitalen Konstruktions- und Kollisionsprüfung (Revision~v9.0).}
+  \label{tab:dmu_ergebnis}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Prüfkriterium} & \textbf{Zielvorgabe} & \textbf{Ergebnis (Rev.~v9.0)} \\
+    \midrule
+    BRep-Kollisionsprüfung (121 Körper) & \SI{0.000}{\milli\metre\cubed} Kollision & 0 Kollisionen (\SI{0.000}{\milli\metre\cubed}) \\
+    Chassis-Festkörperstruktur & Einteiliger Monolith & 1 Solid (\SI{218.8}{\centi\metre\cubed}, ca.~\SI{271}{\gram}) \\
+    Mindestwandstärke (Base / Wand / Pod-Dach) & $\ge \SI{2.5}{\milli\metre}$ & \SI{4.0}{\milli\metre} / \SI{3.5}{\milli\metre} / \SIrange{3.85}{4.30}{\milli\metre} \\
+    Restwandstärke um Schraubendome & $\ge \SI{2.0}{\milli\metre}$ & \SI{3.30}{\milli\metre} (M3) bzw. $\ge \SI{2.02}{\milli\metre}$ (M2) \\
+    Akkufach-Toleranz ($72\times 39{,}5\times 19{,}5\,\si{\milli\metre}$) & $\ge +\SI{1.5}{\milli\metre}$ umlaufend & $+\SI{2.0}{\milli\metre}$ ($X,Z$) / $+\SI{3.0}{\milli\metre}$ ($Y$) \\
+    Crash-Sicherheitsfaktor ($\SI{5}{\kilo\metre\per\hour}$ / $\SI{9}{\kilo\metre\per\hour}$) & $\text{SF} \ge 3{,}0$ & $\text{SF} = 37{,}0$ / $\text{SF} = 11{,}4$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Hardware-Inbetriebnahme und Messreihen}
+\label{sec:inbetriebnahme_tests}
+
+Nach der Bestückung der Haupt- und Liniensensor-Platine sowie dem 3D-Druck des Gehäuses folgen die stufenweisen Hardware- und Systemtests am realen Fahrzeug:
+\begin{enumerate}
+  \item \textbf{Stromversorgungstest:} Überprüfung der Leerlauf- und Lastspannungen (\SI{3.3}{\volt} und \SI{5.0}{\volt}) sowie Stromaufnahme im Ruhezustand.
+  \item \textbf{Kommunikationstest:} USB-C-Verbindung zum \emph{ESP32-S3}, Erkennung aller acht I\textsuperscript{2}C-Adressen der \gls{lidar}-Sensoren und Auslesen der \emph{LSM6DSV}-Rohdaten.
+  \item \textbf{Sensor-Genauigkeitstest:} Vergleich der gefilterten \emph{VL53L0/1XV2}-Distanzen mit Referenzabständen im Nahbereich (\SIrange{50}{1000}{\milli\metre}).
+  \item \textbf{Einparkversuch:} Reproduzierbarkeit und Kollisionsfreiheit des autonomen Einparkmanövers in definierten Testlücken.
+\end{enumerate}
+
+\todo[inline]{[TODO: Gemessene Spannungs-/Oszilloskopwerte, I2C-Scan-Protokolle, Sensor-Fehlerkurven, reale Fotos der bestückten Platinen sowie Ergebnisse der Einparkversuche nach Durchführung im Labor einfügen.]}
+
+\section{Fazit und Ausblick}
+\label{sec:fazit}
+
+Mit dem Abschluss des Elektronik-Redesigns und des mechanischen Unibody-Chassis (Revision~v9.0) wurden die zentralen Schwachstellen der Vorgängerplattform systematisch behoben. Durch die direkte Integration von Motortreibern und \gls{imu} auf die Hauptplatine entfallen fehleranfällige Steckmodule, während die acht geschützt verbauten \gls{lidar}-Sensoren eine lückenlose 360\textdegree-Umfelderfassung ermöglichen. Die digitale BRep-Validierung bestätigt die vollständige Kollisionsfreiheit und Montierbarkeit aller 121~Einzelkomponenten.
+
+Nach Abschluss der laufenden Software-Integration und der praktischen Einparktests bietet die Plattform eine stabile Grundlage für weiterführende Projekte im Unterricht -- etwa für erweiterte Pfadplanungsalgorithmen (z.\,B. Rückwärts- und Querparken bei schrägen Hindernissen) oder die Einbindung von Funk-Telemetrie zur Live-Visualisierung der LiDAR-Umfeldkarte.

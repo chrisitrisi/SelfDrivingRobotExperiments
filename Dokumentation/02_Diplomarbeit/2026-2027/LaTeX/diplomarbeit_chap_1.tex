@@ -1,0 +1,74 @@
+\chapterauthor{Adem Merdzic, Rami Muarrawi, Christopher Schieszler}
+\chapter{Einleitung und Projektmanagement}
+\label{chap:einleitung}
+
+\section{Ausgangslage und Problemstellung}
+\label{sec:ausgangslage}
+
+Autonome Fahrfunktionen wie das selbständige Erkennen einer Parklücke und das anschließende kollisionsfreie Einparken zählen zu den anspruchsvollsten Aufgaben moderner Fahrerassistenzsysteme. Für den praktischen Unterricht sowie weiterführende Versuche an der HTL~BULME Graz-Gösting existiert bereits die Roboterplattform \emph{Tumbler~v3.0} \cite{Kloeckl2026}. In ihrer bisherigen Ausführung weist diese Plattform jedoch mehrere technische Einschränkungen auf, die zuverlässige autonome Manöver erschweren:
+
+\begin{itemize}
+  \item \textbf{Modularer Elektronikaufbau:} Auf der bisherigen Hauptplatine wurden wesentliche Funktionsblöcke wie H-Brücken-Motortreiber und Inertialsensoren als aufgesteckte Breakout-Module über Stiftleisten angebunden. Im Fahrbetrieb sowie bei Stößen führen diese Steckverbindungen zu Wackelkontakten, erhöhtem Platzbedarf und unübersichtlicher Verdrahtung.
+  \item \textbf{Begrenzte Umfelderfassung:} Die bestehende Sensorik deckt den Nahbereich rund um das Fahrzeug nicht lückenlos ab. Für ein sicheres Einparkmanöver -- insbesondere rückwärts und seitlich -- müssen sowohl seitliche Parklücken vermessen als auch Hindernisse vor und hinter dem Fahrzeug zuverlässig erkannt werden.
+  \item \textbf{Mechanische Robustheit des Chassis:} Das bisherige Gehäuse bietet bei seitlichen oder frontalen Wandberührungen nur geringe Strukturreserven. Zudem waren bei früheren Entwürfen einzelne Sensorhalterungen durch Räder oder Antriebsmotoren im Sichtfeld eingeschränkt, und für Stecker sowie Leitungen stand teilweise zu wenig Biege- und Steckraum zur Verfügung.
+\end{itemize}
+
+\section{Zielsetzung und Abgrenzung}
+\label{sec:zielsetzung}
+
+Ziel dieser Diplomarbeit ist die Entwicklung eines voll funktionsfähigen, mechanisch robusten Versuchsfahrzeugs auf Basis des \emph{Tumbler~v3.0} für autonome Einparkexperimente. Im Detail umfasst die Aufgabenstellung drei eng verzahnte Teilbereiche:
+
+\begin{enumerate}
+  \item \textbf{Neukonstruktion der Elektronik und Mechanik:} Entwurf einer kompakten Hauptplatine mit direkt integrierten SMD-Motortreibern, integrierter \gls{imu}, stabiler Spannungsversorgung und USB-C-Schnittstelle, Überarbeitung der Liniensensor-Platine sowie Konstruktion eines crashresistenten Unibody-Chassis im CAD mit vollständiger Bauraum- und Kollisionsprüfung.
+  \item \textbf{360\textdegree-Umgebungserfassung und Parklückenerkennung:} Integration von acht \emph{VL53L0/1XV2}-\gls{tof}-\gls{lidar}-Sensoren rund um das Fahrzeug sowie Entwicklung einer echtzeitfähigen Auswertepipeline zur Filterung von Messrauschen und zur geometrischen Vermessung von Parklücken (Breite, Tiefe, Ausrichtung).
+  \item \textbf{Steuerungssoftware und Regelungstechnik:} Implementierung der übergeordneten Fahrzeugsteuerung auf dem \emph{ESP32-S3} inklusive Zustandsautomat für Lückensuche, Einparktrajektorie und Kollisionsvermeidung sowie geschlossener Antriebs- und Lageregelung.
+\end{enumerate}
+
+Nicht Bestandteil dieser Arbeit ist der Einsatz hochauflösender Kamerasysteme (Computer Vision) oder eine Kommunikation mit externen Verkehrsinfrastrukturen (V2X). Die gesamte Umfelderfassung erfolgt bewusst lokal über die bordeigenen \gls{lidar}-, Linien- und Inertialsensoren.
+
+\section{Projektteam und Aufgabenverteilung}
+\label{sec:team}
+
+Das Projekt wird von drei Schülern der Klasse 5BHEL (Abteilung Elektronik und Technische Informatik) unter der Betreuung von \tuinfthesisbetreins{} durchgeführt. Tabelle~\ref{tab:aufgabenverteilung} fasst die im offiziellen Diplomarbeit-Antrag festgelegten Teilthemen zusammen.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Aufgabenverteilung im Projektteam laut offiziellem Diplomarbeit-Antrag.}
+  \label{tab:aufgabenverteilung}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Teammitglied} & \textbf{Teilthema} & \textbf{Hauptverantwortung} \\
+    \midrule
+    Adem Merdzic & Robotik Software & Steuerungssoftware, Einparkregelung, Integration \\
+    Rami Muarrawi & LiDAR-Datenverarbeitung & Sensoransteuerung, Filterung, Parklückenerkennung \\
+    Christopher Schieszler & Platinenlayout und CAD-Design & Haupt- \& Liniensensor-PCB, Unibody-Chassis \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Projektmanagement und Meilensteinplan}
+\label{sec:projektmanagement}
+
+Um die Parallelentwicklung von Mechanik, Leiterplatten und Software zu koordinieren, wurden bereits zu Projektbeginn verbindliche Meilensteine definiert. Tabelle~\ref{tab:meilensteine} zeigt den zeitlichen Ablauf bis zur geplanten Abgabe am 10.04.2027.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Meilensteinplan des Projekts laut Diplomarbeit-Antrag.}
+  \label{tab:meilensteine}
+  \begin{tabular}{@{}cll@{}}
+    \toprule
+    \textbf{Nr.} & \textbf{Meilenstein} & \textbf{Zieldatum} \\
+    \midrule
+    M1 & Analyse \& Konzept & 31.10.2026 \\
+    M2 & Platinen-Design fertig & 30.11.2026 \\
+    M3 & Platine gefertigt \& Grundfunktionen getestet & 31.12.2026 \\
+    M4 & LiDAR-Integration \& Parklückenerkennung & 31.01.2027 \\
+    M5 & Erster autonomer Einparkversuch & 28.02.2027 \\
+    M6 & Finale Dokumentation \& Abgabe & 10.04.2027 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Kosten- und Risikoabschätzung.}
+Die wesentlichen Materialkosten entfallen auf die Fertigung der vierlagigen Hauptplatine und der Liniensensor-Platine, die acht \emph{VL53L0/1XV2}-Sensormodule, die beiden Getriebemotoren (\emph{GA37-520}), das 2S-Li-Ion-Akkupack sowie das Filament (PLA/PETG) für den 3D-Druck des Chassis. Eine detaillierte Stücklisten- und Kostenaufstellung wird nach Abschluss der Bauteilbeschaffung ergänzt (\todo[inline]{[TODO: Endgültige Kostenaufstellung mit Rechnungsbeträgen ergänzen]}).
+Als Hauptrisiken wurden frühzeitig mögliche I\textsuperscript{2}C-Adresskonflikte der acht baugleichen \gls{lidar}-Sensoren, mechanische Passfehler beim 3D-Druck sowie Störungen auf der Spannungsversorgung durch Anlaufströme der DC-Motoren identifiziert. Durch die Wahl einer dedizierten \SI{3.3}{\volt}-Abwärtswandlung (\emph{AP63203WU}), integrierter SMD-Motortreiber mit Stützelkos sowie eines digitalen \gls{dmu}-Prüfverfahrens vor dem Druck wurden diese Risiken bereits in der Entwurfsphase gezielt adressiert.

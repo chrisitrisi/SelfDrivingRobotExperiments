@@ -1,0 +1,64 @@
+\chapterauthor{Adem Merdzic}
+\chapter{Robotik-Software und Regelungstechnik}
+\label{chap:software_regelung}
+
+\section{Firmware-Architektur auf dem ESP32-S3}
+\label{sec:firmware_architektur}
+
+Die Steuerungssoftware baut auf der bestehenden \emph{ESP-IDF}- bzw. \emph{RtEnv}-Projektstruktur der HTL~BULME auf \cite{Kloeckl2026}, wird jedoch vollständig an die geänderte Hardware der Hauptplatine (\emph{ESP32-S3-WROOM-1}, integrierte \emph{TB67H450FNG}-Treiber, \emph{LSM6DSV}-IMU) sowie das 8-fach-\gls{lidar}-Array angepasst.
+
+Um zeitkritische Regelungsaufgaben (Motor-\gls{pwm}, Encoder-Auswertung, IMU-Integration) sauber von der langsameren Umfelderfassung und Ablaufsteuerung zu entkoppeln, gliedert sich die Firmware unter FreeRTOS in modulare Tasks:
+\begin{itemize}
+  \item \textbf{Sensor-Task:} Zyklisches Auslesen der acht \emph{VL53L0/1XV2}-Sensoren, der \gls{imu} (\emph{LSM6DSV}) sowie bei Bedarf des Liniensensors (\emph{CNY70}-Array).
+  \item \textbf{Regelungs-Task:} Berechnung der Soll-/Ist-Drehzahlen und des Gierwinkels $\psi(t)$ sowie Ausgabe der \gls{pwm}-Tastverhältnisse an \texttt{U6} und \texttt{U7}.
+  \item \textbf{Steuerungs-Task (Zustandsautomat):} Auswertung der Parklückenkandidaten und Koordination der einzelnen Fahrphasen.
+  \item \textbf{Telemetrie-Task:} Übertragung von Zustands- und Messdaten über USB-C bzw. \emph{SvVis} zur Diagnose \cite{Kloeckl2026}.
+\end{itemize}
+
+\todo[inline]{[TODO: Konkrete Task-Prioritäten, Zykluszeiten (ms) und GPIO-Zuordnungen aus der finalen ESP-IDF-Konfiguration nachtragen.]}
+
+\section{Zustandsautomat für das autonome Einparken}
+\label{sec:zustandsautomat}
+
+Der gesamte Einparkvorgang wird über einen deterministischen endlichen Zustandsautomaten (Finite State Machine, FSM) abgebildet, sodass zu jedem Zeitpunkt ein klar definiertes Fahrverhalten inklusive sicherer Abbruchbedingungen bei unerwarteten Hindernissen vorliegt. Abbildung~\ref{fig:fsm_einparken} zeigt den grundlegenden Ablauf.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    node distance=0.85cm and 1.2cm,
+    state/.style={rectangle, draw=black!80, fill=blue!5, rounded corners=3pt, minimum width=3.4cm, minimum height=0.8cm, align=center, font=\small},
+    err/.style={rectangle, draw=red!75!black, fill=red!6, rounded corners=3pt, minimum width=3.0cm, minimum height=0.8cm, align=center, font=\small},
+    arrow/.style={->, >=stealth, thick}
+  ]
+    \node[state] (init) {\textbf{IDLE / INIT}\\Sensoren \& IMU kalibrieren};
+    \node[state, below=of init] (scan) {\textbf{SCAN}\\Vorbeifahrt \& Lückensuche};
+    \node[state, below=of scan] (align) {\textbf{ALIGN}\\Positionierung vor Lücke};
+    \node[state, below=of align] (park) {\textbf{PARK\_MANEUVER}\\Geregeltes Einparken};
+    \node[state, below=of park] (done) {\textbf{PARKED}\\Stopp \& Status-LED grün};
+    \node[err, right=2.2cm of park] (abort) {\textbf{SAFETY\_STOP}\\Kollisionsschutz};
+
+    \draw[arrow] (init) -- (scan);
+    \draw[arrow] (scan) -- node[right, font=\scriptsize]{Lücke gültig} (align);
+    \draw[arrow] (align) -- node[right, font=\scriptsize]{Startpose erreicht} (park);
+    \draw[arrow] (park) -- node[right, font=\scriptsize]{Endpose erreicht} (done);
+    \draw[arrow] (scan) -| node[above, near start, font=\scriptsize]{Not-Aus} (abort);
+    \draw[arrow] (align) -| (abort);
+    \draw[arrow] (park) -- node[above, font=\scriptsize]{$d < d_{\text{min}}$} (abort);
+  \end{tikzpicture}
+  \caption{Zustandsautomat (FSM) der übergeordneten Einparksteuerung.}
+  \label{fig:fsm_einparken}
+\end{figure}
+
+Die hinteren drei \gls{lidar}-Sensoren (\texttt{3f}, \texttt{3g}, \texttt{3h}) übernehmen im Zustand \texttt{PARK\_MANEUVER} die aktive Rückraumüberwachung: Unterschreitet ein Sensor den definierten Sicherheitsabstand $d_{\text{min}}$, wird sofort in \texttt{SAFETY\_STOP} gewechselt und beide Motortreiber werden aktiv gebremst.
+
+\section{Antriebs-, Geschwindigkeits- und Lageregelung}
+\label{sec:regelung}
+
+Da das Fahrzeug über zwei unabhängig angetriebene Räder (Differentialantrieb) verfügt, werden sowohl die Translationsgeschwindigkeit $v$ als auch die Kurvenfahrt (Drehrate $\omega_z$ bzw. Gierwinkel $\psi$) über die Differenz der beiden Motordrehzahlen geregelt. Für die Geschwindigkeits- und Winkelregelung kommt ein zeitdiskreter PID-Regler zum Einsatz:
+\begin{equation}
+  u[k] = K_P\,e[k] + K_I\,T_s \sum_{j=0}^{k} e[j] + K_D\,\frac{e[k] - e[k-1]}{T_s}
+  \label{eq:pid_diskret}
+\end{equation}
+mit der Regelabweichung $e[k] = w[k] - y[k]$ und der Abtastzeit $T_s$. Während der geraden Vorbeifahrt (\texttt{SCAN}) hält ein unterlagerter Winkelregler den Gierwinkel $\psi$ mittels \gls{imu}-Rückführung konstant, sodass schräge Drifts nicht die Lückenvermessung verfälschen.
+
+\todo[inline]{[TODO: Ermittelte Reglerparameter (Kp, Ki, Kd), Abtastzeit Ts sowie kommentierte Code-Auszüge der Motoransteuerung und Zustandsmaschine aus dem fertigen Software-Repository ergänzen.]}

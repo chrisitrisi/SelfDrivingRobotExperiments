@@ -1,0 +1,275 @@
+% $Id: INF_Diplomarbeit_example.tex 2733 2010-12-19 07:15:44Z tkren $
+%
+% TU Wien - Faculty of Informatics
+% thesis template
+%
+% This template is using the memoir document class, see
+% <http://www.ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf>
+% <http://www.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf>
+%
+% For questions and comments send an email to
+% Thomas Krennwallner <tkren@kr.tuwien.ac.at>
+%
+
+								
+\documentclass[a4paper,11pt]{memoir}
+\chapterstyle{veelo}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\setsecnumdepth{subsubsection}% alternative B
+
+\usepackage{standalone}
+\usepackage{HTBLA}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{mathtools}
+\usepackage{subcaption} % for subfigures
+\usepackage{caption}
+\usepackage{xargs}
+\usepackage[ngerman,colorinlistoftodos]{todonotes}
+\usepackage{lipsum}  
+
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+
+\usepackage{longtable}
+%\usepackage{minted}
+\usepackage[boxed,german]{algorithm2e}
+\usepackage{footnote}
+\usepackage{listings}
+
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+\usepackage{lscape}
+
+% nice tables
+\usepackage{booktabs}
+
+% colored tables
+\usepackage{colortbl}
+
+% TikZ ist kein Zeichenprogramm
+\usepackage{tikz}
+\usepackage{tikz-timing}
+\usetikzlibrary{shapes.geometric,arrows,shapes,snakes,automata,backgrounds,petri,circuits.logic.IEC,circuits.logic.US,circuits.ee.IEC}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+
+\usepackage{lipsum}  
+
+
+
+%%%%.........
+
+
+\thesistitle{Titel der Arbeit}
+\selectlanguage{ngerman}
+\thesisdate{\today{}}
+\thesislocation{Graz}
+
+%\thesisdegree{Ingenieur}
+\thesiscurriculum{Elektronik und technische Informatik}
+\thesisverfassung{Verfasser}
+
+\thesisauthoreins{Author Eins}
+\thesisauthorzwei{Author Zwei}
+
+\thesisauthoraddresseins{Adresse 1, AT-8051 Graz}
+\thesisauthoraddresszwei{Adresse 2, AT-8051 Graz}
+
+\thesismatrikelnoeins{0123456/789}
+\thesismatrikelnozwei{0123456/789}
+
+\thesisbetreuung{Betreuer}
+\thesisbetreins{Dipl.-Ing. Christian Trenkwalder, BEd}
+%\thesisbetrzwei{Univ.-ass. Dipl.-Ing. Robert Navjvirt}
+
+\usepackage{prettyref}
+
+\bibliographystyle{alpha}
+
+% run makeglossaries after the compilation
+\usepackage[toc]{glossaries} % nomain, if you define glossaries in a file, and you use \include{INP-00-glossary}
+\makeglossaries
+%\usepackage[xindy]{imakeidx}
+
+% run makeindex after the compilation
+\usepackage{makeidx}
+%\makeindex
+
+\makeindex
+
+%\newglossaryentry{citation}{name={Citation},%
+%  description={a reference to a publication. (See also \gls{reference})}%
+%}
+%
+%\newglossaryentry{reference}{name={Reference},%
+%  description={citing a publication. (See also \gls{citation})}%
+%}
+%
+
+%\newglossaryentry{api}
+%{
+%    name={API},
+%    description={An Application Programming Interface (API) is a particular set
+%    of rules and specifications that a software program can follow to access and make use of the services and resources provided by another particular software program that implements that API},
+%    first={Application Programming Interface (API)},
+%    long={Application Programming Interface}
+%}
+
+
+% should be the last package
+\usepackage{hyperref}
+\usepackage[figure]{hypcap}
+\usepackage{graphicx}
+
+\hypersetup
+{%
+pdftitle = {Titel},
+pdfsubject = {Diplomarbeit},
+pdfauthor = {Author1,Author2},
+colorlinks = {true}
+} 
+
+
+
+\begin{document}
+%\renewcommand\listingscaption{Auflistung}
+
+\nouppercaseheads
+
+% the front matter starts
+\frontmatter
+
+%
+% titlepages
+%
+\include{titlepage}
+ 
+%
+% declaration
+%
+\include{declaration}
+
+%
+% abstract
+%
+\abstractintoc
+%\setlength{\parindent}{_neuer_Einzug}
+%\setlength{\parskip}{12pt}
+
+\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\abstractnamefont}{\normalfont\Large\bfseries}
+\renewcommand{\abstractname}{Kurzfassung}
+\renewcommand{\abstracttextfont}{\normalsize\nonzeroparskip}
+\begin{abstract}
+\input{abstract-de}
+\end{abstract}
+\newpage
+\renewcommand{\abstractname}{Abstract}
+
+\begin{abstract}
+\input{abstract-en}
+\end{abstract}
+\newpage
+
+\cleardoublepage
+
+\makeatletter
+\@openrighttrue % open on right pages
+\makeatother
+
+
+%
+% table of contents, figures and tables
+%
+\tableofcontents
+%
+% for the list of XXX, we don't want pages to open right
+%\makeatletter
+%\@openrightfalse % open on next page
+%\makeatother
+%
+%\listoffigures
+%
+%\listoftables
+%
+%\listofalgorithms
+%
+
+
+%
+% start of the thesis
+%
+\mainmatter
+\nonzeroparskip
+
+%----------------- Kapitel Einleitung
+\include{diplomarbeit_chap_1}
+
+%
+%----------------- Kapitel Theoretischer Teil
+\include{diplomarbeit_chap_2}
+
+
+%----------------- Kapitel Empirischer Teil
+\include{diplomarbeit_chap_3}
+
+
+%----------------- Kapitel Conclusio
+\include{diplomarbeit_chap_4}
+
+
+
+
+
+%Hier beginnt der Anhang!
+\appendix
+
+%----------------- Anhang
+\include{diplomarbeit_chap_A}
+
+%
+% bibliography
+%
+% AUCTeX doesn't like FILE.tex _and_ FILE.bib, so we rename FILE.bib
+% to FILE-bib.bib
+%
+\newpage
+\bibliography{literatur-bib}
+\nocite{*}
+
+
+%
+% add a glossary
+%
+\newpage
+\printglossary
+\glsaddall
+
+\newpage
+
+%
+% add index right after the bibliography
+%
+\printindex
+
+%\newpage
+%\listoftodos 
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-PDF-mode: t
+%%% TeX-debug-bad-boxes: t
+%%% TeX-master: t
+%%% TeX-parse-self: t
+%%% TeX-auto-save: t
+%%% reftex-plug-into-AUCTeX: t
+%%% End:
