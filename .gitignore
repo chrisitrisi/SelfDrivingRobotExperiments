@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------
+# KiCad – temporäre und lokale Dateien
+# (Projektdateien .kicad_pro/.kicad_sch/.kicad_pcb/.kicad_sym,
+#  *.pretty, 3D-Modelle, Stueckliste.csv usw. bleiben versioniert)
+# ---------------------------------------------------------------
+
+# Sperrdateien, solange KiCad offen ist
+~*.lck
+*.lck
+
+# Automatische Backups und Autosave
+*-backups/
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_sym-bak
+*.kicad_pro-bak
+*-bak
+*.bak
+*.bck
+*.000
+_autosave-*
+\#auto_saved_files\#
+*-save.pro
+*-save.kicad_pcb
+*~
+
+# Caches
+fp-info-cache
+*.kicad_prl
+*-cache.lib
+*-cache.dcm
+*.round-tracks-config
+
+# Autorouter-Austausch
+*.dsn
+*.ses
+
+# Fabrication-Toolkit-Plugin (Ausgabe + lokale Optionen).
+# Gerber in Fertigung/ bleiben bewusst versioniert.
+production/
+fabrication-toolkit-options.json
+
+# DRC/ERC-Berichte aus kicad-cli (Pruefung/ bleibt bewusst drin)
+*-drc.json
+*-erc.json
+*.rpt
+
+# ---------------------------------------------------------------
+# KI-Assistenten (Notizen, Übergaben, lokale Einstellungen)
+# AGENTS.md und CLAUDE.md auf master sind Teamregeln und bleiben drin.
+# ---------------------------------------------------------------
+KI_Notizen.md
+*_Uebergabe*.md
+.claude/
+CLAUDE.local.md
+.codex/
+.cursor/
+.aider*
+.continue/
+
+# ---------------------------------------------------------------
+# System / Editor
+# ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+__pycache__/
+*.pyc

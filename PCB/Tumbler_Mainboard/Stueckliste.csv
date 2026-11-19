@@ -1,0 +1,219 @@
+﻿Referenz;Wert / Bestelltyp;Footprint;Bestücken;Spezifikation / offene Freigabe;Datenblatt
+C1;10u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C2;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C3;10u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C4;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C6;22u 16V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C7;22u 16V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C8;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C9;10uF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C10;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C11;1uF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C12;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C13;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C14;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C15;10n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C16;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C17;220u 25V low ESR;Capacitor_SMD:CP_Elec_10x10;Ja;"Rev 2.5: 25 V (3S voll 12,6 V). SMD-Elko 10x10 mm (Alu-Polymer/Hybrid), niederohmig, >= 25 V – Bauhöhe, ESR und Ripple-Strom vor Bestellung im Datenblatt prüfen";
+C18;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C19;10u 16V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C20;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C21;2.2u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C23;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C24;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C25;22u 16V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C26;22u 16V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C27;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C28;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C29;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C30;47n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C31;4.7u 16V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C32;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C33;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C34;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C35;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C36;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C37;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C38;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C39;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C40;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";
+C41;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C42;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C50;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C51;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C52;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C53;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C54;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C55;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C56;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C57;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";
+C58;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";
+C59;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V am ToF-Kabelanschluss";
+C60;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V am ToF-Kabelanschluss";
+C61;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V am ToF-Kabelanschluss";
+C62;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V am ToF-Kabelanschluss";
+C63;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Rev 2.5: 25 V (PACK_SAFE bis 12,6 V bei 3S)";
+C64;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";
+C65;22u 16V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";
+C66;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";
+C67;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"ADC-Puffer an BAT_ADC/IO3";
+C68;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V an J12 (CH4)";
+C69;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V an J13 (CH5), Unterseite";
+C70;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V an J14 (CH6), Unterseite";
+C71;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"Abblockung +5V an J15 (CH7), Unterseite";
+D1;SMBJ13A;Diode_SMD:D_SMB;Ja;"Rev 2.5: TVS an VBAT_SW, VRWM 13 V (3S 12,6 V), VBR 14,4–15,9 V, VC 21,5 V; immer bestückt";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj
+D2;CHG amber;LED_SMD:LED_0603_1608Metric;Ja;;
+D6;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D7;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D8;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D9;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D10;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D11;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D12;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D13;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf
+D14;SMBJ8.5A;Diode_SMD:D_SMB;Ja;"Rev 2.5: zweite TVS für 2S (Klemmung wie Rev 2.4, < 15 V am TB6612), über R92 an VBAT_SW; Unterseite";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj
+F1;5A time-lag 0452005.MRL;Fuse:Fuse_Littelfuse-NANO2-451_453;Ja;"Littelfuse 0452005.MRL, vorläufig; Motorkennlinie, I²t und Kabel prüfen";
+H1;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;
+H2;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;
+H3;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;
+H4;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;
+J1;B2B-XH-A;Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical;Ja;JST B2B-XH-A (2-polig, stehend), passend zu den vorhandenen 2S-Akkus (Pin 1 = +);
+J2;JST_GH_BM10B-GHS-TBT;Connector_JST:JST_GH_BM10B-GHS-TBT_1x10-1MP_P1.25mm_Vertical;Ja;;https://www.jst-mfg.com/product/pdf/eng/eGH.pdf
+J3;Conn_02x08_Odd_Even;Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical;Ja;"Debug-/Erweiterung: 1/2 3,3 V; 3 TXD0; 5 RXD0; 7 EN; 9 IO0; 4/11/13/15 GND";
+J4;USB_C_Receptacle_USB2.0_16P;Tumbler2:KINGHELM_KH-TYPE-C-16P;Ja;;https://www.usb.org/sites/default/files/documents/usb_type-c.zip
+J5;Conn_01x04;Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja;;https://www.lcsc.com/datasheet/C5116530.pdf
+J6;Conn_01x06;Connector_JST:JST_XH_S6B-XH-SM4-TB_1x06-1MP_P2.50mm_Horizontal;Ja;;
+J7;Conn_01x06;Connector_JST:JST_XH_S6B-XH-SM4-TB_1x06-1MP_P2.50mm_Horizontal;Ja;;https://www.lcsc.com/datasheet/C191914.pdf
+J8;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J9;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J10;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J11;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J12;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"CH4: 1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J13;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"CH5: 1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J14;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"CH6: 1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+J15;TOF_WIRE4 (Lötpads);Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja (keine Stiftleiste – Kabel direkt einlöten);"CH7: 1 VIN(+5V) 2 GND 3 SCL 4 SDA, Reihenfolge wie GY-530; Bohrung 1,0 mm für AWG26/24";
+L1;4.7uH VLS5045EX-4R7M;Tumbler2:VLS5045EX-4R7M;Ja;TDK VLS5045EX-4R7M, Isat typ. 4.4 A (-30%);
+L2;4.7uH VLS5045EX-4R7M;Tumbler2:VLS5045EX-4R7M;Ja;TDK VLS5045EX-4R7M, Isat typ. 4.4 A (-30%);
+L3;1uH XAL4030-102ME;Inductor_SMD:L_Coilcraft_XAL4030-XXX;Ja;"Coilcraft XAL4030-102ME; 1 uH";
+Q1;AO4406A;Package_SO:SOIC-8_3.9x4.9mm_P1.27mm;Ja;;https://www.aosmd.com/res/data_sheets/AO4406A.pdf
+Q2;AO4406A;Package_SO:SOIC-8_3.9x4.9mm_P1.27mm;Ja;;https://www.aosmd.com/res/data_sheets/AO4406A.pdf
+Q3;AO4407A;Package_SO:SOIC-8_3.9x4.9mm_P1.27mm;Ja;;https://www.aosmd.com/res/data_sheets/AO4407A.pdf
+Q4;MMBT3906;Package_TO_SOT_SMD:SOT-23;Ja;;https://www.onsemi.com/pdf/datasheet/mmbt3906lt1-d.pdf
+Q5;2N7002;Package_TO_SOT_SMD:SOT-23;Ja;;https://assets.nexperia.com/documents/data-sheet/2N7002.pdf
+R3;100;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R4;100;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R5;2.2k;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Hauptbus an +3,3 V, 0603, 1 %";
+R6;2.2k;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Hauptbus an +3,3 V, 0603, 1 %";
+R7;10k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R8;10k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R9;10k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R10;10k;Resistor_SMD:R_0603_1608Metric;DNP;Optionaler Strap-Pulldown, standardmäßig NICHT bestücken;
+R11;10k;Resistor_SMD:R_0603_1608Metric;DNP;Optionaler Strap-Pulldown, standardmäßig NICHT bestücken;
+R14;1M;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R17;47k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R22;47k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R23;47k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R26;47k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R27;47k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R28;10k;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R29;100;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R30;100;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R31;100;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R32;100;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R33;22;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R34;22;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R35;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R36;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R37;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R38;165k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R39;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R40;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R41;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R42;1k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R43;900k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R44;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R45;47k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R46;47k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R47;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R48;200k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R49;2.15k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R50;953R 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R51;5.23k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R52;30.1k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R53;232k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R54;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R55;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R56;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R57;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R58;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R59;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R60;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R61;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R62;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R63;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R64;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R65;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R66;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal an +3,3 V, 0603, 1 %";
+R67;150k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R68;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R69;2.7M 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R70;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R71;220R 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R72;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R73;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R74;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R75;10k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R76;47k 1%;Resistor_SMD:R_0603_1608Metric;Ja;0603, 1 %, mindestens 0,10 W;
+R77;100k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"Akkuteiler oben (VBAT_SW -> BAT_ADC); 0603, 1 %";
+R78;22k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"Akkuteiler unten (BAT_ADC -> GND); 0603, 1 %";
+R79;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 4 an +3,3 V, 0603, 1 %, Unterseite";
+R80;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 4 an +3,3 V, 0603, 1 %, Unterseite";
+R81;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 5 an +3,3 V, 0603, 1 %, Unterseite";
+R82;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 5 an +3,3 V, 0603, 1 %, Unterseite";
+R83;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 6 an +3,3 V, 0603, 1 %, Unterseite";
+R84;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 6 an +3,3 V, 0603, 1 %, Unterseite";
+R85;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 7 an +3,3 V, 0603, 1 %, Unterseite";
+R86;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"I2C-Pull-up Kanal 7 an +3,3 V, 0603, 1 %, Unterseite";
+R87;0R;Resistor_SMD:R_0603_1608Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke PACK_SAFE -> CHG_BAT (Lader BAT). Bei 3S als ERSTES entfernen! Unterseite, Kasten 2S|3S";
+R88;0R;Resistor_SMD:R_0603_1608Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke über R91 (LTC4365-OV 8,75 V / 13,52 V); Unterseite";
+R89;0R;Resistor_SMD:R_0603_1608Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke über R90 (Fahrfreigabe 6,42/6,00 V bzw. 9,66/9,03 V); Unterseite";
+R90;76.8k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"TPS3700-Teiler RUN_DIV -> RUN_SENSE (wirksam bei 3S), immer bestückt; Unterseite";
+R91;95.3k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"LTC4365-OV-Teiler in Serie zu R38 (wirksam bei 3S), immer bestückt; Unterseite";
+R92;0R;Resistor_SMD:R_1206_3216Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke VBAT_SW -> D14 (Pulsstrom, daher 1206); Unterseite";
+SW1;SW_Push;Tumbler2:SW_TS-1088-AR02016;Ja;;https://www.lcsc.com/datasheet/C720477.pdf
+SW2;SW_Push;Tumbler2:SW_TS-1088-AR02016;Ja;;https://www.lcsc.com/datasheet/C720477.pdf
+SW3;SW_Push;Tumbler2:SW_TS-1088-AR02016;Ja;;https://www.lcsc.com/datasheet/C720477.pdf
+SW4;JS202011CQN;Button_Switch_THT:SW_CK_JS202011CQN_DPDT_Straight;Ja;;https://www.ckswitches.com/media/1422/js.pdf
+TP1;TP_BAT_FUSED;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP2;TP_PACK_SAFE;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP3;TP_VBAT_SW;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP4;TP_5V;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP5;TP_3.3V;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP6;TP_GND;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP7;TP_CHG_VBUS;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP8;TP_NTC;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP9;TP_CHG_ON;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP10;TP_STATn;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP11;TP_GND;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP12;TP_MOTOR_STBY;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP13;TP_DIR_A;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP14;TP_PWMA;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+TP15;TP_INT1;TestPoint:TestPoint_Pad_D1.0mm;Ja;;
+U1;AP63205WU;Package_TO_SOT_SMD:TSOT-23-6;Ja;;https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf
+U2;AP63203WU;Package_TO_SOT_SMD:TSOT-23-6;Ja;;https://www.diodes.com/datasheet/download/AP63200-AP63201-AP63203-AP63205.pdf
+U3;ESP32-S3-WROOM-1-N8;RF_Module:ESP32-S3-WROOM-1;Ja;;https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf
+U4;USBLC6-2SC6;Package_TO_SOT_SMD:SOT-23-6;Ja;;https://www.st.com/resource/en/datasheet/usblc6-2.pdf
+U5;ICM-42670-P;Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y;Ja;"TDK ICM-42670-P, 14-LGA; 3,3 V; Adresse 0x68";https://invensense.tdk.com/wp-content/uploads/2021/07/ds-000451_icm-42670-p-datasheet.pdf
+U6;TB6612FNG;Package_SO:SSOP-24_5.3x8.2mm_P0.65mm;Ja;;https://toshiba.semicon-storage.com/info/TB6612FNG_datasheet_en_20141001.pdf?did=10660
+U7;SN74LVC2G14DBV;Package_TO_SOT_SMD:SOT-23-6;Ja;;https://www.ti.com/lit/ds/symlink/sn74lvc2g14.pdf
+U8;LTC4365ITS8;Package_TO_SOT_SMD:TSOT-23-8;Ja;;https://www.analog.com/media/en/technical-documentation/data-sheets/LTC4365.pdf
+U9;AP2112K-3.3;Package_TO_SOT_SMD:SOT-23-5;Ja;;https://www.diodes.com/assets/Datasheets/AP2112.pdf
+U10;TUSB320LAIRWBR;TumblerStage2:TI_RWB0012A;Ja;;https://www.ti.com/lit/ds/symlink/tusb320lai.pdf
+U11;TPS22919DCKR;Package_TO_SOT_SMD:SOT-363_SC-70-6;Ja;;https://www.ti.com/lit/ds/symlink/tps22919.pdf
+U12;BQ25886RGER;Package_DFN_QFN:Texas_RGE0024H_VQFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm;Ja;;https://www.ti.com/lit/ds/symlink/bq25886.pdf
+U13;SN74AHCT1G125DBV;Package_TO_SOT_SMD:SOT-23-5;Ja;;https://www.ti.com/lit/ds/symlink/sn74ahct1g125.pdf
+U14;TLV3012AIDBVR;Package_TO_SOT_SMD:SOT-23-6;Ja;;https://www.ti.com/lit/ds/symlink/tlv3012.pdf
+U15;TCA9548APWR;Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm;Ja;"8-Kanal-I2C-Multiplexer, Adresse 0x70";https://www.ti.com/lit/ds/symlink/tca9548a.pdf
+U16;TPS3700DDCR;Package_TO_SOT_SMD:TSOT-23-6;Ja;;https://www.ti.com/lit/ds/symlink/tps3700.pdf
+U17;NCP361SNT1G;Package_TO_SOT_SMD:SOT-23-5;Ja;;https://www.onsemi.com/pdf/datasheet/ncp361-d.pdf
+U18;SN74LVC244APWR;Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm;Ja;;https://www.ti.com/lit/ds/symlink/sn74lvc244a.pdf

@@ -1,0 +1,156 @@
+Rev 2.2 (11.11.2026)
+====================
+Änderungen: R77/R78/C67 (Akkuteiler VBAT_SW -> BAT_ADC an GPIO3), J3 Pins 3/5/7/9 = TXD0/RXD0/EN/IO0,
+No-Connects an U3.15/36/37 entfernt. Rein grafisch: Kondensator-Werte und Testpunkt-Beschriftungen
+von Symbolgrafik abgerückt, GND-/5V-Texte an J6/J7 und R22/R23/R26/R27 verschoben, 3.3V-Label an C21 gedreht.
+KiCad 10.0.7 ERC (nach allen Änderungen erneut ausgeführt): 0 Fehler, 0 Warnungen (4 ignorierte Tests, unverändert aus Projekteinstellungen).
+Netzvergleich Rev 2.1 -> 2.2 (eigene Auswertung der Schaltplandateien): nur folgende Netze geändert:
+  BAT_ADC   = C67.1 R77.2 R78.1 U3.15(IO3)       (neu)
+  TXD0      = J3.3 U3.37                          (neu)
+  RXD0      = J3.5 U3.36                          (neu)
+  ENABLE    + J3.7
+  GPIO0     + J3.9
+  VBAT_SW   + R77.1;  GND + R78.2 C67.2;  J3.3/5/7/9 nicht mehr an GND
+Alle übrigen Netze identisch zu Rev 2.1. Tumbler.net unten ist noch der Rev-2.1-Export.
+
+--- Rev 2.1 ---
+Rev 2.1 – KiCad 9.0.2 ERC: 0 Fehler, 0 Warnungen; acht Blätter.
+126 gezielte Netzprüfungen bestanden. 192 Referenzen mit Footprint; alle nummerierten Footprintpads und Schaltplanpins abgeglichen (KiCad 10 Footprintbibliotheken + Projektbibliotheken).
+PCB unverändert: DRC_Altstand ist historisch. Keine neue DRC oder Hardwarefreigabe.
+
+OK  J2.MP J2.1 J1.2
+OK  U2.1 L1.2 U3.2 U5.8 U5.5 U5.12 U6.20 U7.5 J2.4 R5.2 R6.2 C14.1 C15.1 C21.1
+OK  SW4.1 U16.6
+OK  SW4.6 J1.2
+OK  J6.3 U18.2 R72.2
+OK  U18.18 U3.31
+OK  J6.4 U18.4 R73.2
+OK  U18.16 U3.23
+OK  J7.3 U18.6 R74.2
+OK  U18.14 U3.39
+OK  J7.4 U18.8 R75.2
+OK  U18.12 U3.38
+OK  J5.3 U18.11 R76.1
+OK  U18.9 U3.9
+OK  J5.2 U3.19
+OK  U5.1 U5.6 U5.7 J1.2
+OK  U5.13 U3.22 R6.1 U15.14
+OK  U5.14 U3.21 R5.1 U15.15
+OK  U5.4 U3.20
+OK  U13.4 R71.1
+OK  R71.2 D6.3
+OK  J4.A4 J4.A9 J4.B4 J4.B9 U17.1 C64.1
+OK  U17.5 U11.1 U9.1 U9.3 R43.1 R53.1 U4.5 C12.1 C27.1
+OK  U17.2 U17.3 J1.2
+OK  U12.1 U12.24
+OK  U16.4 R67.2 R68.1 R69.2
+OK  U16.5 Q3.1 R67.1 C63.1
+OK  R69.1 R70.1 Q3.5
+OK  J1.2 R68.2 R70.2 C63.2 U16.2 U16.3
+OK  U15.3 R58.2
+OK  U15.1 U15.2 U15.8 U15.13 J1.2
+OK  U15.16 R58.1 C58.1 U2.1
+OK  U18.1 U18.19 U18.10 J1.2
+OK  U18.20 C66.1 U2.1
+OK  R72.1 R73.1 R74.1 R75.1 J6.5
+OK  J1.1 F1.1
+OK  F1.2 Q1.5 U8.1
+OK  Q1.1 Q2.1
+OK  Q1.4 Q2.4 U8.8
+OK  Q2.5 U8.7 Q3.1 U12.13 U12.14
+OK  Q3.5 U1.3 U2.3 U6.13 U6.14 U6.24 J2.2 D1.1
+OK  U1.1 L2.2 J5.1 J6.5 J7.5 D6.4 U13.5
+OK  J2.1 J2.3 J1.2 U3.1 U12.25
+OK  R41.1 Q3.1
+OK  R41.2 Q3.4 R42.2
+OK  SW4.2 R42.1
+OK  SW4.4 Q4.3
+OK  SW4.5 U11.3 R47.1
+OK  U3.25 U6.21 U7.1
+OK  U7.6 U6.22
+OK  U3.24 U6.23
+OK  U3.34 U6.17 U7.3
+OK  U7.4 U6.16
+OK  U3.35 U6.15
+OK  U3.32 U6.19 R35.1
+OK  R35.2 U3.1
+OK  J6.1 U6.1 U6.2
+OK  J6.6 U6.5 U6.6
+OK  J7.1 U6.11 U6.12
+OK  J7.6 U6.7 U6.8
+OK  U3.12 U13.2 R28.1
+OK  J4.A5 U10.1
+OK  J4.B5 U10.2
+OK  J4.A6 J4.B6 U4.3
+OK  J4.A7 J4.B7 U4.1
+OK  U4.6 R33.2
+OK  R33.1 U3.13
+OK  U4.4 R34.2
+OK  R34.1 U3.14
+OK  U10.4 R43.2
+OK  U10.7 R44.1
+OK  U9.5 U10.12 Q4.2
+OK  Q4.1 R44.2 R45.1
+OK  U11.6 U12.23 C32.1
+OK  U12.6 R48.1
+OK  U12.7 J1.3 R51.2 R52.1
+OK  U12.8 R49.1
+OK  U12.10 R50.1
+OK  U12.11 R51.1 C31.1
+OK  U12.12 C30.1
+OK  U12.17 U12.18 C30.2 L3.2
+OK  U12.21 U12.22 L3.1 C33.1 C34.1 C35.1
+OK  U12.15 U12.16 C36.1 C37.1 C38.1 C39.1
+OK  U12.3 U12.5 U12.19 U12.20 U12.25 J1.2
+OK  U12.2 D2.1
+OK  U14.1 Q5.1 R55.1
+OK  Q5.3 U3.33 R56.2
+OK  U14.4 U14.5
+OK  U14.3 R53.2 R54.1
+OK  J8.1 J8.MP C59.2 J1.2
+OK  J8.2 C59.1 R59.1 R60.1 U2.1
+OK  J8.3 U15.4 R59.2
+OK  J8.4 U15.5 R60.2
+OK  J9.1 J9.MP C60.2 J1.2
+OK  J9.2 C60.1 R61.1 R62.1 U2.1
+OK  J9.3 U15.6 R61.2
+OK  J9.4 U15.7 R62.2
+OK  J10.1 J10.MP C61.2 J1.2
+OK  J10.2 C61.1 R63.1 R64.1 U2.1
+OK  J10.3 U15.9 R63.2
+OK  J10.4 U15.10 R64.2
+OK  J11.1 J11.MP C62.2 J1.2
+OK  J11.2 C62.1 R65.1 R66.1 U2.1
+OK  J11.3 U15.11 R65.2
+OK  J11.4 U15.12 R66.2
+OK  J2.5 R3.2
+OK  R3.1 U3.4
+OK  J2.6 R4.2
+OK  R4.1 U3.5
+OK  J2.7 R29.2
+OK  R29.1 U3.6
+OK  J2.8 R30.2
+OK  R30.1 U3.7
+OK  J2.9 R31.2
+OK  R31.1 U3.17
+OK  J2.10 R32.2
+OK  R32.1 U3.18
+SEPARATE  J1.1 F1.2 Q1.1 Q2.5 Q3.5 J2.4 U1.1 J4.A4 U17.5 U11.6 J1.2 U12.15
+SEPARATE  J2.5 J2.6 J2.7 J2.8 J2.9 J2.10
+SEPARATE  J4.A5 J4.B5 J4.A6 J4.A7 U12.1
+SEPARATE  U3.25 U3.24 U3.34 U3.35 U3.32
+SEPARATE  U12.21 U12.17 U12.12 U12.15 U12.13
+SEPARATE  U15.14 U15.15 J8.3 J8.4 J9.3 J9.4 J10.3 J10.4 J11.3 J11.4
+SEPARATE  SW4.1 SW4.6 SW4.5 SW4.4 SW4.2
+SEPARATE  J6.3 J6.4 J7.3 J7.4 J5.3 U18.18 U18.16 U18.14 U18.12 U18.9
+OK  NCs and isolated charger BC detection pair
+
+Lesbarkeitsüberarbeitung: Gegen den elektrischen Rev.-2.1-Stand alle 147 benannten Netze und 650 Pinzuordnungen identisch; alle 192 Werte und Footprint-Zuordnungen identisch. Erneuter ERC: keine Meldungen. PCB-Datei unverändert.
+
+=== Rev. 2.5 (19.11.2026) – Prüfung mit kicad-cli 10.0.8 ===
+ERC: 0 Fehler, 0 Warnungen (ERC_Rev2.5.json)
+DRC (Flächen neu gefüllt, Schaltplan-Parität): 0 offene Verbindungen, 0 Abstandsfehler, 0 Paritätsfehler (DRC_Rev2.5.json)
+Verbleibende DRC-Fehler (bekannt/akzeptiert): 8 x hole_clearance J4 (USB-C-Herstellerfootprint, Pad zu NPTH < 0,2 mm),
+7 x courtyards_overlap: J12/J13, H4/J12, H4/J13, U9/J12, C41/U13, U11/C31, U3/J6.
+Warnungen: Siebdruck (Textgröße/-stärke, Überlappungen), 28 kurze tote Leiterbahnstücke (Altbestand), 16 Footprint ≠ Bibliothek (gewollt, 3D-Pfade).
+Netzliste: Tumbler_Rev2.5.net

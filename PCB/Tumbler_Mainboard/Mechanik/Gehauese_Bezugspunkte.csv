@@ -1,0 +1,25 @@
+﻿Bauteil;Footprint-Ursprung X mm;Footprint-Ursprung Y mm;Drehung Grad;Bemerkung
+H1;6.013;73.928;0;
+H2;71.013;73.928;0;
+H3;71.013;9.928;0;
+H4;6.013;9.928;0;
+J1;17.208;71.038;0;Akku JST XH 2-pol. stehend (Kabel nach oben)
+J2;59.508;3.788;180;Liniensensor JST GH 10
+J3;49.708;43.788;0;Debug/Erweiterung 2x8
+J4;2.538;38.288;270;USB-C (linke Seite)
+J5;11.708;45.488;90;Reserve 1x4
+J6;71.192;59.944;90.0;Motor A
+J7;5.836;59.892;-90.0;Motor B
+J8;10.708;2.888;90;ToF vorne (Lötpads)
+J9;2.708;21.288;90;ToF rechts vorne (Lötpads)
+J10;2.708;25.538;90;ToF rechts Mitte (Lötpads)
+J11;2.708;29.788;90;ToF rechts hinten (Lötpads)
+SW1;62.208;15.688;0;Taster
+SW2;58.208;20.788;0;Reset EN
+SW3;66.708;20.788;0;BOOT
+SW4;59.008;76.288;0;RUN/OFF
+U3;70.208;34.788;270;ESP32-S3, Antenne ragt rechts 6 mm über die Kante
+J12;10.408;11.628;90;ToF CH4 (Lötpads)
+J13;10.408;9.088;90;ToF CH5 (Lötpads)
+J14;35.208;78.488;90;ToF CH6 (Lötpads, Hinterkante)
+J15;18.208;62.488;90;ToF CH7 (Lötpads)

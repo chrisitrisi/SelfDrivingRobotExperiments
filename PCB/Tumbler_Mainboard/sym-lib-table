@@ -1,0 +1,5 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "Tumbler2") (type "KiCad") (uri "${KIPRJMOD}/Tumbler2.kicad_sym") (options "") (descr ""))
+	(lib (name "TumblerStage2") (type "KiCad") (uri "${KIPRJMOD}/TumblerStage2.kicad_sym") (options "") (descr ""))
+	(lib (name "TumblerBasis") (type "KiCad") (uri "${KIPRJMOD}/TumblerBasis.kicad_sym") (options "") (descr "Version-pinned KiCad base symbols")))
