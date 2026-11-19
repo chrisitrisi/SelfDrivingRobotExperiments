@@ -1,0 +1,82 @@
+\chapterauthor{Adem Merdzic, Rami Muarrawi, Christopher Schieszler}
+\chapter{Systemarchitektur und theoretische Grundlagen}
+\label{chap:systemarchitektur}
+
+\section{Gesamtsystem-Übersicht}
+\label{sec:gesamtsystem}
+
+Das Fahrzeug folgt einer klaren mechatronischen Schichtenarchitektur, die Energieversorgung, Aktorik, Sensorik und Recheneinheit auf einer gemeinsamen Plattform zusammenführt. Als zentrales Rechenmodul dient ein \emph{ESP32-S3-WROOM-1} mit Dual-Core-Mikrocontroller, Hardware-\gls{pwm}-Einheiten, mehreren I\textsuperscript{2}C-Schnittstellen sowie integrierter WLAN-/Bluetooth-Konnektivität für Telemetrie und Debugging \cite{EspressifESP32S3}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    node distance=1.1cm and 1.4cm,
+    block/.style={rectangle, draw=black!80, fill=blue!6, rounded corners=2pt, minimum width=3.1cm, minimum height=0.95cm, align=center, font=\small},
+    pwr/.style={rectangle, draw=black!80, fill=orange!10, rounded corners=2pt, minimum width=3.1cm, minimum height=0.95cm, align=center, font=\small},
+    sens/.style={rectangle, draw=black!80, fill=green!8, rounded corners=2pt, minimum width=3.1cm, minimum height=0.95cm, align=center, font=\small},
+    arrow/.style={->, >=stealth, thick}
+  ]
+    \node[block] (mcu) {\textbf{ESP32-S3-WROOM-1}\\Hauptsteuerung (U3)};
+    \node[pwr, above=of mcu] (pwr) {\textbf{Power Management}\\2S Li-Ion, 5\,A-Sicherung,\\AP63203 (3,3\,V) \& AMS1117 (5\,V)};
+    \node[sens, left=1.8cm of mcu] (lidar) {\textbf{8x VL53L0/1XV2}\\360\textdegree-LiDAR-Array\\(I\textsuperscript{2}C + XSHUT)};
+    \node[sens, below left=1.1cm and 0.6cm of mcu] (line) {\textbf{Liniensensor}\\6x CNY70 + 2x BC817\\(Analog / ADC)};
+    \node[sens, below right=1.1cm and 0.6cm of mcu] (imu) {\textbf{6-Achs-IMU}\\LSM6DSV (U5)\\(SPI / I\textsuperscript{2}C)};
+    \node[block, right=1.8cm of mcu] (drv) {\textbf{2x TB67H450FNG}\\SMD-H-Brücken (U6, U7)\\\& 2x GA37-520 Motoren};
+
+    \draw[arrow] (pwr) -- (mcu);
+    \draw[arrow] (pwr) -| (drv);
+    \draw[arrow] (lidar) -- (mcu);
+    \draw[arrow] (line) |- (mcu);
+    \draw[arrow] (imu) |- (mcu);
+    \draw[arrow] (mcu) -- (drv);
+  \end{tikzpicture}
+  \caption{Blockschaltbild der Gesamtsystemarchitektur des Tumbler~v3.0 (Redesign).}
+  \label{fig:blockschaltbild}
+\end{figure}
+
+\section{Evolution vom Vorgängermodell zum Redesign}
+\label{sec:evolution}
+
+Im Rahmen der Aufgabenanalyse zeigte sich, dass eine reine Software-Erweiterung auf der bestehenden Hardware-Basis nicht zielführend ist. Tabelle~\ref{tab:vergleich_alt_neu} stellt die wesentlichen Änderungen zwischen dem Ausgangszustand (\emph{Tumbler~v3.0} \cite{Kloeckl2026}) und dem vorliegenden Redesign gegenüber.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Gegenüberstellung der Hardware-Architektur vor und nach dem Redesign.}
+  \label{tab:vergleich_alt_neu}
+  \begin{tabular}{@{}p{3.6cm}p{5.2cm}p{5.5cm}@{}}
+    \toprule
+    \textbf{Teilsystem} & \textbf{Ausgangsbasis (Vorgänger)} & \textbf{Redesign (diese Arbeit)} \\
+    \midrule
+    Motortreiber & Externe Steckmodule über Stiftleisten & Zwei integrierte SMD-ICs (\emph{TB67H450FNG}) direkt auf der Hauptplatine \\
+    Inertialsensorik (IMU) & Aufgestecktes Breakout-Board & Direkt bestücktes QFN-Bauteil (\emph{LSM6DSV}) auf der Hauptplatine \\
+    Abstandssensorik & Ultraschallsensor / begrenzte Sicht & 8x \emph{VL53L0/1XV2} Time-of-Flight LiDAR in geschützten Pods (360\textdegree) \\
+    Liniensensor & Ältere Sensorplatine & Kompaktes \qtyproduct{76 x 32}{\milli\metre} Redesign mit 6x \emph{CNY70} und BC817-Treibern \\
+    Chassis & Offene Plattform, geringe Wandstärken & Crashresistentes Unibody-Chassis (Rev.~v9.0), 0\textdegree-Kollision im DMU \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Begründung der 8-fach-LiDAR-Anordnung.}
+Während im ursprünglichen Antrag noch allgemein von einem 360\textdegree-LiDAR-Sensor die Rede war, fiel im Systementwurf die Entscheidung auf acht diskrete \emph{VL53L0/1XV2}-Sensoren (drei vorne, zwei seitlich, drei hinten). Diese Lösung vermeidet rotierende mechanische Verschleißteile, baut deutlich flacher, lässt sich direkt in das robuste Unibody-Chassis einbetten und liefert dennoch eine geschlossene Rundum-Abdeckung ohne Totzonen durch Räder oder Motoren.
+
+\section{Verwendete Sensor- und Kommunikationsprinzipien}
+\label{sec:grundlagen_sensorik}
+
+\subsection{Time-of-Flight-Abstandsmessung (VL53L0/1XV2)}
+Die verwendeten \gls{tof}-Sensoren senden augensichere Infrarot-Laserimpulse (\SI{940}{\nano\metre} VCSEL) aus und bestimmen die Distanz $d$ direkt aus der Laufzeit $\Delta t$ des reflektierten Lichts:
+\begin{equation}
+  d = \frac{c_0 \cdot \Delta t}{2}
+  \label{eq:tof_distanz}
+\end{equation}
+Dabei bezeichnet $c_0 \approx \SI{2.998e8}{\metre\per\second}$ die Lichtgeschwindigkeit. Im Gegensatz zu klassischen Ultraschallsensoren besitzen \emph{VL53L0X}- und \emph{VL53L1X}-Sensoren einen eng begrenzten Öffnungswinkel (Field of View, FoV) von rund \SI{25}{\degree} \cite{ST_VL53L0X,ST_VL53L1X}, wodurch schmale Parklücken und seitliche Kanten wesentlich präziser aufgelöst werden können.
+
+\subsection{I\textsuperscript{2}C-Bus und Hardware-Adressierung}
+Alle \gls{tof}-Module kommunizieren über den zweidrahtigen I\textsuperscript{2}C-Bus (\texttt{SDA}, \texttt{SCL}). Da jeder Sensor ab Werk dieselbe Standardadresse (\texttt{0x29}) besitzt, werden die \texttt{XSHUT}-Eingänge der acht Module getrennt angesteuert. Beim Systemstart werden zunächst alle Sensoren in den Reset-Zustand versetzt und anschließend nacheinander aktiviert, um jedem Baustein eine eindeutige I\textsuperscript{2}C-Adresse zuzuweisen.
+
+\subsection{Inertiale Messeinheit (LSM6DSV) und PWM-Antrieb}
+Für die Bestimmung der Fahrzeugdrehung während des Einparkvorgangs integriert die Hauptplatine den 6-Achs-Sensor \emph{LSM6DSV} \cite{ST_LSM6DSV}. Durch Integration der Gierrate $\omega_z(t)$ lässt sich der aktuelle Gierwinkel $\psi(t)$ bestimmen:
+\begin{equation}
+  \psi(t) = \psi_0 + \int_{t_0}^{t} \left(\omega_z(\tau) - b_z\right)\,\mathrm{d}\tau
+  \label{eq:yaw_integration}
+\end{equation}
+Hierbei berücksichtigt $b_z$ den vor dem Anfahren kalibrierten Nullpunktfehler (Bias) des Gyroskops. Die Ansteuerung der beiden Gleichstrom-Getriebemotoren erfolgt über zwei H-Brücken vom Typ \emph{TB67H450FNG} \cite{Toshiba_TB67H450} mittels \gls{pwm}-Signalen zur stufenlosen Geschwindigkeits- und Richtungsvorgabe.

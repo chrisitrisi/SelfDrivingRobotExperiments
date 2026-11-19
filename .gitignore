@@ -1,0 +1,24 @@
+# Large archives (>100MB breaks GitHub push)
+*.zip
+*.7z
+*.rar
+
+# LaTeX auxiliary files (keep build/diplomarbeit.pdf if desired, or build/)
+*.aux
+*.bbl
+*.blg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz

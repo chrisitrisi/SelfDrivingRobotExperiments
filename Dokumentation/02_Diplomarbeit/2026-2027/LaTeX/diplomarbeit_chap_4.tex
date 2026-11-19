@@ -1,0 +1,69 @@
+\chapterauthor{Rami Muarrawi}
+\chapter{LiDAR-Datenverarbeitung und Parklückenerkennung}
+\label{chap:lidar_verarbeitung}
+
+\section{Sensoranordnung und 360\textdegree-Abdeckung}
+\label{sec:lidar_anordnung}
+
+Für eine zuverlässige Erkennung seitlicher Parklücken sowie die Rundum-Kollisionsvermeidung beim Rangieren wurden acht \emph{VL53L0/1XV2}-Sensoren fest in das Chassis integriert. Jedes Modul deckt einen konischen Messbereich von etwa \SI{25}{\degree} ab \cite{ST_VL53L0X,ST_VL53L1X}. Durch die symmetrische Verteilung entlang der Fahrzeugkontur entsteht eine lückenlose Überwachung aller relevanten Fahrtrichtungen (Tabelle~\ref{tab:lidar_pods}).
+
+\begin{table}[htbp]
+  \centering
+  \caption{Einbaupositionen und Ausrichtung der acht VL53L0/1XV2-Sensoren im Chassis-Koordinatensystem.}
+  \label{tab:lidar_pods}
+  \begin{tabular}{@{}llrrr@{}}
+    \toprule
+    \textbf{ID} & \textbf{Einbauposition} & \textbf{$X$ [\si{\milli\metre}]} & \textbf{$Y$ [\si{\milli\metre}]} & \textbf{Ausrichtung [\si{\degree}]} \\
+    \midrule
+    \texttt{3a} & Front Mitte (0\textdegree) & 60,0 & $-215{,}0$ & $-90$ (vorwärts) \\
+    \texttt{3b} & Front Links (45\textdegree) & 13,0 & $-150{,}0$ & $-135$ \\
+    \texttt{3c} & Front Rechts (45\textdegree) & 107,0 & $-150{,}0$ & $-45$ \\
+    \texttt{3d} & Seite Links (90\textdegree) & 6,0 & $-78{,}0$ & $180$ \\
+    \texttt{3e} & Seite Rechts (90\textdegree) & 114,0 & $-78{,}0$ & $0$ \\
+    \texttt{3f} & Heck Links (135\textdegree) & 20,0 & $+22{,}0$ & $+135$ \\
+    \texttt{3g} & Heck Rechts (135\textdegree) & 100,0 & $+22{,}0$ & $+45$ \\
+    \texttt{3h} & Heck Mitte (180\textdegree) & 60,0 & $+25{,}0$ & $+90$ (rückwärts) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Besonders kritisch war beim Vorgängeraufbau die Abschattung der hinteren Sensoren durch die Antriebsräder ($\varnothing\,\SI{66}{\milli\metre}$) und die Motoren. Durch die Verlagerung der drei Heck-Pods (\texttt{3f}, \texttt{3g}, \texttt{3h}) auf eine gemeinsame Sensorleiste hinter den Rädern ($Y = +22{,}0\text{ bis }+25{,}0\,\si{\milli\metre}$, einheitliche Sensorebene $Z = \SI{13.5}{\milli\metre}$) bleiben alle acht \SI{25}{\degree}-Sichtkegel bis über \SI{150}{\milli\metre} Abstand vollkommen unversperrt.
+
+\section{I\textsuperscript{2}C-Initialisierung und Sensoransteuerung}
+\label{sec:lidar_i2c}
+
+Alle acht \gls{tof}-Sensoren teilen sich den gemeinsamen I\textsuperscript{2}C-Bus an Steckverbinder \texttt{J3}. Da jeder Baustein nach dem Einschalten auf der Standardadresse \texttt{0x29} hört, erfolgt beim Systemstart eine sequenzielle Adresszuweisung über die acht separaten \texttt{XSHUT}-Leitungen:
+\begin{enumerate}
+  \item Alle acht \texttt{XSHUT}-Pins werden auf \texttt{LOW} gezogen (Hardware-Shutdown aller Sensoren).
+  \item Sensor $i \in \{0,\dots,7\}$ wird einzeln durch \texttt{XSHUT[i] = HIGH} aktiviert.
+  \item Über die Standardadresse \texttt{0x29} wird dem aktiven Sensor die eindeutige neue Adresse \texttt{0x30 + i} zugewiesen.
+  \item Nach Abschluss der Schleife sind alle acht Sensoren parallel ohne Adresskonflikt ansprechbar.
+\end{enumerate}
+
+\todo[inline]{[TODO: Exakte GPIO-Pinbelegung der XSHUT-Leitungen an J3 sowie die gewählte I2C-Taktrate (z. B. 400 kHz) und das Timing-Budget pro Messung aus der finalen Firmware nachtragen.]}
+
+\section{Vorverarbeitung und Rauschunterdrückung}
+\label{sec:lidar_filterung}
+
+Rohe \gls{tof}-Distanzmessungen unterliegen je nach Oberflächenfarbe, Einfallswinkel und Umgebungslicht einem stochastischen Messrauschen sowie vereinzelten Ausreißern (z.\,B. bei spiegelnden oder stark absorbierenden Hindernissen). Um Fehlauslösungen bei der Parklückenerkennung zu vermeiden, ist eine zweistufige Filterung vorgesehen:
+\begin{itemize}
+  \item \textbf{Plausibilitäts- und Bereichsprüfung:} Ungültige Statuscodes des Sensors sowie Werte außerhalb des spezifizierten Nutzbereichs werden verworfen.
+  \item \textbf{Zeitliche Glättung (Median- / gleitender Mittelwertfilter):} Ein kurzes Schiebefenster über $N$ aufeinanderfolgende Messwerte unterdrückt Einzelausreißer, ohne die Sprungantwort an der Kante einer Parklücke übermäßig zu verzögern.
+\end{itemize}
+
+\todo[inline]{[TODO: Konkrete Filterparameter (Fenstergröße N, Grenzwerte) sowie gemessene Rauschcharakteristik auf unterschiedlichen Oberflächen aus den Laborversuchen einfügen.]}
+
+\section{Geometrische Parklückenerkennung}
+\label{sec:parklueckenerkennung}
+
+Für die Erkennung einer Längs- oder Querparklücke fährt das Fahrzeug mit möglichst konstanter Geschwindigkeit parallel an begrenzenden Hindernissen (z.\,B. geparkte Modellfahrzeuge oder Begrenzungswände) vorbei. Dabei erfasst der seitliche Sensor (\texttt{3e} rechts bzw. \texttt{3d} links) fortlaufend den Querabstand $d_{\perp}(t)$.
+
+Ein sprunghafter Anstieg von $d_{\perp}$ über einen definierten Schwellwert $\Delta d_{\text{min}}$ markiert den Beginn einer potenziellen Lücke bei der zurückgelegten Wegstrecke $s_{\text{start}}$. Fällt der Querabstand wieder auf das Niveau des begrenzenden Hindernisses zurück, ist das Lückenende $s_{\text{end}}$ erreicht. Die verfügbare Lückenlänge $L_{\text{Lücke}}$ und Lückentiefe $T_{\text{Lücke}}$ ergeben sich zu:
+\begin{equation}
+  L_{\text{Lücke}} = s_{\text{end}} - s_{\text{start}}, \qquad
+  T_{\text{Lücke}} = \operatorname{median}_{s \in [s_{\text{start}}, s_{\text{end}}]}\!\left(d_{\perp}(s)\right) - d_{\text{Ref}}
+  \label{eq:luecke_geometrie}
+\end{equation}
+Eine Lücke wird nur dann als gültiger Parkkandidat an die übergeordnete Fahrzeugsteuerung übergeben, wenn sie die Fahrzeugabmessungen zuzüglich eines Sicherheitszuschlags überschreitet ($L_{\text{Lücke}} \ge L_{\text{Fzg}} + \Delta L_{\text{sicher}}$ und $T_{\text{Lücke}} \ge B_{\text{Fzg}} + \Delta B_{\text{sicher}}$).
+
+\todo[inline]{[TODO: Konkreten Quellcode-Auszug (C/C++) der Lückenextraktion sowie Schwellwerte für Breite, Tiefe und Ausrichtung ergänzen, sobald die Implementierung abgeschlossen ist.]}

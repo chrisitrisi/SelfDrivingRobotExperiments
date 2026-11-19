@@ -1,0 +1,86 @@
+\chapterauthor{Christopher Schieszler}
+\chapter{Hardwareentwicklung und mechanische Integration}
+\label{chap:hardware_cad}
+
+Dieses Kapitel dokumentiert das gesamte Hardware-Redesign sowie die mechanische Konstruktion des Fahrzeugchassis. Sämtliche Abmessungen und Bauteilbezeichnungen stammen direkt aus den KiCad-Entwurfsdateien sowie dem parametrischen CAD-Modell.
+
+\section{Entwicklung der Hauptplatine (Tumbler2\_Redesign)}
+\label{sec:hauptplatine}
+
+Die neu entwickelte Hauptplatine besitzt die Außenmaße \qtyproduct{76.962 x 80.518 x 1.60}{\milli\metre} und nutzt ein standardisiertes M3-Befestigungsraster von \qtyproduct{65.0 x 64.0}{\milli\metre}. Ziel des Schaltungsentwurfs war es, sämtliche früher extern aufgesteckten Module direkt als SMD-Bauteile zu integrieren und die Störfestigkeit gegenüber Motorstromspitzen zu erhöhen.
+
+\subsection{Spannungsversorgung und Schutzschaltung}
+Die Energieversorgung erfolgt über ein 2S-Li-Ion-Akkupack (Nennspannung \SI{7.4}{\volt}, Ladeschlussspannung \SI{8.4}{\volt}) am zweipoligen Steckverbinder \texttt{J1}. Zum Schutz vor Überstrom und Verpolung sind eine \SI{5}{\ampere}-Sicherung (\texttt{F1}) sowie drei Schottky-Dioden vom Typ \emph{SS14} (\texttt{D1}, \texttt{D3}, \texttt{D5}) vorgesehen. Ein synchroner Abwärtswandler vom Typ \emph{AP63203WU} (\texttt{U2}) erzeugt gemeinsam mit der Leistungsinduktivität \texttt{L1} (\SI{4.7}{\micro\henry}) die stabile \SI{3.3}{\volt}-Logikspannung für den Mikrocontroller und die Sensorik \cite{Diodes_AP63203}. Ergänzend stellt ein Linearregler \emph{AMS1117-5.0} (\texttt{U1}) eine \SI{5.0}{\volt}-Schiene bereit.
+
+\subsection{Mikrocontroller, USB-C und integrierte Peripherie}
+Als Hauptprozessor kommt das Funk- und Mikrocontrollermodul \emph{ESP32-S3-WROOM-1} (\texttt{U3}) zum Einsatz \cite{EspressifESP32S3}. Die Programmierung und serielle Diagnose erfolgen über eine 16-polige USB-C-Buchse (\texttt{J4}), die durch das ESD-Schutz-Array \emph{USBLC6-2SC6} (\texttt{U4}) gegen elektrostatische Entladungen abgesichert ist. Zur lokalen Zustandsanzeige und Bedienung befinden sich acht adressierbare RGB-LEDs (\emph{WS2812B}, \texttt{D6}--\texttt{D13}), zwei Standard-LEDs (\texttt{D2}, \texttt{D4}) sowie drei SMD-Taster (\texttt{SW1}--\texttt{SW3}) auf der Oberseite.
+
+\subsection{Integrierte Motortreiber und Inertialsensorik}
+Beide Antriebsmotoren werden über jeweils eine dedizierte SMD-H-Brücke \emph{TB67H450FNG\_EL} (\texttt{U6} rechts, \texttt{U7} links) angesteuert \cite{Toshiba_TB67H450}. Zur Pufferung dynamischer Stromspitzen beim Anfahren und Abbremsen sitzt unmittelbar neben jedem Treiber ein Elektrolytkondensator (\texttt{C17}, \texttt{C19}). Die thermische Verlustleistung wird über vergrößerte, vergoldete Kupfer-Kühlflächen (Thermal Pads) unterhalb von \texttt{U6} und \texttt{U7} an die Leiterplatte abgeführt. Zwischen den Leistungsteilen und dem vorderen Steckerbereich ist die 6-Achs-IMU \emph{LSM6DSV} (\texttt{U5}) im QFN-Gehäuse möglichst nahe am Fahrzeugschwerpunkt platziert \cite{ST_LSM6DSV}. Tabelle~\ref{tab:hauptplatine_bom} gibt einen Überblick über die zentralen Funktionsbaugruppen der Hauptplatine.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Wesentliche Funktionsblöcke und Steckverbinder der Hauptplatine (\texttt{Tumbler2\_Redesign}).}
+  \label{tab:hauptplatine_bom}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Referenz} & \textbf{Bauteil / Wert} & \textbf{Funktion} \\
+    \midrule
+    \texttt{U3} & \emph{ESP32-S3-WROOM-1} & Zentrale Recheneinheit (Dual-Core, WLAN/BLE) \\
+    \texttt{U6}, \texttt{U7} & 2x \emph{TB67H450FNG\_EL} & Integrierte PWM-Motortreiber (rechts / links) \\
+    \texttt{U5} & \emph{LSM6DSV} & Integrierte 6-Achs-IMU (Beschleunigung + Gyroskop) \\
+    \texttt{U2}, \texttt{L1} & \emph{AP63203WU} + \SI{4.7}{\micro\henry} & Synchroner \SI{3.3}{\volt}-Abwärtswandler \\
+    \texttt{U1} & \emph{AMS1117-5.0} & \SI{5.0}{\volt}-Spannungsregler \\
+    \texttt{J4}, \texttt{U4} & USB-C 16P + \emph{USBLC6-2SC6} & Programmier-/Diagnoseschnittstelle mit ESD-Schutz \\
+    \texttt{J1}, \texttt{F1} & 2-Pin-Header + \SI{5}{\ampere} & Akkueingang mit Überstrom- und Verpolschutz \\
+    \texttt{J6}, \texttt{J7} & 2x 6-Pin-JST-XH & Motorleistung und Encoder-Rückführung \\
+    \texttt{J2}, \texttt{J3} & 1x10-Pin / 2x8-Pin Header & Anschluss für Liniensensor und 8x-LiDAR-Bus \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Redesign der Liniensensor-Platine}
+\label{sec:liniensensor}
+
+Passend zur Hauptplatine wurde auch die Liniensensor-Platine (\qtyproduct{76.0 x 32.0 x 1.60}{\milli\metre}, M3-Bohrraster \qtyproduct{68.0 x 24.0}{\milli\metre}) neu aufgebaut. Auf der Unterseite befinden sich sechs äquidistant angeordnete optische Reflexkoppler vom Typ \emph{CNY70} (\texttt{U1}--\texttt{U6}) \cite{Vishay_CNY70}. Zwei NPN-Transistoren (\emph{BC817}, \texttt{Q1} und \texttt{Q2}) erlauben das gezielte Schalten der Infrarot-Sendedioden, um bei Bedarf Fremdlichteinflüsse zu kompensieren oder Energie zu sparen.
+
+Die Befestigung erfolgt über vier von unten durchgesteckte M3x14-Inbusschrauben durch die vorderen Montageflansche des Chassis. Damit beim Anziehen der Muttern keine Kollision mit der Wannenstruktur entsteht, wurde im Chassis über jeder M3-Bohrung eine zylindrische Werkzeug-Freimachung mit \SI{10.5}{\milli\metre} Durchmesser vorgesehen.
+
+\section{CAD-Konstruktion und Gehäuse-Evolution (Revision v1 bis v9.0)}
+\label{sec:cad_konstruktion}
+
+Die mechanische Konstruktion des Fahrzeugchassis wurde in Autodesk Fusion~360 sowie automatisiert über Python (\texttt{build123d}) entwickelt und über neun Revisionen hinweg schrittweise verfeinert. Frühe Entwürfe (v1/v2) wiesen noch zu geringe Wandstärken, blockierte Schraubenbohrungen am Liniensensor sowie abgeschattete Sichtkegel der hinteren Sensoren durch Räder und Motoren auf.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.96\textwidth]{v3_LiDar_V2_engineering_views.png}
+  \caption{Ingenieuransichten der Sensor-Pod-Geometrie mit hinter den Antriebsrädern positionierten Heck-Sensoren.}
+  \label{fig:cad_views_v3}
+\end{figure}
+
+In der finalen Ausbaustufe (**Revision~v9.0 Final DMU**) wurde das gesamte Fahrzeug als einteiliges, stützstrukturfrei druckbares Unibody-Chassis (\SI{0.0}{\gram} Support, Volumen \SI{218.8}{\centi\metre\cubed}, Masse ca.~\SI{271}{\gram} in PLA/PETG) umgesetzt. Abbildung~\ref{fig:v9_master_dmu} zeigt das vollständige digitale Versuchsmodell (\gls{dmu}) inklusive aller 121~Einzelkörper.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.98\textwidth]{v9_Final_DMU_Master_Preview.png}
+  \caption{Revision~v9.0 Final DMU: Isometrische Gesamtansicht, Draufsicht, Seitenansicht und Unteransicht inklusive 8x-LiDAR-Sichtkegeln (\SI{25}{\degree}), 24-mm-Steckerdummies (rot) und 3D-Kabelbaum (orange).}
+  \label{fig:v9_master_dmu}
+\end{figure}
+
+\subsection{8x-LiDAR-Sensor-Pods und Schraubendome}
+Um alle acht \emph{VL53L0/1XV2}-Platinen (\qtyproduct{25.0 x 10.5 x 1.6}{\milli\metre}, Lochabstand \SI{19.5}{\milli\metre}) stoßgeschützt aufzunehmen, sitzt jedes Modul um \SI{1.90}{\milli\metre} tief in einer eigenen Sensortasche unter einem durchgehenden \SI{3.85}{\milli\metre} bis \SI{4.30}{\milli\metre} starken Massivdach. Die Befestigung erfolgt über jeweils zwei massive Schraubendome (\SI{6.5}{\milli\metre} Außendurchmesser) mit \SI{6.0}{\milli\metre} tiefen M2-Sacklöchern ($\varnothing\,\SI{2.0}{\milli\metre}$). Hinter jedem Sackloch verbleiben \SI{3.50}{\milli\metre} geschlossenes Vollmaterial, sodass M2x6-Schrauben zuverlässig greifen, ohne die Rückwand zu durchstoßen.
+
+Für die sechspoligen DuPont-Stecker auf der Sensorrückseite stehen geschützte Steckertunnel mit \SI{26.0}{\milli\metre} Tiefe zur Verfügung. Alle sechs seitlichen bzw. schrägen Pods reichen mit \SI{15.5}{\milli\metre} Einbindetiefe lückenlos in die \SI{3.5}{\milli\metre} starke Hauptwannenwand, während die Kabelkanäle durch den \SI{4.0}{\milli\metre} hohen geschlossenen Wandsteg darüber die Struktursteifigkeit erhalten.
+
+\subsection{Batteriefach-Toleranzen, Hauptplatinen-Standoffs und FDM-Regeln}
+Die Hauptplatine ruht auf vier konisch verstärkten Standoffs ($\varnothing\,\SI{10.6}{\milli\metre}$, Auflageebene $Z = \SI{25.5}{\milli\metre}$) mit \SI{6.0}{\milli\metre} tiefen Sitzen für M3-Messing-Gewindeeinsätze ($\varnothing\,\SI{4.0}{\milli\metre}$, radiale Restwandstärke \SI{3.30}{\milli\metre}). Eine konstruktive Schutzoperation stellt sicher, dass kein Kabelkanal die Standoff-Säulen seitlich anschneidet.
+
+Das rechts in der Wanne liegende Akkufach für das 2S-Li-Ion-Pack (\qtyproduct{72.0 x 39.5 x 19.5}{\milli\metre}) bietet einen lichten Bauraum von \qtyproduct{78.0 x 43.5 x 21.5}{\milli\metre}. Daraus ergeben sich reale Einbautoleranzen von \SI{+2.0}{\milli\metre} seitlich und vertikal sowie \SI{+3.0}{\milli\metre} in Längsrichtung, sodass der Akku werkzeuglos ohne Klemmen entnommen werden kann. Eine \SI{3.2}{\milli\metre} starke Trennrippe schützt den Akku mechanisch vor dem \SI{24.0}{\milli\metre} langen Stecker- und Biegeraum des Liniensensors (Gesamtabstand \SI{8.0}{\milli\metre}). Für den USB-C-Stecker an \texttt{J4} bleibt oberhalb des Front-Pod-Dachs ($Z = \SI{23.0}{\milli\metre}$ bis \SI{33.0}{\milli\metre}) ein \SI{16.0}{\milli\metre} breiter Einsteckkorridor dauerhaft frei.
+
+\subsection{Rechnerische Crash-Abschätzung}
+Zur Bewertung der Aufprallsicherheit wurde eine analytische Stoßabschätzung für einen ungebremsten Frontalaufprall mit der Fahrzeuggesamtmasse $m = \SI{1.20}{\kilogram}$ und einer elastisch-plastischen Pufferzone $s = \SI{2.0}{\milli\metre}$ am \SI{6.0}{\milli\metre} starken Front-Bumper durchgeführt. Über den Energieerhaltungssatz ergibt sich die mittlere Stoßkraft zu:
+\begin{equation}
+  F_{\text{Crash}} = \frac{\frac{1}{2}\,m\,v^2}{s}
+  \label{eq:crash_kraft}
+\end{equation}
+Bei einer typischen Einpark- bzw. Suchgeschwindigkeit von $v_1 = \SI{5.0}{\kilo\metre\per\hour}$ (\SI{1.39}{\metre\per\second}) resultiert $F_1 \approx \SI{579}{\newton}$; selbst im Extremfall bei $v_2 = \SI{9.0}{\kilo\metre\per\hour}$ (\SI{2.50}{\metre\per\second}) beträgt die Stoßkraft $F_2 = \SI{1875}{\newton}$. Bezogen auf die tragende Prallquerschnittsfläche von $A = \SI{612}{\milli\metre\squared}$ und eine zulässige Biege-/Druckspannung von $\sigma_{\text{zul}} = \SI{35}{\mega\pascal}$ für PLA/PETG ergeben sich Sicherheitsfaktoren von $\text{SF}_1 = 37{,}0$ bzw. $\text{SF}_2 = 11{,}4$, die deutlich über dem Zielwert $\text{SF} \ge 3{,}0$ liegen.

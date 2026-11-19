@@ -1,0 +1,158 @@
+\documentclass[a4paper,11pt]{memoir}
+\chapterstyle{veelo}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\setsecnumdepth{subsubsection}
+
+\usepackage{standalone}
+\usepackage{HTBLA}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{mathtools}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{xargs}
+\usepackage[ngerman,colorinlistoftodos]{todonotes}
+\usepackage[locale=DE,per-mode=symbol]{siunitx}
+\usepackage{longtable}
+\usepackage[boxed,german]{algorithm2e}
+\usepackage{footnote}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{lscape}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows,positioning}
+
+\makesavenoteenv{tabular}
+\makesavenoteenv{table}
+
+% Quellcode-Darstellung (C/C++ und Python)
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=6pt,
+  backgroundcolor=\color{gray!6},
+  frame=single,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  captionpos=b,
+  tabsize=4,
+  keywordstyle=\color{blue!70!black}\bfseries,
+  commentstyle=\color{green!45!black}\itshape,
+  stringstyle=\color{red!60!black},
+  literate={ö}{{\"o}}1 {ä}{{\"a}}1 {ü}{{\"u}}1 {Ö}{{\"O}}1 {Ä}{{\"A}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+}
+
+% Autorenvermerk in der Fusszeile (Analog zu den Vorjahresarbeiten der HTL BULME)
+\makeevenfoot{headings}{\thepage}{}{\small\textit{\currentchapterauthor}}
+\makeoddfoot{headings}{\small\textit{\currentchapterauthor}}{}{\thepage}
+\makeevenfoot{plain}{\thepage}{}{\small\textit{\currentchapterauthor}}
+\makeoddfoot{plain}{\small\textit{\currentchapterauthor}}{}{\thepage}
+
+% Metadaten aus ABA - Detailansicht
+\thesistitle{Self-Driving Robot Experiments\\(Tumbler~v3.0)}
+\selectlanguage{ngerman}
+\thesisdate{10.04.2027}
+\thesislocation{Graz}
+
+\thesiscurriculum{Elektronik und Technische Informatik}
+\thesisverfassung{Verfasser}
+
+\thesisauthoreins{Adem Merdzic}
+\thesisauthorzwei{Rami Muarrawi}
+\thesisauthordrei{Christopher Schieszler}
+
+\thesismatrikelnoeins{[TODO: SKZ Adem]}
+\thesismatrikelnozwei{[TODO: SKZ Rami]}
+\thesismatrikelnodrei{[TODO: SKZ Christopher]}
+
+\thesisbetreuung{Betreuer}
+\thesisbetreins{Prof.~Dipl.-Ing.~Michael Hollegha}
+
+\bibliographystyle{alpha}
+
+\usepackage[toc]{glossaries}
+\makeglossaries
+
+\newglossaryentry{dmu}{name={DMU},description={Digital Mock-Up -- rechnergestütztes digitales Versuchsmodell zur geometrischen und funktionalen Prüfung einer Baugruppe}}
+\newglossaryentry{fdm}{name={FDM},description={Fused Deposition Modeling -- additives Fertigungsverfahren durch schichtweises Aufschmelzen eines Thermoplasts}}
+\newglossaryentry{imu}{name={IMU},description={Inertial Measurement Unit -- inertiale Messeinheit aus Beschleunigungs- und Drehratensensor}}
+\newglossaryentry{lidar}{name={LiDAR},description={Light Detection and Ranging -- optisches Verfahren zur Abstands- und Geschwindigkeitsmessung}}
+\newglossaryentry{tof}{name={ToF},description={Time of Flight -- Laufzeitmessung eines Lichtimpulses zur Distanzbestimmung}}
+\newglossaryentry{pcb}{name={PCB},description={Printed Circuit Board -- gedruckte Leiterplatte}}
+\newglossaryentry{pwm}{name={PWM},description={Pulsweitenmodulation -- Modulationsverfahren zur Leistungs- und Drehzahlregelung}}
+\newglossaryentry{ssot}{name={SSOT},description={Single Source of Truth -- eindeutige, zentrale Datenbasis für Konstruktionsparameter}}
+
+\usepackage{hyperref}
+\usepackage[figure]{hypcap}
+\usepackage{graphicx}
+
+\hypersetup{
+  pdftitle   = {Self-Driving Robot Experiments (Tumbler v3.0)},
+  pdfsubject = {Diplomarbeit HTL BULME Graz-Goesting},
+  pdfauthor  = {Adem Merdzic, Rami Muarrawi, Christopher Schieszler},
+  colorlinks = {true},
+  linkcolor  = {blue!50!black},
+  citecolor  = {green!45!black},
+  urlcolor   = {blue!65!black}
+}
+
+\begin{document}
+\nouppercaseheads
+\frontmatter
+
+\include{titlepage}
+\include{declaration}
+
+\abstractintoc
+\renewcommand{\baselinestretch}{1.15}
+\renewcommand{\abstractnamefont}{\normalfont\Large\bfseries}
+\renewcommand{\abstractname}{Kurzfassung}
+\renewcommand{\abstracttextfont}{\normalsize\nonzeroparskip}
+\begin{abstract}
+\input{abstract-de}
+\end{abstract}
+\newpage
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+\input{abstract-en}
+\end{abstract}
+\newpage
+
+\cleardoublepage
+\makeatletter
+\@openrighttrue
+\makeatother
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\nonzeroparskip
+
+\include{diplomarbeit_chap_1}
+\include{diplomarbeit_chap_2}
+\include{diplomarbeit_chap_3}
+\include{diplomarbeit_chap_4}
+\include{diplomarbeit_chap_5}
+\include{diplomarbeit_chap_6}
+
+\appendix
+\include{diplomarbeit_chap_A}
+
+\newpage
+\bibliography{literatur-bib}
+\nocite{*}
+
+\newpage
+\glsaddall
+\printglossary[title={Abkürzungs- und Glossarverzeichnis}]
+
+\end{document}
