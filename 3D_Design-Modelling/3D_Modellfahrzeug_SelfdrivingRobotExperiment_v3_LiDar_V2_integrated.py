@@ -19,20 +19,22 @@ import traceback
 import os
 
 # ==============================================================================
-# 1. KALIBRIERTE GLOBALE VL53L0/1XV2 VARIABLEN (BEI BEDARF ANPASSBAR)
+# 1. KALIBRIERTE GLOBALE VL53L0/1XV2 VARIABLEN (REVISION v10.0 PRINT-READY)
 # ==============================================================================
-v2_total_length  = 25.0   # Gesamtlänge inkl. seitlicher Laschen in mm
+v2_total_length  = 25.0   # Gesamtlänge inkl. Stadium-Laschen in mm
 v2_body_length   = 15.8   # Länge des mittleren Rechteckkörpers in mm
 v2_width         = 10.5   # Breite/Höhe des Rechteckkörpers in mm
 v2_hole_pitch    = 19.5   # Exakter Lochabstand Mitte-zu-Mitte in mm
-v2_ear_dia       = 5.5    # Außendurchmesser der seitlichen Laschen in mm
-v2_fdm_tol       = 0.4    # +0.4 mm umlaufendes Spaltmaß für FDM-3D-Druck
-v2_recess_depth  = 2.6    # Gesamttiefe der Tasche (1.6 mm Platine + 1.0 mm erhobener Dom)
+v2_ear_dia       = 5.5    # Höhe/Durchmesser der seitlichen Stadium-Laschen in mm
+v2_fdm_tol       = 0.5    # +0.5 mm umlaufendes Spaltmaß für First-Try FDM-3D-Druck (16.3x11.0 mm, 6.0 mm Stadium)
+v2_recess_depth  = 4.5    # Gesamttiefe der Tasche (1.90 mm versenkte Platine + 1.0 mm erhobener Dom)
 v2_boss_height   = 1.0    # 1.0 mm hohe Erhebungen (Befestigungs-Dome) unter den Schraubenlöchern
-v2_hole_dia      = 1.8    # Kernloch Ø 1.8 mm für M2-Schrauben
-v2_cable_slot_w  = 10.0   # 10.0 mm breiter Kabelschlitz mittig (lässt 3.85 mm Vollmaterial zu den Löchern!)
+v2_boss_dia      = 7.0    # Ø 7.0 mm massive Schraubendome (10.5 mm Gesamtlänge, 3.50 mm massiver Boden)
+v2_hole_dia      = 1.80   # Selbstfurchendes M2-Kernloch Ø 1.80 mm mit 45°-Teardrop-First & Ø 2.2 mm Einführfase
+v2_hole_depth    = 7.0    # 7.0 mm Sackloch-Tiefe (für M2x6 und M2x8 Schrauben)
+v2_cable_slot_w  = 15.8   # 15.8 mm breiter durchgehender Stecker- & Kabeltunnel (0.000 mm³ Blockade!)
 v2_lens_offset_z = 1.5    # Linse vertikal um +1.5 mm nach oben versetzt
-v2_rear_tower_z  = 45.0   # Höhe der hinteren 135°-Sensortürme (Z = 45.0 mm über Grundplatte)
+v2_rear_tower_z  = 22.8   # Durchgehende 3.80..4.30 mm Massivdachhöhe (Z = 22.8 mm)
 
 
 def run(context):
