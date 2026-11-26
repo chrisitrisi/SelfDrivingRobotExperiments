@@ -12862,7 +12862,7 @@
 				)
 			)
 		)
-		(property "Value" "B2B-XH-A (Akku 2S: 1 = +, 2 = -)"
+		(property "Value" "B2B-XH-A (Akku 2S/3S: 1 = +, 2 = -)"
 			(at 77.47 49.53 0)
 			(show_name no)
 			(do_not_autoplace no)

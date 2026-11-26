@@ -49,7 +49,7 @@ Die Hauptplatine wird auf **Rev. 2.5** umgestellt: Der Roboter kann jetzt mit **
    if (duty > 1.0f) duty = 1.0f;
    ```
    `u_filt` z. B. alle 10 ms messen und über 100 ms mitteln. Optional `U_REF` für 3S höher setzen (z. B. 9,0 V), wenn der Roboter mit 3S schneller fahren soll.
-5. **Bremsrampen:** Nicht direkt von vorwärts auf rückwärts schalten. PWM in ≥ 100 ms auf 0 rampen, dann Richtung wechseln. Kurzschlussbremse (IN1 = IN2 = HIGH) nur bei kleiner Drehzahl. Grund: Bei 3S liegt der TB6612 schon im Ruhezustand bei 12,6 V, Rückspeisung beim harten Bremsen kann über 13,5 V gehen.
+5. **Bremsrampen:** Nicht direkt von vorwärts auf rückwärts schalten. PWM in ≥ 100 ms auf 0 rampen, dann Richtung wechseln. Bremsen bei dieser Platine: U7 erzeugt IN2 immer als invertiertes IN1, IN1 = IN2 = HIGH ist also nicht möglich. **Kurzschlussbremse = PWM LOW bei STBY HIGH** (Richtung egal), **Freilauf = STBY LOW**. Kurzschlussbremse nur bei kleiner Drehzahl. Grund: Bei 3S liegt der TB6612 schon im Ruhezustand bei 12,6 V, Rückspeisung beim harten Bremsen kann über 13,5 V gehen.
 6. Details und Pinbelegung: `PCB/Tumbler_Mainboard/Hinweise_Software_Rev2.5.md`.
 
 ## Bitte prüfen

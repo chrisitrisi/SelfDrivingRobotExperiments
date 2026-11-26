@@ -6,6 +6,14 @@ Das Projekt über **Tumbler2_Redesign.kicad_pro** in KiCad 10 öffnen. **Tumbler
 - Blatt 5: ICM-42670-P, TB6612FNG, Motorencoder und externer Ultraschall. Blatt 8: I²C-Multiplexer TCA9548A und Lötpads J8–J15 für acht ToF-Sensoren (VL53L0X/GY-530).
 - Blatt 7, Block 05: **2S/3S-Brücken** R87, R88, R89, R92 (0 Ω) mit R90/R91 und D14.
 - README_Schaltplan.md: 2S/3S-Umbau mit Rechnung, Betriebsarten, Stecker, Adressen, Firmware und offene Hardwaretests. Stueckliste.csv nennt Wert, Bestückung, Footprint und Spezifikation. Pinbelegung.csv beschreibt den bestehenden Liniensensor.
+- **Rev. 2.5a (26.11.2026): Korrekturen vor der JLC-Bestellung.**
+  - J12/J13 (ToF CH4/CH5) um 2,54 mm nach rechts: Die Lötstellen J12.1/J13.1 lagen 4,7/4,5 mm neben H4 und damit auf der Gehäusestütze (Ø 11 mm). Jetzt ≥ 7,0 mm Abstand. R79/R81 (Pull-ups) dafür auf freie Plätze der Unterseite versetzt. Mechanik/Gehauese_Bezugspunkte.csv angepasst.
+  - Keine Vias mehr in Lötpads von Signalen (vorher R73.2, J6.4, U3 Pin 2 und 39, GND an J6.2/J7.2/D14.2). Nur die Wärme-Vias in den Thermalpads von U3 (Pin 41) und U12 (Pin 25) bleiben bewusst.
+  - Alle Texte auf der Unterseite gespiegelt (vorher 78 spiegelverkehrte Bestückungstexte).
+  - J1-Wert „Akku 2S/3S“. Auslieferung bleibt 2S: R87/R88/R89/R92 = 0 Ω bestückt.
+  - KiCad 10.0.7: ERC 0, 0 offene Verbindungen, 0 Paritätsfehler. Bekannt/akzeptiert: 8 Pad-zu-NPTH-Abstände an J4 (Hersteller-Footprint, im JLC-DFM-Check ansehen), 6 Courtyard-Überlappungen ohne Kupferkonflikt.
+  - **Bei JLC bestellen mit Innenlagen 1 oz** (Standard ist 0,5 oz): Motor- und Akkuleitungen laufen teilweise auf In2.Cu.
+  - Noch offen (nicht bestellkritisch, nur Onboard-Laden bzw. USB-3,3-V betroffen): BQ25886-Leistungsschleife kompakter machen (SYS-/BAT-Kondensatoren und L3 näher an U12), Eingangskondensator direkt an U9.
 - **Rev. 2.5 (19.11.2026): Akku 2S oder 3S.** Vier 0-Ω-Brücken auf der Unterseite (Kasten „2S | 3S“ unter U16): **alle bestückt = 2S** (Auslieferung, alte JST-XH-Akkus unverändert), **alle entfernt = 3S – R87 zuerst!**
   - R87 trennt den Lader (BQ25886 BAT, abs. max. 12 V) bei 3S ab (neues Netz CHG_BAT).
   - R88/R91: LTC4365-OV 8,75 V (2S) bzw. 13,52 V (3S). UV bleibt 5,50 V. In 2S-Stellung sperrt der LTC einen falsch gesteckten 3S-Akku.

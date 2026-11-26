@@ -19,7 +19,7 @@ SW2;58.208;20.788;0;Reset EN
 SW3;66.708;20.788;0;BOOT
 SW4;59.008;76.288;0;RUN/OFF
 U3;70.208;34.788;270;ESP32-S3, Antenne ragt rechts 6 mm über die Kante
-J12;10.408;11.628;90;ToF CH4 (Lötpads)
-J13;10.408;9.088;90;ToF CH5 (Lötpads)
+J12;12.948;11.628;90;ToF CH4 (Lötpads)
+J13;12.948;9.088;90;ToF CH5 (Lötpads)
 J14;35.208;78.488;90;ToF CH6 (Lötpads, Hinterkante)
 J15;18.208;62.488;90;ToF CH7 (Lötpads)

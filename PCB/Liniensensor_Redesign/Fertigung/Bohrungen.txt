@@ -1,5 +1,5 @@
 Drill report for Liniensensor.kicad_pcb
-Created on 2026-11-26T09:50:29
+Created on 2026-11-26 (R3.1, Lochanzahl aus neuer PTH.drl übernommen)
 
 Copper Layer Stackup:
     =============================================================
@@ -10,10 +10,10 @@ Copper Layer Stackup:
 Drill file 'Liniensensor-PTH.drl' contains
     plated through holes:
     =============================================================
-    T1  0.300mm  0.0118"  (11 holes))
+    T1  0.300mm  0.0118"  (20 holes))
     T2  0.800mm  0.0315"  (24 holes))
 
-    Total plated holes count 35
+    Total plated holes count 44
 
 
 Drill file 'Liniensensor-NPTH.drl' contains

@@ -1759,7 +1759,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_BJT:BCX56"
+		(symbol "Tumbler_Sensor:BCX56_ECB"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -1776,7 +1776,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Pins" "1=B 2=C 3=E"
+			(property "Sim.Pins" "1=E 2=C 3=B"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1814,7 +1814,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/BCP56_BCX56_BC56PA.pdf"
+			(property "Datasheet" "https://www.diodes.com/datasheet/download/BCX5616Q.pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1824,7 +1824,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "1A Ic, 80V Vce, NPN Medium Power Transistor, SOT-89"
+			(property "Description" "BCX56-16 NPN 80 V 1 A, SOT-89, Pinbelegung 1=E 2=C 3=B laut NXP/Diodes (KiCad-Standardsymbol BCX56 hat falsch B-C-E)"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1851,7 +1851,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "BCX56_0_1"
+			(symbol "BCX56_ECB_0_1"
 				(polyline
 					(pts
 						(xy -2.54 0) (xy 0.635 0)
@@ -1888,7 +1888,7 @@
 					)
 				)
 			)
-			(symbol "BCX56_1_1"
+			(symbol "BCX56_ECB_1_1"
 				(polyline
 					(pts
 						(xy 0.635 0.635) (xy 2.54 2.54)
@@ -1935,7 +1935,7 @@
 							)
 						)
 					)
-					(number "1"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1971,7 +1971,7 @@
 							)
 						)
 					)
-					(number "3"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4961,7 +4961,7 @@
 		(uuid "7f604bf6-447f-4767-98da-8476a05e7edc")
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BCX56")
+		(lib_id "Tumbler_Sensor:BCX56_ECB")
 		(at 40.64 185.42 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8087,7 +8087,7 @@
 		(uuid "1fc80ff7-6fdb-46c7-ac12-17f7585d0942")
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BCX56")
+		(lib_id "Tumbler_Sensor:BCX56_ECB")
 		(at 180.34 185.42 0)
 		(unit 1)
 		(exclude_from_sim no)

@@ -1,4 +1,6 @@
-# Tumbler-Liniensensor – Schaltung R2 / Layout R3
+# Tumbler-Liniensensor – Schaltung R2 / Layout R3.1
+
+**R3.1 (26.11.2026): Pinbelegung Q1/Q2 korrigiert.** Der BCX56 hat im SOT-89 **Pin 1 = Emitter, 2 = Kollektor, 3 = Basis** (NXP- und Diodes-Datenblatt). Das KiCad-Standardsymbol `Transistor_BJT:BCX56` ist fälschlich B-C-E belegt, dadurch lagen Basis und Emitter vertauscht auf dem Footprint (Sensor wäre ohne LED-Strom gewesen). Jetzt eigenes Symbol `Tumbler_Sensor:BCX56_ECB`; Q1/Q2 neu angeschlossen (Pad 1 → 47-Ω-Emitterwiderstand R1/R9, Pad 3 → Basisteiler). DRC 0, ERC nur die zwei bekannten Label-Hinweise, Schaltplan-Parität ohne Netzabweichung. Gerber/Bohrdaten neu.
 
 **Änderung R2/R3 (26.11.2026): Betrieb an 2S und 3S.** Die Hauptplatine Rev. 2.5 kann mit 2S (6,0–8,4 V) oder 3S (9,0–12,6 V, Spitzen bis 13,5 V) laufen. Der LED-Strom bleibt dank Stromsenke gleich, aber die Verlustleistung im Transistor steigt bei 3S auf bis ca. 180 mW. Das war für den BC817 (SOT-23, ca. 500 K/W) zu knapp. Deshalb:
 - Q1/Q2: **BC817-40 (SOT-23) → BCX56-16 (SOT-89)**, 80 V / 1 A, R_th(j-a) 250 K/W auf Minimal-Pad (125 K/W mit 15 × 15 mm Kupfer).

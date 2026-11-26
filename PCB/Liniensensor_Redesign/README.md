@@ -3,6 +3,8 @@
 Das gesamte ZIP entpacken und **Liniensensor.kicad_pro** in KiCad 9 oder neuer öffnen.
 Alle Unterordner zusammenlassen.
 
+**R3.1 (26.11.2026): Pinbelegung Q1/Q2 korrigiert.** Der BCX56 hat im SOT-89 **Pin 1 = Emitter, 2 = Kollektor, 3 = Basis** (NXP- und Diodes-Datenblatt). Das KiCad-Standardsymbol `Transistor_BJT:BCX56` ist fälschlich B-C-E belegt, dadurch lagen Basis und Emitter vertauscht auf dem Footprint (Sensor wäre ohne LED-Strom gewesen). Jetzt eigenes Symbol `Tumbler_Sensor:BCX56_ECB`; Q1/Q2 neu angeschlossen (Pad 1 → 47-Ω-Emitterwiderstand R1/R9, Pad 3 → Basisteiler). DRC 0, ERC nur die zwei bekannten Label-Hinweise, Schaltplan-Parität ohne Netzabweichung. Gerber/Bohrdaten neu.
+
 **R3 (26.11.2026):** Läuft an 2S **und** 3S (VBAT_SW 6,0–12,6 V, Spitzen 13,5 V) ohne Umbau. Q1/Q2 jetzt BCX56-16 (SOT-89) statt BC817-40, Basisteiler R2/R3/R7/R8 470 Ω statt 1 kΩ. Details und Rechnung: `Hinweise.md`. Gerber, Bohrdaten, Ansichten und `Mechanik/Liniensensor.step` sind auf R3 aktualisiert (KiCad 10).
 
 Noch nicht nachgezogen: `Montage_und_Layout.pdf` nennt als Versorgung noch „2S“ (Mechanik/Lochbild darin unverändert gültig). Der Unterordner `Liniensensor_Redesign/` ist eine ältere Kopie (Schaltung R1, BC817) und nicht der aktuelle Stand.
