@@ -26,3 +26,12 @@ build/
 
 # Dokumentation branch workspace
 Dokumentation/
+
+# KI-Notizen und KiCad-Reste (lokal)
+KI_Notizen.md
+*_Uebergabe*.md
+.claude/
+*-backups/
+*.lck
+*.kicad_prl
+fp-info-cache
