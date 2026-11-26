@@ -8,11 +8,14 @@
 \usepackage{standalone}
 \usepackage{HTBLA}
 \usepackage{multirow}
-\usepackage{array}
+\usepackage{array} 
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{colortbl}
 \usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{pdfpages}
 \usepackage{subcaption}
 \usepackage{caption}
 \usepackage{xargs}
@@ -25,7 +28,7 @@
 \usepackage{booktabs}
 \usepackage{lscape}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,arrows,positioning}
+\usetikzlibrary{shapes.geometric,arrows,positioning,calc}
 
 \makesavenoteenv{tabular}
 \makesavenoteenv{table}
@@ -80,14 +83,26 @@
 \usepackage[toc]{glossaries}
 \makeglossaries
 
+\newglossaryentry{adc}{name={ADC},description={Analog-Digital-Converter -- Analog-Digital-Umsetzer zur Digitalisierung von Sensorspannungen}}
+\newglossaryentry{bom}{name={BOM},description={Bill of Materials -- vollständige Stückliste aller elektronischen und mechanischen Komponenten}}
+\newglossaryentry{dfam}{name={DfAM},description={Design for Additive Manufacturing -- fertigungsgerechte Konstruktion für den 3D-Druck}}
 \newglossaryentry{dmu}{name={DMU},description={Digital Mock-Up -- rechnergestütztes digitales Versuchsmodell zur geometrischen und funktionalen Prüfung einer Baugruppe}}
+\newglossaryentry{drc}{name={DRC},description={Design Rule Check -- automatisierte geometrische Leiterplattenprüfung im ECAD-Werkzeug}}
+\newglossaryentry{ema}{name={EMA},description={Exponential Moving Average -- exponentiell gewichteter gleitender Mittelwertfilter}}
+\newglossaryentry{erc}{name={ERC},description={Electrical Rules Check -- elektrische Plausibilitätsprüfung eines Schaltplans}}
 \newglossaryentry{fdm}{name={FDM},description={Fused Deposition Modeling -- additives Fertigungsverfahren durch schichtweises Aufschmelzen eines Thermoplasts}}
+\newglossaryentry{fov}{name={FoV},description={Field of View -- optischer Öffnungswinkel bzw. Sichtkegel eines Distanzsensors}}
+\newglossaryentry{fsm}{name={FSM},description={Finite State Machine -- endlicher Zustandsautomat zur deterministischen Ablaufsteuerung}}
+\newglossaryentry{i2c}{name={I\textsuperscript{2}C},description={Inter-Integrated Circuit -- synchroner, serieller Zweidraht-Datenbus (SDA/SCL) mit Open-Drain-Leitungen}}
 \newglossaryentry{imu}{name={IMU},description={Inertial Measurement Unit -- inertiale Messeinheit aus Beschleunigungs- und Drehratensensor}}
 \newglossaryentry{lidar}{name={LiDAR},description={Light Detection and Ranging -- optisches Verfahren zur Abstands- und Geschwindigkeitsmessung}}
-\newglossaryentry{tof}{name={ToF},description={Time of Flight -- Laufzeitmessung eines Lichtimpulses zur Distanzbestimmung}}
 \newglossaryentry{pcb}{name={PCB},description={Printed Circuit Board -- gedruckte Leiterplatte}}
+\newglossaryentry{pid}{name={PID},description={Proportional-Integral-Derivative -- klassischer linearer Regelalgorithmus aus P-, I- und D-Anteil}}
 \newglossaryentry{pwm}{name={PWM},description={Pulsweitenmodulation -- Modulationsverfahren zur Leistungs- und Drehzahlregelung}}
+\newglossaryentry{rtos}{name={RTOS},description={Real-Time Operating System -- Echtzeitbetriebssystem (hier FreeRTOS) für deterministisches Multitasking}}
 \newglossaryentry{ssot}{name={SSOT},description={Single Source of Truth -- eindeutige, zentrale Datenbasis für Konstruktionsparameter}}
+\newglossaryentry{tof}{name={ToF},description={Time of Flight -- Laufzeitmessung eines Lichtimpulses zur Distanzbestimmung}}
+\newglossaryentry{xshut}{name={XSHUT},description={Active-Low Shutdown-Pin der VL53L0X/VL53L1X-Sensoren zur sequenziellen Adressvergabe}}
 
 \usepackage{hyperref}
 \usepackage[figure]{hypcap}
@@ -133,6 +148,8 @@
 \tableofcontents
 \listoffigures
 \listoftables
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+\lstlistoflistings
 
 \mainmatter
 \nonzeroparskip

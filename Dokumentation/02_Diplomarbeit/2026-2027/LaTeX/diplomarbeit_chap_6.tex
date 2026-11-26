@@ -1,46 +1,80 @@
 \chapterauthor{Adem Merdzic, Rami Muarrawi, Christopher Schieszler}
 \chapter{Inbetriebnahme, Systemvalidierung und Fazit}
-\label{chap:validierung_fazit}
+\label{chap:validierung}
 
-\section{Digitale CAD- und Kollisionsvalidierung (DMU-Audit)}
-\label{sec:dmu_audit}
+Eine systematische Verifikation trennt im HTL-Labor klar zwischen den bereits digital und schaltungstechnisch nachgewiesenen Eigenschaften (CAD-/DMU-Audit, ERC/DRC, Netzlisten- und Software-Checks) und den abschließenden realen Messungen am vollständig gedruckten und bestückten Fahrzeug. Alle noch offenen Labormesswerte und Hardwarefotos sind in diesem Kapitel gezielt als Arbeitsaufgaben (\texttt{[TODO]}) markiert, sodass keine Messergebnisse vorweggenommen werden.
 
-Vor der physischen Fertigung des Unibody-Chassis wurde das gesamte Fahrzeug in Revision~v9.0 einer automatisierten, paarweisen BRep-Volumenkollisionsprüfung über alle \num{121} Einzelkörper (Chassis, Hauptplatine mit sämtlichen SMD-Bauteilen und Steckverbindern, Liniensensor inkl. \emph{CNY70}-Array, 8x \emph{VL53L0/1XV2}-Platinen, 16x M2x6-Schrauben, 4x M3x8-Hauptplatinenschrauben mit Messing-Gewindeeinsätzen, 4x M3x14-Liniensensorschrauben mit Muttern, 8x M4x10-Motorschrauben, Motoren, Räder, 2S-Akkupack inkl. XT30/Balancer sowie 9x 24-mm-Steckerdummies und 3D-Kabelbaum) unterzogen.
+% ==============================================================================
+\section{Automatisierte digitale Verifikation (CAD, DMU \& ECAD)}
+\label{sec:digital_audit}
+% ==============================================================================
+Vor der physischen Fertigung der Leiterplatten und des 3D-Chassis wurden sämtliche Entwürfe automatisierten Prüfungen unterzogen. Tabelle~\ref{tab:audit_matrix} dokumentiert die erreichten Prüfwerte der finalen Stände (\emph{Chassis~v10.0 Print-Ready}, \emph{Liniensensor R2} und \emph{Hauptplatine Stufe~1}).
 
 \begin{table}[htbp]
-  \centering
-  \caption{Zusammenfassung der digitalen Konstruktions- und Kollisionsprüfung (Revision~v9.0).}
-  \label{tab:dmu_ergebnis}
-  \begin{tabular}{@{}lll@{}}
-    \toprule
-    \textbf{Prüfkriterium} & \textbf{Zielvorgabe} & \textbf{Ergebnis (Rev.~v9.0)} \\
-    \midrule
-    BRep-Kollisionsprüfung (121 Körper) & \SI{0.000}{\milli\metre\cubed} Kollision & 0 Kollisionen (\SI{0.000}{\milli\metre\cubed}) \\
-    Chassis-Festkörperstruktur & Einteiliger Monolith & 1 Solid (\SI{218.8}{\centi\metre\cubed}, ca.~\SI{271}{\gram}) \\
-    Mindestwandstärke (Base / Wand / Pod-Dach) & $\ge \SI{2.5}{\milli\metre}$ & \SI{4.0}{\milli\metre} / \SI{3.5}{\milli\metre} / \SIrange{3.85}{4.30}{\milli\metre} \\
-    Restwandstärke um Schraubendome & $\ge \SI{2.0}{\milli\metre}$ & \SI{3.30}{\milli\metre} (M3) bzw. $\ge \SI{2.02}{\milli\metre}$ (M2) \\
-    Akkufach-Toleranz ($72\times 39{,}5\times 19{,}5\,\si{\milli\metre}$) & $\ge +\SI{1.5}{\milli\metre}$ umlaufend & $+\SI{2.0}{\milli\metre}$ ($X,Z$) / $+\SI{3.0}{\milli\metre}$ ($Y$) \\
-    Crash-Sicherheitsfaktor ($\SI{5}{\kilo\metre\per\hour}$ / $\SI{9}{\kilo\metre\per\hour}$) & $\text{SF} \ge 3{,}0$ & $\text{SF} = 37{,}0$ / $\text{SF} = 11{,}4$ \\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Ergebnisse der automatisierten CAD-, DfAM- und ECAD-Prüfungen vor der Fertigung.}
+\label{tab:audit_matrix}
+\begin{tabular}{@{}p{4.6cm}p{3.6cm}p{4.1cm}c@{}}
+\toprule
+\textbf{Prüfkriterium} & \textbf{Soll-Vorgabe} & \textbf{Nachgewiesener Ist-Wert} & \textbf{Status} \\
+\midrule
+BRep-Volumenkollision (127 Solids) & \qty{0,000}{\milli\meter\cubed} & 0 Kollisionen (\qty{0,000}{\milli\meter\cubed}) & \textbf{PASS} \\
+25°-FoV-Freiheit (8$\times$ VL53L0/1XV2) & \qty{0}{\percent} Verdeckung & \qty{0,000}{\milli\meter\cubed} ab Chip-Fläche & \textbf{PASS} \\
+Montagepfade (8$\times$ Sensor + Stecker) & \qty{0,000}{\milli\meter\cubed} Blockade & \qty{0,000}{\milli\meter\cubed} (vorne \& hinten) & \textbf{PASS} \\
+Montagepfad Ein-/Aus-Schalter (-Z) & 100\,\% offen nach oben & \qty{0,000}{\milli\meter\cubed} (C-Kanal + Clip) & \textbf{PASS} \\
+Werkzeugzugang (32$\times$ M2/M3/M4) & 100\,\% frei erreichbar & \qty{0,000}{\milli\meter\cubed} Prüfzylinder & \textbf{PASS} \\
+STL-Netzintegrität (Bambu Lab P1S) & Watertight / 1 Solid & \texttt{is\_watertight=True}, 54.556~Tri. & \textbf{PASS} \\
+Liniensensor-PCB R2 (KiCad 9.0.9) & 0 ERC / 0 DRC & 0 ERC, 0 DRC, 37 Bauteile & \textbf{PASS} \\
+Hauptplatine Stufe 1 (Netzliste) & 51 Signal-Checks & 51/51 \texttt{PASS} (Stufe 2 offen) & \textbf{PASS} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
-\section{Hardware-Inbetriebnahme und Messreihen}
-\label{sec:inbetriebnahme_tests}
+% ==============================================================================
+\section{Strukturierter Labor-Inbetriebnahme- und Testplan}
+\label{sec:testplan}
+% ==============================================================================
+Die schrittweise Inbetriebnahme der realen Hardware erfolgt nach einem fünfstufigen Laborprotokoll, um Kurzschlüsse oder Schäden an Mikrocontroller und Sensoren auszuschließen:
 
-Nach der Bestückung der Haupt- und Liniensensor-Platine sowie dem 3D-Druck des Gehäuses folgen die stufenweisen Hardware- und Systemtests am realen Fahrzeug:
 \begin{enumerate}
-  \item \textbf{Stromversorgungstest:} Überprüfung der Leerlauf- und Lastspannungen (\SI{3.3}{\volt} und \SI{5.0}{\volt}) sowie Stromaufnahme im Ruhezustand.
-  \item \textbf{Kommunikationstest:} USB-C-Verbindung zum \emph{ESP32-S3}, Erkennung aller acht I\textsuperscript{2}C-Adressen der \gls{lidar}-Sensoren und Auslesen der \emph{LSM6DSV}-Rohdaten.
-  \item \textbf{Sensor-Genauigkeitstest:} Vergleich der gefilterten \emph{VL53L0/1XV2}-Distanzen mit Referenzabständen im Nahbereich (\SIrange{50}{1000}{\milli\metre}).
-  \item \textbf{Einparkversuch:} Reproduzierbarkeit und Kollisionsfreiheit des autonomen Einparkmanövers in definierten Testlücken.
+  \item \textbf{Test 1 -- Spannungsversorgung \& Stromaufnahme (Power-On-Test):} Erste Bestromung der Liniensensor-Platine und Hauptplatine über ein strombegrenztes Labornetzteil (\qty{7,4}{\volt}, Strombegrenzung \qty{100}{\milli\ampere} für Sensorplatine bzw. \qty{500}{\milli\ampere} für Hauptplatine ohne Motoren). Prüfung der Spannungen \qty{3,3}{\volt} ($\pm 5\,\%$), \qty{5,0}{\volt} sowie der Spannung an den Emitterwiderständen \texttt{R1}/\texttt{R9} ($U_{R1,R9} \approx \qtyrange{0,90}{1,00}{\volt} \Rightarrow I_{\mathrm{LED}} \approx \qtyrange{19}{21}{\milli\ampere}$).
+  \item \textbf{Test 2 -- I\textsuperscript{2}C-Bus-Scan, XSHUT-Sequenz \& Oszilloskop-Pegeltest:} Überprüfung der Adresszuweisung \texttt{0x30}--\texttt{0x37} über die serielle Konsole sowie Messung der \texttt{SDA}/\texttt{SCL}-Flankenanstiegszeit $t_r$ und des Low-Pegels $V_{OL}$ bei aktivem 8-Sensor-Betrieb am Oszilloskop.
+  \item \textbf{Test 3 -- Optische Charakterisierung (CNY70 \& VL53L0X):} Aufnahme der realen Kanalspannungen \texttt{LS1}--\texttt{LS6} über weißem Untergrund und schwarzem Isolierband bei \qty{2,0}{\milli\meter} Bodenabstand sowie Distanz-Referenzmessung der LiDAR-Sensoren gegen eine matte Zielplatte bei \qtylist{100;200;400;800}{\milli\meter}.
+  \item \textbf{Test 4 -- Antriebs-Sprungantwort \& PID-Abstimmung:} Messung der realen Sprungantwort beider \emph{GA37-520}-Motoren auf $v_{\mathrm{soll}} = \qty{0,5}{\meter\per\second}$ mittels CSV-Telemetrie und Feinabstimmung von $K_p, K_i, K_d$ direkt auf dem Laborboden.
+  \item \textbf{Test 5 -- Gesamtsystem-Parkversuche:} Durchführung von mindestens zehn reproduzierbaren autonomen Längseinpark-Versuchen bei unterschiedlichen Parklückenlängen (\qtylist{420;480;550}{\milli\meter}) und Protokollierung der Erfolgsquote sowie der finalen Positionierabweichung.
 \end{enumerate}
 
-\todo[inline]{[TODO: Gemessene Spannungs-/Oszilloskopwerte, I2C-Scan-Protokolle, Sensor-Fehlerkurven, reale Fotos der bestückten Platinen sowie Ergebnisse der Einparkversuche nach Durchführung im Labor einfügen.]}
+\begin{table}[htbp]
+\centering
+\caption{Vorbereitete Messwert-Tabelle für die Labor-Inbetriebnahme (Tests 1--5).}
+\label{tab:messwerte_labor}
+\begin{tabular}{@{}p{1.2cm}p{4.8cm}p{3.2cm}p{4.6cm}@{}}
+\toprule
+\textbf{Test} & \textbf{Messgröße} & \textbf{Sollbereich} & \textbf{Gemessener Laborwert} \\
+\midrule
+T1a & Versorgung \texttt{+3.3V} unter Last & \qtyrange{3,14}{3,46}{\volt} & \emph{[TODO: Multimeter-Wert]} \\
+T1b & Strangstrom $I_{\mathrm{LED}}$ an \texttt{R1} / \texttt{R9} & \qtyrange{18,0}{22,0}{\milli\ampere} & \emph{[TODO: $U_R / \qty{47}{\ohm}$]} \\
+T2a & Erkannte I\textsuperscript{2}C-Adressen (8$\times$ LiDAR) & \texttt{0x30}--\texttt{0x37} & \emph{[TODO: Konsolen-Log]} \\
+T2b & I\textsuperscript{2}C-Anstiegszeit $t_r$ / Low-Pegel $V_{OL}$ & $< \qty{300}{\nano\second}$ / $< \qty{0,4}{\volt}$ & \emph{[TODO: Oszilloskop]} \\
+T3a & CNY70 Weiß- vs. Schwarzwert ($U_{\mathrm{LS}}$) & $< \qty{0,8}{\volt}$ / $\approx \qty{2,72}{\volt}$ & \emph{[TODO: 6-Kanal-Mittel]} \\
+T3b & LiDAR-Fehler bei \qty{200}{\milli\meter} / \qty{500}{\milli\meter} & $< \pm \qty{10}{\milli\meter}$ & \emph{[TODO: Referenzmessung]} \\
+T4 & PID-Ausregelzeit $t_{95}$ / Überschwingen & $< \qty{0,4}{\second}$ / $< \qty{10}{\percent}$ & \emph{[TODO: Telemetrie-Plot]} \\
+T5 & Erfolgsquote Längseinparken ($n = 10$) & $\ge 8/10$ kollisionsfrei & \emph{[TODO: Parcours-Test]} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\section{Fazit und Ausblick}
+\todo[inline]{[TODO: Nach Fertigstellung des realen 3D-Drucks (Bambu Lab P1S) und Bestückung der Platinen hier die realen Laborwerte in Tabelle~\ref{tab:messwerte_labor} eintragen sowie 2--3 Fotos des aufgebauten Fahrzeugs und einen Oszilloskop-Screenshot der I2C-Signale ergänzen.]}
+
+% ==============================================================================
+\section{Anforderungsabgleich, kritische Reflexion und Ausblick}
 \label{sec:fazit}
+% ==============================================================================
+Der Abgleich mit dem Lasten- und Pflichtenheft aus Abschnitt~\ref{sec:anforderungen} zeigt, dass sämtliche konstruktiven, schaltungstechnischen und architektonischen Kernziele (\texttt{REQ-01} bis \texttt{REQ-16}) auf Design- und Verifikationsebene vollständig erfüllt wurden. Die größten technischen Lerngewinne lagen im konsequenten Zusammenspiel aus ECAD, parametrischem CAD und Embedded-Software:
+\begin{itemize}
+  \item Erst durch die visuelle Auswertung von Horizontalschnitten und automatisierten Montagepfad-Simulationen wurden reale Fertigungs- und Montagefallen (blockierende Heck-Querwand, nicht einschiebbarer Hauptschalter, eingeschnürte Sensor-Laschen) noch vor dem ersten 3D-Druck erkannt und in Revision~v10.0 beseitigt.
+  \item Die sorgfältige rechnerische Auslegung der Liniensensor-Platine (Thévenin-Stromsenke, \qty{2,72}{\volt}-Ausgangsteiler unterhalb der ESP32-S3-ADC1-Grenze, \qty{1,93}{\kilo\hertz}-RC-Tiefpass) vermeidet typische Störungsprobleme im Laborbetrieb von vornherein.
+  \item Die klare Aufteilung der Firmware in FreeRTOS-Tasks auf beiden Kernen des ESP32-S3 schafft eine saubere Echtzeitbasis, die auch zukünftige Erweiterungen problemlos trägt.
+\end{itemize}
 
-Mit dem Abschluss des Elektronik-Redesigns und des mechanischen Unibody-Chassis (Revision~v9.0) wurden die zentralen Schwachstellen der Vorgängerplattform systematisch behoben. Durch die direkte Integration von Motortreibern und \gls{imu} auf die Hauptplatine entfallen fehleranfällige Steckmodule, während die acht geschützt verbauten \gls{lidar}-Sensoren eine lückenlose 360\textdegree-Umfelderfassung ermöglichen. Die digitale BRep-Validierung bestätigt die vollständige Kollisionsfreiheit und Montierbarkeit aller 121~Einzelkomponenten.
-
-Nach Abschluss der laufenden Software-Integration und der praktischen Einparktests bietet die Plattform eine stabile Grundlage für weiterführende Projekte im Unterricht -- etwa für erweiterte Pfadplanungsalgorithmen (z.\,B. Rückwärts- und Querparken bei schrägen Hindernissen) oder die Einbindung von Funk-Telemetrie zur Live-Visualisierung der LiDAR-Umfeldkarte.
+Als Ausblick für nachfolgende Jahrgänge bieten sich der Abschluss von \emph{Stufe~2} der Hauptplatine (integrierte 2S-USB-C-Ladeelektronik mit BMS-Balancing), der Austausch der \emph{VL53L0X}-Front-/Seitenmodule gegen pinkompatible \emph{VL53L1X}-Sensoren für größere Reichweiten bis \qty{4}{\meter} sowie die Anbindung einer drahtlosen Live-Telemetrie über das integrierte WLAN des ESP32-S3 zur Visualisierung der 2D-Umfeldkarte im Browser an.

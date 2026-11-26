@@ -1,64 +1,222 @@
 \chapterauthor{Adem Merdzic}
-\chapter{Robotik-Software und Regelungstechnik}
-\label{chap:software_regelung}
+\chapter{Firmware-Architektur, Regelungstechnik und autonomes Einparken}
+\label{chap:software}
 
-\section{Firmware-Architektur auf dem ESP32-S3}
-\label{sec:firmware_architektur}
+Die Software des \emph{Tumbler~v3.0} vereint zeitkritische Aufgaben mit stark unterschiedlichen Abtastraten: Während die Motor-PWM-Erzeugung und Encoder-Auswertung in Hardware im Mikrosekundenbereich laufen, erfordert die kaskadierte Drehzahl- und Linienregelung eine deterministische Zykluszeit von \qty{10}{\milli\second} (\qty{100}{\hertz}), und die I\textsuperscript{2}C-Abfrage der acht LiDAR-Sensoren arbeitet mit \qtyrange{20}{40}{\milli\second} Zykluszeit. Dieses Kapitel dokumentiert die FreeRTOS-Softwarearchitektur unter ESP-IDF, die Odometrie- und IMU-Fusion, den Entwurf der diskreten PID-Regler sowie den Zustandsautomaten für das autonome Längseinparken.
 
-Die Steuerungssoftware baut auf der bestehenden \emph{ESP-IDF}- bzw. \emph{RtEnv}-Projektstruktur der HTL~BULME auf \cite{Kloeckl2026}, wird jedoch vollständig an die geänderte Hardware der Hauptplatine (\emph{ESP32-S3-WROOM-1}, integrierte \emph{TB67H450FNG}-Treiber, \emph{LSM6DSV}-IMU) sowie das 8-fach-\gls{lidar}-Array angepasst.
+% ==============================================================================
+\section{Software-Architektur unter ESP-IDF und FreeRTOS}
+\label{sec:freertos_arch}
+% ==============================================================================
+Als Entwicklungsumgebung wurde bewusst das offizielle \emph{Espressif IoT Development Framework (ESP-IDF)} in C++ gewählt \cite{EspressifESPIDF}. Gegenüber dem Arduino-Ökosystem bietet ESP-IDF direkten Zugriff auf die Hardware-Peripherie des ESP32-S3 (insbesondere die \emph{PCNT}-Impulszähler für die Quadratur-Encoder, \emph{MCPWM}/\emph{LEDC} für hochfrequente \qty{20}{\kilo\hertz}-Motor-PWM sowie die kalibrierte \texttt{esp\_adc}-Treiber-API) und erlaubt eine saubere Echtzeit-Steuerung über das integrierte SMP-\emph{FreeRTOS}.
 
-Um zeitkritische Regelungsaufgaben (Motor-\gls{pwm}, Encoder-Auswertung, IMU-Integration) sauber von der langsameren Umfelderfassung und Ablaufsteuerung zu entkoppeln, gliedert sich die Firmware unter FreeRTOS in modulare Tasks:
+\subsection{Task-Aufteilung, Prioritäten und Synchronisation}
+Um deterministische Regelzyklen zu garantieren, werden langsame, blockierende I\textsuperscript{2}C-Transaktionen strikt von der schnellen Antriebsregelung getrennt. Der ESP32-S3 stellt dafür zwei unabhängige Xtensa-LX7-Rechenkerne (\qty{240}{\mega\hertz}) bereit. Tabelle~\ref{tab:freertos_tasks} fasst die Aufgabenverteilung, Prioritäten, Perioden und Core-Zuordnungen zusammen.
+
+\begin{table}[htbp]
+\centering
+\caption{FreeRTOS-Task-Architektur der Tumbler-v3.0-Firmware auf dem Dual-Core ESP32-S3.}
+\label{tab:freertos_tasks}
+\begin{tabular}{@{}p{2.9cm}cccc p{4.6cm}@{}}
+\toprule
+\textbf{Task-Name} & \textbf{Core} & \textbf{Prio} & \textbf{Periode} & \textbf{Stack} & \textbf{Aufgabe / Schnittstelle} \\
+\midrule
+\texttt{ControlTask} & 1 & 6 & \qty{10}{\milli\second} & \qty{4}{\kibi\byte} & Encoder-PCNT, Odometrie, ADC1-Linie, PID-Regler, PWM-Ausgabe \\
+\texttt{SafetyTask} & 1 & 7 & \qty{10}{\milli\second} & \qty{2}{\kibi\byte} & Not-Aus bei $d_{\min} < \qty{60}{\milli\meter}$, Timeout-Watchdog, Akkuspannung \\
+\texttt{LidarImuTask} & 0 & 5 & \qty{40}{\milli\second} & \qty{4}{\kibi\byte} & I\textsuperscript{2}C-Abfrage 8$\times$ VL53L0X + LSM6DSV, Median-/EMA-Filter \\
+\texttt{ParkingFsmTask} & 0 & 4 & \qty{20}{\milli\second} & \qty{4}{\kibi\byte} & Parklückensuche, Einpark-Zustandsautomat, Sollwertvorgabe \\
+\texttt{TelemetryTask} & 0 & 2 & \qty{100}{\milli\second} & \qty{3}{\kibi\byte} & Serielle USB-C-Diagnose (CSV-Log) für Labor-Tuning \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Der gemeinsame Zugriff auf den physikalischen I\textsuperscript{2}C-Bus (\texttt{I2C\_NUM\_0}) wird über einen FreeRTOS-Mutex (\texttt{xSemaphoreTake}) geschützt. Die Übergabe der gefilterten Sensordaten an \texttt{ControlTask} und \texttt{ParkingFsmTask} erfolgt über ein geschütztes \texttt{VehicleState\_t}-Struct (atomare Kopie bzw. Spinlock), sodass die \qty{100}{\hertz}-Regelschleife niemals auf einen langsamen I\textsuperscript{2}C-Transfer warten muss. Durch \texttt{vTaskDelayUntil()} statt \texttt{vTaskDelay()} wird sichergestellt, dass die Abtastzeit $T_s = \qty{10}{\milli\second}$ frei von kumulativem Jitter bleibt.
+
+% ==============================================================================
+\section{Rad-Odometrie und Gierwinkel-Sensorfusion}
+\label{sec:odometrie}
+% ==============================================================================
+In jedem Zyklus des \texttt{ControlTask} ($T_s = \qty{10}{\milli\second}$) liest die Firmware die aufgelaufenen Impulsdifferenzen $\Delta N_L$ und $\Delta N_R$ aus beiden \emph{PCNT}-Hardwarezählern aus. Mit der effektiven Impulszahl pro Radumdrehung $N_{\mathrm{rev}}$ (inklusive Getriebeübersetzung und 4-fach-Flankenauswertung) und dem Raddurchmesser $d_R = \qty{66,0}{\milli\meter}$ ergeben sich die Teilwege beider Räder:
+\begin{equation}
+  \Delta s_L = \Delta N_L \cdot \frac{\pi \cdot d_R}{N_{\mathrm{rev}}}, \qquad
+  \Delta s_R = \Delta N_R \cdot \frac{\pi \cdot d_R}{N_{\mathrm{rev}}}
+  \label{eq:radwege}
+\end{equation}
+Daraus folgen die mittlere Wegänderung $\Delta s = (\Delta s_R + \Delta s_L)/2$ und die reine Encoder-Winkeländerung $\Delta \theta_{\mathrm{Enc}} = (\Delta s_R - \Delta s_L)/b$ mit der Spurweite $b = \qty{157,0}{\milli\meter}$. Um Radschlupf bei engen Drehungen auszugleichen, wird $\Delta \theta_{\mathrm{Enc}}$ mit der gemessenen Drehrate $\omega_{z,\mathrm{Gyro}}$ der \emph{LSM6DSV}-IMU über ein Komplementärfilter (Gewichtung $\gamma = 0{,}85$) fusioniert:
+\begin{equation}
+  \Delta \theta[k] = \gamma \cdot (\omega_{z,\mathrm{Gyro}}[k] - b_{\omega_z}) \cdot T_s + (1 - \gamma) \cdot \Delta \theta_{\mathrm{Enc}}[k]
+  \label{eq:komplementaer}
+\end{equation}
+Die Fahrzeugpose $(x[k], y[k], \theta[k])$ wird anschließend nach der numerisch genaueren Mittelpunktsregel (Runge-Kutta 2.~Ordnung) fortgeschrieben \cite{SiegwartRobotik}:
+\begin{align}
+  x[k] &= x[k-1] + \Delta s[k] \cdot \cos\!\left(\theta[k-1] + \frac{\Delta \theta[k]}{2}\right) \label{eq:odo_x} \\
+  y[k] &= y[k-1] + \Delta s[k] \cdot \sin\!\left(\theta[k-1] + \frac{\Delta \theta[k]}{2}\right) \label{eq:odo_y} \\
+  \theta[k] &= \theta[k-1] + \Delta \theta[k] \label{eq:odo_theta}
+\end{align}
+
+% ==============================================================================
+\section{Kaskadierte diskrete PID-Regelung mit Anti-Windup}
+\label{sec:pid_regelung}
+% ==============================================================================
+Da die beiden DC-Getriebemotoren fertigungsbedingt leicht unterschiedliche Innenwiderstände und Reibmomente aufweisen und die Akkuspannung zwischen \qty{8,4}{\volt} und \qty{6,4}{\volt} absinkt, würde eine reine PWM-Steuerung ohne Rückführung weder einen exakten Geradeauslauf noch reproduzierbare Einparkradien liefern.
+
+\subsection{Kaskadenstruktur}
+Die Regelung ist daher als zweistufige Kaskade aufgebaut (Abbildung~\ref{fig:pid_kaskade}):
 \begin{itemize}
-  \item \textbf{Sensor-Task:} Zyklisches Auslesen der acht \emph{VL53L0/1XV2}-Sensoren, der \gls{imu} (\emph{LSM6DSV}) sowie bei Bedarf des Liniensensors (\emph{CNY70}-Array).
-  \item \textbf{Regelungs-Task:} Berechnung der Soll-/Ist-Drehzahlen und des Gierwinkels $\psi(t)$ sowie Ausgabe der \gls{pwm}-Tastverhältnisse an \texttt{U6} und \texttt{U7}.
-  \item \textbf{Steuerungs-Task (Zustandsautomat):} Auswertung der Parklückenkandidaten und Koordination der einzelnen Fahrphasen.
-  \item \textbf{Telemetrie-Task:} Übertragung von Zustands- und Messdaten über USB-C bzw. \emph{SvVis} zur Diagnose \cite{Kloeckl2026}.
+  \item \textbf{Äußerer Regelkreis (Kurs- bzw. Linienregler):} Berechnet aus der Linienablage $e_{\mathrm{Linie}}$ (im Spurfolgemodus) bzw. aus der Winkelabweichung $e_\theta = \theta_{\mathrm{soll}} - \theta$ (im Einparkmodus) eine korrigierende Soll-Drehrate $\omega_{\mathrm{soll}}$. Über die inverse Differenzialkinematik entstehen daraus die Sollgeschwindigkeiten beider Räder:
+  \begin{equation}
+    v_{L,\mathrm{soll}} = v_{\mathrm{soll}} - \frac{b}{2} \cdot \omega_{\mathrm{soll}}, \qquad
+    v_{R,\mathrm{soll}} = v_{\mathrm{soll}} + \frac{b}{2} \cdot \omega_{\mathrm{soll}}
+    \label{eq:inv_kinematik}
+  \end{equation}
+  \item \textbf{Innerer Regelkreis (Rad-Drehzahlregler):} Zwei identische, unabhängige diskrete PID-Regler regeln die gemessenen Radgeschwindigkeiten $v_L = \Delta s_L / T_s$ und $v_R = \Delta s_R / T_s$ bei \qty{100}{\hertz} auf ihre jeweiligen Sollwerte und geben die normierten PWM-Tastgrade $u_L, u_R \in [-1, +1]$ an die H-Brücken aus.
 \end{itemize}
 
-\todo[inline]{[TODO: Konkrete Task-Prioritäten, Zykluszeiten (ms) und GPIO-Zuordnungen aus der finalen ESP-IDF-Konfiguration nachtragen.]}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=0.8cm and 0.9cm,
+  block/.style={rectangle, draw=black!80, fill=blue!7, thick, minimum height=0.95cm, minimum width=2.2cm, align=center, rounded corners=2pt, font=\footnotesize},
+  sum/.style={circle, draw=black!80, thick, inner sep=1.5pt, font=\scriptsize},
+  arrow/.style={->, >=stealth, thick}
+]
+  \node[sum] (s1) {$\Sigma$};
+  \node[block, right=0.7cm of s1] (outer) {Kurs-/Linien-\\Regler (PD)};
+  \node[block, right=0.7cm of outer] (kin) {Inverse\\Kinematik};
+  \node[sum, right=0.7cm of kin] (s2) {$\Sigma$};
+  \node[block, right=0.7cm of s2] (inner) {Rad-PID\\(L/R, \qty{100}{\hertz})};
+  \node[block, fill=gray!15, right=0.7cm of inner] (plant) {H-Brücke\\\& Motor};
 
-\section{Zustandsautomat für das autonome Einparken}
-\label{sec:zustandsautomat}
+  \draw[arrow] ($(s1.west)+(-0.9,0)$) -- node[above, font=\scriptsize] {$e_{\mathrm{Linie}} / \theta_{\mathrm{soll}}$} (s1);
+  \draw[arrow] (s1) -- (outer);
+  \draw[arrow] (outer) -- node[above, font=\scriptsize] {$\omega_{\mathrm{soll}}$} (kin);
+  \draw[arrow] (kin) -- node[above, font=\scriptsize] {$v_{L,R,\mathrm{soll}}$} (s2);
+  \draw[arrow] (s2) -- (inner);
+  \draw[arrow] (inner) -- node[above, font=\scriptsize] {$u_{\mathrm{PWM}}$} (plant);
+  \draw[arrow] (plant.east) -- ++(0.6,0) node[right, font=\scriptsize] {$v, \theta$};
+  \draw[arrow] ($(plant.east)+(0.3,0)$) -- ++(0,-1.25) -| node[near end, right, font=\scriptsize] {$-v_{L,R}$} (s2.south);
+  \draw[arrow] ($(plant.east)+(0.5,0)$) -- ++(0,-1.85) -| node[near end, right, font=\scriptsize] {$-\theta$} (s1.south);
+\end{tikzpicture}
+\caption{Blockschaltbild der kaskadierten Kurs- und Rad-Drehzahlregelung.}
+\label{fig:pid_kaskade}
+\end{figure}
 
-Der gesamte Einparkvorgang wird über einen deterministischen endlichen Zustandsautomaten (Finite State Machine, FSM) abgebildet, sodass zu jedem Zeitpunkt ein klar definiertes Fahrverhalten inklusive sicherer Abbruchbedingungen bei unerwarteten Hindernissen vorliegt. Abbildung~\ref{fig:fsm_einparken} zeigt den grundlegenden Ablauf.
+\subsection{Diskretisierung und Clamping Anti-Windup}
+Für die digitale Umsetzung mit fester Abtastzeit $T_s = \qty{0,01}{\second}$ wird das kontinuierliche PID-Gesetz mittels Rückwärts-Rechteckintegration und Rückwärts-Differenzenquotient diskretisiert \cite{LunzeRegelungstechnik}. Um unzulässige Stellgrößen-Spitzen bei Sollwertsprüngen (\emph{Derivative Kick}) zu vermeiden, wird der D-Anteil direkt aus der negativen Änderung des Messwerts berechnet (\emph{Derivative on Measurement}):
+\begin{equation}
+  u_{\mathrm{raw}}[k] = K_p \cdot e[k] + K_i \cdot I[k] - K_d \cdot \frac{y[k] - y[k-1]}{T_s}
+  \label{eq:pid_diskret}
+\end{equation}
+Da der PWM-Tastgrad physikalisch auf $[-1, +1]$ (\qty{\pm 100}{\percent}) begrenzt ist, würde ein unbegrenzter Integrator $I[k]$ beim Anfahren oder bei kurzzeitigem Blockieren eines Rades stark aufsummieren (\emph{Integrator-Windup}) und anschließend zu massivem Überschwingen führen. Durch \emph{Clamping Anti-Windup} wird der Integrator im Schritt $k$ nur dann aktualisiert, wenn sich die Stellgröße nicht in der Sättigung befindet oder der Fehler $e[k]$ dem Sättigungsvorzeichen entgegenwirkt. Abbildung~\ref{fig:pid_sim} zeigt den deutlichen Unterschied in der simulierten Sprungantwort auf $v_{\mathrm{soll}} = \qty{0,60}{\meter\per\second}$ (mit geschätzter Motor-Zeitkonstante $\tau_m = \qty{0,14}{\second}$), und Listing~\ref{lst:pid_cpp} dokumentiert die zugehörige C++-Klasse.
 
 \begin{figure}[htbp]
   \centering
-  \begin{tikzpicture}[
-    node distance=0.85cm and 1.2cm,
-    state/.style={rectangle, draw=black!80, fill=blue!5, rounded corners=3pt, minimum width=3.4cm, minimum height=0.8cm, align=center, font=\small},
-    err/.style={rectangle, draw=red!75!black, fill=red!6, rounded corners=3pt, minimum width=3.0cm, minimum height=0.8cm, align=center, font=\small},
-    arrow/.style={->, >=stealth, thick}
-  ]
-    \node[state] (init) {\textbf{IDLE / INIT}\\Sensoren \& IMU kalibrieren};
-    \node[state, below=of init] (scan) {\textbf{SCAN}\\Vorbeifahrt \& Lückensuche};
-    \node[state, below=of scan] (align) {\textbf{ALIGN}\\Positionierung vor Lücke};
-    \node[state, below=of align] (park) {\textbf{PARK\_MANEUVER}\\Geregeltes Einparken};
-    \node[state, below=of park] (done) {\textbf{PARKED}\\Stopp \& Status-LED grün};
-    \node[err, right=2.2cm of park] (abort) {\textbf{SAFETY\_STOP}\\Kollisionsschutz};
-
-    \draw[arrow] (init) -- (scan);
-    \draw[arrow] (scan) -- node[right, font=\scriptsize]{Lücke gültig} (align);
-    \draw[arrow] (align) -- node[right, font=\scriptsize]{Startpose erreicht} (park);
-    \draw[arrow] (park) -- node[right, font=\scriptsize]{Endpose erreicht} (done);
-    \draw[arrow] (scan) -| node[above, near start, font=\scriptsize]{Not-Aus} (abort);
-    \draw[arrow] (align) -| (abort);
-    \draw[arrow] (park) -- node[above, font=\scriptsize]{$d < d_{\text{min}}$} (abort);
-  \end{tikzpicture}
-  \caption{Zustandsautomat (FSM) der übergeordneten Einparksteuerung.}
-  \label{fig:fsm_einparken}
+  \includegraphics[width=0.92\textwidth]{figures/fig_pid_step_response.png}
+  \caption{Simulierte Sprungantwort der diskreten \qty{100}{\hertz}-PID-Drehzahlregelung mit und ohne Clamping Anti-Windup bei PWM-Begrenzung auf \qty{100}{\percent}.}
+  \label{fig:pid_sim}
 \end{figure}
 
-Die hinteren drei \gls{lidar}-Sensoren (\texttt{3f}, \texttt{3g}, \texttt{3h}) übernehmen im Zustand \texttt{PARK\_MANEUVER} die aktive Rückraumüberwachung: Unterschreitet ein Sensor den definierten Sicherheitsabstand $d_{\text{min}}$, wird sofort in \texttt{SAFETY\_STOP} gewechselt und beide Motortreiber werden aktiv gebremst.
+\begin{lstlisting}[language=C++,caption={Diskreter PID-Regler mit Derivative-on-Measurement und Clamping Anti-Windup (C++ / ESP-IDF).},label={lst:pid_cpp}]
+class PidController {
+public:
+    PidController(float kp, float ki, float kd, float uMin, float uMax)
+        : kp_(kp), ki_(ki), kd_(kd), uMin_(uMin), uMax_(uMax) {}
 
-\section{Antriebs-, Geschwindigkeits- und Lageregelung}
-\label{sec:regelung}
+    float update(float setpoint, float measurement, float dt) {
+        const float error = setpoint - measurement;
+        const float deriv = -(measurement - prevMeas_) / dt; // kein Derivative Kick
+        const float candI = integral_ + error * dt;
+        const float uRaw  = kp_ * error + ki_ * candI + kd_ * deriv;
 
-Da das Fahrzeug über zwei unabhängig angetriebene Räder (Differentialantrieb) verfügt, werden sowohl die Translationsgeschwindigkeit $v$ als auch die Kurvenfahrt (Drehrate $\omega_z$ bzw. Gierwinkel $\psi$) über die Differenz der beiden Motordrehzahlen geregelt. Für die Geschwindigkeits- und Winkelregelung kommt ein zeitdiskreter PID-Regler zum Einsatz:
+        float uSat = uRaw;
+        if (uSat > uMax_) uSat = uMax_;
+        if (uSat < uMin_) uSat = uMin_;
+
+        // Clamping Anti-Windup: Integrator nur freigeben, wenn nicht in Saettigung
+        if ((uRaw == uSat) || ((uRaw > uMax_) && (error < 0.0f))
+                           || ((uRaw < uMin_) && (error > 0.0f))) {
+            integral_ = candI;
+        }
+        prevMeas_ = measurement;
+        return uSat;
+    }
+
+    void reset(float currentMeas) { integral_ = 0.0f; prevMeas_ = currentMeas; }
+
+private:
+    float kp_, ki_, kd_, uMin_, uMax_;
+    float integral_ = 0.0f;
+    float prevMeas_ = 0.0f;
+};
+\end{lstlisting}
+
+% ==============================================================================
+\section{Zustandsautomat (FSM) für das autonome Längseinparken}
+\label{sec:einpark_fsm}
+% ==============================================================================
+Die übergeordnete Fahrlogik ist als deterministischer endlicher Zustandsautomat (\gls{fsm}) realisiert (Abbildung~\ref{fig:fsm_einparken}). Jeder Zustand kapselt genau ein klar definiertes Fahrverhalten mit eindeutigen Ein- und Austrittsbedingungen sowie einer globalen Überwachung durch den \texttt{SafetyTask}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=0.85cm and 1.1cm,
+  state/.style={rectangle, draw=black!80, fill=blue!8, thick, minimum width=2.9cm, minimum height=0.82cm, align=center, rounded corners=6pt, font=\scriptsize\bfseries},
+  err/.style={state, fill=red!14, draw=red!70!black},
+  ok/.style={state, fill=green!14, draw=green!60!black},
+  arrow/.style={->, >=stealth, thick}
+]
+  \node[state] (idle) {IDLE / CALIBRATE};
+  \node[state, right=1.3cm of idle] (scan) {LINE\_FOLLOW\_SCAN};
+  \node[state, right=1.3cm of scan] (align) {ALIGN\_START};
+  \node[state, below=1.1cm of align] (arc1) {REVERSE\_ARC\_IN\\($\theta \to +\qty{40}{\degree}$)};
+  \node[state, left=1.3cm of arc1] (arc2) {REVERSE\_ARC\_OUT\\($\theta \to \qty{0}{\degree}$)};
+  \node[state, left=1.3cm of arc2] (center) {CENTER\_IN\_GAP\\($d_{\mathrm{3a}} \approx d_{\mathrm{3h}}$)};
+  \node[ok, below=1.0cm of center] (parked) {PARKED};
+  \node[err, below=1.0cm of arc1] (estop) {EMERGENCY\_STOP};
+
+  \draw[arrow] (idle) -- node[above, font=\tiny] {Start / Kalib. OK} (scan);
+  \draw[arrow] (scan) -- node[above, font=\tiny] {$L \ge 410, D \ge 210$} (align);
+  \draw[arrow] (align) -- node[right, font=\tiny] {Start-Offset erreicht} (arc1);
+  \draw[arrow] (arc1) -- node[above, font=\tiny] {$\theta = \theta_{\mathrm{turn}}$} (arc2);
+  \draw[arrow] (arc2) -- node[above, font=\tiny] {$\theta \approx 0^\circ$ / $d_{\mathrm{3h}}$} (center);
+  \draw[arrow] (center) -- node[right, font=\tiny] {$|d_{\mathrm{3a}} - d_{\mathrm{3h}}| < 15\text{ mm}$} (parked);
+  \draw[arrow, red!70!black, dashed] (arc1) -- node[right, font=\tiny] {$d_{\min} < 60\text{ mm}$} (estop);
+  \draw[arrow, red!70!black, dashed] (arc2.south) |- (estop.west);
+\end{tikzpicture}
+\caption{Zustandsautomat (FSM) für das autonome Suchen, Vermessen und Rückwärts-Einparken.}
+\label{fig:fsm_einparken}
+\end{figure}
+
+\subsection{Ablauf der Doppelbogen-Einparktrajektorie}
+Sobald \texttt{LINE\_FOLLOW\_SCAN} eine ausreichend große Längsparklücke bestätigt hat, folgt die Einparksequenz einer geometrisch berechneten S-Kurve aus zwei entgegengesetzten Kreisbögen mit Radius $R_{\mathrm{Park}} = \qty{220}{\milli\meter}$:
+\begin{enumerate}
+  \item \textbf{\texttt{ALIGN\_START}:} Das Fahrzeug fährt um einen definierten Überhang ($\approx \qty{80}{\milli\meter}$) über die Vorderkante des hinteren Begrenzungsfahrzeugs hinaus und stoppt parallel zur Fahrbahn ($\theta = \qty{0}{\degree}$).
+  \item \textbf{\texttt{REVERSE\_ARC\_IN}:} Rückwärtsfahrt mit konstantem Rechts-Einschlag ($v_L < v_R < 0$, Krümmungsradius $R_{\mathrm{Park}}$), bis der fusionierte Gierwinkel $\theta = \theta_{\mathrm{turn}} \approx \qty{40}{\degree}$ erreicht ist. Während dieser Phase überwachen \texttt{3g} ($+135^\circ$) und \texttt{3h} ($180^\circ$) laufend den Abstand zum Bordstein und zum hinteren Hindernis.
+  \item \textbf{\texttt{REVERSE\_ARC\_OUT}:} Sofortiges Gegeneinschlagen ($v_R < v_L < 0$) bis das Fahrzeug wieder parallel zur Fahrbahn steht ($\theta \to \qty{0}{\degree}$) bzw. der hintere Sensor \texttt{3h} einen Mindestabstand von \qty{80}{\milli\meter} unterschreitet.
+  \item \textbf{\texttt{CENTER\_IN\_GAP} \& \texttt{PARKED}:} Kurze Längskorrektur, bis der Front-Sensor \texttt{3a} und der Heck-Sensor \texttt{3h} annähernd symmetrische Abstände melden ($|d_{\mathrm{3a}} - d_{\mathrm{3h}}| < \qty{15}{\milli\meter}$). Danach werden beide H-Brücken deaktiviert und der Status über die Status-LEDs angezeigt.
+\end{enumerate}
+
+\subsection{Mathematische Herleitung der Doppelbogen-Einparkbahn}
+\label{sec:doppelbogen_mathe}
+Um das Fahrzeug aus der parallelen Startposition (seitlicher Versatz $\Delta y_{\mathrm{Park}}$ zur Parklückenmitte) mittels zweier symmetrischer, entgegengesetzter Kreisbögen mit konstantem Radius $R_{\mathrm{Park}}$ parallel in die Lücke zu führen, gilt für den gesamten Querversatz:
 \begin{equation}
-  u[k] = K_P\,e[k] + K_I\,T_s \sum_{j=0}^{k} e[j] + K_D\,\frac{e[k] - e[k-1]}{T_s}
-  \label{eq:pid_diskret}
+  \Delta y_{\mathrm{Park}} = 2 \cdot R_{\mathrm{Park}} \cdot (1 - \cos\theta_{\mathrm{turn}})
+  \label{eq:doppelbogen_dy}
 \end{equation}
-mit der Regelabweichung $e[k] = w[k] - y[k]$ und der Abtastzeit $T_s$. Während der geraden Vorbeifahrt (\texttt{SCAN}) hält ein unterlagerter Winkelregler den Gierwinkel $\psi$ mittels \gls{imu}-Rückführung konstant, sodass schräge Drifts nicht die Lückenvermessung verfälschen.
+Durch Umstellen nach dem gesuchten Umschaltwinkel $\theta_{\mathrm{turn}}$ ergibt sich:
+\begin{equation}
+  \theta_{\mathrm{turn}} = \arccos\!\left(1 - \frac{\Delta y_{\mathrm{Park}}}{2 \cdot R_{\mathrm{Park}}}\right)
+  \label{eq:doppelbogen_theta}
+\end{equation}
+Für einen typischen Querversatz $\Delta y_{\mathrm{Park}} = \qty{218}{\milli\meter}$ und einen gewählten Einparkradius $R_{\mathrm{Park}} = \qty{300}{\milli\meter}$ (bequem oberhalb des minimalen Wenderadius) folgt ein Umschaltwinkel von:
+\begin{equation}
+  \theta_{\mathrm{turn}} = \arccos\!\left(1 - \frac{218}{600}\right) = \arccos(0{,}6367) \approx \qty{50,5}{\degree}
+  \label{eq:doppelbogen_num}
+\end{equation}
+Der zugehörige benötigte Längsweg während der S-Kurve beträgt $\Delta x_{\mathrm{Park}} = 2 \cdot R_{\mathrm{Park}} \cdot \sin\theta_{\mathrm{turn}} \approx \qty{463}{\milli\meter}$. Bei kleineren Parklücken ($L_{\mathrm{L\ddot{u}cke}} \approx \qty{410}{\milli\meter}$) verringert die FSM den Radius automatisch auf $R_{\mathrm{Park}} = \qty{220}{\milli\meter}$, sodass das Fahrzeug dank Differenzialantrieb auch in enge Lücken sauber einschwenken kann.
 
-\todo[inline]{[TODO: Ermittelte Reglerparameter (Kp, Ki, Kd), Abtastzeit Ts sowie kommentierte Code-Auszüge der Motoransteuerung und Zustandsmaschine aus dem fertigen Software-Repository ergänzen.]}
+\subsection{Odometrie-Fehlerabschätzung}
+Bei einer systematischen Abweichung des effektiven Raddurchmessers um $\pm 1\,\%$ ($\pm \qty{0,66}{\milli\meter}$ durch Reifenprofil oder Anpressdruck) entsteht auf einer Parklücken-Vermessungsstrecke von \qty{500}{\milli\meter} lediglich ein Längenfehler von $\pm \qty{5,0}{\milli\meter}$, was gegenüber der Sicherheitsreserve von \qty{140}{\milli\meter} unkritisch ist. Deutlich sensibler reagiert die reine Rad-Odometrie auf Radschlupf bei Kurvenfahrten: Ein einseitiger Schlupf von \qty{5}{\milli\meter} erzeugt bei der Spurweite $b = \qty{157}{\milli\meter}$ bereits einen Winkelfehler von $\Delta\theta = 5 / 157 \approx \qty{1,82}{\degree}$. Genau deshalb kompensiert das Komplementärfilter (Gleichung~\eqref{eq:komplementaer}) kurzfristigen Schlupf über die \emph{LSM6DSV}-Drehrate.
+
+\subsection{Sicherheitskonzept (Safety \& Watchdog)}
+Der mit höchster Priorität (Prio~7) laufende \texttt{SafetyTask} überwacht permanent alle acht LiDAR-Kanäle sowie die Task-Heartbeats. Unterschreitet ein in aktueller Fahrtrichtung liegender Sensor die Not-Aus-Schwelle von \qty{60}{\milli\meter}, oder meldet der I\textsuperscript{2}C-Treiber länger als \qty{250}{\milli\second} keine gültigen Messdaten, erzwingt \texttt{SafetyTask} sofort den Zustand \texttt{EMERGENCY\_STOP} mit aktivem Kurzschlussbremsen (\emph{Short Brake}) der beiden H-Brücken.

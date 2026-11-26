@@ -2,29 +2,109 @@
 \chapter{Anhang}
 \label{chap:anhang}
 
-\section{Übersicht der CAD- und Konstruktionsdateien}
-\label{sec:anhang_cad}
+Der Anhang dokumentiert die ergänzenden Fertigungs-, Pinbelegungs- und Slicer-Parameter sowie die vollständigen KiCad-Schaltpläne und Montagezeichnungen aus dem Projekt-Repository.
 
-Sämtliche Produktions-, Baugruppen- und Skriptdateien der finalen Revision~v9.0 sind im Projekt-Repository unter \texttt{3D\_Design-Modelling/} abgelegt (Tabelle~\ref{tab:anhang_dateien}).
+\section{FDM-Druckparameter (Bambu Lab P1S, Revision v10.0)}
+\label{sec:anhang_slicer}
+Tabelle~\ref{tab:slicer_params} fasst das verifizierte Slicer-Profil für den druckfertigen Erstausdruck des monolithischen Chassis (\texttt{3D\_Modellfahrzeug\_SelfdrivingRobotExperiment\_v10\_BambuLab\_P1S\_Ready.stl}, vorgekippt um $+\qty{45}{\degree}$ auf \qtyproduct{250,53 x 250,53}{\milli\meter}) auf dem \emph{Bambu Lab P1S} zusammen.
 
 \begin{table}[htbp]
-  \centering
-  \caption{Zentrale CAD- und Fertigungsdateien der Revision~v9.0 im Repository.}
-  \label{tab:anhang_dateien}
-  \begin{tabular}{@{}ll@{}}
-    \toprule
-    \textbf{Dateiname} & \textbf{Beschreibung} \\
-    \midrule
-    \texttt{...\_v3\_LiDar\_V2\_integrated.step} & Monolithisches Unibody-Chassis (STEP, BRep) \\
-    \texttt{...\_v3\_LiDar\_V2\_integrated.stl} & Druckfertiges Unibody-Chassis (STL, 0\,g Support) \\
-    \texttt{...\_v3\_DMU\_Assembly.step} & Gesamtbaugruppe mit allen 121 Einzelkörpern (STEP) \\
-    \texttt{...\_v3\_DMU\_Assembly.py} & Fusion-360-API-Skript inklusive Interference Audit \\
-    \texttt{v9\_Final\_DMU\_Master\_Preview.png} & Vierseiten-Übersichtsrendering des Final-DMU \\
-    \bottomrule
-  \end{tabular}
+\centering
+\caption{Empfohlene Bambu-Studio-Einstellungen für den First-Try-Druck auf dem Bambu Lab P1S.}
+\label{tab:slicer_params}
+\begin{tabular}{@{}p{5.0cm}p{8.8cm}@{}}
+\toprule
+\textbf{Slicer-Parameter} & \textbf{Verifizierter Zielwert} \\
+\midrule
+Drucker / Düse / Druckplatte & Bambu Lab P1S / \qty{0,40}{\milli\meter} / Textured PEI Plate \\
+Filament / Durchmesser & PETG Basic (oder PLA+) / \qty{1,75}{\milli\meter} (nicht transparent) \\
+Bauteil-Ausrichtung & $+\qty{45}{\degree}$ diagonal (vorgefertigt in \texttt{v10\_BambuLab\_P1S\_Ready.stl}) \\
+Schichthöhe (Layer Height) & \qty{0,20}{\milli\meter} (erste Schicht \qty{0,20}{\milli\meter}) \\
+Wandlinien (Wall Loops) & 4--5 Wandlinien (massiv um alle M2/M3-Schraubendome) \\
+Obere / Untere Schichten & 5 Schichten oben / 5 Schichten unten \\
+Fülldichte \& Füllmuster & \qty{25}{\percent} Gyroid (oder Kubisch) \\
+Stützstruktur (Support) & \textbf{Aus (\qty{0}{\gram} Support)} -- selbsttragende 45°-Fasen \& Teardrops \\
+Brim-Typ & \textbf{Kein Brim (\texttt{No-brim})}, damit \qty{250,5}{\milli\meter} auf \qty{256}{\milli\meter} passen \\
+Materialbedarf / Druckdauer & ca. \qty{274}{\gram} Filament / ca. \qtyrange{5,5}{6,5}{\hour} \\
+\bottomrule
+\end{tabular}
 \end{table}
 
-\section{Schaltpläne und Stücklisten}
-\label{sec:anhang_schaltplaene}
+\section{Repository-Struktur und digitale Artefakte}
+\label{sec:anhang_repo}
+Alle Quelldateien, CAD-Modelle, Gerber-Fertigungsdaten und Firmware-Quellen liegen im Git-Repository \texttt{SelfDrivingRobotExperiments} in folgenden Branches:
+\begin{itemize}
+  \item \texttt{3D\_Design}: \texttt{3D\_Modellfahrzeug\_SelfdrivingRobotExperiment\_v10\_PrintReady\_Chassis.stl/.step}, \texttt{v10\_BambuLab\_P1S\_Ready.stl}, \texttt{v10\_Switch\_Retainer\_Clip.stl}, \texttt{v3\_DMU\_Assembly.step/.py}.
+  \item \texttt{PCB}: \texttt{PCB/Liniensensor\_Redesign/} (KiCad~9 Projekt, Gerber, \texttt{Stueckliste.csv}, \texttt{ERC.json}, \texttt{DRC.json}) und \texttt{PCB/Tumbler\_Stage1/} (KiCad~10 Signalteil, \texttt{Pinbelegung.csv}, 51 Netzlistenprüfungen).
+  \item \texttt{Main\_code}: ESP-IDF-Projekt (\texttt{main/main.cpp}, \texttt{components/vl53l0x/VL53L0X.cpp/.h}, \texttt{CMakeLists.txt}).
+  \item \texttt{Dokumentation}: Vollständige LaTeX-Quellen dieser Diplomarbeit unter \texttt{02\_Diplomarbeit/2026-2027/LaTeX/}.
+\end{itemize}
 
-\todo[inline]{[TODO: Exportierte PDF-Schaltpläne von Tumbler2\_Redesign und Liniensensor sowie vollständige Bestückungslisten (BOM) als Anhangsseiten einbinden.]}
+\section{ESP32-S3 Master-Pinbelegung (Stufe 1 + Sensorik)}
+\label{sec:anhang_pinout}
+Tabelle~\ref{tab:master_pinout} fasst die abgestimmte Signalzuordnung am \emph{ESP32-S3-WROOM-1} aus \texttt{Tumbler\_Stage1} und dem \texttt{Main\_code}-Prüfstand zusammen.
+
+\begin{longtable}{@{}p{2.2cm}p{2.6cm}p{3.4cm}p{5.6cm}@{}}
+\caption{Master-Pinout des ESP32-S3-WROOM-1 für Hauptplatine Stufe~1 und Sensorik.}
+\label{tab:master_pinout} \\
+\toprule
+\textbf{GPIO} & \textbf{Netzname} & \textbf{Peripherie / Funktion} & \textbf{Stecker / Bemerkung} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{GPIO} & \textbf{Netzname} & \textbf{Peripherie / Funktion} & \textbf{Stecker / Bemerkung} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{GPIO4} & \texttt{LS1} & \texttt{ADC1\_CH3} & \texttt{J2.5} über \qty{100}{\ohm} (\texttt{R3}) \\
+\texttt{GPIO5} & \texttt{LS2} & \texttt{ADC1\_CH4} & \texttt{J2.6} über \qty{100}{\ohm} (\texttt{R4}) \\
+\texttt{GPIO6} & \texttt{LS3} & \texttt{ADC1\_CH5} & \texttt{J2.7} über \qty{100}{\ohm} (\texttt{R29}) \\
+\texttt{GPIO7} & \texttt{LS4} & \texttt{ADC1\_CH6} & \texttt{J2.8} über \qty{100}{\ohm} (\texttt{R30}) \\
+\texttt{GPIO9} & \texttt{LS5} & \texttt{ADC1\_CH8} & \texttt{J2.9} über \qty{100}{\ohm} (\texttt{R31}) \\
+\texttt{GPIO10} & \texttt{LS6} & \texttt{ADC1\_CH9} & \texttt{J2.10} über \qty{100}{\ohm} (\texttt{R32}) \\
+\texttt{GPIO15} & \texttt{BTN} & Benutzertaster & Aktiv-Low mit Pull-up \\
+\texttt{GPIO16} & \texttt{ECHO} & Reserve / Echo & Verlegt von GPIO10 \\
+\texttt{GPIO19/20} & \texttt{USB\_DN/DP} & Native USB-C & Über \qty{22}{\ohm} (\texttt{R33}, \texttt{R34}) \\
+\texttt{I2C\_SDA/SCL} & \texttt{I2C\_BUS} & \texttt{I2C\_NUM\_0} (\qty{100}{\kilo\hertz}) & 8$\times$ VL53L0X (\texttt{0x30}--\texttt{0x37}) + LSM6DSV \\
+\texttt{XSHUT\_1..8} & \texttt{XSHUT} & 8$\times$ GPIO (Hi-Z/LOW) & Sequenzielle Adressvergabe (Prüfstand: 27, 26, 25, 33) \\
+\texttt{MOT\_A/B} & \texttt{AIN1/2, BIN1/2} & 4$\times$ \qty{20}{\kilo\hertz} PWM & H-Brücken \texttt{U6}, \texttt{U7} (\emph{TB67H450FNG}) \\
+\texttt{ENC\_A/B} & \texttt{ENCA/ENCB} & 4$\times$ PCNT-Eingang & Quadratur-Encoder links/rechts \\
+\end{longtable}
+
+\section{Einzelbauteil-Stückliste Liniensensor-Platine (Layout R2)}
+\label{sec:anhang_ls_bom}
+Tabelle~\ref{tab:ls_bom_detail} dokumentiert alle 37 bestückten elektronischen Bauteile der Liniensensor-Platine aus \texttt{PCB/Liniensensor\_Redesign/Stueckliste.csv} inklusive exakter Hersteller-Bestellnummern (MPN).
+
+\begin{longtable}{@{}p{2.3cm}p{2.2cm}p{2.0cm}p{4.3cm}p{3.0cm}@{}}
+\caption{Vollständige elektronische Stückliste (BOM) der Liniensensor-Platine R2.}
+\label{tab:ls_bom_detail} \\
+\toprule
+\textbf{Referenz} & \textbf{Wert} & \textbf{Gehäuse} & \textbf{Hersteller / MPN} & \textbf{Nennwert} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Referenz} & \textbf{Wert} & \textbf{Gehäuse} & \textbf{Hersteller / MPN} & \textbf{Nennwert} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\texttt{C1, C3} & \qty{100}{\nano\farad} & 0805 & KEMET \texttt{C0805C104K5RACTU} & X7R, \qty{10}{\percent}, \qty{50}{\volt} \\
+\texttt{C2, C4} & \qty{10}{\micro\farad} & 1206 & TDK \texttt{C3216X7R1E106K160AB} & X7R, \qty{10}{\percent}, \qty{25}{\volt} \\
+\texttt{C5--C10} & \qty{10}{\nano\farad} & 0805 & KEMET \texttt{C0805C103K5RACTU} & X7R, \qty{10}{\percent}, \qty{50}{\volt} \\
+\texttt{J2} & 10-pol. GH & SMD horiz. & JST \texttt{SM10B-GHS-TB(LF)(SN)} & \qty{1,25}{\milli\meter}, \qty{1}{\ampere}, \qty{50}{\volt} \\
+\texttt{Q1, Q2} & \texttt{BC817-40} & SOT-23 & Nexperia \texttt{BC817-40,215} & \qty{45}{\volt}, \qty{500}{\milli\ampere}, \qty{250}{\milli\watt} \\
+\texttt{R1, R9} & \qty{47}{\ohm} & 0805 & Vishay \texttt{CRCW080547R0FKEA} & \qty{1}{\percent}, \qty{0,125}{\watt} \\
+\texttt{R2, R3, R7, R8} & \qty{1}{\kilo\ohm} & 0805 & Vishay \texttt{CRCW08051K00FKEA} & \qty{1}{\percent}, \qty{0,125}{\watt} \\
+\texttt{R4--R6, R10--R12} & \qty{10}{\kilo\ohm} & 0805 & Vishay \texttt{CRCW080510K0FKEA} & \qty{1}{\percent}, \qty{0,125}{\watt} \\
+\texttt{R13--R18} & \qty{47}{\kilo\ohm} & 0805 & Vishay \texttt{CRCW080547K0FKEA} & \qty{1}{\percent}, \qty{0,125}{\watt} \\
+\texttt{U1--U6} & \texttt{CNY70} & THT & Vishay \texttt{CNY70} & $I_F \approx \qty{20}{\milli\ampere}$ (max. 50) \\
+\end{longtable}
+
+\section{Schaltplan und Montagezeichnung der Liniensensor-Platine (R2)}
+\label{sec:anhang_schaltplaene}
+Auf den folgenden Seiten sind der geprüfte Gesamtschaltplan der Liniensensor-Platine (\texttt{Liniensensor.pdf}), die zugehörige mechanische Montage- und Layoutzeichnung (\texttt{Montage\_und\_Layout.pdf}) sowie der Übersichtsschaltplan der Hauptplatine (\texttt{Schaltplan\_Platine.pdf}) in voller Vektorauflösung eingebunden.
+
+\includepdf[pages=-,scale=0.86,pagecommand={\thispagestyle{headings}}]{figures/pcb_ls_schaltplan.pdf}
+\includepdf[pages=-,scale=0.86,pagecommand={\thispagestyle{headings}}]{figures/pcb_ls_montage.pdf}
+\includepdf[pages=-,scale=0.86,pagecommand={\thispagestyle{headings}}]{figures/pcb_main_schaltplan.pdf}
