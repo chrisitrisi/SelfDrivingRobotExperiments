@@ -1,5 +1,7 @@
 # Tumbler – Hauptplatine Rev. 2.5 (Schaltplan + Layout)
 
+> **Achtung, Branch `pcb/2-lagen-versuch`:** Hier liegt ein **nicht fertiger 2-Lagen-Versuch** mit geänderter ESP32-Pinbelegung (57 offene Verbindungen). Nicht fertigen! Details: `README_2Lagen_Versuch.md`. Die gültige 4-Lagen-Platine Rev. 2.5 liegt auf `PCB`.
+
 Das Projekt über **Tumbler2_Redesign.kicad_pro** in KiCad 10 öffnen. **Tumbler2_Redesign.pdf** zeigt die acht aktuellen Blätter (Stand Rev. 2.5, 19.11.2026).
 
 - Blatt 2: USB-C-Freigabe, 2S-Ladegerät, VBUS-Erkennung. Blatt 7: Pack, Verpolschutz, Schalter, Fahrabschaltung und Spannungsregler.
