@@ -1,86 +1,831 @@
 \chapterauthor{Christopher Schieszler}
-\chapter{Hardwareentwicklung und mechanische Integration}
+\chapter{Hardware Development and Mechanical Integration}
 \label{chap:hardware_cad}
+\begin{otherlanguage}{english}
+\sisetup{locale=UK}
 
-Dieses Kapitel dokumentiert das gesamte Hardware-Redesign sowie die mechanische Konstruktion des Fahrzeugchassis. Sämtliche Abmessungen und Bauteilbezeichnungen stammen direkt aus den KiCad-Entwurfsdateien sowie dem parametrischen CAD-Modell.
+This chapter documents the development of the electronics of the robot: the main board
+(\texttt{Tumbler2\_Redesign}), the line-sensor board and their integration into the 3D-printed
+chassis. The main board went through several revisions within a few weeks. For every
+revision the chapter states what was there before, what was changed and \emph{why}.
+All figures of schematics and layouts are vector graphics exported directly from the KiCad
+design files \cite{KiCad10}; annotations (red frames and numbers) are drawn on top of them
+in KiCad millimetre coordinates, so the documents stay sharp at any zoom level.
 
-\section{Entwicklung der Hauptplatine (Tumbler2\_Redesign)}
-\label{sec:hauptplatine}
+\section{Requirements and Starting Point}
+\label{sec:hw_requirements}
 
-Die neu entwickelte Hauptplatine besitzt die Außenmaße \qtyproduct{76.962 x 80.518 x 1.60}{\milli\metre} und nutzt ein standardisiertes M3-Befestigungsraster von \qtyproduct{65.0 x 64.0}{\milli\metre}. Ziel des Schaltungsentwurfs war es, sämtliche früher extern aufgesteckten Module direkt als SMD-Bauteile zu integrieren und die Störfestigkeit gegenüber Motorstromspitzen zu erhöhen.
+\subsection{Requirements}
+The new electronics had to fulfil the following requirements, derived from the project goal
+(an autonomously parking robot based on the existing model vehicle) and from the work
+packages of the software and 3D-design team members:
+\begin{itemize}
+  \item Run from the existing, inexpensive lithium-ion packs (2 cells, \SI{7.4}{\volt} nominal,
+        \SI{8.4}{\volt} full, JST-XH connector) and -- added later -- optionally from 3-cell packs,
+        because the drive motors are \SI{12}{\volt} types.
+  \item Protect the electronics against wrong polarity, over- and undervoltage, short circuits
+        and deep discharge of the battery.
+  \item One microcontroller with Wi-Fi/Bluetooth, native USB for flashing and debugging, and enough
+        ADC channels for the six-channel line sensor.
+  \item Drive two DC motors with encoders, read an IMU, and connect \emph{eight} time-of-flight
+        distance sensors that all have the same fixed I\textsuperscript{2}C address.
+  \item Fit the mounting pattern and height budget of the new chassis (\qtyproduct{65 x 64}{\milli\metre}
+        M3 pattern above the battery bay).
+\end{itemize}
 
-\subsection{Spannungsversorgung und Schutzschaltung}
-Die Energieversorgung erfolgt über ein 2S-Li-Ion-Akkupack (Nennspannung \SI{7.4}{\volt}, Ladeschlussspannung \SI{8.4}{\volt}) am zweipoligen Steckverbinder \texttt{J1}. Zum Schutz vor Überstrom und Verpolung sind eine \SI{5}{\ampere}-Sicherung (\texttt{F1}) sowie drei Schottky-Dioden vom Typ \emph{SS14} (\texttt{D1}, \texttt{D3}, \texttt{D5}) vorgesehen. Ein synchroner Abwärtswandler vom Typ \emph{AP63203WU} (\texttt{U2}) erzeugt gemeinsam mit der Leistungsinduktivität \texttt{L1} (\SI{4.7}{\micro\henry}) die stabile \SI{3.3}{\volt}-Logikspannung für den Mikrocontroller und die Sensorik \cite{Diodes_AP63203}. Ergänzend stellt ein Linearregler \emph{AMS1117-5.0} (\texttt{U1}) eine \SI{5.0}{\volt}-Schiene bereit.
+\subsection{The previous board}
+\label{sec:hw_oldboard}
+The starting point was the main board of the predecessor project \cite{Kloeckl2026}
+(Figure~\ref{fig:hw_oldboard}). It worked as a demonstrator, but a review of the schematic
+showed several weaknesses that would have limited reliability and further development.
+Table~\ref{tab:hw_oldissues} lists them together with the solution chosen in the redesign.
 
-\subsection{Mikrocontroller, USB-C und integrierte Peripherie}
-Als Hauptprozessor kommt das Funk- und Mikrocontrollermodul \emph{ESP32-S3-WROOM-1} (\texttt{U3}) zum Einsatz \cite{EspressifESP32S3}. Die Programmierung und serielle Diagnose erfolgen über eine 16-polige USB-C-Buchse (\texttt{J4}), die durch das ESD-Schutz-Array \emph{USBLC6-2SC6} (\texttt{U4}) gegen elektrostatische Entladungen abgesichert ist. Zur lokalen Zustandsanzeige und Bedienung befinden sich acht adressierbare RGB-LEDs (\emph{WS2812B}, \texttt{D6}--\texttt{D13}), zwei Standard-LEDs (\texttt{D2}, \texttt{D4}) sowie drei SMD-Taster (\texttt{SW1}--\texttt{SW3}) auf der Oberseite.
-
-\subsection{Integrierte Motortreiber und Inertialsensorik}
-Beide Antriebsmotoren werden über jeweils eine dedizierte SMD-H-Brücke \emph{TB67H450FNG\_EL} (\texttt{U6} rechts, \texttt{U7} links) angesteuert \cite{Toshiba_TB67H450}. Zur Pufferung dynamischer Stromspitzen beim Anfahren und Abbremsen sitzt unmittelbar neben jedem Treiber ein Elektrolytkondensator (\texttt{C17}, \texttt{C19}). Die thermische Verlustleistung wird über vergrößerte, vergoldete Kupfer-Kühlflächen (Thermal Pads) unterhalb von \texttt{U6} und \texttt{U7} an die Leiterplatte abgeführt. Zwischen den Leistungsteilen und dem vorderen Steckerbereich ist die 6-Achs-IMU \emph{LSM6DSV} (\texttt{U5}) im QFN-Gehäuse möglichst nahe am Fahrzeugschwerpunkt platziert \cite{ST_LSM6DSV}. Tabelle~\ref{tab:hauptplatine_bom} gibt einen Überblick über die zentralen Funktionsbaugruppen der Hauptplatine.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/hardware/old_board_schematic.pdf}
+  \caption{Schematic of the previous main board (predecessor project, vector PDF).}
+  \label{fig:hw_oldboard}
+\end{figure}
 
 \begin{table}[htbp]
-  \centering
-  \caption{Wesentliche Funktionsblöcke und Steckverbinder der Hauptplatine (\texttt{Tumbler2\_Redesign}).}
-  \label{tab:hauptplatine_bom}
-  \begin{tabular}{@{}lll@{}}
+  \centering\small
+  \caption{Weak points of the previous board and how the redesign addresses them.}
+  \label{tab:hw_oldissues}
+  \begin{tabular}{@{}p{0.43\linewidth}p{0.52\linewidth}@{}}
     \toprule
-    \textbf{Referenz} & \textbf{Bauteil / Wert} & \textbf{Funktion} \\
+    \textbf{Previous board} & \textbf{Redesign (Rev.~2.x)} \\
     \midrule
-    \texttt{U3} & \emph{ESP32-S3-WROOM-1} & Zentrale Recheneinheit (Dual-Core, WLAN/BLE) \\
-    \texttt{U6}, \texttt{U7} & 2x \emph{TB67H450FNG\_EL} & Integrierte PWM-Motortreiber (rechts / links) \\
-    \texttt{U5} & \emph{LSM6DSV} & Integrierte 6-Achs-IMU (Beschleunigung + Gyroskop) \\
-    \texttt{U2}, \texttt{L1} & \emph{AP63203WU} + \SI{4.7}{\micro\henry} & Synchroner \SI{3.3}{\volt}-Abwärtswandler \\
-    \texttt{U1} & \emph{AMS1117-5.0} & \SI{5.0}{\volt}-Spannungsregler \\
-    \texttt{J4}, \texttt{U4} & USB-C 16P + \emph{USBLC6-2SC6} & Programmier-/Diagnoseschnittstelle mit ESD-Schutz \\
-    \texttt{J1}, \texttt{F1} & 2-Pin-Header + \SI{5}{\ampere} & Akkueingang mit Überstrom- und Verpolschutz \\
-    \texttt{J6}, \texttt{J7} & 2x 6-Pin-JST-XH & Motorleistung und Encoder-Rückführung \\
-    \texttt{J2}, \texttt{J3} & 1x10-Pin / 2x8-Pin Header & Anschluss für Liniensensor und 8x-LiDAR-Bus \\
+    Battery connected directly: no fuse, no reverse-polarity protection, no switch, no charger &
+      Fuse, ideal-diode/over-/undervoltage protection (LTC4365 + two MOSFETs), power switch,
+      low-battery cut-off, USB-C charger \\
+    5\,V and 3.3\,V from AMS1117 linear regulators fed from up to \SI{8.4}{\volt} &
+      Two synchronous buck converters (AP63205/AP63203, \SI{2}{\ampere} each) -- far less heat \\
+    ESP32-WROOM-32E with CH340C USB-UART bridge &
+      ESP32-S3 with native USB (no bridge chip), UART still available on a header \\
+    Plug-in motor-driver module (SparkFun TB6612) &
+      TB6612FNG soldered directly on the board \\
+    MPU-6050 module with I\textsuperscript{2}C pull-ups to \SI{5}{\volt} (ESP32 is not 5\,V tolerant) &
+      ICM-42670-P on board, all pull-ups to \SI{3.3}{\volt} \\
+    USB-C receptacle without CC resistors, \SI{18}{\volt} TVS on the data lines &
+      Correct CC termination, USB-C current detection (TUSB320), low-capacitance ESD array \\
+    One ultrasonic sensor, four RGB LEDs &
+      Eight ToF sensors via I\textsuperscript{2}C multiplexer, eight RGB LEDs \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\section{Redesign der Liniensensor-Platine}
-\label{sec:liniensensor}
+\subsection{Tools and workflow}
+All boards were designed in KiCad~10. Besides the graphical editors, the command-line interface
+\texttt{kicad-cli} was used heavily: electrical rule check (ERC), design rule check (DRC) with
+zone refill and schematic parity, netlist export for scripted checks, and the export of Gerber,
+drill, STEP and documentation files. Small Python scripts using the KiCad \texttt{pcbnew} API
+were written for repetitive layout work (e.g.\ widening power tracks with clearance checks,
+routing a few new connections, comparing netlists before and after a change).
+The design files are kept in the project Git repository on branch \texttt{PCB}; experiments are
+done on separate branches (e.g.\ \texttt{pcb/2-lagen-versuch}, Section~\ref{sec:hw_twolayer}).
+Before every larger modification a backup of the project was stored.
 
-Passend zur Hauptplatine wurde auch die Liniensensor-Platine (\qtyproduct{76.0 x 32.0 x 1.60}{\milli\metre}, M3-Bohrraster \qtyproduct{68.0 x 24.0}{\milli\metre}) neu aufgebaut. Auf der Unterseite befinden sich sechs äquidistant angeordnete optische Reflexkoppler vom Typ \emph{CNY70} (\texttt{U1}--\texttt{U6}) \cite{Vishay_CNY70}. Zwei NPN-Transistoren (\emph{BC817}, \texttt{Q1} und \texttt{Q2}) erlauben das gezielte Schalten der Infrarot-Sendedioden, um bei Bedarf Fremdlichteinflüsse zu kompensieren oder Energie zu sparen.
+% =============================================================================
+\section{Main Board: Revision History}
+\label{sec:hw_revisions}
 
-Die Befestigung erfolgt über vier von unten durchgesteckte M3x14-Inbusschrauben durch die vorderen Montageflansche des Chassis. Damit beim Anziehen der Muttern keine Kollision mit der Wannenstruktur entsteht, wurde im Chassis über jeder M3-Bohrung eine zylindrische Werkzeug-Freimachung mit \SI{10.5}{\milli\metre} Durchmesser vorgesehen.
+Table~\ref{tab:hw_revisions} summarises the revisions of the main board. The following
+subsections explain the reasons for each step.
 
-\section{CAD-Konstruktion und Gehäuse-Evolution (Revision v1 bis v9.0)}
-\label{sec:cad_konstruktion}
+\begin{table}[htbp]
+  \centering\small
+  \caption{Revisions of the main board (dates 2026).}
+  \label{tab:hw_revisions}
+  \begin{tabular}{@{}llp{0.66\linewidth}@{}}
+    \toprule
+    \textbf{Rev.} & \textbf{Date} & \textbf{Main changes} \\
+    \midrule
+    Stage 1 & 04.11. & New signal part: grouped buses, 10-pin JST-GH line-sensor connector, six ADC1 channels,
+                       user button, ultrasonic echo input, USB series resistors \\
+    2.0/2.1 & 05.--10.11. & Completely new power supply (protection, run/charge switch, low-battery cut-off,
+                       buck converters, USB-C charging), ICM-42670-P instead of MPU module, TB6612FNG on board \\
+    2.2 & 11.11. & Battery-voltage measurement, UART/boot header J3, charge current fixed to \SI{0.25}{\ampere} \\
+    2.3 & 11.11. & I\textsuperscript{2}C multiplexer TCA9548A and ToF solder pads, first four-layer layout,
+                   schematics redrawn \\
+    2.4 & 12.11. & Eight ToF ports with own pull-ups, multiplexer reset line, complete re-route \\
+    2.4b & 18.11. & Battery connector changed to JST-XH; first full KiCad DRC and fixes \\
+    2.5 & 19.11. & Operation from 2-cell \emph{or} 3-cell packs via \SI{0}{\ohm} bridges, higher-rated parts,
+                   wider power tracks \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-Die mechanische Konstruktion des Fahrzeugchassis wurde in Autodesk Fusion~360 sowie automatisiert über Python (\texttt{build123d}) entwickelt und über neun Revisionen hinweg schrittweise verfeinert. Frühe Entwürfe (v1/v2) wiesen noch zu geringe Wandstärken, blockierte Schraubenbohrungen am Liniensensor sowie abgeschattete Sichtkegel der hinteren Sensoren durch Räder und Motoren auf.
+\subsection{Stage 1 -- clean signal part}
+The first step only touched the signal part. Connections were grouped into buses, the line-sensor
+connector was changed to a 10-pin JST-GH that matches the line-sensor board pin by pin, and all six
+line-sensor outputs were placed on ADC1 pins of the microcontroller. The reason for the last point:
+on the ESP32 family the second ADC (ADC2) cannot be used while Wi-Fi is active
+\cite{EspressifS3Chip}, so analogue inputs that are read during operation must be on ADC1.
+
+\subsection{Rev.~2.0/2.1 -- new power architecture}
+\label{sec:hw_rev20}
+The largest change of the whole project was the power supply. The previous board connected the
+battery directly to the circuit. A short circuit, a reversed connector or a deeply discharged pack
+could therefore destroy the electronics or the battery. Rev.~2.0 introduced the power path shown in
+Figure~\ref{fig:hw_powerpath}:
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.96\textwidth]{v3_LiDar_V2_engineering_views.png}
-  \caption{Ingenieuransichten der Sensor-Pod-Geometrie mit hinter den Antriebsrädern positionierten Heck-Sensoren.}
-  \label{fig:cad_views_v3}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[node distance=6mm and 22mm]
+    \node[hwblock] (bat) {Battery\\J1 (JST-XH)};
+    \node[hwprot, right=of bat] (fuse) {F1\\5\,A fuse};
+    \node[hwprot, right=of fuse] (ltc) {U8 LTC4365\\+ Q1/Q2\\reverse/UV/OV};
+    \node[hwprot, right=of ltc] (q3) {Q3 + U16\\TPS3700\\low-battery cut-off};
+    \node[hwload, right=26mm of q3] (bucks) {U1/U2 bucks\\5\,V / 3.3\,V};
+    \node[hwload, above=of bucks] (mot) {U6 TB6612\\motors};
+    \node[hwload, below=of bucks] (ls) {J2 line sensor\\(LED supply)};
+    \node[hwblock, below=14mm of ltc] (chg) {U12 BQ25886\\2-cell charger};
+    \node[hwblock, left=of chg] (usb) {USB-C J4\\U17 NCP361\\U10 TUSB320};
+    \node[hwbridge, below=14mm of q3] (br) {\SI{0}{\ohm} bridges\\R87--R89, R92\\(Rev.~2.5)};
+    \draw[hwflow] (bat) -- (fuse);
+    \draw[hwflow] (fuse) -- node[above=1mm,hwnet]{BAT\_FUSED} (ltc);
+    \draw[hwflow] (ltc) -- node[above=1mm,hwnet]{PACK\_SAFE} (q3);
+    \draw[hwflow] (q3) -- node[above=1mm,hwnet]{VBAT\_SW} (bucks);
+    \coordinate (sp) at ($(q3.east)!0.45!(bucks.west)$);
+    \draw[hwflow] (sp) |- (mot);
+    \draw[hwflow] (sp) |- (ls);
+    \draw[hwflow] (usb) -- (chg);
+    \draw[hwflow] (chg.north) -- node[right,hwnet]{CHG\_BAT} (ltc.south);
+    \draw[dashed, red!70!black, thick] (br.west) -- (chg.east);
+    \draw[dashed, red!70!black, thick] (br.north) -- (q3.south);
+  \end{tikzpicture}}
+  \caption{Power path of the main board (Rev.~2.5). Orange: protection, green: loads.
+           The charger is connected behind the protection but in front of the cut-off switch, so
+           a pack can still be charged after the robot has switched itself off.}
+  \label{fig:hw_powerpath}
 \end{figure}
 
-In der finalen Ausbaustufe (**Revision~v9.0 Final DMU**) wurde das gesamte Fahrzeug als einteiliges, stützstrukturfrei druckbares Unibody-Chassis (\SI{0.0}{\gram} Support, Volumen \SI{218.8}{\centi\metre\cubed}, Masse ca.~\SI{271}{\gram} in PLA/PETG) umgesetzt. Abbildung~\ref{fig:v9_master_dmu} zeigt das vollständige digitale Versuchsmodell (\gls{dmu}) inklusive aller 121~Einzelkörper.
+\begin{enumerate}
+  \item \textbf{Fuse F1 (\SI{5}{\ampere}, time-lag)} limits the damage in case of a short circuit.
+  \item \textbf{LTC4365 with two back-to-back MOSFETs} \cite{ADI_LTC4365} disconnects the pack if it is
+        connected the wrong way round, if the voltage is too low (deeply discharged pack) or too high
+        (wrong pack, voltage spikes). In contrast to a series diode there is almost no voltage drop.
+  \item \textbf{Run/charge switch and low-battery cut-off.} A P-MOSFET (Q3) switches the load supply
+        \net{VBAT_SW}. It is only turned on if the switch is in position RUN \emph{and} the window
+        comparator TPS3700 \cite{TI_TPS3700} sees a sufficient pack voltage. The comparator has
+        hysteresis, so the robot does not oscillate on/off when the voltage sags under load.
+  \item \textbf{Two buck converters} (AP63205/AP63203, \SI{2}{\ampere}, input up to \SI{32}{\volt})
+        \cite{Diodes_AP6320x} generate 5\,V and 3.3\,V. Compared with linear regulators the losses
+        at \SI{8.4}{\volt} input are a fraction, and the same parts also work at 3-cell voltage.
+  \item \textbf{USB-C charging:} NCP361 \cite{onsemi_NCP361} protects against overvoltage on VBUS,
+        TUSB320 reads the current capability of the USB source, and a BQ25886 boost charger
+        \cite{TI_BQ25886} charges the 2-cell pack only in position OFF and only with a temperature
+        sensor (NTC) connected.
+\end{enumerate}
+At the same time the MPU module was replaced by an ICM-42670-P IMU \cite{TDK_ICM42670P} directly on
+the board, and the motor-driver module by the TB6612FNG IC \cite{Toshiba_TB6612}.
+
+\subsection{Rev.~2.2 -- battery measurement and service header}
+A voltage divider (\SI{100}{\kilo\ohm}/\SI{22}{\kilo\ohm}) from \net{VBAT_SW} to an ADC1 pin lets the
+firmware measure the battery voltage; it sits behind Q3 so it draws no current when the robot is off.
+A 2$\times$8 header J3 brings out UART0, EN and the boot pin as a fall-back for flashing with an
+external USB-UART adapter. The charge current was deliberately limited to \SI{0.25}{\ampere}: the USB
+overvoltage switch NCP361 has a fixed current limit of only about \SIrange{0.55}{0.75}{\ampere}, so a
+higher charge current would trip it.
+
+\subsection{Rev.~2.3 and 2.4 -- eight ToF sensors and four layers}
+The software concept required eight VL53L0X time-of-flight sensors around the vehicle. All of them
+have the same default I\textsuperscript{2}C address (\texttt{0x29}). Instead of re-addressing each sensor at
+start-up with its XSHUT line (eight extra GPIOs, fragile), an eight-channel I\textsuperscript{2}C switch
+TCA9548A \cite{TI_TCA9548A} was added; the firmware selects exactly one channel before talking to a
+sensor. Every channel got its own \SI{2.2}{\kilo\ohm} pull-ups to \SI{3.3}{\volt}. Because the sensors are
+mounted on the chassis, they are connected with short cables soldered into pads J8--J15 rather than
+connectors. Rev.~2.4 added the remaining four ports and a reset line from the ESP32 to the
+multiplexer, so a hung bus can be recovered.
+
+With these additions the board became too dense for two layers, and the layout was changed to four
+layers (Section~\ref{sec:hw_layout}). At the same time all schematic sheets were redrawn following
+fixed rules (parts at the pins, ground symbols downwards, supply symbols upwards) and annotated datasheet
+excerpts were embedded next to the critical circuits.
+
+\subsection{Rev.~2.4b -- battery connector for the existing packs}
+\label{sec:hw_rev24b}
+Up to Rev.~2.4 the battery connector J1 was a 4-pin Molex Micro-Fit with an extra pin for the
+battery temperature sensor. The packs that are actually available, however, are inexpensive 2-cell
+packs with a 2-pin JST-XH plug. J1 was therefore changed to a vertical JST B2B-XH-A
+(Figure~\ref{fig:hw_j1}). Consequences: a JST-XH contact is rated for about \SI{3}{\ampere}
+(the fuse stays at \SI{5}{\ampere}), and without an NTC the charger input \texttt{TS} is in the
+``too cold'' range, so on-board charging is automatically disabled -- the packs are charged externally.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.98\textwidth]{v9_Final_DMU_Master_Preview.png}
-  \caption{Revision~v9.0 Final DMU: Isometrische Gesamtansicht, Draufsicht, Seitenansicht und Unteransicht inklusive 8x-LiDAR-Sichtkegeln (\SI{25}{\degree}), 24-mm-Steckerdummies (rot) und 3D-Kabelbaum (orange).}
-  \label{fig:v9_master_dmu}
+  \hwbeforeafter{%
+    \begin{kicadannot}{figures/hardware/pcb24_j1_molex}{122}{64.5}{148}{84}{\linewidth}
+      \draw[hwmark] (124.5,66.5) rectangle (138.5,80.5); \node[hwcallout] at (124.5,66.5) {1};
+    \end{kicadannot}}{%
+    \begin{kicadannot}{figures/hardware/pcb25_j1}{122}{64.5}{148}{84}{\linewidth}
+      \draw[hwmark] (126,70.5) rectangle (136,78.5); \node[hwcallout] at (126,70.5) {1};
+    \end{kicadannot}}
+  \caption{Battery connector J1 (top copper). (a) Molex Micro-Fit, 4 pins incl.\ NTC (Rev.~2.4);
+           (b) JST B2B-XH-A, 2 pins, matching the existing packs (Rev.~2.4b and later).}
+  \label{fig:hw_j1}
 \end{figure}
 
-\subsection{8x-LiDAR-Sensor-Pods und Schraubendome}
-Um alle acht \emph{VL53L0/1XV2}-Platinen (\qtyproduct{25.0 x 10.5 x 1.6}{\milli\metre}, Lochabstand \SI{19.5}{\milli\metre}) stoßgeschützt aufzunehmen, sitzt jedes Modul um \SI{1.90}{\milli\metre} tief in einer eigenen Sensortasche unter einem durchgehenden \SI{3.85}{\milli\metre} bis \SI{4.30}{\milli\metre} starken Massivdach. Die Befestigung erfolgt über jeweils zwei massive Schraubendome (\SI{6.5}{\milli\metre} Außendurchmesser) mit \SI{6.0}{\milli\metre} tiefen M2-Sacklöchern ($\varnothing\,\SI{2.0}{\milli\metre}$). Hinter jedem Sackloch verbleiben \SI{3.50}{\milli\metre} geschlossenes Vollmaterial, sodass M2x6-Schrauben zuverlässig greifen, ohne die Rückwand zu durchstoßen.
+\subsection{Design verification with the KiCad DRC}
+\label{sec:hw_drc}
+Until Rev.~2.4b the layout had only been checked with own scripts, which reported no errors. The first
+run of the full KiCad DRC including zone refill and schematic parity, however, found real problems
+(Table~\ref{tab:hw_drc}). The two most important ones would have made the first prototype faulty:
+\begin{itemize}
+  \item \textbf{IMU interrupt not connected.} When the peripherals sheet was redrawn, the label \net{INT1}
+        had been placed as a \emph{local} label instead of a \emph{hierarchical} one. The IMU interrupt
+        pin was therefore not connected to the ESP32 (Figure~\ref{fig:hw_int1}). Found by ERC/parity, fixed in the schematic.
+  \item \textbf{One I\textsuperscript{2}C line open.} The data line of ToF channel 5 (\net{SDA5}) was missing one
+        track segment on layer In2.
+\end{itemize}
 
-Für die sechspoligen DuPont-Stecker auf der Sensorrückseite stehen geschützte Steckertunnel mit \SI{26.0}{\milli\metre} Tiefe zur Verfügung. Alle sechs seitlichen bzw. schrägen Pods reichen mit \SI{15.5}{\milli\metre} Einbindetiefe lückenlos in die \SI{3.5}{\milli\metre} starke Hauptwannenwand, während die Kabelkanäle durch den \SI{4.0}{\milli\metre} hohen geschlossenen Wandsteg darüber die Struktursteifigkeit erhalten.
+\begin{table}[htbp]
+  \centering\small
+  \caption{Findings of the first complete KiCad DRC (18.11.) and how they were resolved.}
+  \label{tab:hw_drc}
+  \begin{tabular}{@{}p{0.36\linewidth}p{0.58\linewidth}@{}}
+    \toprule
+    \textbf{Finding} & \textbf{Resolution} \\
+    \midrule
+    1 unconnected item (\net{SDA5}) & Missing In2 segment added \\
+    IMU \net{INT1} not connected (ERC/parity) & Local labels changed to hierarchical labels \\
+    389 clearance violations & Layout was routed with \SI{0.125}{\milli\metre}, rule was \SI{0.15}{\milli\metre};
+                               rule set to \SI{0.125}{\milli\metre}, which is within the capability of
+                               common low-cost four-layer processes \\
+    USB-C VBUS bridge too close to the NPTH guide holes & Bridge moved (Figure~\ref{fig:hw_j4}); 8 remaining
+                               pad-to-hole distances come from the manufacturer footprint and are accepted \\
+    Encoder track \net{ENCB_B} inside the antenna keep-out & Re-routed outside the keep-out (Figure~\ref{fig:hw_antenna}) \\
+    271 parity differences & Net names with ``/'' and footprint fields synchronised with the schematic \\
+    7 courtyard overlaps & Checked one by one: no mechanical conflict, accepted and documented \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-\subsection{Batteriefach-Toleranzen, Hauptplatinen-Standoffs und FDM-Regeln}
-Die Hauptplatine ruht auf vier konisch verstärkten Standoffs ($\varnothing\,\SI{10.6}{\milli\metre}$, Auflageebene $Z = \SI{25.5}{\milli\metre}$) mit \SI{6.0}{\milli\metre} tiefen Sitzen für M3-Messing-Gewindeeinsätze ($\varnothing\,\SI{4.0}{\milli\metre}$, radiale Restwandstärke \SI{3.30}{\milli\metre}). Eine konstruktive Schutzoperation stellt sicher, dass kein Kabelkanal die Standoff-Säulen seitlich anschneidet.
+\begin{figure}[htbp]
+  \centering
+  \hwbeforeafter{%
+    \begin{kicadannot}{figures/hardware/sch_predrc_int1}{110}{200}{180}{235}{\linewidth}
+      \draw[hwmark] (136,214.5) rectangle (152,221); \node[hwcallout] at (136,214.5) {!};
+    \end{kicadannot}}{%
+    \begin{kicadannot}{figures/hardware/sch25_int1}{110}{200}{180}{235}{\linewidth}
+      \draw[hwmark] (136,214.5) rectangle (152,221);
+    \end{kicadannot}}
+  \caption{IMU interrupt in the peripherals sheet: (a) local label -- not connected to the ESP32;
+           (b) hierarchical label -- connected.}
+  \label{fig:hw_int1}
+\end{figure}
 
-Das rechts in der Wanne liegende Akkufach für das 2S-Li-Ion-Pack (\qtyproduct{72.0 x 39.5 x 19.5}{\milli\metre}) bietet einen lichten Bauraum von \qtyproduct{78.0 x 43.5 x 21.5}{\milli\metre}. Daraus ergeben sich reale Einbautoleranzen von \SI{+2.0}{\milli\metre} seitlich und vertikal sowie \SI{+3.0}{\milli\metre} in Längsrichtung, sodass der Akku werkzeuglos ohne Klemmen entnommen werden kann. Eine \SI{3.2}{\milli\metre} starke Trennrippe schützt den Akku mechanisch vor dem \SI{24.0}{\milli\metre} langen Stecker- und Biegeraum des Liniensensors (Gesamtabstand \SI{8.0}{\milli\metre}). Für den USB-C-Stecker an \texttt{J4} bleibt oberhalb des Front-Pod-Dachs ($Z = \SI{23.0}{\milli\metre}$ bis \SI{33.0}{\milli\metre}) ein \SI{16.0}{\milli\metre} breiter Einsteckkorridor dauerhaft frei.
+\begin{figure}[htbp]
+  \centering
+  \hwbeforeafter{%
+    \begin{kicadannot}{figures/hardware/pcb24b_j4}{116.5}{102}{123}{112}{0.5\linewidth}
+      \draw[hwmark] (119.45,104.25) rectangle (121.35,109.75); \node[hwcallout] at (121.35,104.25) {1};
+    \end{kicadannot}}{%
+    \begin{kicadannot}{figures/hardware/pcb25_j4}{116.5}{102}{123}{112}{0.5\linewidth}
+      \draw[hwmark] (118.8,104.4) rectangle (120.85,109.6); \node[hwcallout] at (118.8,104.4) {1};
+    \end{kicadannot}}
+  \caption{USB-C receptacle J4 (top copper, enlarged): the VBUS connection between the two VBUS pad groups (1)
+           was moved \SI{0.7}{\milli\metre} away from the plastic guide holes of the receptacle and routed straight.}
+  \label{fig:hw_j4}
+\end{figure}
 
-\subsection{Rechnerische Crash-Abschätzung}
-Zur Bewertung der Aufprallsicherheit wurde eine analytische Stoßabschätzung für einen ungebremsten Frontalaufprall mit der Fahrzeuggesamtmasse $m = \SI{1.20}{\kilogram}$ und einer elastisch-plastischen Pufferzone $s = \SI{2.0}{\milli\metre}$ am \SI{6.0}{\milli\metre} starken Front-Bumper durchgeführt. Über den Energieerhaltungssatz ergibt sich die mittlere Stoßkraft zu:
+\begin{figure}[htbp]
+  \centering
+  \hwbeforeafter{%
+    \begin{kicadannot}{figures/hardware/pcb24b_antenna}{183.5}{117}{191}{122}{\linewidth}
+      \draw[hwmarkdash] (186.5,119.8) rectangle (190.75,122); \node[hwlabel,anchor=north] at (188.6,121.9) {keep-out};
+      \draw[hwmark] (186.3,119.4) rectangle (187.8,119.95);
+    \end{kicadannot}}{%
+    \begin{kicadannot}{figures/hardware/pcb25_antenna}{183.5}{117}{191}{122}{\linewidth}
+      \draw[hwmarkdash] (186.5,119.8) rectangle (190.75,122); \node[hwlabel,anchor=north] at (188.6,121.9) {keep-out};
+      \draw[hwmark] (186.0,119.2) rectangle (187.9,119.7);
+    \end{kicadannot}}
+  \caption{Encoder track \net{ENCB_B} on the bottom layer next to the antenna keep-out (enlarged). Before, the
+           segment at $y=\SI{119.67}{\milli\metre}$ touched the keep-out with its track width; it was moved to
+           $y=\SI{119.45}{\milli\metre}$. The keep-out next to the antenna must stay free of copper on all layers,
+           otherwise the radio performance suffers.}
+  \label{fig:hw_antenna}
+\end{figure}
+
+% =============================================================================
+\section{Rev.~2.5: Operation from 2-Cell or 3-Cell Packs}
+\label{sec:hw_rev25}
+
+\subsection{Motivation and concept}
+The drive motors are \SI{12}{\volt} types. With a 2-cell pack (\SIrange{6.0}{8.4}{\volt}) they run
+at roughly half of their rated speed. A 3-cell pack (\SIrange{9.0}{12.6}{\volt}) would give more
+reserve, but the existing 2-cell packs had to keep working \emph{without any modification}.
+Several parts of Rev.~2.4b were dimensioned for 2 cells only, most critically the charger BQ25886,
+whose battery pin is rated for \SI{12}{\volt} absolute maximum \cite{TI_BQ25886}, below the
+\SI{12.6}{\volt} of a full 3-cell pack.
+
+The solution is a set of four \SI{0}{\ohm} resistors used as bridges
+(Table~\ref{tab:hw_bridges}, Figure~\ref{fig:hw_bridges_sch}):
+\textbf{all bridges fitted = 2-cell} (factory state, identical behaviour to Rev.~2.4b),
+\textbf{all bridges removed = 3-cell}. A single rule is less error-prone than a mix of ``cut this'' and
+``close that''. The order matters: R87 must be removed first, otherwise a 3-cell pack would destroy the
+charger. As an additional safety net the overvoltage threshold stays at \SI{8.75}{\volt} in the 2-cell
+configuration, so a 3-cell pack that is plugged in by mistake is simply blocked by the LTC4365.
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{Configuration bridges of Rev.~2.5.}
+  \label{tab:hw_bridges}
+  \begin{tabular}{@{}lp{0.38\linewidth}p{0.20\linewidth}p{0.20\linewidth}@{}}
+    \toprule
+    \textbf{Bridge} & \textbf{Function} & \textbf{2 cells (fitted)} & \textbf{3 cells (removed)} \\
+    \midrule
+    R87 (0603) & Connects the charger battery pin \net{CHG_BAT} to \net{PACK_SAFE} & charger connected & charger disconnected \\
+    R88 (0603) & Shorts R91 in the LTC4365 overvoltage divider & OV = \SI{8.75}{\volt} & OV = \SI{13.52}{\volt} \\
+    R89 (0603) & Shorts R90 in the TPS3700 divider & on \SI{6.42}{\volt} / off \SI{6.00}{\volt} & on \SI{9.66}{\volt} / off \SI{9.03}{\volt} \\
+    R92 (1206) & Connects TVS D14 (SMBJ8.5A) in parallel to D1 (SMBJ13A) & clamping as Rev.~2.4 & D1 only \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{kicadannot}{figures/hardware/sch25_power_bridges}{185}{258}{425}{345}{\linewidth}
+    \foreach \x/\n in {200.66/R87, 246.38/R88, 292.1/R89, 320.04/R92}
+      \draw[hwmark] (\x-6,280) rectangle (\x+9,294);
+  \end{kicadannot}
+  \caption{Schematic block ``05 2S/3S bridges'' (power-supply sheet) with the bridges R87, R88, R89 and R92
+           marked; R90 and R91 are normal resistors and always fitted.}
+  \label{fig:hw_bridges_sch}
+\end{figure}
+
+\subsection{Overvoltage and undervoltage thresholds (LTC4365)}
+The LTC4365 compares two divided versions of the input voltage with internal \SI{0.5}{\volt}
+thresholds \cite{ADI_LTC4365}. Undervoltage and overvoltage use separate dividers, so the bridge only
+changes the overvoltage limit:
+\begin{align}
+  U_\text{UV} &= \SI{0.5}{\volt}\cdot\left(1+\frac{R_{36}}{R_{37}}\right) = \SI{0.5}{\volt}\cdot\left(1+\frac{\SI{100}{\kilo\ohm}}{\SI{10}{\kilo\ohm}}\right) = \SI{5.50}{\volt},\\
+  U_\text{OV,2S} &= \SI{0.5}{\volt}\cdot\left(1+\frac{R_{38}}{R_{39}}\right) = \SI{0.5}{\volt}\cdot\left(1+\frac{\SI{165}{\kilo\ohm}}{\SI{10}{\kilo\ohm}}\right) = \SI{8.75}{\volt},\\
+  U_\text{OV,3S} &= \SI{0.5}{\volt}\cdot\left(1+\frac{R_{38}+R_{91}}{R_{39}}\right) = \SI{0.5}{\volt}\cdot\left(1+\frac{\SI{260.3}{\kilo\ohm}}{\SI{10}{\kilo\ohm}}\right) = \SI{13.52}{\volt}.
+\end{align}
+The 3-cell limit lies \SI{0.9}{\volt} above a full pack, leaving room for spikes when the motors brake.
+The undervoltage limit of \SI{5.5}{\volt} is only a last line of defence for 3 cells; the robot switches off
+much earlier through the TPS3700 and the firmware.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{kicadannot}{figures/hardware/sch25_power_ltc}{140}{20}{275}{70}{\linewidth}
+    \draw[hwmark] (146,43) rectangle (176,60); \node[hwcallout] at (146,43) {1};
+  \end{kicadannot}
+  \caption{LTC4365 with the undervoltage divider R36/R37 and the overvoltage divider R38/R39 (1).
+           In Rev.~2.5 the lower end of R38 goes to \net{OV_3S}, i.e.\ to R91/R88.}
+  \label{fig:hw_ltc}
+\end{figure}
+
+\subsection{Low-battery cut-off with hysteresis (TPS3700)}
+\label{sec:hw_tps}
+The TPS3700 output OUTB pulls the gate of Q3 low (load on) as long as the voltage at its input
+INB\textsuperscript{--} is above $U_\text{IT+}=\SI{400}{\milli\volt}$; it releases it below
+$U_\text{IT-}=\SI{394.5}{\milli\volt}$ \cite{TI_TPS3700}. The internal hysteresis of \SI{5.5}{\milli\volt}
+alone would be far too small, therefore R69 adds hysteresis from the switched output \net{VBAT_SW}.
+In Rev.~2.5 the divider was re-arranged (Figure~\ref{fig:hw_tps}): R67 (from \net{PACK_SAFE}) and R69
+(from \net{VBAT_SW}) meet at node \net{RUN_DIV}; from there R90 (shorted by R89 for 2 cells) leads to the
+comparator input \net{RUN_SENSE}, and R68 to ground.
+
+\paragraph{Q3 off.} \net{VBAT_SW} is pulled to about \SI{0}{\volt} by R70 and the loads, so R69 acts as a
+resistor to ground ($R_{69}' = R_{69}+R_{70}$). With the Thevenin equivalent of R67 and $R_{69}'$ the
+switch-on voltage is
 \begin{equation}
-  F_{\text{Crash}} = \frac{\frac{1}{2}\,m\,v^2}{s}
-  \label{eq:crash_kraft}
+  U_\text{on} = U_\text{IT+}\cdot\frac{R_{67}\parallel R_{69}' + R_{90} + R_{68}}{R_{68}}\cdot\frac{R_{67}+R_{69}'}{R_{69}'} .
 \end{equation}
-Bei einer typischen Einpark- bzw. Suchgeschwindigkeit von $v_1 = \SI{5.0}{\kilo\metre\per\hour}$ (\SI{1.39}{\metre\per\second}) resultiert $F_1 \approx \SI{579}{\newton}$; selbst im Extremfall bei $v_2 = \SI{9.0}{\kilo\metre\per\hour}$ (\SI{2.50}{\metre\per\second}) beträgt die Stoßkraft $F_2 = \SI{1875}{\newton}$. Bezogen auf die tragende Prallquerschnittsfläche von $A = \SI{612}{\milli\metre\squared}$ und eine zulässige Biege-/Druckspannung von $\sigma_{\text{zul}} = \SI{35}{\mega\pascal}$ für PLA/PETG ergeben sich Sicherheitsfaktoren von $\text{SF}_1 = 37{,}0$ bzw. $\text{SF}_2 = 11{,}4$, die deutlich über dem Zielwert $\text{SF} \ge 3{,}0$ liegen.
+\paragraph{Q3 on.} \net{VBAT_SW} equals \net{PACK_SAFE}, both upper resistors pull up and the switch-off
+voltage becomes
+\begin{equation}
+  U_\text{off} = U_\text{IT-}\cdot\frac{R_{67}\parallel R_{69} + R_{90} + R_{68}}{R_{68}} .
+\end{equation}
+With $R_{67}=\SI{150}{\kilo\ohm}$, $R_{68}=\SI{10}{\kilo\ohm}$, $R_{69}=\SI{2.7}{\mega\ohm}$,
+$R_{70}=\SI{100}{\kilo\ohm}$ this gives \SI{6.42}{\volt}/\SI{6.00}{\volt} for 2 cells ($R_{90}$ shorted)
+and \SI{9.66}{\volt}/\SI{9.03}{\volt} for 3 cells ($R_{90}=\SI{76.8}{\kilo\ohm}$), i.e.\ about
+\SI{3.0}{\volt} per cell when switching off. Placing R90 \emph{behind} the junction of R67 and R69 keeps the
+ratio $U_\text{on}/U_\text{off}\approx (R_{67}+R_{69})/R_{69}$ the same for both configurations, so the
+relative hysteresis does not change.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{\linewidth}\centering
+    \begin{kicadannot}{figures/hardware/sch24b_power_tps}{205}{70}{335}{125}{0.9\linewidth}
+      \draw[hwmark] (268,80) rectangle (315,84.5); \node[hwcallout] at (268,80) {1};
+    \end{kicadannot}\caption{Rev.~2.4b: R67, R68 and R69 on one node \net{RUN_SENSE} (1).}
+  \end{subfigure}\\[2mm]
+  \begin{subfigure}[t]{\linewidth}\centering
+    \begin{kicadannot}{figures/hardware/sch25_power_tps}{205}{70}{335}{125}{0.9\linewidth}
+      \draw[hwmark] (268,72) rectangle (300,84.5); \node[hwcallout] at (268,72) {2};
+    \end{kicadannot}\caption{Rev.~2.5: R67/R69 on \net{RUN_DIV}, R68 and the comparator on \net{RUN_SENSE};
+                             R90/R89 between the two nodes are in block 05 (2).}
+  \end{subfigure}
+  \caption{TPS3700 low-battery cut-off before and after the 2-/3-cell change.}
+  \label{fig:hw_tps}
+\end{figure}
+
+\subsection{Voltage ratings, TVS diodes and capacitors}
+Every part connected to the battery path was checked against \SI{12.6}{\volt} plus margin up to the
+overvoltage limit of \SI{13.5}{\volt} (Table~\ref{tab:hw_ratings}). Two capacitors were only rated
+\SI{16}{\volt} and were changed to \SI{25}{\volt} parts.
+The TVS diode D1 on \net{VBAT_SW} had to be changed as well: the previous SMBJ8.5A starts to conduct at
+about \SI{9.4}{\volt} and would short a 3-cell pack. The SMBJ13A has a stand-off voltage of \SI{13}{\volt}.
+Its clamping voltage at full pulse current, however, is above the \SI{15}{\volt} absolute maximum of the
+motor driver. To keep the better protection of the previous design for 2-cell operation, the old SMBJ8.5A
+(D14) remains on the board and is connected in parallel through the bridge R92. For 3-cell operation the
+motor driver is the weakest point (\SI{13.5}{\volt} maximum operating voltage); the firmware therefore has
+to use braking ramps so that regenerated energy does not pump the supply up.
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{Check of the parts on the battery path for 3-cell operation.}
+  \label{tab:hw_ratings}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    \textbf{Part} & \textbf{Relevant rating} & \textbf{At 3 cells} & \textbf{Result} \\
+    \midrule
+    Q1/Q2 AO4406A & $U_\text{DS}$ \SI{30}{\volt} & \SI{12.6}{\volt} & ok \\
+    Q3 AO4407A & $U_\text{DS}$ \SI{-30}{\volt}, $U_\text{GS}$ \SI{\pm 25}{\volt} & $U_\text{GS}\approx\SI{-12.5}{\volt}$ & ok \\
+    LTC4365 / TPS3700 & $U_\text{IN}$ \SI{34}{\volt} / $U_\text{DD}$ \SI{18}{\volt} & \SI{13.5}{\volt} & ok \\
+    AP63203/AP63205 & $U_\text{IN}$ \SI{32}{\volt} & \SI{13.5}{\volt} & ok \\
+    C17 (bulk), C63 & \SI{16}{\volt} & \SI{13.5}{\volt} & changed to \SI{25}{\volt} \\
+    D1 TVS & SMBJ8.5A, $U_\text{BR}\approx\SI{9.4}{\volt}$ & \SI{12.6}{\volt} & changed to SMBJ13A \\
+    BQ25886 BAT & \SI{12}{\volt} abs.\ max. & \SI{12.6}{\volt} & disconnected by R87 \\
+    TB6612FNG $V_\text{M}$ & \SI{13.5}{\volt} operating, \SI{15}{\volt} abs.\ max. & \SI{12.6}{\volt} & \textbf{critical}, braking ramps \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Battery-voltage measurement and firmware requirements}
+The ADC divider (\SI{100}{\kilo\ohm}/\SI{22}{\kilo\ohm}) delivers \SI{2.27}{\volt} at \SI{12.6}{\volt}, which
+requires the \SI{12}{\decibel} attenuation setting of the ESP32 ADC. The firmware detects the pack type at
+start-up (above \SI{9.0}{\volt} = 3 cells; a 3-cell pack is only switched on above \SI{9.66}{\volt}, a
+2-cell pack never exceeds \SI{8.4}{\volt}), switches off at \SI{3.3}{\volt} per cell, scales the PWM with
+$6.0\,\text{V}/U_\text{bat}$ so that the speed does not depend on the state of charge, and ramps the
+motors down before reversing. These requirements were handed over to the software team as a GitHub issue.
+
+\subsection{Layout of the Rev.~2.5 changes}
+\label{sec:hw_rev25layout}
+The top side had no free space left, so the bridges were placed on the bottom side directly under the
+cut-off circuit, close to the nodes they switch (Figure~\ref{fig:hw_bridges_pcb}). A silkscreen frame
+with the text ``2S: all 0R fitted / 3S: all 0R removed / R87 FIRST!'' makes the rule visible on the
+board itself. The two long, high-impedance connections to the overvoltage divider were routed on the
+inner layer In2, directly below the solid ground plane In1, which shields them from the switching noise of the
+motor driver. In the same step the power tracks (\net{BAT_RAW}, \net{PROT_SRC}, \net{BAT_FUSED},
+\net{PACK_SAFE}, \net{VBAT_SW}) were widened from \SIrange{0.4}{0.5}{\milli\metre} to
+\SIrange{0.6}{0.65}{\milli\metre} wherever the clearance allowed it (186 of 275 segments,
+Figure~\ref{fig:hw_power_tracks}); the motor outputs are still \SI{0.4}{\milli\metre} in the dense area around the
+motor driver. After the change the KiCad DRC reports 0 unconnected items, 0 clearance and 0 parity
+errors.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{kicadannot}{figures/hardware/pcb25_bridges}{160}{71}{182}{93}{0.62\linewidth}
+    \draw[hwmarkdash] (170.65,74.95) rectangle (178.95,83.25);
+    \node[hwcallout] at (171.6,76.1) {1}; \node[hwcallout] at (171.6,77.7) {2};
+    \node[hwcallout] at (171.6,80.9) {3}; \node[hwcallout] at (179.6,79.3) {4};
+    \draw[hwmark] (171.9,85.6) rectangle (179.3,89.6);
+  \end{kicadannot}
+  \caption{Bottom side (seen from the top, not mirrored): bridge cluster with R87 (1), R88/R91 (2),
+           R89/R90 (3), R92 (4) inside the silkscreen frame, and TVS diode D14 below.}
+  \label{fig:hw_bridges_pcb}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \hwbeforeafter{%
+    \includegraphics[width=\linewidth]{figures/hardware/pcb24b_power}}{%
+    \includegraphics[width=\linewidth]{figures/hardware/pcb25_power}}
+  \caption{Power section on the top layer (copper pours hidden): track widths before and after Rev.~2.5.}
+  \label{fig:hw_power_tracks}
+\end{figure}
+
+% =============================================================================
+\section{Main Board Rev.~2.5: Circuit Overview}
+\label{sec:hw_circuit}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth,trim=330 230 330 230,clip]{figures/hardware/render25_top.png}\caption{top}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth,trim=330 230 330 230,clip]{figures/hardware/render25_bottom.png}\caption{bottom}
+  \end{subfigure}
+  \caption{3D rendering of the main board Rev.~2.5 (raster image from KiCad; \qtyproduct{77 x 81}{\milli\metre}).}
+  \label{fig:hw_render}
+\end{figure}
+
+Table~\ref{tab:hw_blocks} lists the functional blocks of the current main board; the complete
+schematics are in the appendix. Table~\ref{tab:hw_pins} shows the pin assignment of the ESP32-S3
+that the firmware relies on.
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{Functional blocks of the main board Rev.~2.5.}
+  \label{tab:hw_blocks}
+  \begin{tabular}{@{}p{0.19\linewidth}p{0.36\linewidth}p{0.41\linewidth}@{}}
+    \toprule
+    \textbf{Reference} & \textbf{Part} & \textbf{Function} \\
+    \midrule
+    U3 & ESP32-S3-WROOM-1-N8 & Microcontroller, Wi-Fi/BLE, native USB \cite{EspressifS3Module} \\
+    U8, Q1, Q2 & LTC4365, 2$\times$ AO4406A & Reverse-polarity, under- and overvoltage protection \\
+    U16, Q3, SW4 & TPS3700, AO4407A, slide switch & Run/charge switch with low-battery cut-off \\
+    U1, U2 & AP63205, AP63203 & Buck converters 5\,V / 3.3\,V, \SI{2}{\ampere} each \\
+    U12, U17, U10, U11 & BQ25886, NCP361, TUSB320, TPS22919 & USB-C input protection and 2-cell charger \\
+    U6, U7, U18 & TB6612FNG, SN74LVC2G14, SN74LVC244A & Dual motor driver, direction inversion, encoder level shifter \\
+    U5 & ICM-42670-P & 6-axis IMU (I\textsuperscript{2}C \texttt{0x68}) \\
+    U15, J8--J15 & TCA9548A, solder pads & I\textsuperscript{2}C switch for eight VL53L0X ToF sensors \\
+    D6--D13, U13 & WS2812B-2020, SN74AHCT1G125 & Eight RGB LEDs with 5\,V level shifter \\
+    J1, J2, J3, J4, J6/J7 & JST-XH, JST-GH, 2$\times$8 header, USB-C, 6-pin & Battery, line sensor, UART/boot, USB, motors \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{ESP32-S3 pin assignment of the main board Rev.~2.5.}
+  \label{tab:hw_pins}
+  \begin{tabular}{@{}ll@{\hspace{2em}}ll@{}}
+    \toprule
+    \textbf{Function} & \textbf{GPIO} & \textbf{Function} & \textbf{GPIO} \\
+    \midrule
+    I\textsuperscript{2}C SDA / SCL & 13 / 14 & Motor A DIR / PWM & 48 / 47 \\
+    IMU INT1 & 12 & Motor B DIR / PWM & 41 / 42 \\
+    Line sensor LS1--LS6 (ADC1) & 4, 5, 6, 7, 9, 10 & Motor driver STBY & 39 \\
+    Battery voltage (ADC1) & 3 & Encoder M1 A / B & 38 / 21 \\
+    RGB LED data & 8 & Encoder M2 A / B & 1 / 2 \\
+    User button / USB present & 15 / 40 & Ultrasonic TRIG / ECHO (spare) & 11 / 16 \\
+    Multiplexer reset & 37 & UART0 TX / RX (J3) & 43 / 44 \\
+    USB D$-$ / D$+$ & 19 / 20 & Spare on J3 & 17, 18 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% =============================================================================
+\section{Layout of the Main Board}
+\label{sec:hw_layout}
+
+\subsection{Stack-up}
+The board uses four copper layers (Figure~\ref{fig:hw_stackup}). The second layer is an uninterrupted
+ground plane. It gives every signal on the top layer a defined return path directly underneath, keeps the
+current loops of the two buck converters and of the motor driver small, and shields the inner signal layer.
+Ground pours on all layers are stitched together with vias.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[x=1cm,y=1cm]
+    \foreach \y/\c/\t/\d in {3/red!70/F.Cu/{signals, power, components},2.1/gray!70/In1.Cu/{continuous ground plane},
+                               1.2/orange!70/In2.Cu/{signals (long and sensitive lines)},0.3/blue!60/B.Cu/{signals, bridges, test points}}{
+      \fill[\c] (0,\y) rectangle (6,\y+0.12);
+      \node[anchor=west,font=\sffamily\scriptsize] at (6.2,\y+0.06) {\textbf{\t}: \d};}
+    \fill[green!25!yellow!40] (0,2.22) rectangle (6,3);
+    \fill[green!25!yellow!25] (0,1.32) rectangle (6,2.1);
+    \fill[green!25!yellow!40] (0,0.42) rectangle (6,1.2);
+    \node[font=\sffamily\scriptsize] at (3,0.81) {FR4 / prepreg, total \SI{1.6}{\milli\metre}};
+  \end{tikzpicture}
+  \caption{Four-layer stack-up of the main board (schematic, not to scale).}
+  \label{fig:hw_stackup}
+\end{figure}
+
+\subsection{Placement}
+The placement follows the position of the external connections in the chassis
+(Figure~\ref{fig:hw_layers}):
+\begin{itemize}
+  \item The ESP32-S3 module sits at the right board edge with its antenna protruding beyond the board.
+        No copper is placed under or next to the antenna on any layer (keep-out areas).
+  \item The power path from J1 to Q3 runs along the upper edge (rear of the robot) with short, wide tracks;
+        the buck converters and the motor driver are placed next to it to keep high currents away from
+        the sensitive analogue and I\textsuperscript{2}C signals.
+  \item The RGB LEDs, the line-sensor connector J2 and the front ToF pads are at the lower edge
+        (front of the robot); the USB-C receptacle at the left edge is reachable from the side of the chassis.
+\end{itemize}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \begin{kicadannot}{figures/hardware/pcb25_top}{112.9}{63.9}{191.7}{146.2}{\linewidth}
+      \draw[hwmark] (124.5,66) rectangle (170,82); \node[hwcallout] at (124.5,66) {1};
+      \draw[hwmark] (170,96) rectangle (191.5,124); \node[hwcallout] at (170,96) {2};
+      \draw[hwmark] (114,100) rectangle (124,114); \node[hwcallout] at (114,100) {3};
+      \draw[hwmark] (132,82) rectangle (160,96); \node[hwcallout] at (132,82) {4};
+    \end{kicadannot}\caption{top layer}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \begin{kicadannot}{figures/hardware/pcb25_bottom}{112.9}{63.9}{191.7}{146.2}{\linewidth}
+      \draw[hwmark] (170.65,74.95) rectangle (178.95,83.25); \node[hwcallout] at (170.65,74.95) {5};
+    \end{kicadannot}\caption{bottom layer (seen from top)}
+  \end{subfigure}\\[2mm]
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{figures/hardware/pcb25_in1}\caption{In1: ground plane}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{figures/hardware/pcb25_in2}\caption{In2: inner signals}
+  \end{subfigure}
+  \caption{Copper layers of the main board Rev.~2.5: (1) power path and protection, (2) ESP32 with antenna
+           keep-out, (3) USB-C, (4) motor driver and bucks, (5) 2S/3S bridges.}
+  \label{fig:hw_layers}
+\end{figure}
+
+% =============================================================================
+\section{Feasibility Study: Two Layers Instead of Four}
+\label{sec:hw_twolayer}
+
+Two-layer boards are cheaper to manufacture. To find out whether the board could be reduced to two
+layers, an experiment was carried out on a separate branch (\texttt{pcb/2-lagen-versuch}):
+\begin{enumerate}
+  \item The inner signal layer In2 (\SI{1.75}{\metre} of tracks, 68 nets) and the ground plane In1 were
+        removed. 94 connections were open afterwards.
+  \item The ESP32 GPIOs were re-assigned so that every signal leaves the module on the side where its source
+        is (I\textsuperscript{2}C and encoders to the left edge, line sensor and button to the lower edge, motor driver to the
+        upper edge). The rules of the datasheets \cite{EspressifS3Module,EspressifS3Chip} were respected:
+        line-sensor and battery inputs on ADC1 (GPIO1--10), strapping pins GPIO0/45/46 untouched,
+        GPIO35--37 only usable because the N8 module has no octal PSRAM, GPIO47/48 at 3.3\,V on this module variant.
+  \item All affected nets were re-routed with a script-based router, and ground islands were connected with
+        stitching vias.
+\end{enumerate}
+The best result still had 57 open connections (33 signals, 24 ground islands, Figure~\ref{fig:hw_2layer}).
+Almost all remaining signals have to pass the same narrow corridor next to the ESP32 module, and without a
+continuous ground plane every new track cuts the ground pour into islands. A ``rip-up and re-route''
+algorithm made the result worse. In addition, USB, the switching regulators and the motor currents would lose
+their reference plane. The board therefore stays a four-layer design; for small quantities the price
+difference is only a few euros. One useful result of the study: GPIO39 (the motor-driver enable \net{MOTOR_STBY})
+has an internal pull-up after reset \cite{EspressifS3Chip}, which works against the external pull-down; moving
+STBY to a pin without pull-up (e.g.\ GPIO7) is recommended for the next revision.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \begin{kicadannot}{figures/hardware/pcb2l_top}{112.9}{63.9}{191.7}{146.2}{\linewidth}
+      \draw[hwmark] (160,97) rectangle (182,124); \node[hwlabel,anchor=north] at (171,124) {congested corridor};
+    \end{kicadannot}\caption{top layer}
+  \end{subfigure}\hfill
+  \begin{subfigure}[t]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{figures/hardware/pcb2l_bottom}\caption{bottom layer}
+  \end{subfigure}
+  \caption{Best two-layer attempt (not manufacturable, 57 open connections).}
+  \label{fig:hw_2layer}
+\end{figure}
+
+% =============================================================================
+\section{Line-Sensor Board}
+\label{sec:hw_linesensor}
+
+\subsection{Circuit}
+The line sensor (\qtyproduct{76 x 32}{\milli\metre}, two layers) carries six CNY70 reflective sensors
+\cite{Vishay_CNY70x} on the bottom side. Their infrared LEDs are connected in two series strings of three.
+Each string is driven by a simple current sink: an NPN transistor whose base is held at \SI{1.65}{\volt} by a
+divider from \SI{3.3}{\volt} and a \SI{47}{\ohm} emitter resistor. The LED current therefore depends only on
+the \SI{3.3}{\volt} rail, $V_\text{BE}$ and the current gain -- not on the battery voltage that supplies the
+LEDs. Each phototransistor output has a \SI{10}{\kilo\ohm} pull-up, a \SI{47}{\kilo\ohm} pull-down and a
+\SI{10}{\nano\farad} filter capacitor and goes directly to an ADC1 input of the ESP32 through the 10-pin JST-GH
+connector.
+
+\subsection{Revision R3: suitable for 2 and 3 cells}
+Because the LED current is constant, the surplus voltage drops across the transistor. With a full 3-cell pack
+this is up to about \SI{180}{\milli\watt} per transistor (Table~\ref{tab:hw_ls_thermal}). The original
+BC817-40 in SOT-23 (about \SI{500}{\kelvin\per\watt}) would reach its \SI{150}{\celsius} junction limit at an
+ambient temperature of \SI{60}{\celsius}. A series resistor is not an option, because at the lowest 2-cell voltage
+there is hardly any headroom left. Revision R3 therefore uses a BCX56-16 in SOT-89 \cite{Diodes_BCX5616Q,MCC_BCX56}
+with \SI{250}{\kelvin\per\watt} on a minimal pad. Its lower current gain ($h_\text{FE}\ge 40$ at \SI{5}{\milli\ampere})
+was compensated by lowering the base divider from \SI{1}{\kilo\ohm} to \SI{470}{\ohm}:
+\begin{equation}
+  I_\text{C} = \frac{V_\text{th}-V_\text{BE}}{R_\text{E}\,(1+1/\beta)+R_\text{th}/\beta},\quad
+  V_\text{th}=\SI{1.65}{\volt},\; R_\text{th}=\SI{235}{\ohm},\; R_\text{E}=\SI{47}{\ohm}
+\end{equation}
+gives \SIrange{17.6}{20.5}{\milli\ampere} over the whole gain spread (with \SI{1}{\kilo\ohm} it would drop to
+about \SI{15}{\milli\ampere}). The same board now works with 2 and 3 cells without any bridge.
+
+\begin{table}[htbp]
+  \centering\small
+  \caption{Dissipation of the current-sink transistor (\SI{20.5}{\milli\ampere}, LED forward voltage \SI{1.0}{\volt}) and junction
+           temperature of the BCX56 at \SI{60}{\celsius} ambient.}
+  \label{tab:hw_ls_thermal}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    \textbf{Supply} & $U_\text{CE}$ & \textbf{Dissipation} & $T_\text{j}$ (\SI{250}{\kelvin\per\watt}) \\
+    \midrule
+    \SI{6.0}{\volt} (2 cells, cut-off) & \SI{2.04}{\volt} & \SI{42}{\milli\watt} & \SI{71}{\celsius} \\
+    \SI{8.4}{\volt} (2 cells, full) & \SI{4.44}{\volt} & \SI{91}{\milli\watt} & \SI{83}{\celsius} \\
+    \SI{12.6}{\volt} (3 cells, full) & \SI{8.64}{\volt} & \SI{177}{\milli\watt} & \SI{104}{\celsius} \\
+    \SI{13.5}{\volt} (overvoltage limit) & \SI{9.54}{\volt} & \SI{196}{\milli\watt} & \SI{109}{\celsius} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \hwbeforeafter{%
+    \begin{kicadannot}{figures/hardware/ls_r2_top_q1}{11.97}{17.97}{30.97}{31.97}{\linewidth}
+      \draw[hwmark] (20.5,24.6) rectangle (23.6,27.6); \node[hwcallout] at (20.5,24.6) {1};
+    \end{kicadannot}}{%
+    \begin{kicadannot}{figures/hardware/ls_r3_top_q1}{88.68}{68.98}{107.68}{82.98}{\linewidth}
+      \draw[hwmark] (95.6,73.6) rectangle (101,79.8); \node[hwcallout] at (95.6,73.6) {1};
+    \end{kicadannot}}
+  \caption{Current-sink transistor Q1 on the line sensor: (a) BC817-40, SOT-23 (R2); (b) BCX56-16, SOT-89 with
+           the collector tab (R3).}
+  \label{fig:hw_ls_q}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/hardware/ls_r3_top}
+  \caption{Line-sensor board R3, top layer (the CNY70 sensors are mounted on the bottom side).}
+  \label{fig:hw_ls_top}
+\end{figure}
+
+% =============================================================================
+\section{Mechanical Integration and 3D Print}
+\label{sec:hw_print}
+
+\subsection{Mounting height of the main board}
+The main board is screwed onto four standoffs of the chassis (M3 brass inserts, \qtyproduct{65 x 64}{\milli\metre}
+pattern), directly above the battery bay. A check of the chassis model against the real Rev.~2.5 board
+showed that the battery would have touched the bottom of the board: only \SI{1.75}{\milli\metre} were left between
+the top of the battery and the PCB, while the bottom side carries the TVS diode D14 (\SI{2.3}{\milli\metre}),
+the bridge cluster, 15 test points, the pins of the J3 header and the soldered ToF cables.
+The standoffs were therefore extended by \SI{4}{\milli\metre} (Figure~\ref{fig:hw_clearance}), giving
+\SI{5.75}{\milli\metre} of clearance. The four mounting holes of the board match the standoffs exactly
+(Figure~\ref{fig:hw_chassis}).
+
+\begin{figure}[htbp]
+  \centering
+  \resizebox{0.95\linewidth}{!}{%
+  \begin{tikzpicture}[x=0.32cm,y=0.32cm,font=\sffamily\scriptsize]
+    \foreach \ox/\top/\t in {0/25.5/{before}, 34/29.5/{after (+4 mm)}}{
+      \begin{scope}[xshift=\ox*0.32cm]
+        \fill[gray!35] (0,0) rectangle (20,4); \node at (10,2) {chassis floor (4 mm)};
+        \fill[blue!20] (2,4.25) rectangle (18,23.75); \node at (10,14) {2-cell pack (19.5 mm)};
+        \fill[gray!60] (-1.5,4) rectangle (0.5,\top); \fill[gray!60] (19.5,4) rectangle (21.5,\top);
+        \fill[green!50!black] (-2,\top) rectangle (22,\top+1.6);
+        \fill[red!70] (12,\top-2.3) rectangle (15,\top); \node[anchor=east] at (12,\top-1.2) {D14};
+        \draw[<->] (23,23.75) -- (23,\top) node[midway,right] {\pgfmathparse{\top-23.75}\pgfmathprintnumber[fixed,precision=2]{\pgfmathresult}\,mm};
+        \node at (10,\top+4) {\textbf{\t}};
+      \end{scope}}
+  \end{tikzpicture}}
+  \caption{Cross-section through the battery bay (to scale in height): with the original standoff height the
+           parts on the PCB bottom (e.g.\ D14) would touch the battery.}
+  \label{fig:hw_clearance}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{kicadannot}{figures/hardware/chassis_top}{-9.86}{0}{129.86}{274.36}{0.62\linewidth}
+    % chassis coordinates (X, 44.86 - Y): PCB outline and standoffs
+    \draw[hwmark] (21.39,144.17) rectangle (98.55,224.89); \node[hwlabel,anchor=south west] at (21.39,144.17) {main board};
+    \foreach \x/\y in {27.5/150.86, 92.5/150.86, 27.5/214.86, 92.5/214.86} \draw[hwmark] (\x,\y) circle (6.5);
+    \draw[hwmarkdash, blue!70!black] (43.7,124.86) rectangle (87.2,202.86); \node[hwlabel,text=blue!60!black,anchor=north] at (65.45,124.86) {battery bay};
+  \end{kicadannot}
+  \caption{Chassis v9 seen from above (vector drawing generated from the STL model, rear at the top):
+           main-board outline, the four standoffs and the battery bay below the board.}
+  \label{fig:hw_chassis}
+\end{figure}
+
+\subsection{Printing the chassis}
+The one-piece chassis measures \qtyproduct{136 x 270}{\milli\metre} and only fits on the
+\qtyproduct{256 x 256}{\milli\metre} bed of the Bambu Lab P1S when it is rotated by \SI{45}{\degree}. Two details of
+the printer had to be taken into account when placing it (Figure~\ref{fig:hw_bed}): before every print the P1S
+draws a priming line along the front edge of the bed, and the slicer shifts all objects by \SI{2}{\milli\metre}
+towards the front (printer-specific extruder offset), but not the priming line. Without correction the first
+layer of the chassis would have been printed on top of the priming line. The part was therefore placed at a fixed
+position that leaves \SI{1.8}{\milli\metre} between the outer wall and the line.
+
+The first print (PETG, \SI{0.2}{\milli\metre} layers, standard first layer, no supports) failed: the first layer
+did not stick in a curve and was dragged along by the nozzle. The second attempt used a thicker and wider first
+layer (\SI{0.25}{\milli\metre}, \SI{0.55}{\milli\metre}), much lower first-layer speeds
+(\SIrange{30}{40}{\milli\metre\per\second} instead of up to \SI{105}{\milli\metre\per\second}), \SI{255}{\celsius}
+nozzle and \SI{80}{\celsius} bed temperature in the first layer, a freshly washed textured PEI plate and supports
+from the build plate only. This print (about \SI{5.6}{\hour}, \SI{174}{\gram} PETG) was successful.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{kicadannot}{figures/hardware/print_bed}{0}{0}{260}{260}{0.6\linewidth}
+    \node[hwlabel,anchor=south west,text=orange!60!black] at (22,256) {priming line};
+    \node[hwlabel,anchor=south west,text=red!70!black] at (2,230) {excluded corner};
+    \node[hwlabel,anchor=north] at (130,4) {bed \qtyproduct{256 x 256}{\milli\metre} (printer coordinates)};
+  \end{kicadannot}
+  \caption{First-layer outline of the chassis on the P1S bed (vector, from the sliced model): the part is rotated
+           by \SI{45}{\degree} and placed so that it keeps clear of the priming line (front) and the excluded corner.}
+  \label{fig:hw_bed}
+\end{figure}
+
+% =============================================================================
+\section{Verification Status and Open Points}
+\label{sec:hw_open}
+
+\begin{itemize}
+  \item \textbf{Checks done:} ERC without errors, KiCad DRC with 0 unconnected items and 0 clearance and parity errors
+        (remaining: 8 pad-to-hole distances inside the USB-C footprint and 7 checked courtyard overlaps),
+        netlist comparison after every schematic change, line-sensor DRC without findings.
+  \item \textbf{Not yet tested on hardware:} no main board of Rev.~2.5 has been built yet. The test plan includes
+        the switching thresholds at a current-limited supply, the charger with a battery simulator, braking with a
+        full pack (voltage at the motor driver), all eight ToF ports on real cables and the LED current of the line
+        sensor at 2 and 3 cells.
+  \item \textbf{Known open points:} motor tracks are still \SI{0.4}{\milli\metre} wide near the motor driver;
+        the TB6612FNG has little margin at 3 cells; the voltage rating of the slide switch SW4 at \SI{12.6}{\volt}
+        must be checked; GPIO39 for STBY should be changed (Section~\ref{sec:hw_twolayer}).
+\end{itemize}
+
+\end{otherlanguage}
+
+% Chassis / CAD sections of the 3D-design team member (German, to be translated)
+\input{diplomarbeit_chap_3_cad}

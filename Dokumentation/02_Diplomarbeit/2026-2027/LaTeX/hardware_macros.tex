@@ -1,0 +1,52 @@
+% ---------------------------------------------------------------------------
+% Macros for the hardware chapter (Christopher Schieszler)
+% All KiCad figures are vector PDFs cropped in KiCad millimetre coordinates.
+% Annotations are drawn with TikZ directly in those coordinates:
+%
+%   \begin{kicadannot}{figures/hardware/pcb25_top}{x0}{y0}{x1}{y1}{0.9\linewidth}
+%     \draw[hwmark] (131,74) rectangle (135,79);          % rectangle in KiCad mm
+%     \node[hwcallout] at (130,72) {1};                     % numbered callout
+%   \end{kicadannot}
+%
+% (x0,y0)-(x1,y1) must be the crop window used when the PDF was exported
+% (see the figure list in figures/hardware/README.md). Y grows downwards as in KiCad.
+% ---------------------------------------------------------------------------
+\usetikzlibrary{calc,arrows.meta,positioning,fit,backgrounds,decorations.pathreplacing}
+\usepackage[siunitx,europeanresistors]{circuitikz}
+
+\tikzset{
+  hwmark/.style={draw=red!80!black, line width=1pt, rounded corners=0.6pt},
+  hwmarkdash/.style={hwmark, dashed},
+  hwarrow/.style={-{Stealth[length=2.2mm]}, draw=red!80!black, line width=1pt},
+  hwcallout/.style={circle, fill=red!80!black, text=white, font=\sffamily\bfseries\scriptsize,
+                    inner sep=0.5pt, minimum size=3.6mm},
+  hwlabel/.style={fill=white, fill opacity=0.85, text opacity=1, font=\sffamily\scriptsize,
+                  inner sep=1pt, text=red!70!black},
+  % block diagrams
+  hwblock/.style={draw, rounded corners=2pt, fill=blue!6, minimum height=9mm, align=center,
+                  font=\sffamily\scriptsize, inner sep=2pt},
+  hwprot/.style={hwblock, fill=orange!12},
+  hwload/.style={hwblock, fill=green!8},
+  hwbridge/.style={hwblock, fill=red!10, draw=red!70!black},
+  hwnet/.style={font=\sffamily\scriptsize\bfseries, text=blue!50!black},
+  hwflow/.style={-{Stealth[length=2mm]}, thick},
+}
+
+\newenvironment{kicadannot}[6]{%
+  \pgfmathsetmacro{\kcwidth}{#6}%            width in pt
+  \pgfmathsetmacro{\kcscale}{\kcwidth/(#4-#2)}% pt per KiCad-mm
+  \begin{tikzpicture}
+    \node[anchor=south west, inner sep=0] at (0,0) {\includegraphics[width=#6]{#1}};
+    \begin{scope}[x={(\kcscale pt,0)}, y={(0,-\kcscale pt)}, shift={(-#2,-#5)}]
+}{%
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+% side-by-side "before / after" comparison with a common caption
+\newcommand{\hwbeforeafter}[2]{%
+  \begin{subfigure}[t]{0.48\linewidth}\centering #1\caption{before}\end{subfigure}\hfill
+  \begin{subfigure}[t]{0.48\linewidth}\centering #2\caption{after}\end{subfigure}}
+
+\DeclareRobustCommand{\net}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\refdes}[1]{\texttt{#1}}

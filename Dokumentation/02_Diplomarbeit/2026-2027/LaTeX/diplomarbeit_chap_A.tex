@@ -27,4 +27,24 @@ Sämtliche Produktions-, Baugruppen- und Skriptdateien der finalen Revision~v9.0
 \section{Schaltpläne und Stücklisten}
 \label{sec:anhang_schaltplaene}
 
-\todo[inline]{[TODO: Exportierte PDF-Schaltpläne von Tumbler2\_Redesign und Liniensensor sowie vollständige Bestückungslisten (BOM) als Anhangsseiten einbinden.]}
+\begin{otherlanguage}{english}
+The complete schematics are reproduced below as vector graphics (zoom in the PDF for details).
+The bills of materials are kept in the repository (\texttt{PCB/Tumbler\_Mainboard/Stueckliste.csv},
+\texttt{PCB/Liniensensor\_Redesign/Stueckliste.csv}).
+
+\newcommand{\hwsheet}[2]{%
+  \begin{figure}[p]
+    \centering
+    \includegraphics[width=\textheight,height=0.92\textwidth,keepaspectratio,angle=90]{figures/hardware/#1}
+    \caption{#2}
+  \end{figure}}
+\hwsheet{sch25_root}{Main board Rev.~2.5 -- root sheet.}
+\hwsheet{sch25_usbc}{Main board Rev.~2.5 -- USB-C connectors.}
+\hwsheet{sch25_charger}{Main board Rev.~2.5 -- USB-C input protection and 2-cell charger.}
+\hwsheet{sch25_mcu}{Main board Rev.~2.5 -- ESP32-S3 microcontroller.}
+\hwsheet{sch25_periph}{Main board Rev.~2.5 -- motor driver, encoders, IMU and peripherals.}
+\hwsheet{sch25_rgb}{Main board Rev.~2.5 -- RGB LEDs.}
+\hwsheet{sch25_power}{Main board Rev.~2.5 -- power supply, protection, cut-off and 2S/3S bridges.}
+\hwsheet{sch25_lidar}{Main board Rev.~2.5 -- I\textsuperscript{2}C multiplexer and eight ToF ports.}
+\hwsheet{sch_ls_r3}{Line-sensor board R3.}
+\end{otherlanguage}
