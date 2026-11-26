@@ -1,7 +1,11 @@
-# Tumbler Liniensensor - Layout R2
+# Tumbler Liniensensor - Layout R3 (2S und 3S)
 
 Das gesamte ZIP entpacken und **Liniensensor.kicad_pro** in KiCad 9 oder neuer öffnen.
-Alle Unterordner zusammenlassen. Schaltung R1 blieb elektrisch unverändert.
+Alle Unterordner zusammenlassen.
+
+**R3 (26.11.2026):** Läuft an 2S **und** 3S (VBAT_SW 6,0–12,6 V, Spitzen 13,5 V) ohne Umbau. Q1/Q2 jetzt BCX56-16 (SOT-89) statt BC817-40, Basisteiler R2/R3/R7/R8 470 Ω statt 1 kΩ. Details und Rechnung: `Hinweise.md`. Gerber, Bohrdaten, Ansichten und `Mechanik/Liniensensor.step` sind auf R3 aktualisiert (KiCad 10).
+
+Noch nicht nachgezogen: `Montage_und_Layout.pdf` nennt als Versorgung noch „2S“ (Mechanik/Lochbild darin unverändert gültig). Der Unterordner `Liniensensor_Redesign/` ist eine ältere Kopie (Schaltung R1, BC817) und nicht der aktuelle Stand.
 
 - `Liniensensor.kicad_pcb`: vollständig geroutete Sensorplatine, 76 × 32 mm.
 - `Liniensensor.kicad_sch` / `Liniensensor.pdf`: Schaltplan.

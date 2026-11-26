@@ -8213,17 +8213,6 @@
 		)
 		(uuid "92892532-004b-4150-8ee2-81aaa15de40b")
 	)
-	(hierarchical_label "INT1"
-		(shape output)
-		(at 144.78 218.44 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "954da42b-03e2-47e8-9c58-b74eff4d0a23")
-	)
 	(label "DIR_B_INV"
 		(at 76.2 54.61 0)
 		(effects
@@ -8363,17 +8352,6 @@
 			(justify right bottom)
 		)
 		(uuid "dfc06d58-8c02-4141-81c7-f282aee1f24f")
-	)
-	(hierarchical_label "INT1"
-		(shape output)
-		(at 416.56 373.38 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "ef983385-9b48-45e9-8364-0cfbd6703900")
 	)
 	(label "M1_P"
 		(at 33.02 46.99 180)
@@ -8549,6 +8527,17 @@
 		)
 		(uuid "7e21d722-0cff-4daf-985c-d75130f0eef4")
 	)
+	(hierarchical_label "INT1"
+		(shape output)
+		(at 144.78 218.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "954da42b-03e2-47e8-9c58-b74eff4d0a23")
+	)
 	(hierarchical_label "{DIR_B PWMB ENCA_B ENCB_B}"
 		(shape output)
 		(at 27.94 386.08 0)
@@ -8559,6 +8548,17 @@
 			(justify left)
 		)
 		(uuid "b7a4944b-2ec1-4c94-ac46-a279d90798d9")
+	)
+	(hierarchical_label "INT1"
+		(shape output)
+		(at 416.56 373.38 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ef983385-9b48-45e9-8364-0cfbd6703900")
 	)
 	(symbol
 		(lib_id "TumblerBasis:power_GND")

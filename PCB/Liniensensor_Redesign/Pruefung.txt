@@ -18,3 +18,11 @@ Details und aktuelle Zaehler: Layoutpruefung.json, DRC.json, ERC.json.
 Nicht durchgefuehrt: mechanischer Realaufbau, thermische Messung,
 optische Kalibrierung, EMV-Messung mit Motoren oder Validierung der Hauptplatine.
 Die Montageabstaende sind nachvollziehbare Prototyp-Startwerte.
+
+=== R2/R3 (26.11.2026) – 2S/3S-tauglich, KiCad 10.0.8 (kicad-cli) ===
+Änderung: Q1/Q2 BCX56-16 (SOT-89) statt BC817-40 (SOT-23); R2/R3/R7/R8 470 Ω statt 1 kΩ.
+Netzliste: Q1/Q2 Pin 1 = Basis, Pin 2 = Kollektor (Lasche), Pin 3 = Emitter; alle übrigen Netze unverändert.
+ERC: 0 Fehler, 2 Warnungen (same_local_global_label, wie bisher).
+DRC (Flächen neu gefüllt): 0 Verletzungen, 0 offene Verbindungen.
+Schaltplan-Parität: 37 × fehlendes Feld "Manufacturer" im Footprint, 4 × Footprint ohne Symbol (Befestigungslöcher) – wie bisher, ohne Einfluss auf die Fertigung.
+Gerber, Bohrdaten (Fertigung/) und Ansichten neu erzeugt.

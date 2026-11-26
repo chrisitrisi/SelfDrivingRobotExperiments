@@ -1,17 +1,82 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-10-18T19:13:49+0200",
+    "date": "2026-11-26T09:47:54",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
     "included_severities": [
         "error",
         "warning"
     ],
-    "kicad_version": "9.0.9",
+    "kicad_version": "10.0.8",
     "sheets": [
         {
             "path": "/",
             "uuid_path": "/37e84606-7b28-46fb-9e75-5fbebce2a682",
-            "violations": []
+            "violations": [
+                {
+                    "description": "Local and global labels have same name",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR005 Pin 1 [Power input, Line]",
+                            "pos": {
+                                "x": 63.5,
+                                "y": 111.76
+                            },
+                            "uuid": "1ba5eb9d-5e60-44f4-8b01-d8eae8bba34d"
+                        },
+                        {
+                            "description": "Label 'GND'",
+                            "pos": {
+                                "x": 340.36,
+                                "y": 52.07
+                            },
+                            "uuid": "09ffc7a5-1ae7-4347-a0cf-42039b05a495"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "same_local_global_label"
+                },
+                {
+                    "description": "Local and global labels have same name",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR002 Pin 1 [Power input, Line]",
+                            "pos": {
+                                "x": 88.9,
+                                "y": 39.37
+                            },
+                            "uuid": "2a198745-2da1-4857-8929-3860255bde8b"
+                        },
+                        {
+                            "description": "Label '+3.3V'",
+                            "pos": {
+                                "x": 320.04,
+                                "y": 120.65
+                            },
+                            "uuid": "2059d471-706b-419f-b72a-ae95a078b97a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "same_local_global_label"
+                }
+            ]
         }
     ],
     "source": "Liniensensor.kicad_sch"

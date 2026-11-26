@@ -1759,7 +1759,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_BJT:BC817"
+		(symbol "Transistor_BJT:BCX56"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -1776,7 +1776,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Pins" "1=B 2=E 3=C"
+			(property "Sim.Pins" "1=B 2=C 3=E"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1785,11 +1785,76 @@
 					(hide yes)
 				)
 			)
-			(symbol "BC817_0_1"
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "BCX56"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-89-3"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/BCP56_BCX56_BC56PA.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "1A Ic, 80V Vce, NPN Medium Power Transistor, SOT-89"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "NPN Transistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?89*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "BCX56_0_1"
 				(polyline
 					(pts
-						(xy -2.54 0)
-						(xy 0.635 0)
+						(xy -2.54 0) (xy 0.635 0)
 					)
 					(stroke
 						(width 0)
@@ -1801,8 +1866,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0.635 1.905)
-						(xy 0.635 -1.905)
+						(xy 0.635 1.905) (xy 0.635 -1.905)
 					)
 					(stroke
 						(width 0.508)
@@ -1824,11 +1888,10 @@
 					)
 				)
 			)
-			(symbol "BC817_1_1"
+			(symbol "BCX56_1_1"
 				(polyline
 					(pts
-						(xy 0.635 0.635)
-						(xy 2.54 2.54)
+						(xy 0.635 0.635) (xy 2.54 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1840,8 +1903,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0.635 -0.635)
-						(xy 2.54 -2.54)
+						(xy 0.635 -0.635) (xy 2.54 -2.54)
 					)
 					(stroke
 						(width 0)
@@ -1853,10 +1915,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -1.778)
-						(xy 1.778 -1.27)
-						(xy 2.286 -2.286)
-						(xy 1.27 -1.778)
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
 					)
 					(stroke
 						(width 0)
@@ -1894,7 +1953,7 @@
 							)
 						)
 					)
-					(number "3"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1912,7 +1971,7 @@
 							)
 						)
 					)
-					(number "2"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1922,72 +1981,6 @@
 				)
 			)
 			(embedded_fonts no)
-			(property "Reference" "Q"
-				(at 5.08 1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "BC817"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-				(at 5.08 -1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC818-D.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Description" "0.8A Ic, 45V Vce, NPN Transistor, SOT-23"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "NPN Transistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOT?23*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
 		)
 		(symbol "Connector_Generic:Conn_01x10"
 			(pin_names
@@ -4968,7 +4961,7 @@
 		(uuid "7f604bf6-447f-4767-98da-8476a05e7edc")
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BC817")
+		(lib_id "Transistor_BJT:BCX56")
 		(at 40.64 185.42 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4985,7 +4978,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BC817-40"
+		(property "Value" "BCX56-16"
 			(at 46.99 186.69 0)
 			(effects
 				(font
@@ -4994,7 +4987,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-89-3"
 			(at 40.64 185.42 0)
 			(effects
 				(font
@@ -5003,7 +4996,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf"
+		(property "Datasheet" "https://diodes.com/datasheet/download/BCX5616Q.pdf"
 			(at 40.64 185.42 0)
 			(effects
 				(font
@@ -5012,7 +5005,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN current sink; pin 1=B, 2=E, 3=C"
+		(property "Description" "NPN current sink (2S/3S); pin 1=B, 2=C (Lasche), 3=E"
 			(at 40.64 185.42 0)
 			(effects
 				(font
@@ -5021,7 +5014,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Nexperia"
+		(property "Manufacturer" "Diodes Inc."
 			(at 40.64 185.42 0)
 			(effects
 				(font
@@ -5030,7 +5023,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "BC817-40,215"
+		(property "MPN" "BCX5616QTA"
 			(at 40.64 185.42 0)
 			(effects
 				(font
@@ -5039,7 +5032,7 @@
 				(hide yes)
 			)
 		)
-		(property "Rating" "45 V; 500 mA; Ptot 250 mW @25C, derate"
+		(property "Rating" "80 V; 1 A; Rth(j-a) 250 K/W min. Pad, 125 K/W 15x15 mm Cu; Tj max 150 C"
 			(at 40.64 185.42 0)
 			(effects
 				(font
@@ -5095,7 +5088,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470"
 			(at 26.67 176.53 0)
 			(effects
 				(font
@@ -5140,7 +5133,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CRCW08051K00FKEA"
+		(property "MPN" "CRCW0805470RFKEA"
 			(at 22.86 175.26 0)
 			(effects
 				(font
@@ -5191,7 +5184,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470"
 			(at 26.67 196.85 0)
 			(effects
 				(font
@@ -5236,7 +5229,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CRCW08051K00FKEA"
+		(property "MPN" "CRCW0805470RFKEA"
 			(at 22.86 195.58 0)
 			(effects
 				(font
@@ -8094,7 +8087,7 @@
 		(uuid "1fc80ff7-6fdb-46c7-ac12-17f7585d0942")
 	)
 	(symbol
-		(lib_id "Transistor_BJT:BC817")
+		(lib_id "Transistor_BJT:BCX56")
 		(at 180.34 185.42 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8111,7 +8104,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BC817-40"
+		(property "Value" "BCX56-16"
 			(at 186.69 186.69 0)
 			(effects
 				(font
@@ -8120,7 +8113,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-89-3"
 			(at 180.34 185.42 0)
 			(effects
 				(font
@@ -8129,7 +8122,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf"
+		(property "Datasheet" "https://diodes.com/datasheet/download/BCX5616Q.pdf"
 			(at 180.34 185.42 0)
 			(effects
 				(font
@@ -8138,7 +8131,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN current sink; pin 1=B, 2=E, 3=C"
+		(property "Description" "NPN current sink (2S/3S); pin 1=B, 2=C (Lasche), 3=E"
 			(at 180.34 185.42 0)
 			(effects
 				(font
@@ -8147,7 +8140,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Nexperia"
+		(property "Manufacturer" "Diodes Inc."
 			(at 180.34 185.42 0)
 			(effects
 				(font
@@ -8156,7 +8149,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "BC817-40,215"
+		(property "MPN" "BCX5616QTA"
 			(at 180.34 185.42 0)
 			(effects
 				(font
@@ -8165,7 +8158,7 @@
 				(hide yes)
 			)
 		)
-		(property "Rating" "45 V; 500 mA; Ptot 250 mW @25C, derate"
+		(property "Rating" "80 V; 1 A; Rth(j-a) 250 K/W min. Pad, 125 K/W 15x15 mm Cu; Tj max 150 C"
 			(at 180.34 185.42 0)
 			(effects
 				(font
@@ -8221,7 +8214,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470"
 			(at 166.37 176.53 0)
 			(effects
 				(font
@@ -8266,7 +8259,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CRCW08051K00FKEA"
+		(property "MPN" "CRCW0805470RFKEA"
 			(at 162.56 175.26 0)
 			(effects
 				(font
@@ -8317,7 +8310,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "470"
 			(at 166.37 196.85 0)
 			(effects
 				(font
@@ -8362,7 +8355,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CRCW08051K00FKEA"
+		(property "MPN" "CRCW0805470RFKEA"
 			(at 162.56 195.58 0)
 			(effects
 				(font

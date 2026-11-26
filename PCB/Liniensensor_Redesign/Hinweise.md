@@ -1,4 +1,9 @@
-# Tumbler-Liniensensor – Schaltung R1 / Layout R2
+# Tumbler-Liniensensor – Schaltung R2 / Layout R3
+
+**Änderung R2/R3 (26.11.2026): Betrieb an 2S und 3S.** Die Hauptplatine Rev. 2.5 kann mit 2S (6,0–8,4 V) oder 3S (9,0–12,6 V, Spitzen bis 13,5 V) laufen. Der LED-Strom bleibt dank Stromsenke gleich, aber die Verlustleistung im Transistor steigt bei 3S auf bis ca. 180 mW. Das war für den BC817 (SOT-23, ca. 500 K/W) zu knapp. Deshalb:
+- Q1/Q2: **BC817-40 (SOT-23) → BCX56-16 (SOT-89)**, 80 V / 1 A, R_th(j-a) 250 K/W auf Minimal-Pad (125 K/W mit 15 × 15 mm Kupfer).
+- R2/R3/R7/R8: **1 kΩ → 470 Ω**, weil der BCX56 weniger Stromverstärkung hat (h_FE ≥ 40 bei 5 mA laut MCC-Datenblatt, ≥ 75 laut Diodes).
+- Q1/Q2 neu platziert und angeschlossen, Gerber/Bohrdaten/Ansichten neu erzeugt. Keine Umschaltung oder Brücke nötig: dieselbe Platine läuft an 2S und 3S.
 
 Schaltung: 14.10.2026; Layout und Montage ergänzt am 18.10.2026. Bearbeitete Grundlage: hochgeladene Datei `Liniensensor.kicad_sch`.
 Die hochgeladene Datei enthielt den älteren Aufbau mit J1–J4, ohne Widerstandswerte und ohne die zuletzt besprochenen LS-Labels. Die Sensor- und Treibertopologie sowie die Referenzen U1–U6, Q1/Q2 und R1–R12 wurden beibehalten; die Darstellung wurde neu geordnet. Die UUIDs dieser vorhandenen Bauteile wurden beibehalten.
@@ -28,7 +33,7 @@ Es bleibt ein Stecker J2: JST GH, 10-polig, seitlicher Kabeleingang, 1,25-mm-Ras
 | Pin J2 | Netz | Verwendung |
 |---|---|---|
 | 1 | GND | Masse |
-| 2 | VBAT_SW | Geschützte und geschaltete 2S-Versorgung, Auslegung 6,4–8,4 V |
+| 2 | VBAT_SW | Geschützte und geschaltete Akkuversorgung, 2S oder 3S: 6,0–12,6 V (Spitzen bis 13,5 V) |
 | 3 | GND | Zweite Masseleitung |
 | 4 | +3.3V | Geregelte 3,3 V ±5 % von der Hauptplatine |
 | 5 | LS1 | U1, Kollektor Pin 3 |
@@ -40,20 +45,20 @@ Es bleibt ein Stecker J2: JST GH, 10-polig, seitlicher Kabeleingang, 1,25-mm-Ras
 
 Beide Masseleitungen anschließen. Kabel vor dem Einschalten durchmessen: Pin 1 zu Pin 1 usw. Die Pinzählung am Gegenstecker wirkt beim Blick auf die andere Steckseite gespiegelt. Nicht anhand der Aderfarbe annehmen, dass ein fertig gekauftes Kabel richtig belegt ist. Die Nummer am GH-Stecker ist keine ESP32-GPIO-Nummer.
 
-VBAT_SW ist kein Ladeanschluss. Schutz, Ladegerät, Hauptschalter und Regler gehören auf die Hauptplatine. Diese Platine ist für eine bereits begrenzte 2S-Versorgung vorgesehen; Motor-Spannungsspitzen müssen im Gesamtsystem abgefangen werden. Die 25-V-Kondensatoren ersetzen diesen Schutz nicht.
+VBAT_SW ist kein Ladeanschluss. Schutz, Ladegerät, Hauptschalter und Regler gehören auf die Hauptplatine. Diese Platine ist für eine bereits begrenzte 2S- oder 3S-Versorgung vorgesehen (Hauptplatine Rev. 2.5); Motor-Spannungsspitzen müssen im Gesamtsystem abgefangen werden. Die 25-V-Kondensatoren ersetzen diesen Schutz nicht.
 
 ## Eingebaute Bauteile
 
 | Referenzen | Wert / Typ | Gehäuse | Nennwert / Reserve |
 |---|---|---|---|
 | R1, R9 | 47 Ω | 0805 | 1 %, 0,125 W Standardbetrieb |
-| R2, R3, R7, R8 | 1 kΩ | 0805 | 1 %, 0,125 W |
+| R2, R3, R7, R8 | 470 Ω | 0805 | 1 %, 0,125 W |
 | R4–R6, R10–R12 | 10 kΩ | 0805 | 1 %, 0,125 W |
 | R13–R18 | 47 kΩ | 0805 | 1 %, 0,125 W |
 | C1, C3 | 100 nF | 0805 | X7R, ±10 %, 50 V |
 | C2, C4 | 10 µF | 1206 | X7R, ±10 %, 25 V |
 | C5–C10 | 10 nF | 0805 | X7R, ±10 %, 50 V |
-| Q1, Q2 | Nexperia BC817-40,215 | SOT-23 | 45 V, 500 mA; 250 mW bei 25 °C, temperaturabhängig reduzieren |
+| Q1, Q2 | BCX56-16 (z. B. Diodes BCX5616QTA, Nexperia BCX56-16,115) | SOT-89 | 80 V, 1 A; R_th(j-a) 250 K/W Minimal-Pad, Tj max 150 °C |
 | U1–U6 | Vishay CNY70 | THT | Auslegungsstrom etwa 20 mA je IR-LED |
 
 Widerstände: Vishay CRCW0805, konkrete Bestellnummern in der Stückliste. Obwohl die aktuelle Tabelle auch 0,25 W im erweiterten Betrieb aufführt, wurde konservativ mit 0,125 W im Standardbetrieb gerechnet. Ein Footprint allein definiert keine Belastbarkeit; die Bestellnummer und das Datenblatt des bestückten Bauteils sind maßgeblich.
@@ -64,26 +69,30 @@ Widerstände: Vishay CRCW0805, konkrete Bestellnummern in der Stückliste. Obwoh
 
 U1/U2/U3 bzw. U4/U5/U6 bilden jeweils eine LED-Reihenschaltung. Q1/Q2 mit R1/R9 sind einfache Stromsenken. Der Strom ist nicht präzisionsgeregelt und verändert sich mit V_BE, Temperatur, Stromverstärkung und 3,3-V-Versorgung.
 
-Mit gleichen 1-kΩ-Basiswiderständen gilt für die unbelastete Basisquelle:
+Mit gleichen 470-Ω-Basiswiderständen gilt für die unbelastete Basisquelle:
 
 - V_th = 3,3 V / 2 = 1,65 V.
-- R_th = 1 kΩ || 1 kΩ = 500 Ω.
+- R_th = 470 Ω || 470 Ω = 235 Ω.
 - I_C = (V_th − V_BE) / [R_E × (1 + 1/β) + R_th/β].
 
-Beispiel, keine garantierten Datenblattgrenzen: β = 200 und V_BE = 0,65 V ergeben I_C = 20,11 mA. Bei V_BE = 0,70 V sind es 19,10 mA. Damit ergibt sich für jede der drei LEDs einer Gruppe derselbe Strom; beide Gruppen zusammen benötigen ungefähr 40 mA aus VBAT_SW.
+Mit R_E = 47 Ω und V_BE = 0,70 V: β = 40 (schlechtester Fall laut MCC-Datenblatt bei 5 mA) → 17,6 mA; β = 150 → 19,4 mA; β = 250 → 19,7 mA. Mit V_BE = 0,65 V und β = 150 → 20,5 mA. Der niederohmigere Teiler hält den Strom trotz der kleineren Verstärkung des BCX56 nahe 20 mA (mit 1 kΩ wären es im schlechtesten Fall nur ca. 15 mA). Beide Gruppen zusammen ziehen ungefähr 40 mA aus VBAT_SW, die beiden Basisteiler zusätzlich ca. 7 mA aus +3,3 V.
 
-Bei 8,4 V, angenommenen 1,25 V LED-Flussspannung und dem ersten Beispiel:
+**Unabhängig von der Akkuspannung:** Der LED-Strom hängt nur von 3,3 V, V_BE, β und R_E ab, nicht von VBAT_SW. Die überschüssige Spannung fällt am Transistor ab:
 
-- R1/R9: rund 19,2 mW gegenüber 125 mW Standard-Nennleistung.
-- Q1/Q2: rund 74,4 mW gegenüber 250 mW bei 25 °C.
-- Jeder 1-kΩ-Basiswiderstand: ungefähr 3 mW; selbst 3,465 V direkt über 990 Ω entsprächen nur 12,2 mW.
+| VBAT_SW | U_CE (V_F = 1,0 V / 1,6 V je LED) | Verlust Q1/Q2 (bei 20,5 mA) | Sperrschicht bei 60 °C (250 K/W) |
+|---|---|---|---|
+| 6,0 V (2S leer, Abschaltung) | 2,04 V / 0,24 V | 42 mW | 71 °C |
+| 8,4 V (2S voll) | 4,44 V / 2,64 V | 91 mW | 83 °C |
+| 12,6 V (3S voll) | 8,64 V / 6,84 V | 177 mW | 104 °C |
+| 13,5 V (Spitze, OV-Grenze der Hauptplatine) | 9,54 V / 7,74 V | 196 mW | 109 °C |
+
+Grenze: T_j max 150 °C. Mit mehr Kupfer an der Kollektorlasche sinkt der Wärmewiderstand Richtung 125 K/W.
+
+- R1/R9: rund 20 mW gegenüber 125 mW Standard-Nennleistung.
+- Jeder 470-Ω-Basiswiderstand: ca. 5,8 mW (3,3 V über 940 Ω).
 - Jeder 10-kΩ-Pull-up: höchstens etwa 1,22 mW bei 3,465 V und 9,9 kΩ.
 
-Ein zusätzlicher Parameterdurchlauf mit **angenommenen**, nicht vollständig garantierten Grenzen (3,3 V ±5 %, R ±1 %, β = 100…600, V_BE = 0,5…0,9 V, LED-V_F = 0,9…1,6 V) ergibt etwa 12,3…26,3 mA, maximal 32,4 mW am Emitterwiderstand und 117,8 mW am Transistor bei 8,4 V. Dieser Durchlauf bewertet die Reserve, ersetzt aber keinen garantierten Temperatur-Grenzfall aus vollständigen Bauteilmodellen. Das BC817-40-Datenblatt spezifiziert seine Verstärkungsgruppe bei anderen Prüfbedingungen als 20 mA.
-
-Bei 60 °C Umgebung verbleiben aus 250 mW und 500 K/W etwa 180 mW zulässige Transistorverlustleistung unter den Referenz-Montagebedingungen. Für den Prototyp deshalb den Bereich 0…60 °C als zu prüfenden Einsatzbereich ansetzen und im geschlossenen Gehäuse messen. Fehlerfälle wie kurzgeschlossene LEDs sind damit nicht qualifiziert.
-
-Bei 6,4 V, konservativ angenommenen 3 × 1,6 V über den LEDs und etwa 1 V am Emitter bleiben circa 0,6 V am Transistor. Unterhalb dieses Versorgungsbereichs kann der Strom abfallen. Die 1,6 V stammen aus einer Datenblatt-Prüfbedingung mit 50 mA und sind keine temperaturübergreifende Garantie für diese Schaltung.
+Bei 6,0 V und konservativ angenommenen 3 × 1,6 V über den LEDs bleiben nur ca. 0,24 V am Transistor; dort kann der Strom leicht abfallen. Mit typischen 1,15 V je LED sind es ca. 1,6 V Reserve. Die 1,6 V stammen aus einer Datenblatt-Prüfbedingung mit 50 mA und sind keine temperaturübergreifende Garantie. Fehlerfälle wie kurzgeschlossene LEDs sind nicht qualifiziert.
 
 ## Ausgangssignal und ESP32-S3
 
@@ -106,7 +115,7 @@ Für die Hauptplatine sechs geeignete ADC-Eingänge einplanen; konkrete GPIOs er
 3. CNY70-Orientierung anhand der Pin-1-Markierung und der Datenblatt-Ansicht prüfen. Alle Sensoren mechanisch gleich ausrichten und ihre optische Seite zum Boden orientieren. Im Layout: 10-mm-Teilung, 76 × 32 mm PCB, vier 3,2-mm-Bohrungen. Mechanische Höhen und Toleranzen siehe Montagezeichnung.
 4. Platine mit Schrauben/Abstandshaltern befestigen; der GH-Stecker trägt keine Platine. Kabel im Gehäuse gegen Zug sichern.
 5. Zuerst mit strombegrenztem Labornetzteil testen. 3,3 V und VBAT_SW korrekt anschließen; nicht 8,4 V an Pin 4 legen. Anfangs etwa 100 mA Strombegrenzung für VBAT_SW vorsehen; Ladestrom der Puffer kann kurz begrenzen.
-6. Spannung an R1 und R9 messen: I_E = U_R / 47 Ω, I_LED geringfügig kleiner. Rund 0,9–1,0 V entspricht ungefähr 19–21 mA. Bei 6,4 und 8,4 V sowie nach Erwärmung wiederholen.
+6. Spannung an R1 und R9 messen: I_E = U_R / 47 Ω, I_LED geringfügig kleiner. Rund 0,9–1,0 V entspricht ungefähr 19–21 mA. Bei 6,4 V, 8,4 V und 12,6 V (3S) sowie nach Erwärmung wiederholen; bei 12,6 V die Temperatur von Q1/Q2 prüfen (Fingerprobe/Thermometer, deutlich unter 100 °C Gehäuse).
 7. Alle sechs LS-Spannungen über den tatsächlich verwendeten schwarzen und weißen Flächen beim vorgesehenen Bodenabstand messen. Nominal dunkler Grenzwert etwa 2,72 V. Unzureichender Kontrast lässt sich nicht allein durch Kalibrierung beheben.
 8. Falls beide Flächen fast 0 V liefern, Pull-up/Pull-down gemeinsam beispielsweise auf 4,7 kΩ/22 kΩ verkleinern. Bei schwachem Signal beispielsweise 22 kΩ/100 kΩ prüfen. Dadurch ändern sich Empfindlichkeit und Filterzeit; erst messen, dann ändern.
 9. Mit laufenden Motoren, Kabel in endgültiger Lage und eingebautem Gehäuse nachmessen. Schwarz-/Weißkalibrierung sowie ADC-Konfiguration anpassen. DRC ist ohne Befund abgeschlossen; vor Fertigung Gehäusepassung und Linienbreite prüfen.
@@ -114,7 +123,7 @@ Für die Hauptplatine sechs geeignete ADC-Eingänge einplanen; konkrete GPIOs er
 ## Herstellerquellen
 
 - Vishay CNY70: https://www.vishay.com/docs/83751/cny70.pdf
-- Nexperia BC817-Serie: https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf
+- BCX56-16 (SOT-89): Diodes BCX5616Q https://diodes.com/datasheet/download/BCX5616Q.pdf, MCC BCX56-16 https://www.mccsemi.com/pdf/Products/BCX56-16HE3%28SOT-89%29.pdf
 - Vishay D/CRCW e3, insbesondere Standard-/Extended-Leistung: https://www.vishay.com/docs/20035/dcrcwe3.pdf
 - KEMET 100 nF: https://search.kemet.com/download/specsheet/C0805C104K5RAC7800
 - KEMET 10 nF: https://search.kemet.com/download/specsheet/C0805C103K5RAC7800

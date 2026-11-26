@@ -10,16 +10,16 @@ C8;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%
 C9;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
 C10;10n / 50V;Capacitor_SMD:C_0805_2012Metric;KEMET / Yageo;C0805C103K5RACTU;"10%; X7R; 50 V";https://search.kemet.com/download/specsheet/C0805C103K5RAC7800
 J2;JST GH 10-pol.;Connector_JST:JST_GH_SM10B-GHS-TB_1x10-1MP_P1.25mm_Horizontal;JST;SM10B-GHS-TB(LF)(SN);"1.25 mm; 1 A with AWG26; 50 V";https://www.jst-mfg.com/product/pdf/eng/eGH.pdf
-Q1;BC817-40;Package_TO_SOT_SMD:SOT-23;Nexperia;BC817-40,215;"45 V; 500 mA; Ptot 250 mW @25C, derate";https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf
-Q2;BC817-40;Package_TO_SOT_SMD:SOT-23;Nexperia;BC817-40,215;"45 V; 500 mA; Ptot 250 mW @25C, derate";https://assets.nexperia.com/documents/data-sheet/BC817_SER.pdf
+Q1;BCX56-16;Package_TO_SOT_SMD:SOT-89-3;Diodes Inc.;BCX5616QTA;"80 V; 1 A; Rth(j-a) 250 K/W Minimal-Pad; Tj max 150 C; Alternative Nexperia BCX56-16,115";https://diodes.com/datasheet/download/BCX5616Q.pdf
+Q2;BCX56-16;Package_TO_SOT_SMD:SOT-89-3;Diodes Inc.;BCX5616QTA;"80 V; 1 A; Rth(j-a) 250 K/W Minimal-Pad; Tj max 150 C; Alternative Nexperia BCX56-16,115";https://diodes.com/datasheet/download/BCX5616Q.pdf
 R1;47;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547R0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
-R2;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
-R3;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R2;470;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW0805470RFKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R3;470;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW0805470RFKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
 R4;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
 R5;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
 R6;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
-R7;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
-R8;1k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW08051K00FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R7;470;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW0805470RFKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
+R8;470;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW0805470RFKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
 R9;47;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080547R0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
 R10;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
 R11;10k;Resistor_SMD:R_0805_2012Metric;Vishay;CRCW080510K0FKEA;"1%; 0.125 W (standard mode, P70)";https://www.vishay.com/docs/20035/dcrcwe3.pdf
