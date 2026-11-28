@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-28T12:46:38",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958",
+            "violations": []
+        },
+        {
+            "path": "/USB-C / 2S charger/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/b8f6ac82-4a41-4494-a456-c8ed2549bd62",
+            "violations": []
+        },
+        {
+            "path": "/MCU/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/0ddd8726-a8b2-4557-84eb-e5ca9b362851",
+            "violations": []
+        },
+        {
+            "path": "/USB-C Connectors/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/84b20f1f-6e00-4937-92e5-6e005c1bde3e",
+            "violations": []
+        },
+        {
+            "path": "/Peripherals/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/f8585a58-8128-4c19-a894-5097be4fe7b3",
+            "violations": []
+        },
+        {
+            "path": "/RGB LEDs/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/8522accb-b87e-46d8-a11d-cbf6de0eac35",
+            "violations": []
+        },
+        {
+            "path": "/Power Supply/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379",
+            "violations": []
+        },
+        {
+            "path": "/LiDAR x8/",
+            "uuid_path": "/f3fd8d79-9d35-4c04-811e-2697a2740958/1bd1a26b-8718-4492-baf8-479472c6d3b6",
+            "violations": []
+        }
+    ],
+    "source": "Tumbler2_Redesign.kicad_sch"
+}

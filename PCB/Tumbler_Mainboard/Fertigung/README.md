@@ -1,27 +1,34 @@
-# Fertigungsdaten Hauptplatine Rev. 2.5b (JLCPCB)
+# Hauptplatine Rev. 2.5c bei JLCPCB bestellen
 
-Erzeugt am 28.11.2026 mit KiCad 10.0.7 (`_review/export.ps1` + `_review/jlc.py`). Nach jeder Änderung an der Platine neu exportieren.
-Alle 188 SMD-Positionen haben eine LCSC-Nummer (Feld `LCSC PN` in Schaltplan und Platine, Lagerstand bei JLC am 28.11.2026 geprüft, Basic-Teile bevorzugt).
+## Dateien für den Upload
 
-| Datei | Zweck |
-|---|---|
-| `Gerber_JLC_Hauptplatine.zip` | Gerber (4 Lagen) und Bohrdaten zum Hochladen |
-| `BOM_JLC.csv` / `CPL_JLC.csv` | **Empfohlen, günstig:** nur Oberseite (168 Teile) → *Economic PCBA* |
-| `BOM_JLC_beidseitig.csv` / `CPL_JLC_beidseitig.csv` | Alternativ: beide Seiten (188 Teile) → *Standard PCBA*, deutlich teurer |
-| `Selbst_bestuecken.csv` | THT (J1, J3, J5, SW4) und – bei Economic – die 20 Teile der Unterseite, mit LCSC-Nummer zum Mitbestellen |
-| `Rotation_pruefen.txt` | Teile, deren Drehung/Pin 1 in der JLC-Vorschau kontrolliert werden muss |
-| `Bestueckungsplan_oben.pdf` / `_unten.pdf` | Bestückungspläne mit allen Referenzen (Fab-Lage) |
-| `BOM_KiCad.csv`, `Positionen_KiCad.csv` | KiCad-Originale |
-| `Ansicht_oben.png` / `Ansicht_unten.png` | 3D-Ansichten |
+Für das Fahrzeug ist **3S** der Standard. Als PCB-Datei in beiden Varianten `Gerber_JLC_Hauptplatine.zip` hochladen. Das ZIP enthält vier Kupferlagen, Kontur, Lötstopp, Paste, Siebdruck sowie getrennte PTH- und NPTH-Bohrdaten. Platinenaufbau FR4, 1,6 mm, 1 oz Außen- und Innenkupfer.
 
-**Leiterplatte:** 4 Lagen, FR4, 1,6 mm, Außenlagen 1 oz, **Innenlagen 1 oz** (nicht 0,5 oz: Motor- und Akkuleitungen laufen teilweise auf In2.Cu), Lötstopp grün, Vias abgedeckt (tented).
+| Bestückung | BOM | CPL | SMD oben / unten |
+|---|---|---|---:|
+| **Standard PCBA beidseitig · 3S** | [BOM_JLC_beidseitig.csv](BOM_JLC_beidseitig.csv) | [CPL_JLC_beidseitig.csv](CPL_JLC_beidseitig.csv) | 168 / 16 |
+| Standard PCBA beidseitig · 2S | [BOM_JLC_2S_beidseitig.csv](BOM_JLC_2S_beidseitig.csv) | [CPL_JLC_2S_beidseitig.csv](CPL_JLC_2S_beidseitig.csv) | 168 / 20 |
+| Optional nur Oberseite · Standard PCBA | [BOM_JLC.csv](BOM_JLC.csv) | [CPL_JLC.csv](CPL_JLC.csv) | 168 / 0 |
 
-**Unterseite (bei Economic selbst löten):** R79–R86, R90, R91, C69–C72, C30 (BTST-Kondensator des Laders – ohne ihn lädt U12 nicht), D14 und die 2S/3S-Brücken R87, R88, R89, R92. Alles 0603/0402/1206 bzw. SMB, gut von Hand lötbar.
-**2S (Auslieferung):** R87/R88/R89/R92 = 0 Ω bestücken. **3S:** weglassen (bzw. R87 zuerst auslöten). In der beidseitigen Variante sind die Brücken für 2S enthalten.
+Bei beidseitiger Bestellung J1, J3, J5 und SW4 anhand von [Selbst_bestuecken.csv](Selbst_bestuecken.csv) separat beschaffen und nach dem Reflow löten. Bei einseitiger Bestellung zusätzlich die zur Variante gehörenden Teile der Unterseite löten, einschließlich R90/R91. Für 2S-Laden wird dort auch C30 benötigt.
 
-**Kosten (Richtwert JLC-Teilepreise 28.11.2026):** Teile ≈ 33 $ pro Hauptplatine (davon ESP32 4,9 $, LTC4365 4,9 $, XEL4030 2,9 $). 30 Basic- und 39 Extended-Positionen; JLC berechnet pro Extended-Teilenummer einmalig ca. 3 $ Rüstgebühr pro Auftrag.
+JLC listet U3, U5, U10 und die acht RGB-LEDs D6–D13 als **Standard Only**. Das gilt auch für den einseitigen Auftrag. Den [Liniensensor](../../Liniensensor_Redesign/Fertigung/README.md) als eigenen zweilagigen Economic-Auftrag anlegen. Stückpreise, Rüstkosten und Bestand ergeben sich aus Stückzahl und Warenkorb.
 
-**Vor dem Bezahlen in der JLC-Vorschau prüfen:**
-- Rotation/Pin 1 der Teile aus `Rotation_pruefen.txt` (Standard-Korrekturen für SOT-23, SOIC, TSSOP, SSOP, QFN, SMB und Elko sind schon eingerechnet).
-- USB-C J4: Hersteller-Footprint hat 0,15 mm zwischen Pads und Führungslöchern (Projektregel `.kicad_dru`). DFM-Ergebnis von JLC abwarten.
-- Wärme-Vias in den Thermalpads von U3 (ESP32-S3) und U12 (BQ25886) sind gewollt.
+[U3 · ESP32-S3](https://jlcpcb.com/partdetail/ESP32-S3-WROOM-1-N8/C2913198) · [U5 · IMU](https://jlcpcb.com/partdetail/TDKInvenSense-ICM_42670P/C3288646) · [U10 · USB-C](https://jlcpcb.com/partdetail/TexasInstruments-TUSB320LAIRWBR/C132554) · [D6–D13 · WS2812B-2020-V6](https://jlcpcb.com/partdetail/Worldsemi-LED/C52917434)
+
+## Kontrolle in der Bestückungsvorschau
+
+- Grundvariante 3S hat R87, R88, R89 und R92 frei. In der separaten 2S-Variante sind alle vier bestückt. R90 und R91 sind in beiden Varianten vorhanden.
+- J4 an den 16 Kontakten, den Führungsbohrungen und den vier Haltelaschen ausrichten. Bei J2, J6 und J7 Pin 1, Steckrichtung und Laschen prüfen. Die CPL enthält bereits die Korrektur vom Footprint-Ursprung auf die Mitte der gezeichneten Gehäusekontur. Die Gurt- bzw. Greifpunkte im JLC-Modell können davon abweichen.
+- Polung von C17 und den Dioden sowie Pin 1 von U3, U5, U10 und U12 prüfen. Die [Rotationsliste](Rotation_pruefen.txt) und die Bestückungspläne für [oben](Bestueckungsplan_oben.pdf) und [unten](Bestueckungsplan_unten.pdf) zeigen die Orientierung. Die Unterseitenzeichnung ist gespiegelt und wird von unten betrachtet.
+- Bei J4 die Abstände von ca. 0,150–0,185 mm zwischen SMD-Pads und Führungsbohrungen mit JLC abgleichen. Die lokale KiCad-Regel behandelt die Pads dieses Steckers. Für die Wärmevias in U3.41 und U12.25 mit JLC das Via-Verfahren und die Pastenöffnungen abstimmen.
+
+## Mechanik und Inbetriebnahme
+
+Die [bestückte 3S-Baugruppe als STEP](../Mechanik/Mainboard_3S_Rev25c_STEP.zip) enthält die vier THT-Teile und alle 184 SMD-Positionen. U10 wird durch das vereinfachte Projektmodell dargestellt. Kabel, Steckergegenstücke und Akku bei der Passprobe ergänzen. C69.1 hat im Nennmaß 1,30 mm Abstand zur H4-Stütze mit 5,5 mm Radius.
+
+Vor dem ersten Anschluss die Polarität an J1 und die vier Brücken kontrollieren. 3S extern laden. Für 2S die Ladefreigabe mit Pack-NTC, Ladeende und Verhalten in RUN/OFF prüfen. Die Prüfungen für den ersten Fahrversuch einschließlich VM am Motortreiber sind im [Schaltplanbegleittext](../README_Schaltplan.md) beschrieben.
+
+## Nach einer Änderung
+
+Mit KiCad 10 Gerber und Bohrdaten, Schaltplan-PDF und Bestückungspläne aus demselben Stand neu exportieren. `python export_bestueckung.py` im Hauptboard-Verzeichnis erzeugt aus Schaltplan und Layout beide BOM-/CPL-Paare sowie die Handbestückungsliste. Das Skript verwendet `kicad-cli` vom PATH oder den Pfad in `KICAD_CLI`. Die Standardvariante und die KiCad-Variante `2S` werden getrennt ausgewertet.

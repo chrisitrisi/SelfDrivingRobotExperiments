@@ -1,4 +1,6 @@
 Diese Teile in der JLC-Bestuecksvorschau auf Pin-1/Polaritaet pruefen (Rotation ggf. dort korrigieren):
+C17    330uF Elko                   CP_Elec_10x10 (Top, CPL 180 Grad, Plus auf Pad 1)
+J2/J4/J6/J7: CPL-Koordinaten beziehen sich auf die Gehaeusemitte. Kontakte und Haltelaschen gegen die Pads pruefen.
 D1     SMBJ13A                      D_SMB  (Top, CPL 180 Grad)
 D10    WS2812B                      LED_WS2812B-2020_PLCC4_2.0x2.0mm  (Top, CPL 180 Grad)
 D11    WS2812B                      LED_WS2812B-2020_PLCC4_2.0x2.0mm  (Top, CPL 180 Grad)
