@@ -17,7 +17,7 @@
 "D1","SMBJ13A","Diode_SMD:D_SMB","C353394","1",""
 "D2","CHG rot","LED_SMD:LED_0603_1608Metric","C2286","1",""
 "D6-D13","WS2812B","LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm","C52917434","8",""
-"D14","SMBJ8.5A","Diode_SMD:D_SMB","C353329","1",""
+"D14","SMBJ8.5A","Diode_SMD:D_SMB","C353329","1","Nicht bestücken"
 "F1","5A time-lag 0452005.MRL","Fuse:Fuse_Littelfuse-NANO2-451_453","C66503","1",""
 "J1","B2B-XH-A (Akku 2S/3S: 1 = +, 2 = -)","Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical","C158012","1",""
 "J2","JST_GH_BM10B-GHS-TBT","Connector_JST:JST_GH_BM10B-GHS-TBT_1x10-1MP_P1.25mm_Vertical","C495732","1",""

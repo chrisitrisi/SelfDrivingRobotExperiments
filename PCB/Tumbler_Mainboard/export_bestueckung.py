@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "Fertigung"
 PCB = ROOT / "Tumbler2_Redesign.kicad_pcb"
 SCH = PCB.with_suffix(".kicad_sch")
-BRIDGES = {"R87", "R88", "R89", "R92"}
+BRIDGES = {"R87", "R88", "R89", "R92", "D14"}  # nur 2S (D14 haengt nur an R92)
 HAND = ("J1", "J3", "J5", "SW4")
 # Lokale Körpermitten in kartesischen mm bei KiCad-Drehung 0.
 # J4: Metallgehäuse, ohne Hilfslinie zur Platinenkante und Pin-1-Markierung.

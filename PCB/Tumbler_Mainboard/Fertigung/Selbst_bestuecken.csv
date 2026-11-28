@@ -8,7 +8,7 @@ C69,1u 16V X7R,C_0603_1608Metric,Bottom,C59782,Beide Varianten (Handarbeit nur b
 C70,1u 16V X7R,C_0603_1608Metric,Bottom,C59782,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)
 C71,1u 16V X7R,C_0603_1608Metric,Bottom,C59782,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)
 C72,1u 25V X5R,C_0402_1005Metric,Bottom,C52923,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)
-D14,SMBJ8.5A,D_SMB,Bottom,C353329,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)
+D14,SMBJ8.5A,D_SMB,Bottom,C353329,Nur 2S; bei 3S frei lassen (Handarbeit nur bei einseitiger Bestellung)
 R79,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)
 R80,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)
 R81,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Beide Varianten (Handarbeit nur bei einseitiger Bestellung)

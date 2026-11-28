@@ -2950,7 +2950,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Bestueckung:  2S (Option, alte JST-XH-Akkus) = R87, R88, R89, R92 alle 0R bestueckt.\n                       3S (Standard) = alle vier frei.  REIHENFOLGE: R87 ZUERST (sonst 12,6 V an U12 BAT, abs. max 12 V)!\n                       Nie halb umbauen. Erst danach 3S-Akku stecken. In 2S-Stellung sperrt der LTC4365 einen 3S-Akku (OV 8,75 V).\nR87  PACK_SAFE -> CHG_BAT (U12 BQ25886 BAT 13/14 + C40): 2S Lader angeschlossen | 3S Lader abgetrennt.\nR88  ueberbrueckt R91 95,3k in Serie zu R38 165k:  OV = 0,5 V x (1 + R_oben/10k):  2S 8,75 V | 3S 13,52 V.  UV bleibt 5,50 V (eigener Teiler R36/R37).\nR89  ueberbrueckt R90 76,8k zwischen RUN_DIV und RUN_SENSE:  Fahrfreigabe 2S 6,42 V / 6,00 V | 3S 9,66 V / 9,03 V.\nR92  (1206) schaltet D14 SMBJ8.5A parallel zu D1 SMBJ13A: 2S mit D14 (Motorspitzen messen) | 3S nur D1 (SMBJ13A).\nAlle Brueckenwiderstaende liegen auf der Platine nebeneinander im Kasten 2S | 3S."
+	(text "Bestueckung:  2S (Option, alte JST-XH-Akkus) = R87, R88, R89, R92 alle 0R bestueckt.\n                       3S (Standard) = alle vier frei.  REIHENFOLGE: R87 ZUERST (sonst 12,6 V an U12 BAT, abs. max 12 V)!\n                       Nie halb umbauen. Erst danach 3S-Akku stecken. In 2S-Stellung sperrt der LTC4365 einen 3S-Akku (OV 8,75 V).\nR87  PACK_SAFE -> CHG_BAT (U12 BQ25886 BAT 13/14 + C40): 2S Lader angeschlossen | 3S Lader abgetrennt.\nR88  ueberbrueckt R91 95,3k in Serie zu R38 165k:  OV = 0,5 V x (1 + R_oben/10k):  2S 8,75 V | 3S 13,52 V.  UV bleibt 5,50 V (eigener Teiler R36/R37).\nR89  ueberbrueckt R90 76,8k zwischen RUN_DIV und RUN_SENSE:  Fahrfreigabe 2S 6,42 V / 6,00 V | 3S 9,66 V / 9,03 V.\nR92  (1206) schaltet D14 SMBJ8.5A parallel zu D1 SMBJ13A: 2S mit D14 (Motorspitzen messen) | 3S nur D1 (SMBJ13A), D14 dann ebenfalls frei.\nAlle Brueckenwiderstaende liegen auf der Platine nebeneinander im Kasten 2S | 3S."
 		(exclude_from_sim no)
 		(at 190.5 316.23 0)
 		(effects
@@ -8986,7 +8986,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "323a192e-4e6b-43eb-be97-3a81f47b91e6")
 		(property "Reference" "D14"
 			(at 355.6 293.37 0)
@@ -9062,6 +9062,7 @@
 				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
 					(reference "D14")
 					(unit 1)
+					(variant (name "2S") (dnp no))
 				)
 			)
 		)

@@ -1,4 +1,4 @@
-Referenz;Wert / Bestelltyp;Footprint;Bestücken;Spezifikation / offene Freigabe;Datenblatt;LCSC (JLC, Stand 28.11.2026)
+﻿Referenz;Wert / Bestelltyp;Footprint;Bestücken;Spezifikation / offene Freigabe;Datenblatt;LCSC (JLC, Stand 28.11.2026)
 C1;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C2;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C3;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
@@ -6,7 +6,7 @@ C4;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannu
 C6;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C7;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C8;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
-C9;10u 25V X5R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X5R, 25 V, an 3,3 V";;C96446
+C9;10u 25V X5R;Capacitor_SMD:C_0603_1608Metric;Ja;MLCC X5R, 25 V, an 3,3 V;;C96446
 C10;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C11;1uF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C59782
 C12;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
@@ -72,7 +72,7 @@ D10;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout
 D11;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf;C52917434
 D12;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf;C52917434
 D13;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf;C52917434
-D14;SMBJ8.5A;Diode_SMD:D_SMB;Ja;"Rev 2.5: zweite TVS für 2S (Motorspitzen am Treiber prüfen), über R92 an VBAT_SW; Unterseite";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj;C353329
+D14;SMBJ8.5A;Diode_SMD:D_SMB;DNP (Standard 3S) / bestückt (Variante 2S);"Rev 2.5: zweite TVS für 2S (Motorspitzen am Treiber prüfen), über R92 an VBAT_SW; Unterseite";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj;C353329
 F1;5A time-lag 0452005.MRL;Fuse:Fuse_Littelfuse-NANO2-451_453;Ja;"Littelfuse 0452005.MRL, vorläufig; Motorkennlinie, I²t und Kabel prüfen";;C66503
 H1;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;;
 H2;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;;

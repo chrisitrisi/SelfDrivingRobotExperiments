@@ -8,7 +8,7 @@ Das Projekt über **Tumbler2_Redesign.kicad_pro** in KiCad 10 öffnen. **Tumbler
 - README_Schaltplan.md: 2S/3S-Umbau mit Rechnung, Betriebsarten, Stecker, Adressen, Firmware und offene Hardwaretests. Stueckliste.csv nennt Wert, Bestückung, Footprint und Spezifikation. Pinbelegung.csv beschreibt den bestehenden Liniensensor.
 ## Rev. 2.5c · 28.11.2026
 
-**3S ist die Standardbestückung.** R87, R88, R89 und R92 bleiben frei. Die KiCad-Variante `2S` bestückt genau diese vier 0-Ω-Brücken. R90 und R91 gehören in beide Varianten. Akku und USB vor jeder Umrüstung trennen. 3S extern laden. Die 2S-Ladefunktion benötigt OFF, einen passenden Pack-NTC und eine geeignete USB-C-Quelle.
+**3S ist die Standardbestückung.** R87, R88, R89, R92 und D14 (SMBJ8.5A, nur über R92 angeschlossen) bleiben frei. Die KiCad-Variante `2S` bestückt diese vier 0-Ω-Brücken und D14. R90 und R91 gehören in beide Varianten. Akku und USB vor jeder Umrüstung trennen. 3S extern laden. Die 2S-Ladefunktion benötigt OFF, einen passenden Pack-NTC und eine geeignete USB-C-Quelle.
 
 Die [Fertigungsanleitung](Fertigung/README.md) nennt die zusammengehörigen Dateien für beide Varianten. Das Hauptboard benötigt für die ausgewählten Bauteile JLC Standard PCBA. Der Liniensensor bleibt ein eigener Economic-Auftrag.
 
