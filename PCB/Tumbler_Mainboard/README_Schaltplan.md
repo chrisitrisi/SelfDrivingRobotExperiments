@@ -1,12 +1,12 @@
-# Tumbler – elektrischer Entwurf Rev. 2.5
+# Tumbler – elektrischer Entwurf Rev. 2.5c
 
 Der ESP32-S3-WROOM-1-N8 (ohne PSRAM) steuert den TB6612FNG weiterhin mit Richtung, PWM und STBY. Der funktionierende Liniensensor behält die bisherigen zehn Steckerkontakte. Der neue Bewegungssensor ist der TDK ICM-42670-P. Acht VL53L0X-ToF-Sensoren (GY-530) hängen über den I²C-Multiplexer TCA9548A (je ein Kanal) und behalten alle die Adresse 0x29. Die Firmware ist nicht Teil dieses Pakets.
 
 ## Akku 2S oder 3S (Rev. 2.5)
 
-Die Platine läuft mit den vorhandenen **2S-Akkus** (Auslieferzustand, keine Änderung nötig) oder nach Umbau mit **3S**. Umgeschaltet wird mit vier **0-Ω-Brücken** auf der Unterseite. Sie liegen direkt nebeneinander in einem Siebdruck-Kasten „2S | 3S 0R-Brücken“ unter U16/R67–R69.
+Die Platine wird für **3S** ausgeliefert. Für die vorhandenen **2S-Akkus** die Bestückungsvariante `2S` wählen. Umgeschaltet wird mit vier **0-Ω-Brücken** auf der Unterseite. Sie liegen direkt nebeneinander in einem Siebdruck-Kasten „2S | 3S 0R-Brücken“ unter U16/R67–R69.
 
-> **2S: alle vier 0R (R87, R88, R89, R92) bestückt. 3S: alle vier entfernen – R87 ZUERST!**
+> Vor einer Umrüstung Akku und USB trennen. **2S: alle vier 0R (R87, R88, R89, R92) bestückt. 3S: alle vier entfernen – R87 ZUERST!**
 > Nie halb umbauen. Bleibt R87 drin und wird ein 3S-Akku gesteckt, liegen 12,6 V am BAT-Pin des BQ25886 (absolut max. 12 V) → Lader defekt. R90 und R91 im Kasten sind normale Widerstände und bleiben immer bestückt. Erst nach dem Umbau einen 3S-Akku stecken.
 
 | Brücke | Funktion | 2S (0R bestückt) | 3S (0R entfernt) |

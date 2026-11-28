@@ -95,6 +95,7 @@
 	(property "COMPANY" "HTL BULME Graz-Gösting")
 	(property "REVISION" "2.5b PROTOTYP")
 	(property "TITLE" "Tumbler 2 - stage 2")
+	(variants (variant (name "2S") (description "2S, USB-Laden mit Pack-NTC")))
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "00855945-d2dc-4d48-a30c-b08deb52d047")
@@ -2432,7 +2433,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C377773"
+		(property "LCSC PN" "C19110"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -7030,7 +7031,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -12451,7 +12452,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15850"
+		(property "LCSC PN" "C95841"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -13462,7 +13463,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -15314,7 +15315,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -16987,7 +16988,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C377773"
+		(property "LCSC PN" "C19110"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -20843,7 +20844,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7u 16V X7R"
+		(property "Value" "4.7u 25V X7R"
 			(at 0 1.68 180)
 			(layer "F.Fab")
 			(uuid "07ba0120-2588-464e-ba12-b9833a733a3f")
@@ -20890,7 +20891,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C1779"
+		(property "LCSC PN" "C98195"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -21054,7 +21055,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -21218,7 +21219,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -24252,7 +24253,7 @@
 			(uuid "118349d3-6d67-474c-a6ff-45fc28bcbfe6")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Fuse.3dshapes/Fuse_Littelfuse-NANO2-451_453.step"
+		(model "${KIPRJMOD}/Tumbler2_Models/0452005.MRL.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -24260,7 +24261,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -26489,6 +26490,18 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0fddc8f8-d690-439b-88b1-c34f1b4ecf4f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C68234"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4db5ca6f-daca-46bb-8131-8f68c5da7eb1")
 			(effects
 				(font
 					(size 1 1)
@@ -30741,7 +30754,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C377773"
+		(property "LCSC PN" "C19110"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -32088,7 +32101,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -32220,6 +32233,17 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9f86d84c-3a0a-4aeb-a791-b82d19db38d3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C158012"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "79f5aa6b-761d-47ea-92c1-ce57e5c7b9b0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -35314,7 +35338,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C23630"
+		(property "LCSC PN" "C6600149"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -37173,7 +37197,7 @@
 				)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u 25V X5R"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "01210194-3f77-4e4f-901e-1445aabacaac")
@@ -38910,7 +38934,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -41371,7 +41395,8 @@
 			)
 		)
 		(path "/003ca151-4f76-4d52-861b-70be86047379/cb5620ed-717d-47dc-b6b0-bd29a495a12d")
-		(attr smd)
+		(attr smd dnp)
+		(variant (name "2S") (dnp no))
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -42112,7 +42137,7 @@
 				(justify mirror)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
@@ -42838,7 +42863,8 @@
 			)
 		)
 		(path "/003ca151-4f76-4d52-861b-70be86047379/fb06cd8b-00d1-43b6-be72-b4a5c5ec31e3")
-		(attr smd)
+		(attr smd dnp)
+		(variant (name "2S") (dnp no))
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -43170,7 +43196,8 @@
 			)
 		)
 		(path "/003ca151-4f76-4d52-861b-70be86047379/d99df3a7-fbd7-41b3-9506-a46a7f318095")
-		(attr smd)
+		(attr smd dnp)
+		(variant (name "2S") (dnp no))
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.727064 0.91)
@@ -43777,7 +43804,8 @@
 			)
 		)
 		(path "/003ca151-4f76-4d52-861b-70be86047379/51a90b08-2a4a-4b69-abb6-740e6fc1e186")
-		(attr smd)
+		(attr smd dnp)
+		(variant (name "2S") (dnp no))
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.237258 -0.5225)
@@ -45303,7 +45331,7 @@
 				(justify mirror)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
@@ -45682,7 +45710,7 @@
 				(justify mirror)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
@@ -46179,6 +46207,7 @@
 		(layer "Edge.Cuts")
 		(uuid "dce529f0-e980-4da1-a75b-1369e4fc10f7")
 	)
+	(gr_text "3S STD" (at 132.25 77.65 0) (layer "B.SilkS") (uuid "a49764b7-b5a0-4daf-a16c-795e4fcb93af") (effects (font (size 1 1) (thickness 0.16)) (justify mirror)))
 	(gr_text "2S: alle 0R bestückt"
 		(at 170.25 76.95 0)
 		(layer "B.SilkS")
@@ -46191,7 +46220,7 @@
 			(justify left mirror)
 		)
 	)
-	(gr_text "3S: alle 0R entfernt"
+	(gr_text "3S STD: alle 0R frei"
 		(at 170.25 78.4 0)
 		(layer "B.SilkS")
 		(uuid "958856e9-8bb0-41a2-a201-1900c02544ed")
@@ -46289,7 +46318,7 @@
 			(justify left mirror)
 		)
 	)
-	(gr_text "TUMBLER Hauptplatine Rev 2.5b"
+	(gr_text "TUMBLER Hauptplatine Rev 2.5c"
 		(at 150 100 0)
 		(layer "B.SilkS")
 		(uuid "f036d591-f54e-42ec-8b90-51a2030e6e00")

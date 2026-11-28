@@ -10317,7 +10317,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 82.55 161.29 0)
 			(hide yes)
 			(show_name no)
@@ -11281,6 +11281,17 @@
 			)
 		)
 		(property "Datasheet" ""
+			(at 222.25 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C68234"
 			(at 222.25 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -12628,7 +12639,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10u 25V X5R"
 			(at 40.64 52.0699 0)
 			(show_name no)
 			(do_not_autoplace no)

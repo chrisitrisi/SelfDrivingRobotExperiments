@@ -1,24 +1,34 @@
-# Tumbler – Hauptplatine Rev. 2.5 (Schaltplan + Layout)
+# Tumbler – Hauptplatine Rev. 2.5c (Schaltplan + Layout)
 
-Das Projekt über **Tumbler2_Redesign.kicad_pro** in KiCad 10 öffnen. **Tumbler2_Redesign.pdf** zeigt die acht aktuellen Blätter (Stand Rev. 2.5, 19.11.2026).
+Das Projekt über **Tumbler2_Redesign.kicad_pro** in KiCad 10 öffnen. **Tumbler2_Redesign.pdf** zeigt die acht aktuellen Blätter (Rev. 2.5c, 28.11.2026).
 
 - Blatt 2: USB-C-Freigabe, 2S-Ladegerät, VBUS-Erkennung. Blatt 7: Pack, Verpolschutz, Schalter, Fahrabschaltung und Spannungsregler.
 - Blatt 5: ICM-42670-P, TB6612FNG, Motorencoder und externer Ultraschall. Blatt 8: I²C-Multiplexer TCA9548A und Lötpads J8–J15 für acht ToF-Sensoren (VL53L0X/GY-530).
 - Blatt 7, Block 05: **2S/3S-Brücken** R87, R88, R89, R92 (0 Ω) mit R90/R91 und D14.
 - README_Schaltplan.md: 2S/3S-Umbau mit Rechnung, Betriebsarten, Stecker, Adressen, Firmware und offene Hardwaretests. Stueckliste.csv nennt Wert, Bestückung, Footprint und Spezifikation. Pinbelegung.csv beschreibt den bestehenden Liniensensor.
-- **Rev. 2.5b (28.11.2026): bestellfertig für JLCPCB.**
+## Rev. 2.5c · 28.11.2026
+
+**3S ist die Standardbestückung.** R87, R88, R89 und R92 bleiben frei. Die KiCad-Variante `2S` bestückt genau diese vier 0-Ω-Brücken. R90 und R91 gehören in beide Varianten. Akku und USB vor jeder Umrüstung trennen. 3S extern laden. Die 2S-Ladefunktion benötigt OFF, einen passenden Pack-NTC und eine geeignete USB-C-Quelle.
+
+Die [Fertigungsanleitung](Fertigung/README.md) nennt die zusammengehörigen Dateien für beide Varianten. Das Hauptboard benötigt für die ausgewählten Bauteile JLC Standard PCBA. Der Liniensensor bleibt ein eigener Economic-Auftrag.
+
+C69 sitzt weiter von der H4-Stütze entfernt. Der NTC-Anschluss an TP8 wurde neu geführt und die benachbarte Kupferengstelle beseitigt. Die zwei Massevias nahe D14.2 liegen außerhalb der Lötfläche. Für die Passprobe mit Akku und Kabelbaum steht im Mechanikordner eine bestückte 3S-Baugruppe zur Verfügung.
+
+### Frühere Revisionen
+
+- **Rev. 2.5b (28.11.2026)**
   - BQ25886-Leistungsschleife kompakt: C36/C37 (SYS) direkt an Pin 15/16, L3 ~2 mm vom SW-Pin, C40 (BAT) nah, C30 (BTST) und C31 (REGN) direkt am IC, R49/R50 jetzt 0402 unter U12. C72 (1 µF) direkt an U9-Eingang.
   - Nicht lieferbare Teile ersetzt: **U2 AP63201WU-7** (einstellbar) mit Teiler **R93 47k / R94 15k** → 3,31 V; **U14 TLV3011** (Open-Drain) → **R55 jetzt Pull-up nach USB_3V3**; **L3 XEL4030-102MEC** (gleicher Footprint); C17 330 µF/25 V SMD 10×10; D2 rote Basic-LED; WS2812B-2020-V6.
   - Kosten: Kondensatoren auf Basic-Teile umgestellt, C1/C3/C6/C7/C25/C26/C65 auf eine Teilenummer (22 µF/25 V 1210). Alle SMD-Teile mit LCSC-Nummer, R5/R6 hatten vorher die Nummer eines 4,7-k-Widerstands.
   - J8–J15 neuer Footprint `Tumbler2:TOF_Wire_1x04_P2.54mm` (enger Courtyard), DRC-Regeldatei `Tumbler2_Redesign.kicad_dru` für J4 und die U3-Antenne.
   - Bestückungstexte kleiner Bauteile auf der Oberseite ausgeblendet (lagen auf Pads), dafür `Fertigung/Bestueckungsplan_oben/unten.pdf`.
-  - KiCad 10.0.7: **ERC 0, DRC 0 Fehler, 0 offene Verbindungen, 0 Paritätsfehler.** Restliche 69 Warnungen sind Kosmetik (Siebdruck an Footprint-Grafiken/Rand, geänderte Testpunkt-Footprints, 5 Leiterbahnenden auf Padmitte).
-  - Fertigung: `Fertigung/README.md` (Economic nur oben + Unterseite selbst löten, oder Standard beidseitig).
+  - KiCad 10.0.7: **ERC 0, DRC 0 Fehler, 0 offene Verbindungen, 0 Paritätsfehler.** Damals 69 Warnungen, darunter eine Kupferengstelle und Hinweise (Siebdruck an Footprint-Grafiken/Rand, geänderte Testpunkt-Footprints, 5 Leiterbahnenden auf Padmitte).
+  - Die damalige Economic-Empfehlung wurde in Rev. 2.5c nach Abgleich mit dem JLC-Katalog korrigiert.
 - **Rev. 2.5a (26.11.2026): Korrekturen vor der JLC-Bestellung.**
   - J12/J13 (ToF CH4/CH5) um 2,54 mm nach rechts: Die Lötstellen J12.1/J13.1 lagen 4,7/4,5 mm neben H4 und damit auf der Gehäusestütze (Ø 11 mm). Jetzt ≥ 7,0 mm Abstand. R79/R81 (Pull-ups) dafür auf freie Plätze der Unterseite versetzt. Mechanik/Gehauese_Bezugspunkte.csv angepasst.
   - Keine Vias mehr in Lötpads von Signalen (vorher R73.2, J6.4, U3 Pin 2 und 39, GND an J6.2/J7.2/D14.2). Nur die Wärme-Vias in den Thermalpads von U3 (Pin 41) und U12 (Pin 25) bleiben bewusst.
   - Alle Texte auf der Unterseite gespiegelt (vorher 78 spiegelverkehrte Bestückungstexte).
-  - J1-Wert „Akku 2S/3S“. Auslieferung bleibt 2S: R87/R88/R89/R92 = 0 Ω bestückt.
+  - J1-Wert „Akku 2S/3S“. Damals war 2S die Auslieferung: R87/R88/R89/R92 = 0 Ω bestückt.
   - KiCad 10.0.7: ERC 0, 0 offene Verbindungen, 0 Paritätsfehler. Bekannt/akzeptiert: 8 Pad-zu-NPTH-Abstände an J4 (Hersteller-Footprint, im JLC-DFM-Check ansehen), 6 Courtyard-Überlappungen ohne Kupferkonflikt.
   - **Bei JLC bestellen mit Innenlagen 1 oz** (Standard ist 0,5 oz): Motor- und Akkuleitungen laufen teilweise auf In2.Cu.
   - (Die damals offenen Punkte BQ25886-Schleife und U9-Eingangskondensator sind in Rev. 2.5b erledigt.)

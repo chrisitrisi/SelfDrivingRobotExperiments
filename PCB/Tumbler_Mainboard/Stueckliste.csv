@@ -1,4 +1,4 @@
-﻿Referenz;Wert / Bestelltyp;Footprint;Bestücken;Spezifikation / offene Freigabe;Datenblatt;LCSC (JLC, Stand 28.11.2026)
+Referenz;Wert / Bestelltyp;Footprint;Bestücken;Spezifikation / offene Freigabe;Datenblatt;LCSC (JLC, Stand 28.11.2026)
 C1;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C2;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C3;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
@@ -6,9 +6,9 @@ C4;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannu
 C6;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C7;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C8;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
-C9;10uF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C96446
+C9;10u 25V X5R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X5R, 25 V, an 3,3 V";;C96446
 C10;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
-C11;1uF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C15849
+C11;1uF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C59782
 C12;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C13;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C14;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
@@ -16,19 +16,19 @@ C15;10n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannu
 C16;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C17;330u 25V SMD 10x10;Capacitor_SMD:CP_Elec_10x10;Ja;Rev 2.5b: SamYoung CLU25V330M10*10 (330 uF/25 V, 10x10 SMD, bei JLC lagernd);;C5632144
 C18;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
-C19;10u 16V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C15850
+C19;10u 16V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C95841
 C20;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
-C21;2.2u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C23630
+C21;2.2u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C6600149
 C23;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C24;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C25;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C26;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
-C27;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C377773
-C28;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C15849
+C27;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C19110
+C28;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C59782
 C29;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C30;47n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C1622
-C31;4.7u 16V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C1779
-C32;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C377773
+C31;4.7u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C98195
+C32;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C19110
 C33;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";;C309062
 C34;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";;C309062
 C35;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"Murata GRM32ER71E226KE15L; effektive C unter DC-Bias verifizieren";;C309062
@@ -48,19 +48,19 @@ C55;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im 
 C56;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C57;100nF;Capacitor_SMD:C_0603_1608Metric;Ja;"MLCC X7R; falls keine Spannung im Wert: >=16 V";;C14663
 C58;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";;C14663
-C59;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C15849
-C60;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C15849
-C61;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C15849
-C62;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C15849
+C59;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C59782
+C60;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C59782
+C61;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C59782
+C62;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V am ToF-Kabelanschluss;;C59782
 C63;100n 25V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Rev 2.5: 25 V (PACK_SAFE bis 12,6 V bei 3S);;C14663
-C64;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";;C377773
+C64;2.2u 25V X7R;Capacitor_SMD:C_0805_2012Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";;C19110
 C65;22u 25V X7R;Capacitor_SMD:C_1210_3225Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen | Rev 2.5b: auf 22u/25V 1210 vereinheitlicht (eine JLC-Teilenummer weniger)";;C309062
 C66;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;"X7R; Mindestspannung laut Wert; wirksame Kapazität unter DC-Bias prüfen";;C14663
 C67;100n 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;ADC-Puffer an BAT_ADC/IO3;;C14663
-C68;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J12 (CH4);;C15849
-C69;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J13 (CH5), Unterseite;;C15849
-C70;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J14 (CH6), Unterseite;;C15849
-C71;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J15 (CH7), Unterseite;;C15849
+C68;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J12 (CH4);;C59782
+C69;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J13 (CH5), Unterseite;;C59782
+C70;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J14 (CH6), Unterseite;;C59782
+C71;1u 16V X7R;Capacitor_SMD:C_0603_1608Metric;Ja;Abblockung +5V an J15 (CH7), Unterseite;;C59782
 C72;1u 25V X5R;Capacitor_SMD:C_0402_1005Metric;Ja;Rev 2.5b: Eingangskondensator direkt an U9 VIN (Unterseite);;C52923
 D1;SMBJ13A;Diode_SMD:D_SMB;Ja;"Rev 2.5: TVS an VBAT_SW, VRWM 13 V (3S 12,6 V), VBR 14,4–15,9 V, VC 21,5 V; immer bestückt";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj;C353394
 D2;CHG rot;LED_SMD:LED_0603_1608Metric;Ja;Rev 2.5b: rote Basic-LED KT-0603R statt amber;;C2286
@@ -72,15 +72,15 @@ D10;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout
 D11;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf;C52917434
 D12;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf;C52917434
 D13;WS2812B;LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm;Ja;2020-Gehäuse und Pinout des exakten Worldsemi-Typs vor Bestellung abgleichen;https://cdn-shop.adafruit.com/product-files/4684/4684_WS2812B-2020_V1.3_EN.pdf;C52917434
-D14;SMBJ8.5A;Diode_SMD:D_SMB;Ja;"Rev 2.5: zweite TVS für 2S (Klemmung wie Rev 2.4, < 15 V am TB6612), über R92 an VBAT_SW; Unterseite";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj;C353329
+D14;SMBJ8.5A;Diode_SMD:D_SMB;Ja;"Rev 2.5: zweite TVS für 2S (Motorspitzen am Treiber prüfen), über R92 an VBAT_SW; Unterseite";https://www.littelfuse.com/products/tvs-diodes/surface-mount/smbj;C353329
 F1;5A time-lag 0452005.MRL;Fuse:Fuse_Littelfuse-NANO2-451_453;Ja;"Littelfuse 0452005.MRL, vorläufig; Motorkennlinie, I²t und Kabel prüfen";;C66503
 H1;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;;
 H2;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;;
 H3;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;;
 H4;MountingHole_Pad;MountingHole:MountingHole_3mm_Pad_Via;Ja;;;
-J1;B2B-XH-A;Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical;Ja;JST B2B-XH-A (2-polig, stehend), passend zu den vorhandenen 2S-Akkus (Pin 1 = +);;
+J1;B2B-XH-A;Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical;Ja;JST B2B-XH-A (2-polig, stehend), passend zu den vorhandenen 2S-Akkus (Pin 1 = +);;C158012
 J2;JST_GH_BM10B-GHS-TBT;Connector_JST:JST_GH_BM10B-GHS-TBT_1x10-1MP_P1.25mm_Vertical;Ja;;https://www.jst-mfg.com/product/pdf/eng/eGH.pdf;C495732
-J3;Conn_02x08_Odd_Even;Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical;Ja;"Debug-/Erweiterung: 1/2 3,3 V; 3 TXD0; 5 RXD0; 7 EN; 9 IO0; 4/11/13/15 GND";;
+J3;Conn_02x08_Odd_Even;Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical;Ja;"Debug-/Erweiterung: 1/2 3,3 V; 3 TXD0; 5 RXD0; 7 EN; 9 IO0; 4/11/13/15 GND";;C68234
 J4;USB_C_Receptacle_USB2.0_16P;Tumbler2:KINGHELM_KH-TYPE-C-16P;Ja;;https://www.usb.org/sites/default/files/documents/usb_type-c.zip;C709357
 J5;Conn_01x04;Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical;Ja;;https://www.lcsc.com/datasheet/C5116530.pdf;C5116530
 J6;Conn_01x06;Connector_JST:JST_XH_S6B-XH-SM4-TB_1x06-1MP_P2.50mm_Horizontal;Ja;;;C191914
@@ -175,12 +175,12 @@ R83;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;I2C-Pull-up Kanal 6 an +3,3 V, 060
 R84;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;I2C-Pull-up Kanal 6 an +3,3 V, 0603, 1 %, Unterseite;;C4190
 R85;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;I2C-Pull-up Kanal 7 an +3,3 V, 0603, 1 %, Unterseite;;C4190
 R86;2.2k 1%;Resistor_SMD:R_0603_1608Metric;Ja;I2C-Pull-up Kanal 7 an +3,3 V, 0603, 1 %, Unterseite;;C4190
-R87;0R;Resistor_SMD:R_0603_1608Metric;Ja (2S) / entfernen (3S);2S/3S-Brücke PACK_SAFE -> CHG_BAT (Lader BAT). Bei 3S als ERSTES entfernen! Unterseite, Kasten 2S|3S;;C21189
-R88;0R;Resistor_SMD:R_0603_1608Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke über R91 (LTC4365-OV 8,75 V / 13,52 V); Unterseite";;C21189
-R89;0R;Resistor_SMD:R_0603_1608Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke über R90 (Fahrfreigabe 6,42/6,00 V bzw. 9,66/9,03 V); Unterseite";;C21189
+R87;0R;Resistor_SMD:R_0603_1608Metric;DNP (Standard 3S) / 0R (Variante 2S);2S/3S-Brücke PACK_SAFE -> CHG_BAT (Lader BAT). Bei 3S als ERSTES entfernen! Unterseite, Kasten 2S|3S;;C21189
+R88;0R;Resistor_SMD:R_0603_1608Metric;DNP (Standard 3S) / 0R (Variante 2S);"2S/3S-Brücke über R91 (LTC4365-OV 8,75 V / 13,52 V); Unterseite";;C21189
+R89;0R;Resistor_SMD:R_0603_1608Metric;DNP (Standard 3S) / 0R (Variante 2S);"2S/3S-Brücke über R90 (Fahrfreigabe 6,42/6,00 V bzw. 9,66/9,03 V); Unterseite";;C21189
 R90;76.8k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"TPS3700-Teiler RUN_DIV -> RUN_SENSE (wirksam bei 3S), immer bestückt; Unterseite";;C165743
 R91;95.3k 1%;Resistor_SMD:R_0603_1608Metric;Ja;"LTC4365-OV-Teiler in Serie zu R38 (wirksam bei 3S), immer bestückt; Unterseite";;C23267
-R92;0R;Resistor_SMD:R_1206_3216Metric;Ja (2S) / entfernen (3S);"2S/3S-Brücke VBAT_SW -> D14 (Pulsstrom, daher 1206); Unterseite";;C17888
+R92;0R;Resistor_SMD:R_1206_3216Metric;DNP (Standard 3S) / 0R (Variante 2S);"2S/3S-Brücke VBAT_SW -> D14 (Pulsstrom, daher 1206); Unterseite";;C17888
 R93;47k 1%;Resistor_SMD:R_0603_1608Metric;Ja;Rev 2.5b: Spannungsteiler oben fuer U2 (3,3 V);;C25819
 R94;15k 1%;Resistor_SMD:R_0603_1608Metric;Ja;Rev 2.5b: Spannungsteiler unten fuer U2 (3,3 V);;C22809
 SW1;SW_Push;Tumbler2:SW_TS-1088-AR02016;Ja;;https://www.lcsc.com/datasheet/C720477.pdf;C720477

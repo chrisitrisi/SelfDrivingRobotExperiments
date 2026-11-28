@@ -4,7 +4,7 @@ Stand 19.11.2026. Bezieht sich auf `Tumbler_Mainboard` (Schaltplan und Platine R
 
 ## Akku 2S / 3S (neu in Rev. 2.5)
 
-Die Platine läuft mit den vorhandenen **2S-Akkus** (7,4 V nominal, 8,4 V voll, JST XH) oder nach Umbau mit **3S** (11,1 V nominal, 12,6 V voll). Umgeschaltet wird mit vier 0-Ω-Brücken auf der Unterseite (R87, R88, R89, R92). Für die Firmware heißt das:
+Ab Rev. 2.5c ist **3S** (12,6 V voll) die Standardbestückung. Die Variante **2S** (8,4 V voll) nutzt die vorhandenen JST-XH-Akkus. Umgeschaltet wird mit vier 0-Ω-Brücken auf der Unterseite (R87, R88, R89, R92). Für die Firmware heißt das:
 
 | | 2S | 3S |
 |---|---|---|

@@ -251,7 +251,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Tumbler / Rev 2.5   |   ESP32-S3, ICM-42670-P, TCA9548A + 8 ToF ports (J8-J15), VBAT-ADC (IO3), UART0 on J3\nAkku 2S (Standard, JST XH) oder 3S per 0R-Bruecken R87/R88/R89/R92 (Blatt Power Supply, Block 05). 3S: alle vier entfernen, R87 zuerst!\nRUN: geschuetzter Pack; USB-Daten. OFF: USB-C-Laden 8,40 V / 0,25 A nur bei 2S und mit NTC (ohne NTC gesperrt).\nLayout Rev 2.5: 4 Lagen, DRC geprueft (kicad-cli). Siehe README_Schaltplan.md."
+	(text "Tumbler / Rev 2.5   |   ESP32-S3, ICM-42670-P, TCA9548A + 8 ToF ports (J8-J15), VBAT-ADC (IO3), UART0 on J3\nAkku 3S ab Werk (JST XH). Variante 2S: R87, R88, R89 und R92 mit 0R bestuecken (Power Supply, Block 05).\nRUN: geschuetzter Pack; USB-Daten. OFF: USB-C-Laden 8,40 V / 0,25 A nur bei 2S und mit NTC (ohne NTC gesperrt).\nLayout Rev 2.5: 4 Lagen, DRC geprueft (kicad-cli). Siehe README_Schaltplan.md."
 		(exclude_from_sim no)
 		(at 28 35 0)
 		(effects

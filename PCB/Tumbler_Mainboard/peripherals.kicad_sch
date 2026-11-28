@@ -10796,7 +10796,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C23630"
+		(property "LCSC PN" "C6600149"
 			(at 30.48 222.25 0)
 			(hide yes)
 			(show_name no)
@@ -12415,7 +12415,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15850"
+		(property "LCSC PN" "C95841"
 			(at 115.57 222.25 0)
 			(hide yes)
 			(show_name no)

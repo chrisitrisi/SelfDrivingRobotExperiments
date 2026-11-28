@@ -9668,7 +9668,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C377773"
+		(property "LCSC PN" "C19110"
 			(at 36.83 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -10377,7 +10377,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7u 16V X7R"
+		(property "Value" "4.7u 25V X7R"
 			(at 203.068 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10419,7 +10419,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C1779"
+		(property "LCSC PN" "C98195"
 			(at 194.31 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -12602,7 +12602,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C15849"
+		(property "LCSC PN" "C59782"
 			(at 118.11 50.8 0)
 			(hide yes)
 			(show_name no)
@@ -13275,7 +13275,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C377773"
+		(property "LCSC PN" "C19110"
 			(at 318.77 109.22 0)
 			(hide yes)
 			(show_name no)

@@ -2950,7 +2950,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Bestueckung:  2S (Auslieferung, alte JST-XH-Akkus) = R87, R88, R89, R92 alle 0R bestueckt.\n                       3S = alle vier 0R entfernen.  REIHENFOLGE: R87 ZUERST (sonst 12,6 V an U12 BAT, abs. max 12 V)!\n                       Nie halb umbauen. Erst danach 3S-Akku stecken. In 2S-Stellung sperrt der LTC4365 einen 3S-Akku (OV 8,75 V).\nR87  PACK_SAFE -> CHG_BAT (U12 BQ25886 BAT 13/14 + C40): 2S Lader angeschlossen | 3S Lader abgetrennt.\nR88  ueberbrueckt R91 95,3k in Serie zu R38 165k:  OV = 0,5 V x (1 + R_oben/10k):  2S 8,75 V | 3S 13,52 V.  UV bleibt 5,50 V (eigener Teiler R36/R37).\nR89  ueberbrueckt R90 76,8k zwischen RUN_DIV und RUN_SENSE:  Fahrfreigabe 2S 6,42 V / 6,00 V | 3S 9,66 V / 9,03 V.\nR92  (1206) schaltet D14 SMBJ8.5A parallel zu D1 SMBJ13A: 2S Klemmung wie Rev 2.4 (unter 15 V TB6612) | 3S nur D1 (SMBJ13A).\nAlle Brueckenwiderstaende liegen auf der Platine nebeneinander im Kasten 2S | 3S."
+	(text "Bestueckung:  2S (Option, alte JST-XH-Akkus) = R87, R88, R89, R92 alle 0R bestueckt.\n                       3S (Standard) = alle vier frei.  REIHENFOLGE: R87 ZUERST (sonst 12,6 V an U12 BAT, abs. max 12 V)!\n                       Nie halb umbauen. Erst danach 3S-Akku stecken. In 2S-Stellung sperrt der LTC4365 einen 3S-Akku (OV 8,75 V).\nR87  PACK_SAFE -> CHG_BAT (U12 BQ25886 BAT 13/14 + C40): 2S Lader angeschlossen | 3S Lader abgetrennt.\nR88  ueberbrueckt R91 95,3k in Serie zu R38 165k:  OV = 0,5 V x (1 + R_oben/10k):  2S 8,75 V | 3S 13,52 V.  UV bleibt 5,50 V (eigener Teiler R36/R37).\nR89  ueberbrueckt R90 76,8k zwischen RUN_DIV und RUN_SENSE:  Fahrfreigabe 2S 6,42 V / 6,00 V | 3S 9,66 V / 9,03 V.\nR92  (1206) schaltet D14 SMBJ8.5A parallel zu D1 SMBJ13A: 2S mit D14 (Motorspitzen messen) | 3S nur D1 (SMBJ13A).\nAlle Brueckenwiderstaende liegen auf der Platine nebeneinander im Kasten 2S | 3S."
 		(exclude_from_sim no)
 		(at 190.5 316.23 0)
 		(effects
@@ -9484,7 +9484,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "51a90b08-2a4a-4b69-abb6-740e6fc1e186")
 		(property "Reference" "R87"
 			(at 203.2 285.75 0)
@@ -9562,6 +9562,7 @@
 				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
 					(reference "R87")
 					(unit 1)
+					(variant (name "2S") (dnp no))
 				)
 			)
 		)
@@ -12010,7 +12011,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "cb5620ed-717d-47dc-b6b0-bd29a495a12d")
 		(property "Reference" "R88"
 			(at 248.92 285.75 0)
@@ -12088,6 +12089,7 @@
 				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
 					(reference "R88")
 					(unit 1)
+					(variant (name "2S") (dnp no))
 				)
 			)
 		)
@@ -12279,7 +12281,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d99df3a7-fbd7-41b3-9506-a46a7f318095")
 		(property "Reference" "R92"
 			(at 322.58 285.75 0)
@@ -12357,6 +12359,7 @@
 				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
 					(reference "R92")
 					(unit 1)
+					(variant (name "2S") (dnp no))
 				)
 			)
 		)
@@ -13313,6 +13316,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C158012"
+			(at 74.93 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
 		(property "Description" ""
 			(at 74.93 44.45 0)
 			(show_name no)
@@ -13685,7 +13699,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "fb06cd8b-00d1-43b6-be72-b4a5c5ec31e3")
 		(property "Reference" "R89"
 			(at 294.64 285.75 0)
@@ -13763,6 +13777,7 @@
 				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
 					(reference "R89")
 					(unit 1)
+					(variant (name "2S") (dnp no))
 				)
 			)
 		)
