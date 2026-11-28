@@ -1,0 +1,183 @@
+\chapterauthor{Adem Merdzic, Rami Muarrawi, Christopher Schieszler}
+\chapter{Systemarchitektur und theoretische Grundlagen}
+\label{chap:grundlagen}
+
+Dieses Kapitel beschreibt zunächst den übergeordneten Aufbau des Gesamtsystems \emph{Tumbler~v3.0} und vermittelt anschließend die physikalischen, elektrotechnischen und regelungstechnischen Grundlagen, auf denen die konkrete Dimensionierung in den Kapiteln~\ref{chap:hardware} bis~\ref{chap:software} aufbaut.
+
+\section{Gesamtsystemarchitektur und Energieverteilung}
+\label{sec:systemarchitektur}
+Der \emph{Tumbler~v3.0} ist als autarkes, eingebettetes Mechatroniksystem konzipiert. Abbildung~\ref{fig:blockschaltbild} zeigt das Gesamtsystem als Blockschaltbild mit klarer Trennung in Energieversorgung (rot/orange), Sensorik (blau), Recheneinheit (grün) und Antriebsaktorik (grau).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=1.0cm and 1.3cm,
+  block/.style={rectangle, draw=black!75, fill=blue!7, thick, minimum width=2.8cm, minimum height=1.05cm, align=center, rounded corners=3pt, font=\footnotesize},
+  power/.style={block, fill=orange!15, draw=orange!70!black},
+  mcu/.style={block, fill=green!12, draw=green!50!black, minimum width=3.5cm, minimum height=1.55cm, font=\small\bfseries},
+  act/.style={block, fill=gray!15, draw=black!75},
+  arrow/.style={->, >=stealth, thick},
+  biarrow/.style={<->, >=stealth, thick}
+]
+  \node[power] (batt) {2S Li-Ion Akku\\\qtyrange{6,4}{8,4}{\volt} + Schalter};
+  \node[power, right=1.5cm of batt] (reg) {Spannungswandler\\Buck \qty{5}{\volt} / LDO \qty{3,3}{\volt}};
+  \node[mcu, below=1.3cm of reg] (esp) {ESP32-S3-WROOM-1\\Dual-Core \qty{240}{\mega\hertz}\\FreeRTOS / ESP-IDF};
+  \node[block, left=1.5cm of esp] (lidar) {8$\times$ VL53L0/1XV2\\I\textsuperscript{2}C + 8$\times$ XSHUT\\(\texttt{0x30}--\texttt{0x37})};
+  \node[block, below left=1.2cm and 0.6cm of esp] (line) {6$\times$ CNY70\\Liniensensor-PCB\\(ADC1\_CH3--CH9)};
+  \node[block, below right=1.2cm and 0.6cm of esp] (imu) {6-Achsen IMU\\LSM6DSV\\(I\textsuperscript{2}C / Gyro+Acc)};
+  \node[act, right=1.5cm of esp] (drv) {2$\times$ H-Brücke\\TB67H450FNG\\(\qty{20}{\kilo\hertz} PWM)};
+  \node[act, below=1.2cm of drv] (mot) {2$\times$ GA37-520\\DC-Motoren +\\Quadratur-Encoder};
+
+  \draw[arrow, orange!70!black] (batt) -- node[above, font=\scriptsize] {\texttt{VBAT\_SW}} (reg);
+  \draw[arrow, orange!70!black] (batt.south) |- ++(0,-0.45) -| node[near start, above, font=\scriptsize] {Leistung \qty{7,4}{\volt}} (drv.north);
+  \draw[arrow, orange!70!black] (reg) -- node[right, font=\scriptsize] {\qty{3,3}{\volt}} (esp);
+  \draw[biarrow, blue!60!black] (lidar) -- node[above, font=\scriptsize] {I\textsuperscript{2}C / XSHUT} (esp);
+  \draw[arrow, blue!60!black] (line) -- node[left, font=\scriptsize] {6$\times$ Analog} (esp);
+  \draw[biarrow, blue!60!black] (imu) -- node[right, font=\scriptsize] {I\textsuperscript{2}C} (esp);
+  \draw[arrow] (esp) -- node[above, font=\scriptsize] {PWM / DIR} (drv);
+  \draw[arrow] (drv) -- node[right, font=\scriptsize] {Motor A/B} (mot);
+  \draw[arrow, dashed] (mot.west) -- ++(-0.5,0) |- node[near end, below, font=\scriptsize] {Enc A/B} (esp.east);
+\end{tikzpicture}
+\caption{Gesamtsystem-Blockschaltbild des Tumbler~v3.0 mit Energie-, Signal- und Leistungspfaden.}
+\label{fig:blockschaltbild}
+\end{figure}
+
+Das Spannungskonzept trennt bewusst die stark schwankende, impulsbelastete Akkuschiene \texttt{VBAT\_SW} (\qtyrange{6,4}{8,4}{\volt}) von der geregelten \qty{3,3}{\volt}-Logikversorgung. Die beiden Motortreiber sowie die beiden diskreten IR-LED-Stromsenken der Liniensensor-Platine beziehen ihre Energie direkt aus \texttt{VBAT\_SW}, sodass die hohen Anlaufströme der Getriebemotoren den \qty{3,3}{\volt}-Logikregler nicht unnötig thermisch belasten. Die digitale Auswertung sämtlicher Sensordaten und die Berechnung der Stellgrößen übernimmt der zweikernige \emph{ESP32-S3-WROOM-1} \cite{EspressifESP32S3}.
+
+\section{Optische Distanzmessung nach dem Time-of-Flight-Prinzip}
+\label{sec:tof_grundlagen}
+Zur Hindernis- und Parklückenerkennung standen zu Projektbeginn drei gängige Messverfahren für kleine mobile Roboter zur Auswahl: Ultraschall-Laufzeitmessung (\emph{HC-SR04}), Infrarot-Triangulation (\emph{Sharp GP2Y0A21}) und optische Laser-Laufzeitmessung (\emph{Time of Flight}, \gls{tof}).
+
+\subsection{Physikalisches Messprinzip}
+Ein \gls{tof}-Sensor der Familie \emph{VL53L0X} bzw. \emph{VL53L1X} von STMicroelectronics sendet über eine integrierte \emph{VCSEL}-Diode (\emph{Vertical-Cavity Surface-Emitting Laser}) unsichtbare Infrarot-Lichtimpulse mit einer Wellenlänge von $\lambda = \qty{940}{\nano\meter}$ aus (Laserklasse~1, augensicher) \cite{ST_VL53L0X,ST_VL53L1X}. Trifft ein Lichtpuls auf ein Hindernis in der Entfernung $d$, wird ein Teil der Strahlung diffus zurückgeworfen und von einem hochempfindlichen \emph{SPAD}-Array (\emph{Single-Photon Avalanche Diode}) detektiert. Die gesuchte Distanz ergibt sich direkt aus der gemessenen Hin- und Rücklaufzeit $\Delta t$ und der Lichtgeschwindigkeit $c_0 \approx \qty{2,9979e8}{\meter\per\second}$:
+
+\begin{equation}
+  d = \frac{c_0 \cdot \Delta t}{2}
+  \label{eq:tof_distanz}
+\end{equation}
+
+Da Licht für eine Distanzänderung von $\Delta d = \qty{1}{\milli\meter}$ lediglich eine Laufzeitdifferenz von
+\begin{equation}
+  \Delta t_{1\,\mathrm{mm}} = \frac{2 \cdot \qty{1e-3}{\meter}}{\qty{2,9979e8}{\meter\per\second}} \approx \qty{6,67}{\pico\second}
+  \label{eq:tof_zeit}
+\end{equation}
+benötigt, misst der Sensor nicht nur einen einzelnen Puls, sondern integriert statistisch tausende Photonen-Ereignisse über ein konfigurierbares Zeitbudget (\emph{Measurement Timing Budget}, typisch \qtyrange{20}{33}{\milli\second}). Dadurch entsteht im Gegensatz zur einfachen IR-Intensitätsmessung eine weitgehend farb- und oberflächenunabhängige Distanzmessung.
+
+\subsection{Vergleich der Distanzsensor-Technologien}
+Tabelle~\ref{tab:sensor_vergleich} begründet die Entscheidung für das 8-fach-\emph{VL53L0/1XV2}-Array anhand realer Messkriterien im Einparkbetrieb.
+
+\begin{table}[htbp]
+\centering
+\caption{Technischer Vergleich der evaluierten Distanzsensoren für den Tumbler~v3.0.}
+\label{tab:sensor_vergleich}
+\begin{tabular}{@{}p{3.0cm}p{3.4cm}p{3.4cm}p{4.0cm}@{}}
+\toprule
+\textbf{Kriterium} & \textbf{Ultraschall (HC-SR04)} & \textbf{IR-Triang. (Sharp)} & \textbf{ToF (VL53L0/1XV2)} \\
+\midrule
+Messbereich & \qtyrange{20}{4000}{\milli\meter} & \qtyrange{100}{800}{\milli\meter} & \qtyrange{30}{2000}{\milli\meter} (L1X bis \qty{4000}{\milli\meter}) \\
+Öffnungswinkel (FoV) & ca. \qtyrange{15}{30}{\degree} (breit, Nebenkeulen) & sehr schmal ($< \qty{5}{\degree}$) & definiert \qty{25}{\degree} (\qty{27}{\degree} bei L1X) \\
+Genauigkeit & $\pm \qty{3}{\milli\meter}$, schräg unzuverlässig & nichtlinear, farbabhängig & $\pm 3\,\%$ im Innenraum, linear \\
+Baugröße & groß (\qtyproduct{45 x 20}{\milli\meter}) & mittel (\qtyproduct{29 x 13}{\milli\meter}) & sehr kompakt (\qtyproduct{25 x 10,5}{\milli\meter}) \\
+Schnittstelle & 2 GPIOs pro Sensor (Trigger/Echo) & 1 ADC-Kanal pro Sensor & gemeinsamer I\textsuperscript{2}C-Bus + XSHUT \\
+Eignung Parklücke & mäßig (Kanten verschwimmen) & gering (Blindzone $< \qty{100}{\milli\meter}$) & \textbf{sehr hoch} (scharfe Kanten) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Ein wesentlicher konstruktiver Punkt bei \gls{tof}-Sensoren ist das sogenannte \emph{optische Übersprechen} (\emph{Crosstalk}): Ragt eine Gehäusekante, ein Rad oder eine Schraube in den \qty{25}{\degree}-Sichtkegel hinein, reflektiert dieses eigene Bauteil einen Teil der \qty{940}{\nano\meter}-Strahlung im Nahbereich zurück. Die Distanzmessung wird dadurch systematisch zu kurz verfälscht. Aus diesem Grund wurde in Kapitel~\ref{chap:hardware} für alle acht Sensoren ein vollständiger \qty{25}{\degree}-Prüfkegel im CAD modelliert.
+
+\section{Der I\textsuperscript{2}C-Datenbus und Pull-up-Dimensionierung}
+\label{sec:i2c_grundlagen}
+Alle acht \emph{VL53L0/1XV2}-Distanzsensoren sowie die \gls{imu} (\emph{LSM6DSV}) kommunizieren über den synchronen seriellen Zweidrahtbus \gls{i2c} (Leitungen \texttt{SDA} für Daten und \texttt{SCL} für den Takt) \cite{NXP_UM10204}. Beide Leitungen arbeiten als \emph{Open-Drain}-Ausgänge: Kein Busteilnehmer treibt die Leitung aktiv auf High-Pegel; stattdessen ziehen externe Pull-up-Widerstände $R_p$ die Leitungen auf die Betriebsspannung $V_{DD} = \qty{3,3}{\volt}$, während aktive Sender die Leitung über einen internen MOSFET gezielt gegen Masse (\texttt{GND}) schalten.
+
+\subsection{Dimensionierung der Pull-up-Widerstände}
+Bei neun Busteilnehmern (8× LiDAR + 1× IMU) und Kabelwegen von jeweils \qtyrange{10}{25}{\centi\meter} summiert sich die gesamte Buskapazität $C_b$ (Leiterbahn-, Kabel- und Pin-Kapazitäten) leicht auf $C_b \approx \qtyrange{120}{180}{\pico\farad}$. Nach der NXP-Spezifikation UM10204 \cite{NXP_UM10204} ist der zulässige Bereich für $R_p$ durch zwei Grenzen bestimmt:
+
+\begin{enumerate}
+  \item \textbf{Untere Grenze ($R_{p,\min}$):} Der maximale Sink-Strom $I_{OL}$ der Ausgangstreiber (Standard/Fast-Mode: $I_{OL} = \qty{3}{\milli\ampere}$ bei $V_{OL,\max} = \qty{0,4}{\volt}$) darf nicht überschritten werden, damit ein sauberer Low-Pegel garantiert bleibt:
+  \begin{equation}
+    R_{p,\min} = \frac{V_{DD} - V_{OL,\max}}{I_{OL}} = \frac{\qty{3,3}{\volt} - \qty{0,4}{\volt}}{\qty{3}{\milli\ampere}} = \qty{967}{\ohm}
+    \label{eq:i2c_rpmin}
+  \end{equation}
+  \item \textbf{Obere Grenze ($R_{p,\max}$):} Die Anstiegszeit $t_r$ (von \qty{30}{\percent} auf \qty{70}{\percent} von $V_{DD}$) wird durch das RC-Glied $R_p \cdot C_b$ bestimmt. Mit $\ln(0{,}7/0{,}3) \approx 0{,}8473$ gilt:
+  \begin{equation}
+    R_{p,\max} = \frac{t_{r,\max}}{0{,}8473 \cdot C_b}
+    \label{eq:i2c_rpmax}
+  \end{equation}
+  Für den im Prototyp verwendeten \emph{Standard-Mode} (\qty{100}{\kilo\hertz}, $t_{r,\max} = \qty{1000}{\nano\second}$) und eine geschätzte Buskapazität $C_b = \qty{150}{\pico\farad}$ ergibt sich:
+  \begin{equation}
+    R_{p,\max,\mathrm{100k}} = \frac{\qty{1000}{\nano\second}}{0{,}8473 \cdot \qty{150}{\pico\farad}} \approx \qty{7,87}{\kilo\ohm}
+    \label{eq:i2c_rpmax_100}
+  \end{equation}
+  Für den \emph{Fast-Mode} (\qty{400}{\kilo\hertz}, $t_{r,\max} = \qty{300}{\nano\second}$) sinkt das Maximum auf:
+  \begin{equation}
+    R_{p,\max,\mathrm{400k}} = \frac{\qty{300}{\nano\second}}{0{,}8473 \cdot \qty{150}{\pico\farad}} \approx \qty{2,36}{\kilo\ohm}
+    \label{eq:i2c_rpmax_400}
+  \end{equation}
+\end{enumerate}
+
+\textbf{Wichtige Praxiserkenntnis bei 8 Breakout-Modulen:} Handelsübliche violette \emph{VL53L0/1XV2}-Breakout-Platinen besitzen bereits eigene On-Board-Pull-up-Widerstände von typischerweise \qty{10}{\kilo\ohm} pro Modul. Werden acht solcher Module parallel an denselben I\textsuperscript{2}C-Bus angeschlossen, ergibt sich ohne zusätzliche Widerstände bereits ein effektiver Gesamt-Pull-up von:
+\begin{equation}
+  R_{p,\mathrm{ges}} = \frac{\qty{10}{\kilo\ohm}}{8} = \qty{1,25}{\kilo\ohm}
+  \label{eq:i2c_rp_parallel}
+\end{equation}
+Dieser Wert liegt ideal zwischen $R_{p,\min} = \qty{967}{\ohm}$ und $R_{p,\max,\mathrm{400k}} = \qty{2,36}{\kilo\ohm}$. Zusätzliche starke Pull-ups (z.\,B. \qty{2,2}{\kilo\ohm}) auf der Hauptplatine würden den Gesamtwiderstand dagegen unter \qty{800}{\ohm} drücken und die Low-Pegel anheben. Deshalb wird auf der Hauptplatine lediglich ein hochohmiger Basis-Pull-up (oder gar keiner, wenn die Module aktiv sind) vorgesehen und die Signalqualität im Labortestplan (Kapitel~\ref{chap:validierung}) per Oszilloskop überprüft.
+
+\section{Optische Reflexkoppler zur Linienerkennung}
+\label{sec:cny70_grundlagen}
+Für die Spurerkennung kommt der optische Reflexkoppler \emph{Vishay CNY70} zum Einsatz \cite{Vishay_CNY70}. Das Bauteil vereint eine Infrarot-Leuchtdiode ($\lambda_p = \qty{950}{\nano\meter}$) und einen Silizium-NPN-Phototransistor in einem lichtundurchlässigen Gehäuse mit integriertem Tageslichtfilter.
+
+Die IR-LED beleuchtet den Untergrund unter dem Fahrzeug. Eine helle (weiße) Fahrbahnoberfläche reflektiert einen großen Teil der Infrarotstrahlung zurück auf die Basis-Kollektor-Sperrschicht des Phototransistors; es fließt ein hoher Photostrom $I_{\mathrm{Photo}}$, der den Transistor durchsteuert. Über einer mattschwarzen Leitlinie wird die Strahlung weitgehend absorbiert, sodass $I_{\mathrm{Photo}}$ stark abfällt und der Phototransistor sperrt.
+
+Das Verhältnis zwischen dem Kollektorstrom $I_C$ und dem Dioden-Vorwärtsstrom $I_F$ wird als \emph{Current Transfer Ratio} ($\mathrm{CTR}$) bezeichnet und hängt stark vom Bodenabstand $h_{\mathrm{opt}}$ ab. Laut Datenblatt des CNY70 liegt das Empfindlichkeitsmaximum bei einem Abstand von ca. \qtyrange{0,5}{2,0}{\milli\meter} \cite{Vishay_CNY70}. Im realen Fahrbetrieb auf unebenen Laborböden wäre ein Abstand unter \qty{1}{\milli\meter} mechanisch zu riskant (Aufsetzen), weshalb in der mechanischen Höhenkette (Kapitel~\ref{sec:liniensensor_pcb}) ein Nennabstand von \qty{2,0}{\milli\meter} zwischen Sensor-Optikfläche und Fahrbahn gewählt wurde.
+
+\section{Inertiale Messtechnik (6-Achsen-IMU)}
+\label{sec:imu_grundlagen}
+Während die Rad-Encoder den zurückgelegten Weg messen, entstehen bei Kurvenfahrten und insbesondere beim engen Einparken durch Radschlupf systematische Winkelfehler in der reinen Odometrie. Zur Stützung des Gierwinkels (\emph{Yaw}, $\theta$) sieht die Hauptplatine eine 6-Achsen-\gls{imu} (\emph{LSM6DSV}) vor \cite{ST_LSM6DSV}.
+
+Der integrierte MEMS-Drehratensensor misst die Winkelgeschwindigkeit $\omega_z(t)$ um die Hochachse des Fahrzeugs. Durch zeitdiskrete Integration mit der Abtastzeit $T_s$ lässt sich die relative Winkeländerung bestimmen:
+\begin{equation}
+  \theta_{\mathrm{Gyro}}[k] = \theta_{\mathrm{Gyro}}[k-1] + (\omega_z[k] - b_{\omega_z}) \cdot T_s
+  \label{eq:gyro_int}
+\end{equation}
+Hierbei bezeichnet $b_{\omega_z}$ den Nullpunkt-Offset (\emph{Bias}) des Gyroskops, der bei jedem Fahrzeugstart im Stillstand über mehrere hundert Messwerte gemittelt und abgezogen wird. Da ein Rest-Bias über längere Fahrzeiten zu einer Winkeldrift führt, wird für länger dauernde Fahrten eine Fusion mit der Encoder-Differenzodometrie über ein Komplementärfilter vorgenommen (siehe Kapitel~\ref{chap:software}).
+
+\section{Gleichstrom-Antriebstechnik, H-Brücken und Quadratur-Encoder}
+\label{sec:antrieb_grundlagen}
+Der Antrieb des \emph{Tumbler~v3.0} erfolgt über ein klassisches Differenzialfahrwerk mit zwei getrennt regelbaren Gleichstrom-Getriebemotoren vom Typ \emph{GA37-520} (Durchmesser \qty{37}{\milli\meter}, Länge \qty{52}{\milli\meter}) und einem vorderen Gleitdom als drittem Auflagepunkt.
+
+\subsection{Elektrisches Ersatzschaltbild und PWM-Ansteuerung}
+Ein permanenterregter Gleichstrommotor lässt sich im Ankerkreis als Reihenschaltung aus Ankerwiderstand $R_A$, Ankerinduktivität $L_A$ und drehzahlproportionaler Gegen-EMK $U_q = k_E \cdot \omega$ modellieren:
+\begin{equation}
+  U_A(t) = R_A \cdot i_A(t) + L_A \cdot \frac{\mathrm{d}i_A(t)}{\mathrm{d}t} + k_E \cdot \omega(t)
+  \label{eq:dc_motor}
+\end{equation}
+Zur verlustarmen Drehzahl- und Drehrichtungssteuerung werden zwei Vollbrücken-Treiber-ICs (\emph{Toshiba TB67H450FNG}, bis \qty{3,5}{\ampere} Spitzenstrom) eingesetzt \cite{Toshiba_TB67H450}. Durch \gls{pwm} mit dem Tastgrad $D = t_{\mathrm{on}} / T_{\mathrm{PWM}} \in [0, 1]$ entsteht im zeitlichen Mittel die effektive Ankerspannung $\bar{U}_A = D \cdot U_{\mathrm{Bat}}$.
+
+Die Wahl der PWM-Frequenz $f_{\mathrm{PWM}}$ ist ein Kompromiss zwischen Schaltverlusten in der H-Brücke und der Stromwelligkeit $\Delta i_A$ in der Motorinduktivität sowie der akustischen Geräuschentwicklung. Mit $f_{\mathrm{PWM}} = \qty{20}{\kilo\hertz}$ liegt die Schaltfrequenz knapp oberhalb der menschlichen Hörgrenze (kein störendes Motorpfeifen) und die Periodendauer $T_{\mathrm{PWM}} = \qty{50}{\micro\second}$ ist deutlich kleiner als die elektrische Zeitkonstante $\tau_{\mathrm{el}} = L_A / R_A$ des Motors, sodass sich ein gut geglätteter Ankerstrom einstellt.
+
+\subsection{Quadratur-Encoder und Differenzialkinematik}
+Auf der Rückseite beider Motorwellen sitzen magnetische Quadratur-Encoder, die zwei um \qty{90}{\degree} phasenverschobene Rechtecksignale (\texttt{ENCA}, \texttt{ENCB}) liefern. Durch Auswertung jeder steigenden und fallenden Flanke beider Kanäle (\emph{4-fach-Auswertung} über die \emph{PCNT}-Hardwareeinheit des ESP32-S3) vervierfacht sich die Winkelauflösung und die Drehrichtung lässt sich direkt aus der Phasenfolge ableiten.
+
+Für ein Differenzialfahrzeug mit Radabstand (Spurweite) $b = \qty{157,0}{\milli\meter}$ (Mitte-zu-Mitte der beiden Antriebsräder bei $X = \qty{-18,5}{\milli\meter}$ und $X = \qty{138,5}{\milli\meter}$) und Raddurchmesser $d_R = \qty{66,0}{\milli\meter}$ (Radumfang $U_R = \pi \cdot d_R \approx \qty{207,35}{\milli\meter}$) ergeben sich die Translationsgeschwindigkeit $v$ und die Winkelgeschwindigkeit $\omega$ des Fahrzeugmittelpunkts aus den Radgeschwindigkeiten $v_L$ und $v_R$ zu \cite{SiegwartRobotik}:
+\begin{equation}
+  v = \frac{v_R + v_L}{2}, \qquad \omega = \frac{v_R - v_L}{b}
+  \label{eq:diff_kinematik}
+\end{equation}
+Der momentane Kurvenradius $R_{\mathrm{Kurve}}$ beim Einparkmanöver beträgt damit:
+\begin{equation}
+  R_{\mathrm{Kurve}} = \frac{v}{\omega} = \frac{b}{2} \cdot \frac{v_R + v_L}{v_R - v_L}
+  \label{eq:kurvenradius}
+\end{equation}
+Diese Kinematik ermöglicht im Gegensatz zu einer Ackermann-Lenkung sogar das Drehen auf der Stelle ($v_R = -v_L \Rightarrow R_{\mathrm{Kurve}} = 0$), was beim finalen Ausrichten in engen Parklücken einen deutlichen Vorteil bietet.
+
+\section{Energieversorgung und Wirkungsgradbetrachtung}
+\label{sec:energie_grundlagen}
+Als Energiespeicher dient ein 2S-Li-Ion-Akkupack (zwei 18650-Zellen in Serie). Seine Klemmenspannung liegt zwischen \qty{8,4}{\volt} (voll geladen) und \qty{6,4}{\volt} (Entladeschlussgrenze bei \qty{3,2}{\volt} pro Zelle; Nennspannung \qty{7,4}{\volt}).
+
+Würde die \qty{3,3}{\volt}-Versorgung des ESP32-S3 (Spitzenstrom bei WLAN/Aktivbetrieb ca. \qty{350}{\milli\ampere}) plus aller acht LiDAR-Sensoren ($8 \times \qty{20}{\milli\ampere} = \qty{160}{\milli\ampere}$) direkt über einen einfachen Linearregler aus \qty{8,4}{\volt} erzeugt, entstünde eine thermische Verlustleistung von:
+\begin{equation}
+  P_{V,\mathrm{Lin}} = (U_{\mathrm{in}} - U_{\mathrm{out}}) \cdot I_{\mathrm{Logik}} = (\qty{8,4}{\volt} - \qty{3,3}{\volt}) \cdot \qty{0,51}{\ampere} = \qty{2,60}{\watt}
+  \label{eq:verlust_lin}
+\end{equation}
+Ein ungekühltes SOT-223-Gehäuse (z.\,B. AMS1117) würde dabei überhitzen und abschalten. Deshalb wird in der zweistufigen Versorgungsarchitektur ein synchroner Abwärtswandler (\emph{Buck Converter}, z.\,B. \emph{AP63203} \cite{Diodes_AP63203}) mit einem typischen Wirkungsgrad von $\eta \approx \qty{90}{\percent}$ eingesetzt, der die Verlustleistung auf unter \qty{0,2}{\watt} reduziert und gleichzeitig die nutzbare Akkulaufzeit deutlich verlängert.

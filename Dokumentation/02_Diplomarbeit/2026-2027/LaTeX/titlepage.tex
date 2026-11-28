@@ -1,0 +1,96 @@
+\newgeometry{left=2.4cm,right=2.4cm,bottom=2.5cm,top=2cm}
+
+\newlength{\tmpbaselineskip}
+\setlength{\tmpbaselineskip}{\baselineskip}
+\setlength{\baselineskip}{13.6pt}
+\newlength{\tmpparindent}
+\setlength{\tmpparindent}{\parindent}
+\setlength{\parindent}{17pt}
+
+\thispagestyle{tuinftitlepage}
+\pagenumbering{Alph}
+
+\begin{center}
+\begin{minipage}[t][4.0cm][b]{\linewidth}%
+    \centering%
+    \thesistitlefontLARGE\sffamily\bfseries\tuinfthesistitle%
+\end{minipage}
+
+\vspace{0.9cm}
+
+{\thesistitlefontLARGE\sffamily \tuinfthesistype}
+
+\vspace{5mm}
+
+{\thesistitlefontlarge\sffamily im Rahmen der Fachrichtung}
+
+\vspace{4mm}
+
+{\thesistitlefontLarge\sffamily\bfseries \tuinfthesiscurriculum}
+
+\vspace{6mm}
+
+{\thesistitlefontlarge\sffamily eingereicht von}
+
+\vspace{5mm}
+
+{\thesistitlefontLarge\sffamily\bfseries \tuinfthesisauthoreins} \\
+\vspace{1mm}
+{\thesistitlefontlarge\sffamily Schülerkennzahl \tuinfthesismatrikelnoeins}
+
+\vspace{4mm}
+
+{\thesistitlefontLarge\sffamily\bfseries \tuinfthesisauthorzwei} \\
+\vspace{1mm}
+{\thesistitlefontlarge\sffamily Schülerkennzahl \tuinfthesismatrikelnozwei}
+
+\vspace{4mm}
+
+{\thesistitlefontLarge\sffamily\bfseries \tuinfthesisauthordrei} \\
+\vspace{1mm}
+{\thesistitlefontlarge\sffamily Schülerkennzahl \tuinfthesismatrikelnodrei}
+
+\vspace{1.0cm}
+
+\begin{minipage}[t][1.5cm][t]{\textwidth}%
+  \vspace{0pt}\raggedright\thesistitlefontnormalsize\sffamily
+  an der
+
+  H\"{o}heren technischen Bundeslehr- und Versuchsanstalt Graz-Gösting
+\end{minipage}
+
+\begin{minipage}[t][1.6cm][t]{\textwidth}%
+  \vspace{0pt}\sffamily\thesistitlefontnormalsize\raggedright
+  Betreuung
+
+  \tuinfthesisbetreuung: \tuinfthesisbetreins
+\end{minipage}
+
+\selectlanguage{ngerman}
+\begin{minipage}[t][1.6cm][t]{\textwidth}%
+  \vspace{0pt}\sffamily\thesistitlefontnormalsize
+  \begin{tabbing}%
+    \hspace{44mm} \= \hspace{66mm} \= \hspace{51mm} \kill
+    Graz, \tuinfthesisdate \> {\raggedright\rule{51mm}{0.5pt}} \> {\raggedright\rule{51mm}{0.5pt}} \\
+    \> \begin{minipage}[t][0.5cm][t]{51mm}\centering (Unterschrift \tuinfthesisauthoreins)\end{minipage}
+    \> \begin{minipage}[t][0.5cm][t]{51mm}\centering (Unterschrift \tuinfthesisbetreuung)\end{minipage}
+  \end{tabbing}
+\end{minipage}
+
+\begin{minipage}[t][1.6cm][t]{\textwidth}%
+  \vspace{0pt}\sffamily\thesistitlefontnormalsize
+  \begin{tabbing}%
+    \hspace{44mm} \= \hspace{66mm} \= \hspace{51mm} \kill
+    \> {\raggedright\rule{51mm}{0.5pt}} \> {\raggedright\rule{51mm}{0.5pt}} \\
+    \> \begin{minipage}[t][0.5cm][t]{51mm}\centering (Unterschrift \tuinfthesisauthorzwei)\end{minipage}
+    \> \begin{minipage}[t][0.5cm][t]{51mm}\centering (Unterschrift \tuinfthesisauthordrei)\end{minipage}
+  \end{tabbing}
+\end{minipage}
+
+\end{center}
+
+\cleardoublepage
+\pagenumbering{roman}
+\setlength{\baselineskip}{\tmpbaselineskip}
+\setlength{\parindent}{\tmpparindent}
+\restoregeometry
