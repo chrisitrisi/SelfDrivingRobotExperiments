@@ -9069,6 +9069,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C14663"
+			(at 134.62 335.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b15249b9-53c8-4c0a-bddd-5f7f2b69ada9")
 		)
@@ -9139,6 +9150,17 @@
 		)
 		(property "Description" ""
 			(at 50.8 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C321799"
+			(at 50.8 339.09 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9302,6 +9324,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C55585693"
+			(at 34.29 194.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0e213608-fa71-4473-b033-b2aab2be4aeb")
 		)
@@ -9348,7 +9381,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 215.9 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -9372,6 +9405,17 @@
 		)
 		(property "Description" ""
 			(at 215.9 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C170259"
+			(at 215.9 82.55 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9535,6 +9579,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C1622"
+			(at 212.09 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "59db72b4-264d-416e-9a4d-7fe139d90201")
 		)
@@ -9605,6 +9660,17 @@
 		)
 		(property "Description" ""
 			(at 36.83 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C377773"
+			(at 36.83 40.64 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9813,7 +9879,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 217.17 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -9837,6 +9903,17 @@
 		)
 		(property "Description" ""
 			(at 217.17 99.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C172145"
+			(at 217.17 99.06 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9998,6 +10075,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C309062"
+			(at 339.09 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "30c41d86-9e6b-4ae1-b5ff-469e6a65a9c7")
 		)
@@ -10076,6 +10164,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C309062"
+			(at 318.77 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "8fa0d61e-b038-4b06-b590-5b3008729534")
 		)
@@ -10146,6 +10245,17 @@
 		)
 		(property "Description" ""
 			(at 359.41 92.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 359.41 92.71 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10309,6 +10419,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C1779"
+			(at 194.31 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "5550d4c2-e848-42cf-acad-10f70c5b459c")
 		)
@@ -10387,6 +10508,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C309062"
+			(at 379.73 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8bf665f4-f622-4c02-b66a-b9437ba16885")
 		)
@@ -10457,6 +10589,17 @@
 		)
 		(property "Description" ""
 			(at 271.78 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C2765094"
+			(at 271.78 82.55 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10918,6 +11061,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25803"
+			(at 196.85 334.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "761a621d-3227-492e-8a66-edcc71f3896f")
 		)
@@ -11073,6 +11227,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C2143"
+			(at 69.85 223.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "767177ce-981e-4869-9c9f-860233fc1caf")
 		)
@@ -11154,6 +11319,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C2149796"
+			(at 82.55 259.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "bddb70d1-ccad-45a2-9aec-c4663ef61f37")
 		)
@@ -11202,7 +11378,7 @@
 				)
 			)
 		)
-		(property "Value" "TLV3012AIDBVR"
+		(property "Value" "TLV3011AIDBVR"
 			(at 101.6 321.31 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11236,6 +11412,17 @@
 		)
 		(property "Description" ""
 			(at 101.6 328.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C2870632"
+			(at 101.6 328.93 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11411,6 +11598,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C309062"
+			(at 318.77 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6cf9be81-6153-4f72-935d-4dbb19347df2")
 		)
@@ -11566,6 +11764,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C14663"
+			(at 137.16 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "862e1e5d-219d-43d7-99a6-657d505f6c7f")
 		)
@@ -11644,6 +11853,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25811"
+			(at 217.17 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2d444f2e-6384-40cb-835c-03d5146b73f7")
 		)
@@ -11714,6 +11934,17 @@
 		)
 		(property "Description" ""
 			(at 95.25 226.06 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25819"
+			(at 95.25 226.06 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11910,7 +12141,7 @@
 				)
 			)
 		)
-		(property "Value" "CHG amber"
+		(property "Value" "CHG rot"
 			(at 167.64 215.9 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11944,6 +12175,17 @@
 		)
 		(property "Description" ""
 			(at 167.64 220.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C2286"
+			(at 167.64 220.98 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12107,6 +12349,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 193.04 224.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "8072a0e5-49f7-426f-8d16-0e85dfea85f2")
 		)
@@ -12122,82 +12375,15 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "TumblerBasis:power_GND")
-		(at 196.85 337.82 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "6d526880-41a4-44ea-8d35-0eac1162b755")
-		(property "Reference" "#PWR7230"
-			(at 196.85 337.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
+	(label "USB_3V3"
+		(at 196.85 337.82 270)
+		(effects
+			(font
+				(size 1.27 1.27)
 			)
+			(justify right bottom)
 		)
-		(property "Value" "GND"
-			(at 196.85 341.76 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 196.85 337.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 196.85 337.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 196.85 337.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a1cd9104-d6f1-42c3-ac21-7ba6777ccb50")
-		)
-		(instances
-			(project "Tumbler2_Redesign"
-				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/b8f6ac82-4a41-4494-a456-c8ed2549bd62"
-					(reference "#PWR7230")
-					(unit 1)
-				)
-			)
-		)
+		(uuid "51d89037-26a2-4417-af3c-4a766efed04f")
 	)
 	(symbol
 		(lib_id "TumblerBasis:power_GND")
@@ -12416,6 +12602,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C15849"
+			(at 118.11 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "ef702f07-2457-47db-b7f8-730085c5a1dd")
 		)
@@ -12486,6 +12683,17 @@
 		)
 		(property "Description" ""
 			(at 259.08 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25804"
+			(at 259.08 334.01 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12649,6 +12857,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C51118"
+			(at 92.71 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "f7e0e280-e5bb-4e69-abad-d4fcff3588f5")
 		)
@@ -12728,6 +12947,17 @@
 		)
 		(property "Description" ""
 			(at 121.92 177.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25804"
+			(at 121.92 177.8 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13045,6 +13275,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C377773"
+			(at 318.77 109.22 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3e89793b-e7fa-479d-b1cc-b5765fa93538")
 		)
@@ -13115,6 +13356,17 @@
 		)
 		(property "Description" ""
 			(at 233.68 339.09 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C8545"
+			(at 233.68 339.09 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13196,6 +13448,17 @@
 		)
 		(property "Description" ""
 			(at 212.09 148.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 212.09 148.59 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13436,6 +13699,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25803"
+			(at 33.02 269.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "93f9b1f6-ce44-47d3-ab38-6445aa58e670")
 		)
@@ -13583,6 +13857,17 @@
 		)
 		(property "Description" ""
 			(at 339.09 92.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 339.09 92.71 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13977,6 +14262,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C132554"
+			(at 85.09 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "4"
 			(uuid "d1a853c7-15d6-491a-b1f9-b092e46b32b4")
 		)
@@ -14043,7 +14339,7 @@
 				)
 			)
 		)
-		(property "Value" "1uH XAL4030-102ME"
+		(property "Value" "1uH XEL4030-102MEC"
 			(at 330.3855 68.58 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14077,6 +14373,17 @@
 		)
 		(property "Description" ""
 			(at 318.77 67.31 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C5441341"
+			(at 318.77 67.31 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14240,6 +14547,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C168333"
+			(at 215.9 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "bfc12d7e-605a-467a-b523-79b3e11c0dc7")
 		)
@@ -14387,6 +14705,17 @@
 		)
 		(property "Description" ""
 			(at 359.41 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 359.41 50.8 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -14854,6 +15183,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25803"
+			(at 34.29 339.09 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "ceef4da9-def8-45ae-8973-0a3431e9ae19")
 		)
@@ -15009,6 +15349,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25819"
+			(at 30.48 226.06 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2fe47837-b727-4313-ac37-932d8261526b")
 		)
@@ -15087,6 +15438,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C23000"
+			(at 215.9 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "25ef5b58-781a-4f47-b760-35f173fe9f32")
 		)
@@ -15101,5 +15463,215 @@
 				)
 			)
 		)
+	)
+	(symbol
+		(lib_id "TumblerBasis:Device_C")
+		(at 127 151.13 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "46bb05a5-781e-4f34-8108-288e1f6d5ca3")
+		(property "Reference" "C72"
+			(at 134.615 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Value" "1u 25V X5R"
+			(at 134.615 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 127 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 127 151.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C52923"
+			(at 127 151.13 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "d871ec69-5193-4909-ba99-a12c7454ef0a")
+		)
+		(pin "1"
+			(uuid "442b38f5-4ac5-4588-a259-73079da30365")
+		)
+		(instances
+			(project "Tumbler2_Redesign"
+				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/b8f6ac82-4a41-4494-a456-c8ed2549bd62"
+					(reference "C72")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TumblerBasis:power_GND")
+		(at 127 154.94 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4ef4dece-192e-45f7-ac28-c2b3032d178c")
+		(property "Reference" "#PWR7299"
+			(at 127 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 127 158.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 127 154.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5f334fed-dede-4dd4-b7b5-8717f1d4fe50")
+		)
+		(instances
+			(project "Tumbler2_Redesign"
+				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/b8f6ac82-4a41-4494-a456-c8ed2549bd62"
+					(reference "#PWR7299")
+					(unit 1)
+				)
+			)
+		)
+	)
+		(global_label "VBUS_SAFE"
+		(shape bidirectional)
+		(at 127 147.32 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1e4ac3e8-071c-4338-b29b-6d67708ff772")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 127 147.32 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(text "C72: 1 uF direkt an U9 VIN (AP2112K Eingang), Rev 2.5b"
+		(exclude_from_sim no)
+		(at 132.08 151.13 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a7f81710-0ebb-4209-9735-331a3fb0d11e")
+	)
+	(text "U14: TLV3011AIDBVR (Open-Drain) statt TLV3012 (bei JLCPCB nicht lagernd).\nR55 ist deshalb jetzt Pull-up nach USB_3V3 (vorher Pull-down nach GND): ohne USB ist USB_3V3 = 0 V -> VBUS_GOOD low, Logik unveraendert.\nL3: XEL4030-102MEC (gleicher Footprint wie XAL4030, bei JLC lagernd). D2: rote Basic-LED KT-0603R statt amber (spart Extended-Gebuehr)."
+		(exclude_from_sim no)
+		(at 101.6 347.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e64c08e5-e31e-49d3-9dc3-b323bcb73ad5")
 	)
 )

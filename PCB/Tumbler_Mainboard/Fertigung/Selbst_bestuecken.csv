@@ -1,5 +1,25 @@
-Referenz,Wert,Footprint,Seite
-SW4,JS202011CQN,SW_CK_JS202011CQN_DPDT_Straight,Top
-J5,Conn_01x04,PinHeader_1x04_P2.54mm_Vertical,Top
-J3,Conn_02x08_Odd_Even,PinHeader_2x08_P2.54mm_Vertical,Top
-J1,"B2B-XH-A (Akku 2S/3S: 1 = +, 2 = -)",JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,Top
+Referenz,Wert,Footprint,Seite,LCSC (zum Mitbestellen),Grund
+SW4,JS202011CQN,SW_CK_JS202011CQN_DPDT_Straight,Top,C221663,THT
+J5,Conn_01x04,PinHeader_1x04_P2.54mm_Vertical,Top,C5116530,THT
+J3,Conn_02x08_Odd_Even,PinHeader_2x08_P2.54mm_Vertical,Top,,THT
+J1,"B2B-XH-A (Akku 2S/3S: 1 = +, 2 = -)",JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,Top,,THT
+C30,47n 25V X7R,C_0603_1608Metric,Bottom,C1622,Unterseite (nur bei Economic/einseitig)
+C69,1u 16V X7R,C_0603_1608Metric,Bottom,C15849,Unterseite (nur bei Economic/einseitig)
+C70,1u 16V X7R,C_0603_1608Metric,Bottom,C15849,Unterseite (nur bei Economic/einseitig)
+C71,1u 16V X7R,C_0603_1608Metric,Bottom,C15849,Unterseite (nur bei Economic/einseitig)
+C72,1u 25V X5R,C_0402_1005Metric,Bottom,C52923,Unterseite (nur bei Economic/einseitig)
+D14,SMBJ8.5A,D_SMB,Bottom,C353329,Unterseite (nur bei Economic/einseitig)
+R79,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R80,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R81,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R82,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R83,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R84,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R85,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R86,2.2k 1%,R_0603_1608Metric,Bottom,C4190,Unterseite (nur bei Economic/einseitig)
+R87,0R 2S/3S,R_0603_1608Metric,Bottom,C21189,Unterseite (nur bei Economic/einseitig)
+R88,0R 2S/3S,R_0603_1608Metric,Bottom,C21189,Unterseite (nur bei Economic/einseitig)
+R89,0R 2S/3S,R_0603_1608Metric,Bottom,C21189,Unterseite (nur bei Economic/einseitig)
+R90,76.8k 1%,R_0603_1608Metric,Bottom,C165743,Unterseite (nur bei Economic/einseitig)
+R91,95.3k 1%,R_0603_1608Metric,Bottom,C23267,Unterseite (nur bei Economic/einseitig)
+R92,0R 2S/3S (1206),R_1206_3216Metric,Bottom,C17888,Unterseite (nur bei Economic/einseitig)

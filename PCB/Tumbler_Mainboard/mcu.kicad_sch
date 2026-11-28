@@ -8336,7 +8336,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C23162"
+		(property "LCSC PN" "C4190"
 			(at 44.45 105.41 0)
 			(hide yes)
 			(show_name no)
@@ -8544,7 +8544,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C2913198"
 			(at 106.68 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -9359,6 +9359,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25803"
+			(at 67.31 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a9de51af-1854-4675-a8c9-d886d0737778")
 		)
@@ -9516,7 +9527,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C22775"
 			(at 220.98 62.23 90)
 			(hide yes)
 			(show_name no)
@@ -9606,7 +9617,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C22775"
 			(at 220.98 67.31 90)
 			(hide yes)
 			(show_name no)
@@ -9878,7 +9889,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C22775"
 			(at 220.98 72.39 90)
 			(hide yes)
 			(show_name no)
@@ -10047,7 +10058,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C23345"
 			(at 125.73 69.85 90)
 			(hide yes)
 			(show_name no)
@@ -10137,7 +10148,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C22775"
 			(at 220.98 74.93 90)
 			(hide yes)
 			(show_name no)
@@ -10477,6 +10488,17 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 83.82 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C14663"
 			(at 83.82 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -10918,6 +10940,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C495732"
+			(at 241.3 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c05680c4-4edf-4256-b7e4-51d6351558db")
 		)
@@ -11100,7 +11133,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C22775"
 			(at 220.98 69.85 90)
 			(hide yes)
 			(show_name no)
@@ -11755,7 +11788,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C23345"
 			(at 125.73 72.39 90)
 			(hide yes)
 			(show_name no)
@@ -11837,6 +11870,17 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 76.2 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C31850"
 			(at 76.2 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -12535,7 +12579,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" ""
+		(property "LCSC PN" "C22775"
 			(at 220.98 64.77 90)
 			(hide yes)
 			(show_name no)
@@ -12732,7 +12776,7 @@
 				)
 			)
 		)
-		(property "LCSC PN" "C23162"
+		(property "LCSC PN" "C4190"
 			(at 53.34 105.41 0)
 			(hide yes)
 			(show_name no)

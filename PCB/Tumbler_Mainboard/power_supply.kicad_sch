@@ -4386,16 +4386,6 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 195.58) (xy 76.2 187.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bc027568-9f3d-4bd6-9706-f02e6041a2a2")
-	)
-	(wire
-		(pts
 			(xy 78.74 146.05) (xy 96.52 146.05)
 		)
 		(stroke
@@ -6903,6 +6893,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C22807"
+			(at 276.86 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f1413448-75be-4011-b5e0-151391951e5a")
 		)
@@ -6973,6 +6974,17 @@
 		)
 		(property "Description" ""
 			(at 410.21 49.53 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25803"
+			(at 410.21 49.53 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7138,6 +7150,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C23267"
+			(at 228.6 287.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "60892c48-90ef-42cc-9b4c-40d1f35a4f54")
 		)
@@ -7251,7 +7274,7 @@
 				)
 			)
 		)
-		(property "Value" "10u 25V X7R"
+		(property "Value" "22u 25V X7R"
 			(at 229.1665 207.01 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7285,6 +7308,17 @@
 		)
 		(property "Description" ""
 			(at 220.98 205.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 220.98 205.74 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7329,7 +7363,7 @@
 				)
 			)
 		)
-		(property "Value" "22u 16V X7R"
+		(property "Value" "22u 25V X7R"
 			(at 45.0165 193.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7363,6 +7397,17 @@
 		)
 		(property "Description" ""
 			(at 36.83 191.77 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 36.83 191.77 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7449,6 +7494,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25803"
+			(at 167.64 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "e0cf82a1-f379-40c0-bb98-7dc434a14a18")
 		)
@@ -7519,6 +7575,17 @@
 		)
 		(property "Description" ""
 			(at 311.15 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C26095"
+			(at 311.15 86.36 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7682,6 +7749,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C5155213"
+			(at 53.34 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4ac0fe1b-af28-4291-ba6f-9c8ce9a949b0")
 		)
@@ -7778,6 +7856,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25804"
+			(at 152.4 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "09bdc652-49de-496e-bc71-1e3bfebc2ad7")
 		)
@@ -7848,6 +7937,17 @@
 		)
 		(property "Description" ""
 			(at 256.54 44.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25803"
+			(at 256.54 44.45 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8011,6 +8111,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C22816"
+			(at 167.64 50.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "80584070-d4c6-4b9e-8cc9-219d6584cd80")
 		)
@@ -8047,7 +8158,7 @@
 				)
 			)
 		)
-		(property "Value" "AP63203WU"
+		(property "Value" "AP63201WU-7"
 			(at 99.06 190.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8081,6 +8192,17 @@
 		)
 		(property "Description" ""
 			(at 99.06 198.12 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C2071044"
+			(at 99.06 198.12 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8256,6 +8378,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C33002"
+			(at 240.03 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "eb586483-454a-45d0-9f52-b24157e8b8a9")
 		)
@@ -8423,6 +8556,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C307876"
+			(at 130.81 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "4c282ac3-09a7-458c-86d9-f657882383ad")
 		)
@@ -8570,6 +8714,17 @@
 		)
 		(property "Description" ""
 			(at 78.74 149.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C14663"
+			(at 78.74 149.86 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8885,6 +9040,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C353329"
+			(at 355.6 298.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "939d09ec-4758-4286-b49d-d8eba29e34b7")
 		)
@@ -8955,6 +9121,17 @@
 		)
 		(property "Description" ""
 			(at 316.23 57.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C21190"
+			(at 316.23 57.15 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9230,7 +9407,7 @@
 				)
 			)
 		)
-		(property "Value" "22u 16V X7R"
+		(property "Value" "22u 25V X7R"
 			(at 65.3365 193.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9264,6 +9441,17 @@
 		)
 		(property "Description" ""
 			(at 57.15 191.77 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 57.15 191.77 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9344,6 +9532,17 @@
 		)
 		(property "Description" ""
 			(at 200.66 287.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C21189"
+			(at 200.66 287.02 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9736,6 +9935,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C14663"
+			(at 199.39 205.74 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0df4e4f2-4957-4fa4-ad9d-c6bc1581bc0e")
 		)
@@ -9885,6 +10095,17 @@
 		)
 		(property "Description" ""
 			(at 295.91 86.36 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25804"
+			(at 295.91 86.36 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10314,7 +10535,7 @@
 				)
 			)
 		)
-		(property "Value" "22u 16V X7R"
+		(property "Value" "22u 25V X7R"
 			(at 208.8465 190.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10348,6 +10569,17 @@
 		)
 		(property "Description" ""
 			(at 200.66 189.23 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 200.66 189.23 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10509,6 +10741,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25803"
+			(at 332.74 57.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "bddfd32c-b0dc-45db-981a-1a89fa24c700")
 		)
@@ -10662,6 +10905,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C5155213"
+			(at 53.34 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "6"
 			(uuid "661f6ae8-9aa8-48cc-99cf-93528edc17cd")
 		)
@@ -10750,6 +11004,17 @@
 		)
 		(property "Description" ""
 			(at 35.56 208.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C14663"
+			(at 35.56 208.28 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10990,6 +11255,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C688321"
+			(at 218.44 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "5"
 			(uuid "c2a0677a-42bb-44a7-97af-f2755b6c364e")
 		)
@@ -11163,6 +11439,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C221663"
+			(at 138.43 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7f39bbbe-12b7-46b2-a05a-838e5924195f")
 		)
@@ -11211,7 +11498,7 @@
 				)
 			)
 		)
-		(property "Value" "22u 16V X7R"
+		(property "Value" "22u 25V X7R"
 			(at 229.1665 190.5 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11245,6 +11532,17 @@
 		)
 		(property "Description" ""
 			(at 220.98 189.23 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 220.98 189.23 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11323,6 +11621,17 @@
 		)
 		(property "Description" ""
 			(at 152.4 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25804"
+			(at 152.4 50.8 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11486,6 +11795,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C2071056"
+			(at 262.89 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8267846e-2dde-404a-a24e-cc9597c2ba94")
 		)
@@ -11568,6 +11888,17 @@
 		)
 		(property "Description" ""
 			(at 276.86 102.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C14663"
+			(at 276.86 102.87 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11735,6 +12066,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C21189"
+			(at 246.38 287.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2ef3c929-39c5-40eb-8b08-2141eb73358d")
 		)
@@ -11813,6 +12155,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C307876"
+			(at 294.64 196.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "cad5cbaa-c4e7-48c9-b511-c0821617bd7b")
 		)
@@ -11849,7 +12202,7 @@
 				)
 			)
 		)
-		(property "Value" "10u 25V X7R"
+		(property "Value" "22u 25V X7R"
 			(at 65.3365 209.55 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11883,6 +12236,17 @@
 		)
 		(property "Description" ""
 			(at 57.15 208.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C309062"
+			(at 57.15 208.28 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11971,6 +12335,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C17888"
+			(at 320.04 287.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "4a7a3d18-a725-48d6-978a-0aba86985015")
 		)
@@ -12041,6 +12416,17 @@
 		)
 		(property "Description" ""
 			(at 31.75 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C66503"
+			(at 31.75 40.64 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12512,6 +12898,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C14663"
+			(at 130.81 213.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "88d8a733-ad7b-4681-b39f-af8ec94aa877")
 		)
@@ -12584,6 +12981,17 @@
 		)
 		(property "Description" ""
 			(at 274.32 287.02 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C165743"
+			(at 274.32 287.02 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12818,6 +13226,17 @@
 		)
 		(property "Description" ""
 			(at 294.64 210.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C14663"
+			(at 294.64 210.82 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13136,6 +13555,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C2841482"
+			(at 384.81 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "fde51337-703b-4f9a-8d21-9c3911e035c8")
 		)
@@ -13311,6 +13741,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C21189"
+			(at 292.1 287.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "18ee81fc-8f2e-4189-b11f-12e71a4d9d23")
 		)
@@ -13401,5 +13842,287 @@
 				)
 			)
 		)
+	)
+	(symbol
+		(lib_id "TumblerBasis:Device_R")
+		(at 76.2 191.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "876a79ad-aeca-44e0-a9b9-ee81a9650144")
+		(property "Reference" "R93"
+			(at 78.74 190.5 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Value" "47k 1%"
+			(at 78.74 193.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 76.2 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 76.2 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 76.2 191.77 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C25819"
+			(at 76.2 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5fb3a02b-a8df-4c28-84bf-7cfee07eba40")
+		)
+		(pin "2"
+			(uuid "98ea2eb8-2aa3-4a4d-9fe6-10098a3758f2")
+		)
+		(instances
+			(project "Tumbler2_Redesign"
+				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
+					(reference "R93")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TumblerBasis:Device_R")
+		(at 72.39 195.58 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d53877bb-db4f-4ef1-a6a5-a193a842ecd5")
+		(property "Reference" "R94"
+			(at 69.85 192.0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Value" "15k 1%"
+			(at 69.85 194.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 72.39 195.58 270)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 72.39 195.58 270)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.05 1.05)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 72.39 195.58 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C22809"
+			(at 72.39 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3242d687-72fd-4632-848a-e36bc0fff5a6")
+		)
+		(pin "2"
+			(uuid "e5e9eaef-45c8-4420-a840-d7e9347457d6")
+		)
+		(instances
+			(project "Tumbler2_Redesign"
+				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
+					(reference "R94")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "TumblerBasis:power_GND")
+		(at 68.58 195.58 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "994f6a60-2d31-4972-b5dc-d01bc9096077")
+		(property "Reference" "#PWR7300"
+			(at 68.58 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 199.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 68.58 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "46b5d037-521f-4df8-950e-09a4e60d7caf")
+		)
+		(instances
+			(project "Tumbler2_Redesign"
+				(path "/f3fd8d79-9d35-4c04-811e-2697a2740958/003ca151-4f76-4d52-861b-70be86047379"
+					(reference "#PWR7300")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(junction
+		(at 76.2 195.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4bc3604a-0708-4f34-9ce4-8bd3d4294d06")
+	)
+	(text "U2: AP63201WU-7 (einstellbar, 1,1 MHz) statt AP63203WU - AP63203 ist bei JLCPCB nicht lagernd.\nVout = 0,8 V x (1 + R93/R94) = 0,8 x (1 + 47k/15k) = 3,31 V (beide JLC-Basic-Teile)"
+		(exclude_from_sim no)
+		(at 58.42 220.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8321d8a1-4953-456a-a3f8-d4ae85019831")
+	)
+	(label "FB_3V3"
+		(at 78.74 195.58 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ee4c2f1a-9eb3-4760-b3f8-48efad9b0216")
 	)
 )

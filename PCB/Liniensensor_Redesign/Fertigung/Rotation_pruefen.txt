@@ -1,0 +1,4 @@
+Diese Teile in der JLC-Bestuecksvorschau auf Pin-1/Polaritaet pruefen (Rotation ggf. dort korrigieren):
+J2     JST GH 10-pol.               JST_GH_SM10B-GHS-TB_1x10-1MP_P1.25mm_Horizontal  (Top, CPL 0 Grad)
+Q1     BCX56-16                     SOT-89-3  (Top, CPL 270 Grad)
+Q2     BCX56-16                     SOT-89-3  (Top, CPL 90 Grad)

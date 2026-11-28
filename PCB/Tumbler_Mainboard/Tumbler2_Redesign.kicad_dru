@@ -1,0 +1,14 @@
+(version 1)
+# USB-C J4 (KINGHELM KH-TYPE-C-16P): Hersteller-Landpattern hat 0,15-0,18 mm zwischen
+# VBUS/GND-Pads und den eigenen NPTH-Fuehrungsloechern. Gilt nur innerhalb von J4.
+(rule "J4_Pad_zu_Fuehrungsloch"
+	(constraint hole_clearance (min 0.15mm))
+	(condition "A.intersectsCourtyard('J4') && B.intersectsCourtyard('J4')"))
+
+# ESP32-S3-WROOM-1 (U3): Der Bibliotheks-Courtyard umfasst die gesamte empfohlene
+# Antennen-Freiflaeche (48 mm breit). J6 liegt seitlich neben dem Modulkoerper, nicht
+# unter/vor der Antenne (Antenne ragt bei x > 190 mm ueber die Platinenkante).
+(rule "U3_Antennen-Courtyard_J6"
+	(constraint courtyard_clearance)
+	(condition "A.Reference == 'U3' && B.Reference == 'J6'")
+	(severity ignore))

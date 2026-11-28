@@ -4651,6 +4651,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C233714"
+			(at 81.28 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "42eb3451-c252-45f4-afb3-b3fbe29ad3c2")
 		)
@@ -5845,6 +5856,17 @@
 		)
 		(property "Description" ""
 			(at 38.1 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C377773"
+			(at 38.1 157.48 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

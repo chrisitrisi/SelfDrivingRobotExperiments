@@ -5876,6 +5876,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 303.53 157.48 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "73af3fc5-af74-4ff2-9c98-8bd5af344678")
 		)
@@ -6538,7 +6549,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 73.66 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -6654,6 +6665,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C15849"
+			(at 203.2 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3c387506-ea58-4a29-b2a9-c25c3a196313")
 		)
@@ -6724,6 +6746,17 @@
 		)
 		(property "Description" ""
 			(at 30.48 128.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C15849"
+			(at 30.48 128.27 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6810,6 +6843,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 359.41 265.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8099cea0-edd0-4bae-a4d7-644d4a8302e1")
 		)
@@ -6880,6 +6924,17 @@
 		)
 		(property "Description" ""
 			(at 120.65 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C4190"
+			(at 120.65 157.48 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -7197,6 +7252,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 120.65 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "947e5d25-78ac-4917-8924-01dc254e36b7")
 		)
@@ -7275,6 +7341,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 207.01 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1509e10c-3257-4e32-94f0-5bef695ff32f")
 		)
@@ -7321,7 +7398,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 170.18 242.57 0)
 			(hide yes)
 			(show_name no)
@@ -7506,6 +7583,17 @@
 		)
 		(property "Description" ""
 			(at 355.6 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C15849"
+			(at 355.6 219.71 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8054,6 +8142,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 130.81 265.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7c270826-5ac9-4d03-ae8d-e28d862f772d")
 		)
@@ -8201,6 +8300,17 @@
 		)
 		(property "Description" ""
 			(at 227.33 261.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C4190"
+			(at 227.33 261.62 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -8441,6 +8551,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 207.01 186.69 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ebed59ac-6db2-4050-9d8e-863e148ea691")
 		)
@@ -8673,6 +8794,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C130026"
+			(at 81.28 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "24"
 			(uuid "db4a1fab-c86a-4307-9f53-5c7bc95d4733")
 		)
@@ -8809,6 +8941,17 @@
 		)
 		(property "Description" ""
 			(at 34.29 157.48 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C4190"
+			(at 34.29 157.48 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -9017,7 +9160,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 266.7 255.27 0)
 			(hide yes)
 			(show_name no)
@@ -9178,7 +9321,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 246.38 163.83 0)
 			(hide yes)
 			(show_name no)
@@ -9448,6 +9591,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 34.29 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c4ee89dc-4b78-4fe5-b71c-e32edc1e98cd")
 		)
@@ -9603,6 +9757,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 359.41 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f78fdca3-6e85-4128-8999-11681f17ad4f")
 		)
@@ -9649,7 +9814,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 73.66 242.57 0)
 			(hide yes)
 			(show_name no)
@@ -9810,7 +9975,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 160.02 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -10003,6 +10168,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C15849"
+			(at 127 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3f6505cb-59de-4ba9-94dc-5feee2d62113")
 		)
@@ -10081,6 +10257,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 303.53 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fae739df-4ec8-4bfd-8464-0b946cb15476")
 		)
@@ -10151,6 +10338,17 @@
 		)
 		(property "Description" ""
 			(at 116.84 128.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C15849"
+			(at 116.84 128.27 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10359,7 +10557,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 398.78 242.57 0)
 			(hide yes)
 			(show_name no)
@@ -10629,6 +10827,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C15849"
+			(at 30.48 219.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e11dfc0b-eb5f-4945-bd23-8796ab0f90c1")
 		)
@@ -10784,6 +10993,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C15849"
+			(at 299.72 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d7469890-6496-460a-a185-8c9f0e6c1f3e")
 		)
@@ -10854,6 +11074,17 @@
 		)
 		(property "Description" ""
 			(at 227.33 278.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C4190"
+			(at 227.33 278.13 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11248,6 +11479,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 34.29 265.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d7f06860-242d-48d9-9daa-35dbaf3fae3b")
 		)
@@ -11318,6 +11560,17 @@
 		)
 		(property "Description" ""
 			(at 30.48 52.07 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C14663"
+			(at 30.48 52.07 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -11481,6 +11734,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C25804"
+			(at 38.1 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "bf0b0ae4-78ee-4a41-b7de-d56655b2cee4")
 		)
@@ -11604,7 +11868,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(property "Footprint" "Tumbler2:TOF_Wire_1x04_P2.54mm"
 			(at 342.9 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -11797,6 +12061,17 @@
 				)
 			)
 		)
+		(property "LCSC PN" "C4190"
+			(at 34.29 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "75d9ae96-32db-43c7-85a8-3d6acfaf2004")
 		)
@@ -11867,6 +12142,17 @@
 		)
 		(property "Description" ""
 			(at 223.52 232.41 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C15849"
+			(at 223.52 232.41 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -12022,6 +12308,17 @@
 		)
 		(property "Description" ""
 			(at 130.81 248.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC PN" "C4190"
+			(at 130.81 248.92 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects

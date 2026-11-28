@@ -141,7 +141,7 @@
 				)
 			)
 		)
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
@@ -214,7 +214,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -226,11 +226,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "3b74e59a-c476-4df7-95f0-9217bd843de7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "eca5d4a8-7e9a-4c68-a4ef-c87779264b31")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW0805470RFKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cb991dcb-7d4c-440c-a279-d191e1fa5389")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "bd240838-afca-4419-8932-777bdc05b17a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -353,7 +389,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C3216X7R1E106K160AB"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -365,11 +401,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "dca42743-2945-40a4-900f-f7115a0cd06b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C13585"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "531ad47e-7b84-4f6b-b9f5-d92e08820ca7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C3216X7R1E106K160AB"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "da6d5c5e-654b-44bc-899e-6a93a04dd940")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 25 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "37db76e1-e244-4211-9e0c-f5ab7838580b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -492,7 +564,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C103K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -504,11 +576,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9848cbd6-9389-4516-8667-1667d8addada")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C1710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0d04287a-4c8f-487a-9696-2688ecd01665")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C103K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "71875a8a-1c20-4d74-abc4-b0693ba83e5e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b5aa0160-442b-4310-8fe4-d73ee911d828")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -631,7 +739,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C103K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -643,11 +751,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "41c5cab8-7fc5-45a0-a724-43d421894daf")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C1710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c0c9cd32-0a6c-4490-be45-90d254948ac0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C103K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "66c851dc-28cb-485f-a63f-1f7678b3d1f8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8b5c2626-73cc-4eb7-b654-901bce433a46")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -770,7 +914,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C103K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -782,11 +926,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ca5b2326-d7e1-4582-9e3c-3309b3f89a64")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C1710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8c84c631-ba42-46b5-b3b6-3e1d550ee148")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C103K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "31623acd-586a-4e8a-9abd-45edc6e5550d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7c898fb1-c4fe-4713-b43c-d7f60863e60d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -909,7 +1089,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -921,11 +1101,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d391f21e-e4ba-474c-bdbf-c4382186fa81")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17414"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cf8dbe1d-77b8-4d50-be0f-2045a4048ee3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080510K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6f760db4-dedd-42d2-b326-3fa72e6cafe3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "d8e94869-bcff-4d35-aed6-eea1f75182a8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1073,7 +1289,7 @@
 				)
 			)
 		)
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
@@ -1146,7 +1362,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1158,11 +1374,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "395a93dd-f289-4ea4-b8e9-2cdba692be5d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17414"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6817399f-e837-43c6-bee0-34a85e0eac80")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080510K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "645961b8-910a-4cf8-8df6-b814b367bd77")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f8f79338-1132-4de4-a2ce-6f814a1d2d45")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1285,7 +1537,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C103K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1297,11 +1549,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5ea34c03-c382-4a99-904f-6e4339f76263")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C1710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "34800267-faf2-435b-b07b-b99ce67697a0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C103K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "95d25c5d-178e-4114-ba33-4d705caece3a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4ed4ef6f-5ac4-44e6-812d-757038d383bc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1424,7 +1712,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C103K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1436,11 +1724,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "cb3b7961-8634-404d-8ef0-64e401eae653")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C1710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4ce3554a-4971-4253-8c18-c61bcd091b5c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C103K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "f778f52f-5be8-4030-946c-edd6810993fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b48f5b0f-15b3-418a-bfc3-b1aa82a4f5a5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1563,7 +1887,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C3216X7R1E106K160AB"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1575,11 +1899,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7ec82ee4-f322-466e-82af-f7850c65901e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C13585"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "01fb6c2c-b3f2-4a4a-9dc4-d3a3c1d4c2e4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C3216X7R1E106K160AB"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cbae92f5-8a2f-4adc-9522-8ab6a32a45c7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 25 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "31a3e1e5-ab05-4479-8f39-4e47cbf8320c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1702,7 +2062,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C104K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1714,11 +2074,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "dffd396c-af1e-457c-9e95-5cfb7b45fb74")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C49678"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "0c52544c-0b4c-4275-8b53-d500d1207819")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C104K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e5dd4828-5bb1-4a55-a44b-53c65f5c2862")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "90d1190e-e823-40a7-bcad-e87fa5648055")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1841,7 +2237,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1853,11 +2249,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b3a97117-69c9-4292-b6b5-d518f134d93a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17713"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a04a727d-5229-4555-97a6-069f12d62369")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "af4a5d33-5573-4dc2-8bb7-2290104eaff1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fa818d44-a52a-48d9-8c21-48af15b7656d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1980,7 +2412,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C104K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -1992,11 +2424,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b6c2148c-e76f-4462-8ed2-e0d53420e0d1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C49678"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "29e358ed-0bbb-471a-8468-832ad2b1a50b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C104K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7618beb7-d346-4756-88ba-4957975df143")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "665f287c-549e-4e1e-beac-13d857a909e5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2119,7 +2587,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2131,11 +2599,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "14a4e8c6-b11a-48d4-b86e-e6933c172045")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17414"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c61c0b49-d427-4b55-950a-e0c473aada4f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080510K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fe66526a-7c7a-4d13-94b9-326a96e52123")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a87c8d2b-3f6e-4c7c-a658-4697a324e1a0")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2258,7 +2762,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -2270,11 +2774,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5656e24e-18a1-45b7-b1e1-0be718c33321")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "060f9fda-f53a-4970-a48f-61ac06168880")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW0805470RFKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "6b20998a-3d8e-409c-ad95-9dab1e528108")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a13bbff6-2689-4291-9f7b-fd01459108a4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2397,7 +2937,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2409,11 +2949,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "57c2537f-3484-4f9b-a96a-3e5c3405378f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17713"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1cba29ca-726c-41bd-875d-5a5c504432b9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "00c294be-033b-4357-949c-86a7de9bc93b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "7d66e3d9-d038-4d31-8e0d-c9c307e964ad")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2536,7 +3112,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2548,11 +3124,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4f52d524-8e18-49d3-9377-e6ae11dd6fb4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17714"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e30497c1-f0b6-4f81-bc0b-f3c78fdbb4ba")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547R0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "9991ce76-e777-41eb-8dbd-1fe396117555")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c08b854c-888f-418f-ade4-d1f5e21d53d7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2700,7 +3312,7 @@
 				)
 			)
 		)
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
@@ -2773,7 +3385,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2785,11 +3397,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "19fc0659-6841-4761-b77b-531fd0e367e7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17713"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c98b7724-24c5-49a5-be90-2c57cafd15e6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "19982025-0c8d-4496-a4f8-6a215af3d399")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "8ec99652-f975-43c1-9de8-c668966cada6")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2912,7 +3560,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -2924,11 +3572,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0f8865fe-50da-45cc-b0f4-3194c3d38e68")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17414"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c6b6bc48-ea16-4d69-b018-6b7734c1e700")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080510K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "c2701596-6d52-456f-b7a4-1e2adc99fc87")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fc4f9fb3-2ca2-48d2-b301-8f64ad4ffce8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3051,7 +3735,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3063,11 +3747,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "03fe2776-93f5-4e22-8972-c7c2d143aceb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17714"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "faec1311-2e6c-4d4c-bd91-9dac84b8bcf7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547R0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b2f700ee-2bae-4f7c-b7b0-c9a7cb21ec46")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "98a59b2a-62d9-4a3e-9cc2-15c07d1178cb")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3190,7 +3910,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3202,11 +3922,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "b454645a-4ac6-4b7a-addb-91ebb2cfa8b5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17713"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "1c46d61b-9222-42b0-bf5b-8eba4d8c13fc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b60d9b66-c151-4d8a-acc7-8a74e556b43f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "03f7688e-b6cd-4ed5-8edd-fc3d4637fc3d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3329,7 +4085,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -3341,11 +4097,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a4d9d31e-2be2-4277-bb0e-0a32f33f109e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17713"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fa89080c-c8b7-4a16-9687-4e9cf73c666d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "38db3233-7e72-4bc9-bd10-360bbdfc5a83")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "e125040a-9508-4d40-b47d-ef325471af11")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3486,6 +4278,42 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a0b02f43-4f44-4f40-99ab-a5f3907f456c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C100026"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4059957c-f515-49c7-871e-d8adcabf92b4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "BCX5616QTA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "5dfddab5-dfe6-4536-b653-a70f8d02d18d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "80 V; 1 A; Rth(j-a) 250 K/W min. Pad, 125 K/W 15x15 mm Cu; Tj max 150 C"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "4b42c3df-cbfd-4ad1-bf3f-d18b59c46f19")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3729,7 +4557,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -3741,11 +4569,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4910d635-817e-4d04-991e-ce19306971ff")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "b0caf9a5-0d8f-4320-8d66-b6cb0db28981")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW0805470RFKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "102a037e-ff34-45f5-8e93-cb6d29dd5cdb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "80feddf5-70f9-49a0-a9ad-8c0e1d7ddd09")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3868,7 +4732,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3880,11 +4744,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Side-entry locking connector; mate GHR-10V-S"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9ab9b073-71cb-4c2e-91f3-412747230af9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C2683602"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "484cf55b-d375-4658-bc3a-3c5bae2460f0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "SM10B-GHS-TB(LF)(SN)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "d930c151-7dda-4ffc-9748-b9194f887a33")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1.25 mm; 1 A with AWG26; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "af5e034c-94d5-45d6-a50e-4f75e14a68a5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4323,7 +5223,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -4335,11 +5235,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "be2441ae-87ee-49eb-8ddb-13047ddd3a0d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "526038d5-20d4-45b6-8894-4d9adafb436f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW0805470RFKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a0fe3455-d7d5-400d-acd7-efb43fb4a506")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "a8f93eb0-65e1-4199-b00a-7876366823e3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4480,6 +5416,42 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6a1a99e3-664d-40c5-b811-91568ca493c0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C100026"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "398c5931-5ac6-4fac-bc09-2de106efad9e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "BCX5616QTA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "04430475-85c5-43c1-b481-6aea38cf248f")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "80 V; 1 A; Rth(j-a) 250 K/W min. Pad, 125 K/W 15x15 mm Cu; Tj max 150 C"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "bd3e641c-2712-4943-ae39-06518d65188b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4723,7 +5695,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -4735,11 +5707,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9a5cbbe2-ae58-491c-a6cd-2cfbcee614c3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17414"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "cb81b3f2-abab-41e5-8690-9e9c8bb9289a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080510K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "11a281d2-710a-4697-9e2a-e4803609cc43")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "76d41234-360a-4c14-9c9d-8e7e7da9978e")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4862,7 +5870,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -4874,11 +5882,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "295bf956-c32a-45d0-92e8-a1094e1b71cb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17414"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "3919cc7b-6be5-4f62-a443-8514045621d8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080510K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2191c3a7-f5e3-40d2-bbe5-36d35cb1501c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "2cd5ed46-e31f-4ad5-8f68-a5ddf57be9b2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5001,7 +6045,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://search.kemet.com/download/specsheet/C0805C103K5RAC7800"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5013,11 +6057,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Nonpolar ceramic MLCC"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ae1acd16-91a5-496f-95a6-6748ba5f1300")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C1710"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "eecb9112-b4d1-44a2-909a-6594e91e6dfb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "C0805C103K5RACTU"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ef7f9913-e844-4ff0-815c-7b73b5cfcdec")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "10%; X7R; 50 V"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "fa0991a3-11da-4be5-88b7-7d657175d6c2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5165,7 +6245,7 @@
 				)
 			)
 		)
-		(attr exclude_from_pos_files exclude_from_bom)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
 			(center 0 0)
@@ -5238,7 +6318,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5250,11 +6330,47 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Thick film resistor, 0805"
 			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "1341e1c4-8f44-488b-90fd-6cc012b1452c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "LCSC PN" "C17713"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "ba57e40d-7f77-4b86-92c5-f52910c6c309")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CRCW080547K0FKEA"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "740e2769-e02f-421b-b3fd-9c177ca5f267")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "1%; 0.125 W (standard mode, P70)"
+			(at 0 0 0)
+			(layer "F.SilkS")
+			(hide yes)
+			(uuid "916d60a2-d6db-450c-9737-f01dbd663814")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5379,7 +6495,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/83751/cny70.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -5393,7 +6509,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reflective optical sensor; 1=A, 2=K, 3=C, 4=E; emitter is passive"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -5405,6 +6521,42 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "LCSC PN" "C145423"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "ea8328a8-9cf1-4b16-9ee6-d8152f8cea28")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CNY70"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "faa5c21a-ddc0-4f5d-b0cd-81ed0b69e476")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "IF design ~20 mA; absolute maximum 50 mA"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "01afd5f4-0c8d-40eb-8cd6-263bf4876ccd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/37e84606-7b28-46fb-9e75-5fbebce2a682/85610f6e-0cd6-4af2-b8ad-c75aff424180")
@@ -5880,7 +7032,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/83751/cny70.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -5894,7 +7046,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reflective optical sensor; 1=A, 2=K, 3=C, 4=E; emitter is passive"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -5906,6 +7058,42 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "LCSC PN" "C145423"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "097430f0-ddc6-401d-bf16-496888d12c55")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CNY70"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "418d8299-8b7d-4ca5-9d23-12f3e70f5386")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "IF design ~20 mA; absolute maximum 50 mA"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "454f508c-ab8b-4ad3-bc98-e22481e40034")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/37e84606-7b28-46fb-9e75-5fbebce2a682/4c2f8e58-bcbf-4437-a48b-a0caf170c89b")
@@ -6381,7 +7569,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/83751/cny70.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -6395,7 +7583,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reflective optical sensor; 1=A, 2=K, 3=C, 4=E; emitter is passive"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -6407,6 +7595,42 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "LCSC PN" "C145423"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "ddf9dd44-5796-42e0-b91c-e5e35dc6569b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CNY70"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "afcc6628-51f4-4526-b42c-5d1bfc3ed136")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "IF design ~20 mA; absolute maximum 50 mA"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "ca3aaf3d-36de-4a06-aecd-9003009c6f7b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/37e84606-7b28-46fb-9e75-5fbebce2a682/39129d19-af9b-4d46-8259-2a5482243e75")
@@ -6882,7 +8106,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/83751/cny70.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -6896,7 +8120,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reflective optical sensor; 1=A, 2=K, 3=C, 4=E; emitter is passive"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -6908,6 +8132,42 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "LCSC PN" "C145423"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "235f1262-9678-4ac9-b248-597c77688dd0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CNY70"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "00e0cd02-ca61-444c-af8c-badeab308bdd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "IF design ~20 mA; absolute maximum 50 mA"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "9b17d09b-a8e2-4f58-ab69-8b761e8ba783")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/37e84606-7b28-46fb-9e75-5fbebce2a682/954f43bf-4ecd-49c4-b1d8-fe00d25b53c0")
@@ -7383,7 +8643,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/83751/cny70.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -7397,7 +8657,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reflective optical sensor; 1=A, 2=K, 3=C, 4=E; emitter is passive"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -7409,6 +8669,42 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "LCSC PN" "C145423"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "b1b041e0-9c7d-4e8b-a1fd-99d5b79502dc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CNY70"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "5b97a562-7f3c-4c38-8f9d-f796bfca712c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "IF design ~20 mA; absolute maximum 50 mA"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "588c466a-ec60-4e8a-9b72-aff0c0ab40f3")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/37e84606-7b28-46fb-9e75-5fbebce2a682/05fcb079-2439-41db-a2da-0a30265430c6")
@@ -7884,7 +9180,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/83751/cny70.pdf"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -7898,7 +9194,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Reflective optical sensor; 1=A, 2=K, 3=C, 4=E; emitter is passive"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -7910,6 +9206,42 @@
 					(thickness 0.15)
 				)
 				(justify mirror)
+			)
+		)
+		(property "LCSC PN" "C145423"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "d758d548-59ab-43c7-a03e-e56f857cfa8e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "CNY70"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "0a5f3f83-cd06-4a2d-8594-24edc20ee9da")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Rating" "IF design ~20 mA; absolute maximum 50 mA"
+			(at 0 0 0)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "57f0004a-5835-4e5c-a778-ec455e8c336d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(path "/37e84606-7b28-46fb-9e75-5fbebce2a682/9f3e19b0-9941-4ec3-9dd4-54a5ee327434")

@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,10.0.7*%
-%TF.CreationDate,2026-11-26T19:32:53+01:00*%
+%TF.CreationDate,2026-11-28T12:08:05+01:00*%
 %TF.ProjectId,Liniensensor,4c696e69-656e-4736-956e-736f722e6b69,rev?*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Soldermask,Top*%
 %TF.FilePolarity,Negative*%
 %FSLAX46Y46*%
 G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 10.0.7) date 2026-11-26 19:32:53*
+G04 Created by KiCad (PCBNEW 10.0.7) date 2026-11-28 12:08:05*
 %MOMM*%
 %LPD*%
 G01*

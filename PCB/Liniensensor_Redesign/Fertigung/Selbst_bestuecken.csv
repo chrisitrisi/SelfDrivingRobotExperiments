@@ -1,7 +1,7 @@
-Referenz,Wert,Footprint,Seite
-U3,CNY70,Vishay_CNY70,Bottom
-U1,CNY70,Vishay_CNY70,Bottom
-U4,CNY70,Vishay_CNY70,Bottom
-U5,CNY70,Vishay_CNY70,Bottom
-U6,CNY70,Vishay_CNY70,Bottom
-U2,CNY70,Vishay_CNY70,Bottom
+Referenz,Wert,Footprint,Seite,LCSC (zum Mitbestellen),Grund
+U3,CNY70,Vishay_CNY70,Bottom,C145423,THT
+U1,CNY70,Vishay_CNY70,Bottom,C145423,THT
+U4,CNY70,Vishay_CNY70,Bottom,C145423,THT
+U5,CNY70,Vishay_CNY70,Bottom,C145423,THT
+U6,CNY70,Vishay_CNY70,Bottom,C145423,THT
+U2,CNY70,Vishay_CNY70,Bottom,C145423,THT
