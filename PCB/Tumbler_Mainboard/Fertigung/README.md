@@ -27,6 +27,8 @@ JLC listet U3, U5, U10 und die acht RGB-LEDs D6–D13 als **Standard Only**. Das
 
 Die [bestückte 3S-Baugruppe als STEP](../Mechanik/Mainboard_3S_Rev25c_STEP.zip) enthält die vier THT-Teile und alle 184 SMD-Positionen. U10 wird durch das vereinfachte Projektmodell dargestellt. Kabel, Steckergegenstücke und Akku bei der Passprobe ergänzen. C69.1 hat im Nennmaß 1,30 mm Abstand zur H4-Stütze mit 5,5 mm Radius.
 
+Die Baugruppe hat denselben Ursprung wie `Platine_ohne_Bauteile.step` und `Gehauese_Bezugspunkte.csv`. Beim STEP-Export in KiCad den Ursprung `--user-origin 113.792x145.288mm` verwenden. H4 liegt damit bei X 6,013 und Y 9,928 mm. Die Außenkontur misst 76,962 × 80,518 mm. Mit Steckern und Bauteilen reicht das Modell bis X 82,958 mm und in Z von −2,235 bis +11,595 mm.
+
 Vor dem ersten Anschluss die Polarität an J1 und die vier Brücken kontrollieren. 3S extern laden. Für 2S die Ladefreigabe mit Pack-NTC, Ladeende und Verhalten in RUN/OFF prüfen. Die Prüfungen für den ersten Fahrversuch einschließlich VM am Motortreiber sind im [Schaltplanbegleittext](../README_Schaltplan.md) beschrieben.
 
 ## Nach einer Änderung
